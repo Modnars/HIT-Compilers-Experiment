@@ -17,5 +17,8 @@ $(OBJS) : $(SCANNER).cpp $(HEADFILES)
 run :
 	./$(PROGRAM)
 
+test :
+	./$(PROGRAM) ../test/test.cpp
+
 clean :
 	rm *.o *.out
