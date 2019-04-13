@@ -20,8 +20,9 @@ typedef enum {
 void addToken(const TokenType &tt, const std::string &str) {
     if (is_ctrl_type(tt)) return;
     auto token = make_token(tt, str);
-    if (token->type == ID) 
-        insert_symbol(SymbolTable, std::make_shared<Symbol>(token->name));
+    if (token->type == ID) {
+        token->sptr = insert_symbol(SymbolTable, std::make_shared<Symbol>(str));
+    }
     tokenVec.push_back(token);
 }
 

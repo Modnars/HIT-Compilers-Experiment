@@ -2,6 +2,7 @@
 #define TOKEN_HPP
 
 #include "Base.hpp"
+#include "SymbolTable.hpp"
 
 class Token;
 extern bool is_resd_word(const std::string &);
@@ -61,6 +62,7 @@ public:
         char cval;
         bool bval;
         double dval;
+        std::shared_ptr<Symbol> sptr;
     };
 
     Token() : type(CINT), ival(0) { }
@@ -113,6 +115,7 @@ void Token::copyUnion(const Token &t) {
         case CBOOL : bval = t.bval; break;
         case CCHAR : cval = t.cval; break;
         case CFLOAT : dval = t.dval; break;
+        case ID : sptr = t.sptr; break;
         default: break;
     }
 }
@@ -208,6 +211,11 @@ std::shared_ptr<Token> make_token(TokenType tt, std::string str) {
 
 // Overload the operator '<<', use this operator to print Token information formatly
 std::ostream &operator<<(std::ostream &os, const Token &tk) {
+    if (tk.type == ID) {
+        os << std::left << std::setw(10) << tk.name << std::right << std::setw(10) 
+           << get_type_name(tk.type) << std::setw(22) << tk.sptr << std::endl;
+           return os;
+    }
     os << std::left << std::setw(10) << tk.name << std::right << std::setw(10) 
        << get_type_name(tk.type) << std::setw(10) << tk.type << std::endl;
     return os;
