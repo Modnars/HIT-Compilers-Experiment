@@ -109,6 +109,11 @@ void getToken(std::istream &is, std::ostream &os = std::cout) {
                                 tt = ERROR;
                                 state = DONE;
                                 break;
+                            } else if (ch == EOF) {
+                                tt = ERROR;
+                                state = DONE;
+                                is.putback(ch);
+                                break;
                             }
                             if (is.peek() == '\'') {
                                 str += ch;
@@ -224,14 +229,17 @@ void getToken(std::istream &is, std::ostream &os = std::cout) {
                     tt = CSTRING;
                     state = DONE;
                 }
-                if (is.peek() == '\"' && ch != '\\') {
-                    str += is.get();
-                    tt = CSTRING;
+                if (ch == EOF) {
+                    tt = ERROR;
                     state = DONE;
+                    is.putback(ch);
+                    break;
+                } else if (is.peek() == '\"' && ch == '\\') {
+                    str += is.get();
                 } else if (ch == '\n') {
                     tt = ERROR;
                     state = DONE;
-                }
+                } 
                 break;
 
             case ISNUM :

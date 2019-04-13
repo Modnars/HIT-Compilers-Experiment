@@ -24,7 +24,7 @@ typedef enum {
     COMMA, SEMI, ASSIGN, DOT, QUOTE, 
     LPARTH, RPARTH, LBRACK, RBRACK, LBRACE, RBRACE,
     /* Value symbol */
-    ID, CINT, CCHAR, CNUM, CFLOAT, CDOUBLE, CBOOL, CSTRING,
+    ID, CINT, CCHAR, CNUM, CFLOAT, CBOOL, CSTRING,
     /* State symbol */
     UNKNOWN, ERROR, NONE, ENDFILE
 } TokenType;
@@ -47,9 +47,9 @@ std::vector<std::pair<TokenType, std::string>> type_name =
          {LPARTH, "LPARTH"}, {RPARTH, "RPARTH"}, {LBRACK, "LBRACK"}, 
          {RBRACK, "RBRACK"}, {LBRACE, "LBRACE"}, {RBRACE, "RBRACE"}, 
          {ID, "ID"},         {CINT, "CINT"},     {CSTRING, "CSTRING"},
-         {CNUM, "CNUM"},     {CFLOAT, "CFLOAT"}, {CDOUBLE, "CDOUBLE"},
-         {CBOOL, "CBOOL"},   {CCHAR, "CCHAR"},   {UNKNOWN, "UNKNOWN"}, 
-         {ERROR, "ERROR"},   {NONE, "NONE"},     {ENDFILE, "ENDFILE"}};
+         {CNUM, "CNUM"},     {CFLOAT, "CFLOAT"}, {CBOOL, "CBOOL"},   
+         {CCHAR, "CCHAR"},   {ERROR, "ERROR"},   {UNKNOWN, "UNKNOWN"},
+         {NONE, "NONE"},     {ENDFILE, "ENDFILE"}};
 
 // Store the special symbols. The key is the symbols' string, and the value is the
 // symbol's token type.
