@@ -4,11 +4,10 @@ LIBS=
 PARSER=parser
 SCANNER=scanner
 OBJS=$(SCANNER).o
-#HEADFILES=lib/ASTNode.hpp lib/Token.hpp lib/SymbolTable.hpp
 HEADFILES=lib/*.hpp
 PROGRAM=res.out
 
-all : $(OBJS)
+$(PROGRAM) : $(OBJS)
 	$(CC) $(CFLAGS) $(OBJS) -o $(PROGRAM)
 
 $(OBJS) : $(SCANNER).cpp $(HEADFILES)

@@ -4,6 +4,8 @@
  * This is the forth line. 
  */
 
+/**/
+
  // This is a single line's comment.
 
  /* This is the error comment.

@@ -8,7 +8,7 @@
 #include "lib/SymbolTable.hpp"
 #include "lib/Token.hpp"
 
-int line_no = 0;
+int line_no = 1;
 std::vector<std::shared_ptr<Token>> tokenVec;
 auto SymbolTable = std::make_shared<Symbol>("SymbolTable");
 
@@ -21,7 +21,9 @@ void addToken(const TokenType &tt, const std::string &str) {
     if (is_ctrl_type(tt)) return;
     auto token = make_token(tt, str);
     if (token->type == ID) {
-        token->sptr = insert_symbol(SymbolTable, std::make_shared<Symbol>(str));
+        auto symbol = std::make_shared<Symbol>(str);
+        symbol->decl_line_no = line_no;
+        token->sptr = insert_symbol(SymbolTable, symbol);
     }
     tokenVec.push_back(token);
 }
@@ -40,7 +42,7 @@ bool is_esc_char(char ch) {
 
 void write_log(std::ostream &os, const TokenType &tt, const std::string &str) {
     if (tt == NONE)
-        os << "Comment: [line:" << line_no << "]  " << str << std::endl;
+        os << "Comment: [line:" << line_no-1 << "]  " << str << std::endl;
     else if (tt == ERROR)
         os << "Error: [line:" << line_no << "]  " << str << std::endl;
     else if (tt == UNKNOWN)
@@ -237,6 +239,7 @@ void getToken(std::istream &is, std::ostream &os = std::cout) {
                 } else if (is.peek() == '\"' && ch == '\\') {
                     str += is.get();
                 } else if (ch == '\n') {
+                    ++line_no;
                     tt = ERROR;
                     state = DONE;
                 } 

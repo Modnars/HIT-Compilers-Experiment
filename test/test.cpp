@@ -1,1 +1,5 @@
-while (num != 100) { ++num; }
+// Test
+while (num != 100) {
+    ++num;
+}
+

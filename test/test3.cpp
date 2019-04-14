@@ -1,11 +1,15 @@
 int a = 10;
 
-double b = 10.2;
+bool b = true;
 
-float c = 3.2.2;
+double c = 10.2;
 
-char d = 'c';
+double d = 10.;
 
-char e = '\t';
+float e = 3.2.2;
 
-char f = '
+char f = 'c';
+
+char g = '\t';
+
+char h = '
