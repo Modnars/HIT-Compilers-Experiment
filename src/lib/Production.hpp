@@ -1,3 +1,6 @@
+#ifndef PRODUCTION_HPP
+#define PRODUCTION_HPP
+
 #include "Token.hpp"
 
 extern std::vector<std::string> split(const std::string &, const std::string &); 
@@ -31,3 +34,5 @@ std::ostream &operator<<(std::ostream &os, Production &p) {
     os << std::endl;
     return os;
 }
+
+#endif /* PRODUCTION_HPP */

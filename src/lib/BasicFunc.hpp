@@ -1,3 +1,6 @@
+#ifndef BASICFUNC_HPP
+#define BASICFUNC_HPP
+
 #include "Base.hpp"
 
 //将分割后的子字符串存储在vector中
@@ -44,3 +47,4 @@ bool contains(const std::vector<std::string> &svec, const std::string &str) {
     return false;
 }
 
+#endif /* BASICFUNC_HPP */
