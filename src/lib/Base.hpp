@@ -9,6 +9,7 @@
 #include <vector>
 #include <utility>
 #include <map>
+#include <set>
 #include <memory>
 
 // Define Token type.
