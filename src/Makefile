@@ -1,9 +1,9 @@
 CC=g++
-CFLAGS=-std=c++11 -Wall 
+CFLAGS=-std=c++11 -Wall
 LIBS=
 PARSER=parser
 SCANNER=scanner
-OBJS=$(PARSER).o #$(SCANNER).o 
+OBJS=$(PARSER).o#$(SCANNER).o 
 HEADFILES=lib/*.hpp
 PROGRAM=res
 DEBUGER=lldb

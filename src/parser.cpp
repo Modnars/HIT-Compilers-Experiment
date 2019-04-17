@@ -203,30 +203,17 @@ void getClosure() {
     std::queue<Item> que;
     que.push(start);
     string left;
-    int j = 0, num = 0; // TODO
     while (!que.empty()) {
-        ++j;
-        std::cout << "J = " << j << std::endl;
-        if (j > 20) break;
         closure.clear();
         auto start_it = que.front();
-        while (start_it.prev_sym() == que.front().prev_sym()) {
+        while (!que.empty() && start_it.prev_sym() == que.front().prev_sym()) {
             closure.push_back(que.front());
             que.pop();
-            if (!closure.back().could_reduce())
+            if (!closure.back().could_reduce() && !contains(StoreVec, closure.back().shift())) {
                 que.push(closure.back().shift());
-//            if (!closure.back().could_reduce()) {
-//                que.push(closure.back().shift());
-//                StoreVec.push_back(closure.back().shift());
-//            }
+                StoreVec.push_back(closure.back().shift());
+            }
         }
-        if (closure.size() == 0) {
-            std::cout << "J == " << j << std::endl;
-            exit(1);
-        }
-//        for (auto var : closure)
-//            std::cout << "DEB: " << var << std::endl;
-//        std::cout << "DEB: " << que.size() << std::endl;
         for (size_t i = 0; i < closure.size(); ++i) {
             if (i > 20) {
                 std::cout << "Break from i" << std::endl;
@@ -243,29 +230,18 @@ void getClosure() {
                     auto new_it = Item(left, tmp_right); // Temp Item
                     if (!contains(closure, new_it)) {
                         closure.push_back(new_it);
-//                        if (!new_it.could_reduce()) {
-                        if (!new_it.could_reduce() && !contains(StoreVec, new_it.shift())) {
+                        // If the reduce's condition is equal to closure[0], it should be in.
+                        if (new_it.next_sym() == closure[0].next_sym()) 
+                            que.push(new_it.shift());
+                        else if (!new_it.could_reduce() && !contains(StoreVec, new_it.shift())) {
                             que.push(new_it.shift());
                             StoreVec.push_back(new_it.shift());
                         }
-//                        else 
-//                            std::cout << new_it << std::endl;
                     }
                 } 
             }
         }
-        std::cout << "STATUS:" << num << std::endl; ++num;
-        std::cout << "Closure size: " << closure.size() << std::endl;
-        for (auto var : closure)
-            std::cout << var << std::endl;
         ClosureSet.push_back(closure);
-        std::cout << "Queue size: " << que.size() << std::endl;
-        auto tmp = que;
-        while (!tmp.empty()) {
-            std::cout << tmp.front() << "# ";
-            tmp.pop();
-        }
-        std::cout << std::endl << std::endl;
     }
 }
 
@@ -277,9 +253,10 @@ int main(int argc, char *argv[]) {
     getClosure();
     int i = 0;
     for (auto vec : ClosureSet) {
-        std::cout << "Set" << i++ << std::endl;
+        std::cout << "STATUS:" << i++ << std::endl;
         for (auto var : vec)
             std::cout << var << std::endl;
+        std::cout << std::endl;
     }
     return EXIT_SUCCESS;
 }

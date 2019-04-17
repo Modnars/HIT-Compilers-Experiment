@@ -1,6 +1,8 @@
 #ifndef BASICFUNC_HPP
 #define BASICFUNC_HPP
 
+#include <queue>
+
 #include "Base.hpp"
 
 //将分割后的子字符串存储在vector中
@@ -47,6 +49,22 @@ bool contains(const std::vector<T> &svec, const T &str) {
         if (var == str)
             return true;
     return false;
+}
+
+template <typename T>
+void print_que(std::queue<T> que) {
+    while (!que.empty()) {
+        std::cout << que.front() << std::endl;
+        que.pop();
+    }
+    std::cout << std::endl;
+}
+
+template <typename T>
+void print_vec(std::vector<T> vec) {
+    for (auto var : vec) 
+        std::cout << var << std::endl;
+    std::cout << std::endl;
 }
 
 #endif /* BASICFUNC_HPP */
