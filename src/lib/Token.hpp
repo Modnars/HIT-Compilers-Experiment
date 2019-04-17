@@ -66,7 +66,7 @@ public:
     };
 
     Token() : type(CINT), ival(0) { }
-    Token(const Token &t) : type(t.type) { copyUnion(t); }
+    Token(const Token &t) : type(t.type), name(t.name) { copyUnion(t); }
     Token &operator=(const Token &t);
     Token(const TokenType &tt, const std::string &nm) : 
             type(tt), name(nm), ival(tt) { } // New added.
@@ -81,6 +81,7 @@ public:
 
 Token &Token::operator=(const Token &t) {
     copyUnion(t);
+    name = t.name;
     type = t.type;
     return *this;
 }

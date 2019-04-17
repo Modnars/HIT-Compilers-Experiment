@@ -30,7 +30,8 @@ std::string &trim(std::string &s) {
     return s;
 }
 
-bool contains(const std::set<std::string> &sset, const std::string &str) {
+template <typename T> 
+bool contains(const std::set<T> &sset, const T &str) {
     if (sset.empty())
         return false;
     if (sset.find(str) == sset.end())
@@ -38,7 +39,8 @@ bool contains(const std::set<std::string> &sset, const std::string &str) {
     return true;
 }
 
-bool contains(const std::vector<std::string> &svec, const std::string &str) {
+template <typename T>
+bool contains(const std::vector<T> &svec, const T &str) {
     if (svec.empty())
         return false;
     for (auto var : svec)

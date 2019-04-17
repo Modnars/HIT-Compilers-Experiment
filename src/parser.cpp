@@ -1,10 +1,12 @@
 #include <iostream>
 #include <fstream>
+#include <queue>
 
 #include <cstdlib>
 
 #include "lib/Production.hpp"
 #include "lib/BasicFunc.hpp"
+#include "lib/Item.hpp"
 
 using std::string;
 using std::vector;
@@ -12,6 +14,9 @@ using std::vector;
 std::vector<std::shared_ptr<Production>> ProdVec; // Store the Production sequence.
 std::set<std::string> NonTerminalSet;             // Store the non-terminal symbols.
 std::set<std::string> TerminalSet;                // Store the terminal symbols.
+
+std::vector<std::vector<Item>> ClosureSet;
+std::vector<Item> StoreVec;
 
 std::map<string, std::shared_ptr<vector<string>>> first_set;  // Store the First Set.
 std::map<string, std::shared_ptr<vector<string>>> follow_set; // Store the Follow Set.
@@ -178,15 +183,89 @@ void getFollowSet() {
 
     // Remove the "#" in FOLLOW Set.
     // 清除FOLLOW集中的"#"
-    for (auto var : NonTerminalSet) {
-        auto svec_ptr = follow_set[var];
-        for (auto iter = svec_ptr->begin(); iter != svec_ptr->end();) {
-            if (*iter == "#") {
-                iter = svec_ptr->erase(iter);
-            } else {
-                ++iter;
+//    for (auto var : NonTerminalSet) {
+//        auto svec_ptr = follow_set[var];
+//        for (auto iter = svec_ptr->begin(); iter != svec_ptr->end();) {
+//            if (*iter == "#") {
+//                iter = svec_ptr->erase(iter);
+//            } else {
+//                ++iter;
+//            }
+//        }
+//    }
+}
+
+// Get the CLOSURE of the grammar.
+void getClosure() {
+    vector<string> tmp_right = {"@", "E"};
+    vector<Item> closure;
+    Item start = Item("S", tmp_right);
+    std::queue<Item> que;
+    que.push(start);
+    string left;
+    int j = 0, num = 0; // TODO
+    while (!que.empty()) {
+        ++j;
+        std::cout << "J = " << j << std::endl;
+        if (j > 20) break;
+        closure.clear();
+        auto start_it = que.front();
+        while (start_it.prev_sym() == que.front().prev_sym()) {
+            closure.push_back(que.front());
+            que.pop();
+            if (!closure.back().could_reduce())
+                que.push(closure.back().shift());
+//            if (!closure.back().could_reduce()) {
+//                que.push(closure.back().shift());
+//                StoreVec.push_back(closure.back().shift());
+//            }
+        }
+        if (closure.size() == 0) {
+            std::cout << "J == " << j << std::endl;
+            exit(1);
+        }
+//        for (auto var : closure)
+//            std::cout << "DEB: " << var << std::endl;
+//        std::cout << "DEB: " << que.size() << std::endl;
+        for (size_t i = 0; i < closure.size(); ++i) {
+            if (i > 20) {
+                std::cout << "Break from i" << std::endl;
+                break;
+            }
+            for (auto pptr : ProdVec) {
+                if ((left = pptr->get_left()) == closure[i].next_sym()) {
+                    if (left == "S")
+                        std::cout << "HERE" << std::endl;
+                    tmp_right.clear();
+                    tmp_right.push_back("@");
+                    for (auto var : pptr->get_right())
+                        tmp_right.push_back(var);
+                    auto new_it = Item(left, tmp_right); // Temp Item
+                    if (!contains(closure, new_it)) {
+                        closure.push_back(new_it);
+//                        if (!new_it.could_reduce()) {
+                        if (!new_it.could_reduce() && !contains(StoreVec, new_it.shift())) {
+                            que.push(new_it.shift());
+                            StoreVec.push_back(new_it.shift());
+                        }
+//                        else 
+//                            std::cout << new_it << std::endl;
+                    }
+                } 
             }
         }
+        std::cout << "STATUS:" << num << std::endl; ++num;
+        std::cout << "Closure size: " << closure.size() << std::endl;
+        for (auto var : closure)
+            std::cout << var << std::endl;
+        ClosureSet.push_back(closure);
+        std::cout << "Queue size: " << que.size() << std::endl;
+        auto tmp = que;
+        while (!tmp.empty()) {
+            std::cout << tmp.front() << "# ";
+            tmp.pop();
+        }
+        std::cout << std::endl << std::endl;
     }
 }
 
@@ -194,6 +273,13 @@ int main(int argc, char *argv[]) {
     read_grammar("../file/grammar/grammar.txt");
     getFirstSet();
     getFollowSet();
-    print_info();
+//    print_info();
+    getClosure();
+    int i = 0;
+    for (auto vec : ClosureSet) {
+        std::cout << "Set" << i++ << std::endl;
+        for (auto var : vec)
+            std::cout << var << std::endl;
+    }
     return EXIT_SUCCESS;
 }

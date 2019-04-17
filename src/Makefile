@@ -1,28 +1,30 @@
 CC=g++
-CFLAGS=-std=c++11 -Wall
+CFLAGS=-std=c++11 -Wall 
 LIBS=
 PARSER=parser
 SCANNER=scanner
-OBJS=$(PARSER).o #$(SCANNER).o
+OBJS=$(PARSER).o #$(SCANNER).o 
 HEADFILES=lib/*.hpp
-PROGRAM=res.out
+PROGRAM=res
+DEBUGER=lldb
 
 TEST=Test
 
 $(PROGRAM) : $(OBJS)
-	$(CC) $(CFLAGS) $(OBJS) -o $(PROGRAM)
+	$(CC) $(CFLAGS) $(OBJS) -o $(PROGRAM) 
 
 $(OBJS) : $(PARSER).cpp $(HEADFILES)
 	$(CC) $(CFLAGS) $(PARSER).cpp -c
 
-run :
+r :
 	./$(PROGRAM)
 
-test :
-	./$(PROGRAM) ../test/test.cpp
+d :
+	$(CC) $(CFLAGS) -g $(PARSER).cpp -o $(PROGRAM).out
+	$(DEBUGER) $(PROGRAM).out 
 
 t :
-	$(CC) $(CFLAGS) $(TEST).cpp -o $(TEST).out && ./$(TEST).out
+	$(CC) $(CFLAGS) $(TEST).cpp -o $(TEST).out -g && ./$(TEST).out
 
 clean :
-	rm *.o *.out
+	rm -rf *.o *.out *.out.dSYM
