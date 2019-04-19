@@ -1,6 +1,6 @@
 #include <iostream>
 #include <fstream>
-#include <queue>
+#include <stack>
 
 #include <cstdlib>
 
@@ -15,11 +15,17 @@ std::vector<std::shared_ptr<Production>> ProdVec; // Store the Production sequen
 std::set<std::string> NonTerminalSet;             // Store the non-terminal symbols.
 std::set<std::string> TerminalSet;                // Store the terminal symbols.
 
-std::vector<std::vector<Item>> ClosureSet;
-std::vector<Item> StoreVec;
+std::map<string, std::shared_ptr<vector<string>>> FirstSet;  // Store the First Set.
+std::map<string, std::shared_ptr<vector<string>>> FollowSet; // Store the Follow Set.
 
-std::map<string, std::shared_ptr<vector<string>>> first_set;  // Store the First Set.
-std::map<string, std::shared_ptr<vector<string>>> follow_set; // Store the Follow Set.
+std::vector<std::vector<Item>> ClosureSet; // Store the Closures' set.
+
+std::vector<ReduceItem> ReduceTable; // Store the Ruduce Action information.
+std::vector<GotoItem> ShiftTable;    // Store the Shift Action information.
+std::vector<GotoItem> GotoTable;     // Store the Goto Action information.
+
+std::stack<int> StateStack;  // Store the State Stack information.
+std::stack<std::string> SymbolStack; // Store the Symbol Stack information.
 
 // Judge whether the production could be null.
 bool could_be_null(const string &prod) {
@@ -75,7 +81,7 @@ void print_info(std::ostream &os = std::cout) {
         os << var << " ";
     os << std::endl << std::endl;
     os << "FIRST Set:" << std::endl;
-    for (auto item : first_set) {
+    for (auto item : FirstSet) {
         os << item.first << ": ";
         for (auto var : *item.second)
             os << var << " ";
@@ -83,7 +89,7 @@ void print_info(std::ostream &os = std::cout) {
     }
     os << std::endl;
     os << "FOLLOW Set:" << std::endl;
-    for (auto item : follow_set) {
+    for (auto item : FollowSet) {
         os << item.first << ": ";
         for (auto var : *item.second)
             os << var << " ";
@@ -97,11 +103,11 @@ void getFirstSet() {
     for (auto var : TerminalSet) {
         first = std::make_shared<vector<string>>();
         first->push_back(var);
-        first_set[var] = first;
+        FirstSet[var] = first;
     }
     for (auto var : NonTerminalSet) {
         first = std::make_shared<vector<string>>();
-        first_set[var] = first;
+        FirstSet[var] = first;
     }
     bool flag;
     while (true) {
@@ -114,11 +120,11 @@ void getFirstSet() {
             for (int j = 0; j < rights.size(); ++j) {
                 right = rights[j];
                 if (right != "$") {
-                    for (int l = 0; l < first_set[right]->size(); ++l)
-                        if (contains(*first_set[left], (*first_set[right])[l])) {
+                    for (int l = 0; l < FirstSet[right]->size(); ++l)
+                        if (contains(*FirstSet[left], (*FirstSet[right])[l])) {
                             continue;
                         } else {
-                            first_set[left]->push_back((*first_set[right])[l]);
+                            FirstSet[left]->push_back((*FirstSet[right])[l]);
                             flag = false;
                         }
                 }
@@ -136,8 +142,8 @@ void getFirstSet() {
 // Get the FOLLOW Set of the grammar.
 void getFollowSet() {
     for (auto var : NonTerminalSet) 
-        follow_set[var] = std::make_shared<vector<string>>();
-    follow_set["S"]->push_back("#");
+        FollowSet[var] = std::make_shared<vector<string>>();
+    FollowSet["S"]->push_back("#");
     bool flag, fab;
     while (true) {
         flag = true;
@@ -149,11 +155,11 @@ void getFollowSet() {
                 if (contains(NonTerminalSet, right)) {
                     fab = true;
                     for (int k = j+1; k < rights.size(); ++k) {
-                        for (int v = 0; v < first_set[rights[k]]->size(); ++v) {
-                            if (contains(*follow_set[right], (*first_set[rights[k]])[v])) {
+                        for (int v = 0; v < FirstSet[rights[k]]->size(); ++v) {
+                            if (contains(*FollowSet[right], (*FirstSet[rights[k]])[v])) {
                                 continue;
                             } else {
-                                follow_set[right]->push_back((*first_set[rights[k]])[v]);
+                                FollowSet[right]->push_back((*FirstSet[rights[k]])[v]);
                                 flag = false;
                             }
                         } /* for (int v ...) loop */
@@ -166,11 +172,11 @@ void getFollowSet() {
                     } /* for (int k ...) loop */
                     if (fab) {
                         left = ProdVec[i]->get_left();
-                        for (int p = 0; p < follow_set[left]->size(); ++p) {
-                            if (contains(*follow_set[right], (*follow_set[left])[p])) {
+                        for (int p = 0; p < FollowSet[left]->size(); ++p) {
+                            if (contains(*FollowSet[right], (*FollowSet[left])[p])) {
                                 continue;
                             } else {
-                                follow_set[right]->push_back((*follow_set[left])[p]);
+                                FollowSet[right]->push_back((*FollowSet[left])[p]);
                                 flag = false;
                             }
                         } /* for (int p ...) loop */
@@ -181,10 +187,10 @@ void getFollowSet() {
         if (flag) break;
     } /* while (true) */
 
-    // Remove the "#" in FOLLOW Set.
-    // 清除FOLLOW集中的"#"
+//    // Remove the "#" in FOLLOW Set.
+//    // 清除FOLLOW集中的"#"
 //    for (auto var : NonTerminalSet) {
-//        auto svec_ptr = follow_set[var];
+//        auto svec_ptr = FollowSet[var];
 //        for (auto iter = svec_ptr->begin(); iter != svec_ptr->end();) {
 //            if (*iter == "#") {
 //                iter = svec_ptr->erase(iter);
@@ -195,68 +201,214 @@ void getFollowSet() {
 //    }
 }
 
-// Get the CLOSURE of the grammar.
-void getClosure() {
-    vector<string> tmp_right = {"@", "E"};
-    vector<Item> closure;
-    Item start = Item("S", tmp_right);
-    std::queue<Item> que;
-    que.push(start);
+void getI0() {
+    vector<string> rights = {"@"};
+    for (auto var : ProdVec[0]->get_right())
+        rights.push_back(var);
+    vector<Item> closure = {Item(ProdVec[0]->get_left(), rights)};
     string left;
-    while (!que.empty()) {
-        closure.clear();
-        auto start_it = que.front();
-        while (!que.empty() && start_it.prev_sym() == que.front().prev_sym()) {
-            closure.push_back(que.front());
-            que.pop();
-            if (!closure.back().could_reduce() && !contains(StoreVec, closure.back().shift())) {
-                que.push(closure.back().shift());
-                StoreVec.push_back(closure.back().shift());
+    for (size_t i = 0; i < closure.size(); ++i) {
+        for (auto pptr : ProdVec) {
+            if ((left = pptr->get_left()) == closure[i].next_sym()) {
+                rights = {"@"};
+                for (auto var : pptr->get_right()) 
+                    rights.push_back(var);
+                auto new_item = Item(left, rights);
+                if (!contains(closure, new_item))
+                    closure.push_back(new_item);
+            }
+        } 
+    }
+    ClosureSet.push_back(closure);
+}
+
+void extend(vector<Item> &closure) {
+    vector<string> rights;
+    string left;
+    for (size_t i = 0; i < closure.size(); ++i) {
+        for (auto pptr : ProdVec) {
+            if ((left = pptr->get_left()) == closure[i].next_sym()) {
+                rights = {"@"};
+                for (auto var : pptr->get_right()) 
+                    rights.push_back(var);
+                auto new_item = Item(left, rights);
+                if (!contains(closure, new_item))
+                    closure.push_back(new_item);
+            }
+        } 
+    }
+}
+
+void getClosureSet() {
+    getI0();
+    vector<Item> closure;
+    vector<string> tmpVec, rights; // Store the temp next_sym.
+    for (size_t i = 0; i < ClosureSet.size(); ++i) {
+        tmpVec.clear();
+        for (auto item : ClosureSet[i]) {
+            if (!item.could_reduce() && !contains(tmpVec, item.next_sym()))
+                    tmpVec.push_back(item.next_sym());
+        }
+        for (auto sym : tmpVec) {
+            closure.clear();
+            for (auto item : ClosureSet[i]) {
+                if (!item.could_reduce() && item.next_sym() == sym) {
+                    closure.push_back(item.shift());
+                }
+            }
+            extend(closure);
+            bool found = false;
+            for (size_t j = 0; j < ClosureSet.size(); ++j) {
+                if (ClosureSet[j] == closure) {
+                    if (contains(NonTerminalSet, sym))
+                        GotoTable.push_back(GotoItem(i, j, sym));
+                    else 
+                        ShiftTable.push_back(GotoItem(i, j, sym));
+                    found = true;
+                    break;
+                }
+            }
+            if (!found) {
+                ClosureSet.push_back(closure);
+                if (contains(NonTerminalSet, sym))
+                    GotoTable.push_back(GotoItem(i, ClosureSet.size()-1, sym));
+                else 
+                    ShiftTable.push_back(GotoItem(i, ClosureSet.size()-1, sym));
             }
         }
-        for (size_t i = 0; i < closure.size(); ++i) {
-            if (i > 20) {
-                std::cout << "Break from i" << std::endl;
-                break;
-            }
-            for (auto pptr : ProdVec) {
-                if ((left = pptr->get_left()) == closure[i].next_sym()) {
-                    if (left == "S")
-                        std::cout << "HERE" << std::endl;
-                    tmp_right.clear();
-                    tmp_right.push_back("@");
-                    for (auto var : pptr->get_right())
-                        tmp_right.push_back(var);
-                    auto new_it = Item(left, tmp_right); // Temp Item
-                    if (!contains(closure, new_it)) {
-                        closure.push_back(new_it);
-                        // If the reduce's condition is equal to closure[0], it should be in.
-                        if (new_it.next_sym() == closure[0].next_sym()) 
-                            que.push(new_it.shift());
-                        else if (!new_it.could_reduce() && !contains(StoreVec, new_it.shift())) {
-                            que.push(new_it.shift());
-                            StoreVec.push_back(new_it.shift());
+    }
+}
+
+void getReductionTable() {
+    for (size_t i = 0; i < ClosureSet.size(); ++i) {
+        for (auto item : ClosureSet[i]) {
+            if (item.could_reduce()) {
+                for (size_t j = 0; j < ProdVec.size(); ++j) {
+                    if (item.reduce_from(*ProdVec[j])) {
+                        for (auto sym : *FollowSet[item.left]) {
+                            ReduceTable.push_back(ReduceItem(i, sym, j));
                         }
+                        break;
                     }
-                } 
-            }
+                } /* for (size_t j = 0; ...) loop */
+            } /* if (item.could_reduce()) */
+        } /* for (auto item : ...) loop */
+    } /* for (size_t i = 0; ...) loop */
+}
+
+int searchGotoTable(int state, const string &sym) {
+    for (auto var : GotoTable) 
+        if (var.start == state && var.symbol == sym) {
+            std::cout << "GOTO:   ";
+            print_stk(StateStack);
+            std::cout << "#";
+            print_stk(SymbolStack);
+            std::cout << "\t\t" << sym;
+            std::cout << "\t\tGOTO:" << var.end << std::endl;
+            return var.end;
         }
-        ClosureSet.push_back(closure);
+    return -1;
+}
+
+int searchShiftTable(int state, const string &sym) {
+    for (auto var : ShiftTable) 
+        if (var.start == state && var.symbol == sym) {
+            std::cout << "SHIFT:  ";
+            print_stk(StateStack);
+            std::cout << "#";
+            print_stk(SymbolStack);
+            std::cout << "\t\t" << sym;
+            std::cout << "\t\tS" << var.end << std::endl;
+            return var.end;
+        }
+    return -1;
+}
+
+int searchReduceTable(int state, const string &sym) {
+    for (auto var : ReduceTable) 
+        if (var.state == state && var.symbol == sym) {
+            std::cout << "REDUCE: ";
+            print_stk(StateStack);
+            std::cout << "#";
+            print_stk(SymbolStack);
+            std::cout << "\t\t" << sym;
+            std::cout << "\t\tR" << var.prod_id << ": " << *ProdVec[var.prod_id] << std::endl;
+            return var.prod_id;
+        }
+    return -1;
+}
+
+void analysis(const vector<string> &seq) {
+    StateStack.push(0);
+    size_t i = 0;
+    bool accepted = false, done = false;
+    while (!done && !accepted) {
+        int res;
+        if (StateStack.top() == 1 && seq[i] == "#") {
+            accepted = true;
+        } else if ((res = searchShiftTable(StateStack.top(), seq[i])) > -1) {
+            StateStack.push(res);
+            SymbolStack.push(seq[i]);
+            ++i;
+        } else if ((res = searchReduceTable(StateStack.top(), seq[i])) > -1) {
+            for (int k = 0; k < ProdVec[res]->get_right().size(); ++k) {
+                StateStack.pop();
+                SymbolStack.pop();
+            }
+            SymbolStack.push(ProdVec[res]->get_left());
+            if ((res = searchGotoTable(StateStack.top(), SymbolStack.top())) > -1) {
+                StateStack.push(res);
+            } else {
+                done = true;
+            }
+        } else {
+            done = true;
+        }
+    }
+    if (accepted) {
+        std::cout << "Accepted!" << std::endl;
+    } else {
+        std::cout << "Error!" << std::endl;
     }
 }
 
 int main(int argc, char *argv[]) {
-    read_grammar("../file/grammar/grammar.txt");
+//    read_grammar("../file/grammar/grammar.txt");
+    read_grammar("../file/grammar/std_grammar.txt");
     getFirstSet();
     getFollowSet();
-//    print_info();
-    getClosure();
-    int i = 0;
-    for (auto vec : ClosureSet) {
-        std::cout << "STATUS:" << i++ << std::endl;
-        for (auto var : vec)
-            std::cout << var << std::endl;
-        std::cout << std::endl;
+    getClosureSet();
+    getReductionTable();
+//    for (size_t i = 0; i < ClosureSet.size(); ++i) {
+//        std::cout << std::endl << "STATUS " << i << std::endl;
+//        for (auto var : ClosureSet[i])
+//            std::cout << var << std::endl;
+//    }
+//    std::cout << "ReduceAction: " << ReduceTable.size() << std::endl;
+//    for (auto var : ReduceTable) {
+//        std::cout << var << "\t" << *ProdVec[var.prod_id] << std::endl;;
+//    }
+//    std::cout << "ShiftAction: " << ShiftTable.size() << std::endl;
+//    for (auto var : ShiftTable) {
+//        std::cout << var << "S" << var.end << std::endl;;
+//    }
+//    std::cout << "Goto: " << GotoTable.size() << std::endl;
+//    for (auto var : GotoTable) {
+//        std::cout << var << std::endl;;
+//    }
+//    analysis({"id", "=", "id", "+", "id", "*", "id", ";", "#"});
+    for (auto var : ClosureSet[3])
+        std::cout << var << std::endl;
+    vector<string> input;
+    string tmp;
+    while (std::cin >> tmp) {
+        input.push_back(tmp);
     }
+    input.push_back("#");
+    std::cout << input.size() << std::endl;
+    for (auto var : input) 
+        std::cout << var << " ";
+    std::cout << std::endl;
+    analysis(input);
     return EXIT_SUCCESS;
 }

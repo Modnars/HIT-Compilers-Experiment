@@ -10,28 +10,26 @@ class Production {
 public:
     Production(const std::string &left, const std::vector<std::string> &right) :
             left(left), right(right) { }
-    const std::string &get_left();
-    const std::vector<std::string> &get_right();
+    const std::string &get_left() const ;
+    const std::vector<std::string> &get_right() const ;
 
 private:
     std::string left;
     std::vector<std::string> right;
 };
 
-const std::string &Production::get_left() {
+const std::string &Production::get_left() const {
     return left;
 }
 
-const std::vector<std::string> &Production::get_right() {
+const std::vector<std::string> &Production::get_right() const {
     return right;
 }
 
 std::ostream &operator<<(std::ostream &os, Production &p) {
-    os << "Left: " << p.get_left() << std::endl << "Right: ";
-    os << p.get_right().size() << " ";
+    os << p.get_left() << " -> ";
     for (auto str : p.get_right()) 
-        os << ":" << str << ": ";
-    os << std::endl;
+        os << str << " ";
     return os;
 }
 

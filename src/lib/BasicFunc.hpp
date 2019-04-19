@@ -2,6 +2,7 @@
 #define BASICFUNC_HPP
 
 #include <queue>
+#include <stack>
 
 #include "Base.hpp"
 
@@ -33,20 +34,20 @@ std::string &trim(std::string &s) {
 }
 
 template <typename T> 
-bool contains(const std::set<T> &sset, const T &str) {
+bool contains(const std::set<T> &sset, const T &val) {
     if (sset.empty())
         return false;
-    if (sset.find(str) == sset.end())
+    if (sset.find(val) == sset.end())
         return false;
     return true;
 }
 
 template <typename T>
-bool contains(const std::vector<T> &svec, const T &str) {
+bool contains(const std::vector<T> &svec, const T &val) {
     if (svec.empty())
         return false;
     for (auto var : svec)
-        if (var == str)
+        if (var == val)
             return true;
     return false;
 }
@@ -61,9 +62,27 @@ void print_que(std::queue<T> que) {
 }
 
 template <typename T>
-void print_vec(std::vector<T> vec) {
+void print_stk(std::stack<T> stk) {
+    std::vector<T> tmpVec;
+    while (!stk.empty()) {
+        tmpVec.push_back(stk.top());
+        stk.pop();
+    }
+    for (auto iter = tmpVec.crbegin(); iter != tmpVec.crend(); ++iter)
+        std::cout << *iter;
+}
+
+template <typename T>
+void print_vec(const std::vector<T> &vec) {
     for (auto var : vec) 
         std::cout << var << std::endl;
+    std::cout << std::endl;
+}
+
+template <typename T>
+void print_vec1(const std::vector<std::shared_ptr<T>> &vec) {
+    for (auto var : vec)
+        std::cout << *var << std::endl;
     std::cout << std::endl;
 }
 
