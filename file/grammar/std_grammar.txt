@@ -2,7 +2,6 @@ Start -> P
 P -> D
 P -> S
 S -> S S
-S -> $
 D -> D D
 D -> proc id ; D S
 D -> T id ;

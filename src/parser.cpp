@@ -69,31 +69,37 @@ int read_grammar(const std::string &filename) {
 
 // Print the debug information.
 void print_info(std::ostream &os = std::cout) {
-    os << "Production Vector:" << std::endl;
-    for (auto var : ProdVec)
-        os << *var << std::endl;
-    os << "Non-Terminal Symbols:" << std::endl;
-    for (auto var : NonTerminalSet)
-        os << var << " ";
-    os << std::endl;
-    os << "Terminal Symbols:" << std::endl;
-    for (auto var : TerminalSet)
-        os << var << " ";
-    os << std::endl << std::endl;
-    os << "FIRST Set:" << std::endl;
-    for (auto item : FirstSet) {
-        os << item.first << ": ";
-        for (auto var : *item.second)
-            os << var << " ";
-        os << std::endl;
-    }
-    os << std::endl;
-    os << "FOLLOW Set:" << std::endl;
-    for (auto item : FollowSet) {
-        os << item.first << ": ";
-        for (auto var : *item.second)
-            os << var << " ";
-        os << std::endl;
+//    os << "Production Vector:" << std::endl;
+//    for (auto var : ProdVec)
+//        os << *var << std::endl;
+//    os << "Non-Terminal Symbols:" << std::endl;
+//    for (auto var : NonTerminalSet)
+//        os << var << " ";
+//    os << std::endl;
+//    os << "Terminal Symbols:" << std::endl;
+//    for (auto var : TerminalSet)
+//        os << var << " ";
+//    os << std::endl << std::endl;
+//    os << "FIRST Set:" << std::endl;
+//    for (auto item : FirstSet) {
+//        os << item.first << ": ";
+//        for (auto var : *item.second)
+//            os << var << " ";
+//        os << std::endl;
+//    }
+//    os << std::endl;
+//    os << "FOLLOW Set:" << std::endl;
+//    for (auto item : FollowSet) {
+//        os << item.first << ": ";
+//        for (auto var : *item.second)
+//            os << var << " ";
+//        os << std::endl;
+//    }
+    os << "ReduceAction: " << std::endl;
+    for (auto var : ReduceTable) {
+        os << "START: " << var.state;
+        os << "\tMeet: " << std::left << std::setw(10) << var.symbol;
+        os << "\tR" << var.prod_id << ": " << *ProdVec[var.prod_id] << std::endl;
     }
 }
 
@@ -351,10 +357,11 @@ void analysis(const vector<string> &seq) {
             SymbolStack.push(seq[i]);
             ++i;
         } else if ((res = searchReduceTable(StateStack.top(), seq[i])) > -1) {
-            for (int k = 0; k < ProdVec[res]->get_right().size(); ++k) {
-                StateStack.pop();
-                SymbolStack.pop();
-            }
+            if (ProdVec[res]->get_right()[0] != "$") // TODO
+                for (int k = 0; k < ProdVec[res]->get_right().size(); ++k) {
+                    StateStack.pop();
+                    SymbolStack.pop();
+                }
             SymbolStack.push(ProdVec[res]->get_left());
             if ((res = searchGotoTable(StateStack.top(), SymbolStack.top())) > -1) {
                 StateStack.push(res);
@@ -368,47 +375,43 @@ void analysis(const vector<string> &seq) {
     if (accepted) {
         std::cout << "Accepted!" << std::endl;
     } else {
-        std::cout << "Error!" << std::endl;
+        std::cout << "Error!" << std::endl << "Remain string: ";
+        while (i < seq.size()) {
+            std::cout << seq[i];
+            ++i;
+        }
+        std::cout << std::endl;
     }
 }
 
 int main(int argc, char *argv[]) {
-//    read_grammar("../file/grammar/grammar.txt");
-    read_grammar("../file/grammar/std_grammar.txt");
+    read_grammar("../file/grammar/grammar.txt");
+//    read_grammar("../file/grammar/std_grammar.txt");
     getFirstSet();
     getFollowSet();
     getClosureSet();
     getReductionTable();
-//    for (size_t i = 0; i < ClosureSet.size(); ++i) {
-//        std::cout << std::endl << "STATUS " << i << std::endl;
-//        for (auto var : ClosureSet[i])
-//            std::cout << var << std::endl;
-//    }
-//    std::cout << "ReduceAction: " << ReduceTable.size() << std::endl;
-//    for (auto var : ReduceTable) {
-//        std::cout << var << "\t" << *ProdVec[var.prod_id] << std::endl;;
-//    }
-//    std::cout << "ShiftAction: " << ShiftTable.size() << std::endl;
-//    for (auto var : ShiftTable) {
-//        std::cout << var << "S" << var.end << std::endl;;
-//    }
-//    std::cout << "Goto: " << GotoTable.size() << std::endl;
-//    for (auto var : GotoTable) {
-//        std::cout << var << std::endl;;
-//    }
+    std::ofstream os("../file/log/debug.log");
+    print_info(os);
+    os.close();
+//    for (auto closure : ClosureSet)
+//        for (auto item : closure)
+//            if (item.reduce_from(*ProdVec[2]))
+//                std::cout << item << std::endl;
 //    analysis({"id", "=", "id", "+", "id", "*", "id", ";", "#"});
-    for (auto var : ClosureSet[3])
-        std::cout << var << std::endl;
-    vector<string> input;
-    string tmp;
-    while (std::cin >> tmp) {
-        input.push_back(tmp);
-    }
-    input.push_back("#");
-    std::cout << input.size() << std::endl;
-    for (auto var : input) 
-        std::cout << var << " ";
-    std::cout << std::endl;
-    analysis(input);
+//    analysis({"item", "=", "item", "+", "item", "*", "item", ";", "#"});
+    analysis({"int", "id", "(", "int", "id", ")", ";", "#"});
+//    int i = 0;
+//    vector<string> input;
+//    string tmp;
+//    while (std::cin >> tmp) {
+//        input.push_back(tmp);
+//    }
+//    input.push_back("#");
+//    std::cout << input.size() << std::endl;
+//    for (auto var : input) 
+//        std::cout << var << " ";
+//    std::cout << std::endl;
+//    analysis(input);
     return EXIT_SUCCESS;
 }

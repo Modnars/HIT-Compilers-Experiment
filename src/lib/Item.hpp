@@ -32,7 +32,8 @@ Item Item::shift() const {
 }
 
 bool Item::could_reduce() const {
-    return right.back() == "@";
+    // Warning: here add the '$' to mark the item is a null-production item.
+    return (right.back() == "@" || right.back() == "$");
 }
 
 bool Item::reduce_from(const Production &prod) const {
@@ -40,6 +41,9 @@ bool Item::reduce_from(const Production &prod) const {
         return false;
     if (left != prod.get_left())
         return false;
+    // For the null-production item.
+    if (right.back() == "$" && prod.get_right()[0] == "$") 
+        return true;
     for (size_t i = 0; i < prod.get_right().size(); ++i)
         if (right[i] != prod.get_right()[i])
             return false;
@@ -72,7 +76,7 @@ bool operator==(const Item &a, const Item &b) {
 std::ostream &operator<<(std::ostream &os, const Item &it) {
     os << it.left << " -> ";
     for (auto var : it.right)
-        std::cout << var << " ";
+        os << var << " ";
     return os;
 }
 

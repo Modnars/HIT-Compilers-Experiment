@@ -53,30 +53,30 @@ bool contains(const std::vector<T> &svec, const T &val) {
 }
 
 template <typename T>
-void print_que(std::queue<T> que) {
+void print_que(std::queue<T> que, std::ostream &os = std::cout) {
     while (!que.empty()) {
-        std::cout << que.front() << std::endl;
+        os << que.front() << std::endl;
         que.pop();
     }
-    std::cout << std::endl;
+    os << std::endl;
 }
 
 template <typename T>
-void print_stk(std::stack<T> stk) {
+void print_stk(std::stack<T> stk, std::ostream &os = std::cout) {
     std::vector<T> tmpVec;
     while (!stk.empty()) {
         tmpVec.push_back(stk.top());
         stk.pop();
     }
     for (auto iter = tmpVec.crbegin(); iter != tmpVec.crend(); ++iter)
-        std::cout << *iter;
+        os << *iter;
 }
 
 template <typename T>
-void print_vec(const std::vector<T> &vec) {
+void print_vec(const std::vector<T> &vec, std::ostream &os = std::cout) {
     for (auto var : vec) 
-        std::cout << var << std::endl;
-    std::cout << std::endl;
+        os << var << std::endl;
+    os << std::endl;
 }
 
 template <typename T>

@@ -1,0 +1,848 @@
+ReduceAction: 
+START: 1	Meet: #         	R2: funcs -> $ 
+START: 3	Meet: id        	R4: type -> int 
+START: 4	Meet: id        	R5: type -> short 
+START: 5	Meet: id        	R6: type -> long 
+START: 6	Meet: id        	R7: type -> char 
+START: 7	Meet: id        	R8: type -> float 
+START: 8	Meet: id        	R9: type -> double 
+START: 9	Meet: id        	R10: type -> void 
+START: 11	Meet: #         	R0: S -> func funcs 
+START: 12	Meet: #         	R2: funcs -> $ 
+START: 14	Meet: id        	R11: type -> unsigned type 
+START: 15	Meet: #         	R1: funcs -> func funcs 
+START: 16	Meet: )         	R13: args -> $ 
+START: 20	Meet: )         	R15: arg -> $ 
+START: 21	Meet: int       	R3: func -> type id ( args ) func_body 
+START: 21	Meet: short     	R3: func -> type id ( args ) func_body 
+START: 21	Meet: long      	R3: func -> type id ( args ) func_body 
+START: 21	Meet: char      	R3: func -> type id ( args ) func_body 
+START: 21	Meet: float     	R3: func -> type id ( args ) func_body 
+START: 21	Meet: double    	R3: func -> type id ( args ) func_body 
+START: 21	Meet: void      	R3: func -> type id ( args ) func_body 
+START: 21	Meet: unsigned  	R3: func -> type id ( args ) func_body 
+START: 21	Meet: #         	R3: func -> type id ( args ) func_body 
+START: 22	Meet: int       	R16: func_body -> ; 
+START: 22	Meet: short     	R16: func_body -> ; 
+START: 22	Meet: long      	R16: func_body -> ; 
+START: 22	Meet: char      	R16: func_body -> ; 
+START: 22	Meet: float     	R16: func_body -> ; 
+START: 22	Meet: double    	R16: func_body -> ; 
+START: 22	Meet: void      	R16: func_body -> ; 
+START: 22	Meet: unsigned  	R16: func_body -> ; 
+START: 22	Meet: #         	R16: func_body -> ; 
+START: 23	Meet: int       	R17: func_body -> block 
+START: 23	Meet: short     	R17: func_body -> block 
+START: 23	Meet: long      	R17: func_body -> block 
+START: 23	Meet: char      	R17: func_body -> block 
+START: 23	Meet: float     	R17: func_body -> block 
+START: 23	Meet: double    	R17: func_body -> block 
+START: 23	Meet: void      	R17: func_body -> block 
+START: 23	Meet: unsigned  	R17: func_body -> block 
+START: 23	Meet: #         	R17: func_body -> block 
+START: 24	Meet: continue  	R20: define_stmts -> $ 
+START: 24	Meet: break     	R20: define_stmts -> $ 
+START: 24	Meet: return    	R20: define_stmts -> $ 
+START: 24	Meet: while     	R20: define_stmts -> $ 
+START: 24	Meet: for       	R20: define_stmts -> $ 
+START: 24	Meet: do        	R20: define_stmts -> $ 
+START: 24	Meet: if        	R20: define_stmts -> $ 
+START: 24	Meet: switch    	R20: define_stmts -> $ 
+START: 24	Meet: (         	R20: define_stmts -> $ 
+START: 24	Meet: id        	R20: define_stmts -> $ 
+START: 24	Meet: digit     	R20: define_stmts -> $ 
+START: 24	Meet: }         	R20: define_stmts -> $ 
+START: 25	Meet: )         	R12: args -> type id arg 
+START: 27	Meet: }         	R27: stmts -> $ 
+START: 27	Meet: case      	R27: stmts -> $ 
+START: 27	Meet: default   	R27: stmts -> $ 
+START: 28	Meet: continue  	R20: define_stmts -> $ 
+START: 28	Meet: break     	R20: define_stmts -> $ 
+START: 28	Meet: return    	R20: define_stmts -> $ 
+START: 28	Meet: while     	R20: define_stmts -> $ 
+START: 28	Meet: for       	R20: define_stmts -> $ 
+START: 28	Meet: do        	R20: define_stmts -> $ 
+START: 28	Meet: if        	R20: define_stmts -> $ 
+START: 28	Meet: switch    	R20: define_stmts -> $ 
+START: 28	Meet: (         	R20: define_stmts -> $ 
+START: 28	Meet: id        	R20: define_stmts -> $ 
+START: 28	Meet: digit     	R20: define_stmts -> $ 
+START: 28	Meet: }         	R20: define_stmts -> $ 
+START: 32	Meet: }         	R27: stmts -> $ 
+START: 32	Meet: case      	R27: stmts -> $ 
+START: 32	Meet: default   	R27: stmts -> $ 
+START: 33	Meet: continue  	R28: stmt -> assign_stmt 
+START: 33	Meet: break     	R28: stmt -> assign_stmt 
+START: 33	Meet: return    	R28: stmt -> assign_stmt 
+START: 33	Meet: while     	R28: stmt -> assign_stmt 
+START: 33	Meet: for       	R28: stmt -> assign_stmt 
+START: 33	Meet: do        	R28: stmt -> assign_stmt 
+START: 33	Meet: if        	R28: stmt -> assign_stmt 
+START: 33	Meet: switch    	R28: stmt -> assign_stmt 
+START: 33	Meet: (         	R28: stmt -> assign_stmt 
+START: 33	Meet: id        	R28: stmt -> assign_stmt 
+START: 33	Meet: digit     	R28: stmt -> assign_stmt 
+START: 33	Meet: }         	R28: stmt -> assign_stmt 
+START: 33	Meet: case      	R28: stmt -> assign_stmt 
+START: 33	Meet: default   	R28: stmt -> assign_stmt 
+START: 34	Meet: continue  	R29: stmt -> jump_stmt 
+START: 34	Meet: break     	R29: stmt -> jump_stmt 
+START: 34	Meet: return    	R29: stmt -> jump_stmt 
+START: 34	Meet: while     	R29: stmt -> jump_stmt 
+START: 34	Meet: for       	R29: stmt -> jump_stmt 
+START: 34	Meet: do        	R29: stmt -> jump_stmt 
+START: 34	Meet: if        	R29: stmt -> jump_stmt 
+START: 34	Meet: switch    	R29: stmt -> jump_stmt 
+START: 34	Meet: (         	R29: stmt -> jump_stmt 
+START: 34	Meet: id        	R29: stmt -> jump_stmt 
+START: 34	Meet: digit     	R29: stmt -> jump_stmt 
+START: 34	Meet: }         	R29: stmt -> jump_stmt 
+START: 34	Meet: case      	R29: stmt -> jump_stmt 
+START: 34	Meet: default   	R29: stmt -> jump_stmt 
+START: 35	Meet: continue  	R30: stmt -> iteration_stmt 
+START: 35	Meet: break     	R30: stmt -> iteration_stmt 
+START: 35	Meet: return    	R30: stmt -> iteration_stmt 
+START: 35	Meet: while     	R30: stmt -> iteration_stmt 
+START: 35	Meet: for       	R30: stmt -> iteration_stmt 
+START: 35	Meet: do        	R30: stmt -> iteration_stmt 
+START: 35	Meet: if        	R30: stmt -> iteration_stmt 
+START: 35	Meet: switch    	R30: stmt -> iteration_stmt 
+START: 35	Meet: (         	R30: stmt -> iteration_stmt 
+START: 35	Meet: id        	R30: stmt -> iteration_stmt 
+START: 35	Meet: digit     	R30: stmt -> iteration_stmt 
+START: 35	Meet: }         	R30: stmt -> iteration_stmt 
+START: 35	Meet: case      	R30: stmt -> iteration_stmt 
+START: 35	Meet: default   	R30: stmt -> iteration_stmt 
+START: 36	Meet: continue  	R31: stmt -> branch_stmt 
+START: 36	Meet: break     	R31: stmt -> branch_stmt 
+START: 36	Meet: return    	R31: stmt -> branch_stmt 
+START: 36	Meet: while     	R31: stmt -> branch_stmt 
+START: 36	Meet: for       	R31: stmt -> branch_stmt 
+START: 36	Meet: do        	R31: stmt -> branch_stmt 
+START: 36	Meet: if        	R31: stmt -> branch_stmt 
+START: 36	Meet: switch    	R31: stmt -> branch_stmt 
+START: 36	Meet: (         	R31: stmt -> branch_stmt 
+START: 36	Meet: id        	R31: stmt -> branch_stmt 
+START: 36	Meet: digit     	R31: stmt -> branch_stmt 
+START: 36	Meet: }         	R31: stmt -> branch_stmt 
+START: 36	Meet: case      	R31: stmt -> branch_stmt 
+START: 36	Meet: default   	R31: stmt -> branch_stmt 
+START: 40	Meet: ;         	R55: isnull_expr -> $ 
+START: 40	Meet: )         	R55: isnull_expr -> $ 
+START: 40	Meet: ,         	R55: isnull_expr -> $ 
+START: 46	Meet: ,         	R59: operation -> $ 
+START: 46	Meet: ;         	R59: operation -> $ 
+START: 46	Meet: &&        	R59: operation -> $ 
+START: 46	Meet: ||        	R59: operation -> $ 
+START: 46	Meet: )         	R59: operation -> $ 
+START: 47	Meet: >         	R75: value' -> $ 
+START: 47	Meet: >=        	R75: value' -> $ 
+START: 47	Meet: <         	R75: value' -> $ 
+START: 47	Meet: <=        	R75: value' -> $ 
+START: 47	Meet: ==        	R75: value' -> $ 
+START: 47	Meet: !=        	R75: value' -> $ 
+START: 47	Meet: =         	R75: value' -> $ 
+START: 47	Meet: +=        	R75: value' -> $ 
+START: 47	Meet: -=        	R75: value' -> $ 
+START: 47	Meet: *=        	R75: value' -> $ 
+START: 47	Meet: /=        	R75: value' -> $ 
+START: 47	Meet: %=        	R75: value' -> $ 
+START: 47	Meet: ,         	R75: value' -> $ 
+START: 47	Meet: ;         	R75: value' -> $ 
+START: 47	Meet: &&        	R75: value' -> $ 
+START: 47	Meet: ||        	R75: value' -> $ 
+START: 47	Meet: )         	R75: value' -> $ 
+START: 48	Meet: +         	R80: item' -> $ 
+START: 48	Meet: -         	R80: item' -> $ 
+START: 48	Meet: >         	R80: item' -> $ 
+START: 48	Meet: >=        	R80: item' -> $ 
+START: 48	Meet: <         	R80: item' -> $ 
+START: 48	Meet: <=        	R80: item' -> $ 
+START: 48	Meet: ==        	R80: item' -> $ 
+START: 48	Meet: !=        	R80: item' -> $ 
+START: 48	Meet: =         	R80: item' -> $ 
+START: 48	Meet: +=        	R80: item' -> $ 
+START: 48	Meet: -=        	R80: item' -> $ 
+START: 48	Meet: *=        	R80: item' -> $ 
+START: 48	Meet: /=        	R80: item' -> $ 
+START: 48	Meet: %=        	R80: item' -> $ 
+START: 48	Meet: ,         	R80: item' -> $ 
+START: 48	Meet: ;         	R80: item' -> $ 
+START: 48	Meet: &&        	R80: item' -> $ 
+START: 48	Meet: ||        	R80: item' -> $ 
+START: 48	Meet: )         	R80: item' -> $ 
+START: 50	Meet: *         	R85: call_func -> $ 
+START: 50	Meet: /         	R85: call_func -> $ 
+START: 50	Meet: %         	R85: call_func -> $ 
+START: 50	Meet: +         	R85: call_func -> $ 
+START: 50	Meet: -         	R85: call_func -> $ 
+START: 50	Meet: >         	R85: call_func -> $ 
+START: 50	Meet: >=        	R85: call_func -> $ 
+START: 50	Meet: <         	R85: call_func -> $ 
+START: 50	Meet: <=        	R85: call_func -> $ 
+START: 50	Meet: ==        	R85: call_func -> $ 
+START: 50	Meet: !=        	R85: call_func -> $ 
+START: 50	Meet: =         	R85: call_func -> $ 
+START: 50	Meet: +=        	R85: call_func -> $ 
+START: 50	Meet: -=        	R85: call_func -> $ 
+START: 50	Meet: *=        	R85: call_func -> $ 
+START: 50	Meet: /=        	R85: call_func -> $ 
+START: 50	Meet: %=        	R85: call_func -> $ 
+START: 50	Meet: ,         	R85: call_func -> $ 
+START: 50	Meet: ;         	R85: call_func -> $ 
+START: 50	Meet: &&        	R85: call_func -> $ 
+START: 50	Meet: ||        	R85: call_func -> $ 
+START: 50	Meet: )         	R85: call_func -> $ 
+START: 51	Meet: *         	R83: factor -> const 
+START: 51	Meet: /         	R83: factor -> const 
+START: 51	Meet: %         	R83: factor -> const 
+START: 51	Meet: +         	R83: factor -> const 
+START: 51	Meet: -         	R83: factor -> const 
+START: 51	Meet: >         	R83: factor -> const 
+START: 51	Meet: >=        	R83: factor -> const 
+START: 51	Meet: <         	R83: factor -> const 
+START: 51	Meet: <=        	R83: factor -> const 
+START: 51	Meet: ==        	R83: factor -> const 
+START: 51	Meet: !=        	R83: factor -> const 
+START: 51	Meet: =         	R83: factor -> const 
+START: 51	Meet: +=        	R83: factor -> const 
+START: 51	Meet: -=        	R83: factor -> const 
+START: 51	Meet: *=        	R83: factor -> const 
+START: 51	Meet: /=        	R83: factor -> const 
+START: 51	Meet: %=        	R83: factor -> const 
+START: 51	Meet: ,         	R83: factor -> const 
+START: 51	Meet: ;         	R83: factor -> const 
+START: 51	Meet: &&        	R83: factor -> const 
+START: 51	Meet: ||        	R83: factor -> const 
+START: 51	Meet: )         	R83: factor -> const 
+START: 52	Meet: :         	R89: const -> digit 
+START: 52	Meet: *         	R89: const -> digit 
+START: 52	Meet: /         	R89: const -> digit 
+START: 52	Meet: %         	R89: const -> digit 
+START: 52	Meet: +         	R89: const -> digit 
+START: 52	Meet: -         	R89: const -> digit 
+START: 52	Meet: >         	R89: const -> digit 
+START: 52	Meet: >=        	R89: const -> digit 
+START: 52	Meet: <         	R89: const -> digit 
+START: 52	Meet: <=        	R89: const -> digit 
+START: 52	Meet: ==        	R89: const -> digit 
+START: 52	Meet: !=        	R89: const -> digit 
+START: 52	Meet: =         	R89: const -> digit 
+START: 52	Meet: +=        	R89: const -> digit 
+START: 52	Meet: -=        	R89: const -> digit 
+START: 52	Meet: *=        	R89: const -> digit 
+START: 52	Meet: /=        	R89: const -> digit 
+START: 52	Meet: %=        	R89: const -> digit 
+START: 52	Meet: ,         	R89: const -> digit 
+START: 52	Meet: ;         	R89: const -> digit 
+START: 52	Meet: &&        	R89: const -> digit 
+START: 52	Meet: ||        	R89: const -> digit 
+START: 52	Meet: )         	R89: const -> digit 
+START: 53	Meet: continue  	R19: define_stmts -> define_stmt define_stmts 
+START: 53	Meet: break     	R19: define_stmts -> define_stmt define_stmts 
+START: 53	Meet: return    	R19: define_stmts -> define_stmt define_stmts 
+START: 53	Meet: while     	R19: define_stmts -> define_stmt define_stmts 
+START: 53	Meet: for       	R19: define_stmts -> define_stmt define_stmts 
+START: 53	Meet: do        	R19: define_stmts -> define_stmt define_stmts 
+START: 53	Meet: if        	R19: define_stmts -> define_stmt define_stmts 
+START: 53	Meet: switch    	R19: define_stmts -> define_stmt define_stmts 
+START: 53	Meet: (         	R19: define_stmts -> define_stmt define_stmts 
+START: 53	Meet: id        	R19: define_stmts -> define_stmt define_stmts 
+START: 53	Meet: digit     	R19: define_stmts -> define_stmt define_stmts 
+START: 53	Meet: }         	R19: define_stmts -> define_stmt define_stmts 
+START: 54	Meet: ,         	R23: init -> $ 
+START: 54	Meet: ;         	R23: init -> $ 
+START: 55	Meet: )         	R15: arg -> $ 
+START: 56	Meet: int       	R18: block -> { define_stmts stmts } 
+START: 56	Meet: short     	R18: block -> { define_stmts stmts } 
+START: 56	Meet: long      	R18: block -> { define_stmts stmts } 
+START: 56	Meet: char      	R18: block -> { define_stmts stmts } 
+START: 56	Meet: float     	R18: block -> { define_stmts stmts } 
+START: 56	Meet: double    	R18: block -> { define_stmts stmts } 
+START: 56	Meet: void      	R18: block -> { define_stmts stmts } 
+START: 56	Meet: unsigned  	R18: block -> { define_stmts stmts } 
+START: 56	Meet: #         	R18: block -> { define_stmts stmts } 
+START: 57	Meet: }         	R26: stmts -> stmt stmts 
+START: 57	Meet: case      	R26: stmts -> stmt stmts 
+START: 57	Meet: default   	R26: stmts -> stmt stmts 
+START: 58	Meet: continue  	R32: assign_stmt -> expression ; 
+START: 58	Meet: break     	R32: assign_stmt -> expression ; 
+START: 58	Meet: return    	R32: assign_stmt -> expression ; 
+START: 58	Meet: while     	R32: assign_stmt -> expression ; 
+START: 58	Meet: for       	R32: assign_stmt -> expression ; 
+START: 58	Meet: do        	R32: assign_stmt -> expression ; 
+START: 58	Meet: if        	R32: assign_stmt -> expression ; 
+START: 58	Meet: switch    	R32: assign_stmt -> expression ; 
+START: 58	Meet: (         	R32: assign_stmt -> expression ; 
+START: 58	Meet: id        	R32: assign_stmt -> expression ; 
+START: 58	Meet: digit     	R32: assign_stmt -> expression ; 
+START: 58	Meet: }         	R32: assign_stmt -> expression ; 
+START: 58	Meet: case      	R32: assign_stmt -> expression ; 
+START: 58	Meet: default   	R32: assign_stmt -> expression ; 
+START: 59	Meet: continue  	R33: jump_stmt -> continue ; 
+START: 59	Meet: break     	R33: jump_stmt -> continue ; 
+START: 59	Meet: return    	R33: jump_stmt -> continue ; 
+START: 59	Meet: while     	R33: jump_stmt -> continue ; 
+START: 59	Meet: for       	R33: jump_stmt -> continue ; 
+START: 59	Meet: do        	R33: jump_stmt -> continue ; 
+START: 59	Meet: if        	R33: jump_stmt -> continue ; 
+START: 59	Meet: switch    	R33: jump_stmt -> continue ; 
+START: 59	Meet: (         	R33: jump_stmt -> continue ; 
+START: 59	Meet: id        	R33: jump_stmt -> continue ; 
+START: 59	Meet: digit     	R33: jump_stmt -> continue ; 
+START: 59	Meet: }         	R33: jump_stmt -> continue ; 
+START: 59	Meet: case      	R33: jump_stmt -> continue ; 
+START: 59	Meet: default   	R33: jump_stmt -> continue ; 
+START: 60	Meet: continue  	R34: jump_stmt -> break ; 
+START: 60	Meet: break     	R34: jump_stmt -> break ; 
+START: 60	Meet: return    	R34: jump_stmt -> break ; 
+START: 60	Meet: while     	R34: jump_stmt -> break ; 
+START: 60	Meet: for       	R34: jump_stmt -> break ; 
+START: 60	Meet: do        	R34: jump_stmt -> break ; 
+START: 60	Meet: if        	R34: jump_stmt -> break ; 
+START: 60	Meet: switch    	R34: jump_stmt -> break ; 
+START: 60	Meet: (         	R34: jump_stmt -> break ; 
+START: 60	Meet: id        	R34: jump_stmt -> break ; 
+START: 60	Meet: digit     	R34: jump_stmt -> break ; 
+START: 60	Meet: }         	R34: jump_stmt -> break ; 
+START: 60	Meet: case      	R34: jump_stmt -> break ; 
+START: 60	Meet: default   	R34: jump_stmt -> break ; 
+START: 62	Meet: ;         	R54: isnull_expr -> expression 
+START: 62	Meet: )         	R54: isnull_expr -> expression 
+START: 62	Meet: ,         	R54: isnull_expr -> expression 
+START: 64	Meet: ;         	R55: isnull_expr -> $ 
+START: 64	Meet: )         	R55: isnull_expr -> $ 
+START: 64	Meet: ,         	R55: isnull_expr -> $ 
+START: 66	Meet: }         	R27: stmts -> $ 
+START: 66	Meet: case      	R27: stmts -> $ 
+START: 66	Meet: default   	R27: stmts -> $ 
+START: 69	Meet: ,         	R56: expression -> value operation 
+START: 69	Meet: ;         	R56: expression -> value operation 
+START: 69	Meet: &&        	R56: expression -> value operation 
+START: 69	Meet: ||        	R56: expression -> value operation 
+START: 69	Meet: )         	R56: expression -> value operation 
+START: 72	Meet: (         	R60: compare_op -> > 
+START: 72	Meet: id        	R60: compare_op -> > 
+START: 72	Meet: digit     	R60: compare_op -> > 
+START: 73	Meet: (         	R61: compare_op -> >= 
+START: 73	Meet: id        	R61: compare_op -> >= 
+START: 73	Meet: digit     	R61: compare_op -> >= 
+START: 74	Meet: (         	R62: compare_op -> < 
+START: 74	Meet: id        	R62: compare_op -> < 
+START: 74	Meet: digit     	R62: compare_op -> < 
+START: 75	Meet: (         	R63: compare_op -> <= 
+START: 75	Meet: id        	R63: compare_op -> <= 
+START: 75	Meet: digit     	R63: compare_op -> <= 
+START: 76	Meet: (         	R64: compare_op -> == 
+START: 76	Meet: id        	R64: compare_op -> == 
+START: 76	Meet: digit     	R64: compare_op -> == 
+START: 77	Meet: (         	R65: compare_op -> != 
+START: 77	Meet: id        	R65: compare_op -> != 
+START: 77	Meet: digit     	R65: compare_op -> != 
+START: 78	Meet: (         	R66: equal_op -> = 
+START: 78	Meet: id        	R66: equal_op -> = 
+START: 78	Meet: digit     	R66: equal_op -> = 
+START: 79	Meet: (         	R67: equal_op -> += 
+START: 79	Meet: id        	R67: equal_op -> += 
+START: 79	Meet: digit     	R67: equal_op -> += 
+START: 80	Meet: (         	R68: equal_op -> -= 
+START: 80	Meet: id        	R68: equal_op -> -= 
+START: 80	Meet: digit     	R68: equal_op -> -= 
+START: 81	Meet: (         	R69: equal_op -> *= 
+START: 81	Meet: id        	R69: equal_op -> *= 
+START: 81	Meet: digit     	R69: equal_op -> *= 
+START: 82	Meet: (         	R70: equal_op -> /= 
+START: 82	Meet: id        	R70: equal_op -> /= 
+START: 82	Meet: digit     	R70: equal_op -> /= 
+START: 83	Meet: (         	R71: equal_op -> %= 
+START: 83	Meet: id        	R71: equal_op -> %= 
+START: 83	Meet: digit     	R71: equal_op -> %= 
+START: 84	Meet: >         	R72: value -> item value' 
+START: 84	Meet: >=        	R72: value -> item value' 
+START: 84	Meet: <         	R72: value -> item value' 
+START: 84	Meet: <=        	R72: value -> item value' 
+START: 84	Meet: ==        	R72: value -> item value' 
+START: 84	Meet: !=        	R72: value -> item value' 
+START: 84	Meet: =         	R72: value -> item value' 
+START: 84	Meet: +=        	R72: value -> item value' 
+START: 84	Meet: -=        	R72: value -> item value' 
+START: 84	Meet: *=        	R72: value -> item value' 
+START: 84	Meet: /=        	R72: value -> item value' 
+START: 84	Meet: %=        	R72: value -> item value' 
+START: 84	Meet: ,         	R72: value -> item value' 
+START: 84	Meet: ;         	R72: value -> item value' 
+START: 84	Meet: &&        	R72: value -> item value' 
+START: 84	Meet: ||        	R72: value -> item value' 
+START: 84	Meet: )         	R72: value -> item value' 
+START: 87	Meet: +         	R76: item -> factor item' 
+START: 87	Meet: -         	R76: item -> factor item' 
+START: 87	Meet: >         	R76: item -> factor item' 
+START: 87	Meet: >=        	R76: item -> factor item' 
+START: 87	Meet: <         	R76: item -> factor item' 
+START: 87	Meet: <=        	R76: item -> factor item' 
+START: 87	Meet: ==        	R76: item -> factor item' 
+START: 87	Meet: !=        	R76: item -> factor item' 
+START: 87	Meet: =         	R76: item -> factor item' 
+START: 87	Meet: +=        	R76: item -> factor item' 
+START: 87	Meet: -=        	R76: item -> factor item' 
+START: 87	Meet: *=        	R76: item -> factor item' 
+START: 87	Meet: /=        	R76: item -> factor item' 
+START: 87	Meet: %=        	R76: item -> factor item' 
+START: 87	Meet: ,         	R76: item -> factor item' 
+START: 87	Meet: ;         	R76: item -> factor item' 
+START: 87	Meet: &&        	R76: item -> factor item' 
+START: 87	Meet: ||        	R76: item -> factor item' 
+START: 87	Meet: )         	R76: item -> factor item' 
+START: 92	Meet: *         	R82: factor -> id call_func 
+START: 92	Meet: /         	R82: factor -> id call_func 
+START: 92	Meet: %         	R82: factor -> id call_func 
+START: 92	Meet: +         	R82: factor -> id call_func 
+START: 92	Meet: -         	R82: factor -> id call_func 
+START: 92	Meet: >         	R82: factor -> id call_func 
+START: 92	Meet: >=        	R82: factor -> id call_func 
+START: 92	Meet: <         	R82: factor -> id call_func 
+START: 92	Meet: <=        	R82: factor -> id call_func 
+START: 92	Meet: ==        	R82: factor -> id call_func 
+START: 92	Meet: !=        	R82: factor -> id call_func 
+START: 92	Meet: =         	R82: factor -> id call_func 
+START: 92	Meet: +=        	R82: factor -> id call_func 
+START: 92	Meet: -=        	R82: factor -> id call_func 
+START: 92	Meet: *=        	R82: factor -> id call_func 
+START: 92	Meet: /=        	R82: factor -> id call_func 
+START: 92	Meet: %=        	R82: factor -> id call_func 
+START: 92	Meet: ,         	R82: factor -> id call_func 
+START: 92	Meet: ;         	R82: factor -> id call_func 
+START: 92	Meet: &&        	R82: factor -> id call_func 
+START: 92	Meet: ||        	R82: factor -> id call_func 
+START: 92	Meet: )         	R82: factor -> id call_func 
+START: 93	Meet: ;         	R55: isnull_expr -> $ 
+START: 93	Meet: )         	R55: isnull_expr -> $ 
+START: 93	Meet: ,         	R55: isnull_expr -> $ 
+START: 94	Meet: ;         	R25: vars -> $ 
+START: 96	Meet: )         	R14: arg -> , type id arg 
+START: 97	Meet: continue  	R35: jump_stmt -> return isnull_expr ; 
+START: 97	Meet: break     	R35: jump_stmt -> return isnull_expr ; 
+START: 97	Meet: return    	R35: jump_stmt -> return isnull_expr ; 
+START: 97	Meet: while     	R35: jump_stmt -> return isnull_expr ; 
+START: 97	Meet: for       	R35: jump_stmt -> return isnull_expr ; 
+START: 97	Meet: do        	R35: jump_stmt -> return isnull_expr ; 
+START: 97	Meet: if        	R35: jump_stmt -> return isnull_expr ; 
+START: 97	Meet: switch    	R35: jump_stmt -> return isnull_expr ; 
+START: 97	Meet: (         	R35: jump_stmt -> return isnull_expr ; 
+START: 97	Meet: id        	R35: jump_stmt -> return isnull_expr ; 
+START: 97	Meet: digit     	R35: jump_stmt -> return isnull_expr ; 
+START: 97	Meet: }         	R35: jump_stmt -> return isnull_expr ; 
+START: 97	Meet: case      	R35: jump_stmt -> return isnull_expr ; 
+START: 97	Meet: default   	R35: jump_stmt -> return isnull_expr ; 
+START: 100	Meet: )         	R45: bool_expression -> $ 
+START: 106	Meet: ,         	R57: operation -> compare_op value 
+START: 106	Meet: ;         	R57: operation -> compare_op value 
+START: 106	Meet: &&        	R57: operation -> compare_op value 
+START: 106	Meet: ||        	R57: operation -> compare_op value 
+START: 106	Meet: )         	R57: operation -> compare_op value 
+START: 107	Meet: ,         	R58: operation -> equal_op value 
+START: 107	Meet: ;         	R58: operation -> equal_op value 
+START: 107	Meet: &&        	R58: operation -> equal_op value 
+START: 107	Meet: ||        	R58: operation -> equal_op value 
+START: 107	Meet: )         	R58: operation -> equal_op value 
+START: 108	Meet: >         	R75: value' -> $ 
+START: 108	Meet: >=        	R75: value' -> $ 
+START: 108	Meet: <         	R75: value' -> $ 
+START: 108	Meet: <=        	R75: value' -> $ 
+START: 108	Meet: ==        	R75: value' -> $ 
+START: 108	Meet: !=        	R75: value' -> $ 
+START: 108	Meet: =         	R75: value' -> $ 
+START: 108	Meet: +=        	R75: value' -> $ 
+START: 108	Meet: -=        	R75: value' -> $ 
+START: 108	Meet: *=        	R75: value' -> $ 
+START: 108	Meet: /=        	R75: value' -> $ 
+START: 108	Meet: %=        	R75: value' -> $ 
+START: 108	Meet: ,         	R75: value' -> $ 
+START: 108	Meet: ;         	R75: value' -> $ 
+START: 108	Meet: &&        	R75: value' -> $ 
+START: 108	Meet: ||        	R75: value' -> $ 
+START: 108	Meet: )         	R75: value' -> $ 
+START: 109	Meet: >         	R75: value' -> $ 
+START: 109	Meet: >=        	R75: value' -> $ 
+START: 109	Meet: <         	R75: value' -> $ 
+START: 109	Meet: <=        	R75: value' -> $ 
+START: 109	Meet: ==        	R75: value' -> $ 
+START: 109	Meet: !=        	R75: value' -> $ 
+START: 109	Meet: =         	R75: value' -> $ 
+START: 109	Meet: +=        	R75: value' -> $ 
+START: 109	Meet: -=        	R75: value' -> $ 
+START: 109	Meet: *=        	R75: value' -> $ 
+START: 109	Meet: /=        	R75: value' -> $ 
+START: 109	Meet: %=        	R75: value' -> $ 
+START: 109	Meet: ,         	R75: value' -> $ 
+START: 109	Meet: ;         	R75: value' -> $ 
+START: 109	Meet: &&        	R75: value' -> $ 
+START: 109	Meet: ||        	R75: value' -> $ 
+START: 109	Meet: )         	R75: value' -> $ 
+START: 110	Meet: +         	R80: item' -> $ 
+START: 110	Meet: -         	R80: item' -> $ 
+START: 110	Meet: >         	R80: item' -> $ 
+START: 110	Meet: >=        	R80: item' -> $ 
+START: 110	Meet: <         	R80: item' -> $ 
+START: 110	Meet: <=        	R80: item' -> $ 
+START: 110	Meet: ==        	R80: item' -> $ 
+START: 110	Meet: !=        	R80: item' -> $ 
+START: 110	Meet: =         	R80: item' -> $ 
+START: 110	Meet: +=        	R80: item' -> $ 
+START: 110	Meet: -=        	R80: item' -> $ 
+START: 110	Meet: *=        	R80: item' -> $ 
+START: 110	Meet: /=        	R80: item' -> $ 
+START: 110	Meet: %=        	R80: item' -> $ 
+START: 110	Meet: ,         	R80: item' -> $ 
+START: 110	Meet: ;         	R80: item' -> $ 
+START: 110	Meet: &&        	R80: item' -> $ 
+START: 110	Meet: ||        	R80: item' -> $ 
+START: 110	Meet: )         	R80: item' -> $ 
+START: 111	Meet: +         	R80: item' -> $ 
+START: 111	Meet: -         	R80: item' -> $ 
+START: 111	Meet: >         	R80: item' -> $ 
+START: 111	Meet: >=        	R80: item' -> $ 
+START: 111	Meet: <         	R80: item' -> $ 
+START: 111	Meet: <=        	R80: item' -> $ 
+START: 111	Meet: ==        	R80: item' -> $ 
+START: 111	Meet: !=        	R80: item' -> $ 
+START: 111	Meet: =         	R80: item' -> $ 
+START: 111	Meet: +=        	R80: item' -> $ 
+START: 111	Meet: -=        	R80: item' -> $ 
+START: 111	Meet: *=        	R80: item' -> $ 
+START: 111	Meet: /=        	R80: item' -> $ 
+START: 111	Meet: %=        	R80: item' -> $ 
+START: 111	Meet: ,         	R80: item' -> $ 
+START: 111	Meet: ;         	R80: item' -> $ 
+START: 111	Meet: &&        	R80: item' -> $ 
+START: 111	Meet: ||        	R80: item' -> $ 
+START: 111	Meet: )         	R80: item' -> $ 
+START: 112	Meet: +         	R80: item' -> $ 
+START: 112	Meet: -         	R80: item' -> $ 
+START: 112	Meet: >         	R80: item' -> $ 
+START: 112	Meet: >=        	R80: item' -> $ 
+START: 112	Meet: <         	R80: item' -> $ 
+START: 112	Meet: <=        	R80: item' -> $ 
+START: 112	Meet: ==        	R80: item' -> $ 
+START: 112	Meet: !=        	R80: item' -> $ 
+START: 112	Meet: =         	R80: item' -> $ 
+START: 112	Meet: +=        	R80: item' -> $ 
+START: 112	Meet: -=        	R80: item' -> $ 
+START: 112	Meet: *=        	R80: item' -> $ 
+START: 112	Meet: /=        	R80: item' -> $ 
+START: 112	Meet: %=        	R80: item' -> $ 
+START: 112	Meet: ,         	R80: item' -> $ 
+START: 112	Meet: ;         	R80: item' -> $ 
+START: 112	Meet: &&        	R80: item' -> $ 
+START: 112	Meet: ||        	R80: item' -> $ 
+START: 112	Meet: )         	R80: item' -> $ 
+START: 113	Meet: *         	R81: factor -> ( value ) 
+START: 113	Meet: /         	R81: factor -> ( value ) 
+START: 113	Meet: %         	R81: factor -> ( value ) 
+START: 113	Meet: +         	R81: factor -> ( value ) 
+START: 113	Meet: -         	R81: factor -> ( value ) 
+START: 113	Meet: >         	R81: factor -> ( value ) 
+START: 113	Meet: >=        	R81: factor -> ( value ) 
+START: 113	Meet: <         	R81: factor -> ( value ) 
+START: 113	Meet: <=        	R81: factor -> ( value ) 
+START: 113	Meet: ==        	R81: factor -> ( value ) 
+START: 113	Meet: !=        	R81: factor -> ( value ) 
+START: 113	Meet: =         	R81: factor -> ( value ) 
+START: 113	Meet: +=        	R81: factor -> ( value ) 
+START: 113	Meet: -=        	R81: factor -> ( value ) 
+START: 113	Meet: *=        	R81: factor -> ( value ) 
+START: 113	Meet: /=        	R81: factor -> ( value ) 
+START: 113	Meet: %=        	R81: factor -> ( value ) 
+START: 113	Meet: ,         	R81: factor -> ( value ) 
+START: 113	Meet: ;         	R81: factor -> ( value ) 
+START: 113	Meet: &&        	R81: factor -> ( value ) 
+START: 113	Meet: ||        	R81: factor -> ( value ) 
+START: 113	Meet: )         	R81: factor -> ( value ) 
+START: 115	Meet: )         	R88: isnull_es -> $ 
+START: 118	Meet: ,         	R22: init -> = expression 
+START: 118	Meet: ;         	R22: init -> = expression 
+START: 120	Meet: )         	R45: bool_expression -> $ 
+START: 121	Meet: )         	R43: logical_expression -> expression bool_expression 
+START: 123	Meet: (         	R46: lop -> && 
+START: 123	Meet: id        	R46: lop -> && 
+START: 123	Meet: digit     	R46: lop -> && 
+START: 124	Meet: (         	R47: lop -> || 
+START: 124	Meet: id        	R47: lop -> || 
+START: 124	Meet: digit     	R47: lop -> || 
+START: 125	Meet: ;         	R55: isnull_expr -> $ 
+START: 125	Meet: )         	R55: isnull_expr -> $ 
+START: 125	Meet: ,         	R55: isnull_expr -> $ 
+START: 127	Meet: continue  	R53: block_stmt -> { stmts } 
+START: 127	Meet: break     	R53: block_stmt -> { stmts } 
+START: 127	Meet: return    	R53: block_stmt -> { stmts } 
+START: 127	Meet: while     	R53: block_stmt -> { stmts } 
+START: 127	Meet: for       	R53: block_stmt -> { stmts } 
+START: 127	Meet: do        	R53: block_stmt -> { stmts } 
+START: 127	Meet: if        	R53: block_stmt -> { stmts } 
+START: 127	Meet: switch    	R53: block_stmt -> { stmts } 
+START: 127	Meet: (         	R53: block_stmt -> { stmts } 
+START: 127	Meet: id        	R53: block_stmt -> { stmts } 
+START: 127	Meet: digit     	R53: block_stmt -> { stmts } 
+START: 127	Meet: }         	R53: block_stmt -> { stmts } 
+START: 127	Meet: else      	R53: block_stmt -> { stmts } 
+START: 127	Meet: case      	R53: block_stmt -> { stmts } 
+START: 127	Meet: default   	R53: block_stmt -> { stmts } 
+START: 130	Meet: >         	R73: value' -> + item value' 
+START: 130	Meet: >=        	R73: value' -> + item value' 
+START: 130	Meet: <         	R73: value' -> + item value' 
+START: 130	Meet: <=        	R73: value' -> + item value' 
+START: 130	Meet: ==        	R73: value' -> + item value' 
+START: 130	Meet: !=        	R73: value' -> + item value' 
+START: 130	Meet: =         	R73: value' -> + item value' 
+START: 130	Meet: +=        	R73: value' -> + item value' 
+START: 130	Meet: -=        	R73: value' -> + item value' 
+START: 130	Meet: *=        	R73: value' -> + item value' 
+START: 130	Meet: /=        	R73: value' -> + item value' 
+START: 130	Meet: %=        	R73: value' -> + item value' 
+START: 130	Meet: ,         	R73: value' -> + item value' 
+START: 130	Meet: ;         	R73: value' -> + item value' 
+START: 130	Meet: &&        	R73: value' -> + item value' 
+START: 130	Meet: ||        	R73: value' -> + item value' 
+START: 130	Meet: )         	R73: value' -> + item value' 
+START: 131	Meet: >         	R74: value' -> - item value' 
+START: 131	Meet: >=        	R74: value' -> - item value' 
+START: 131	Meet: <         	R74: value' -> - item value' 
+START: 131	Meet: <=        	R74: value' -> - item value' 
+START: 131	Meet: ==        	R74: value' -> - item value' 
+START: 131	Meet: !=        	R74: value' -> - item value' 
+START: 131	Meet: =         	R74: value' -> - item value' 
+START: 131	Meet: +=        	R74: value' -> - item value' 
+START: 131	Meet: -=        	R74: value' -> - item value' 
+START: 131	Meet: *=        	R74: value' -> - item value' 
+START: 131	Meet: /=        	R74: value' -> - item value' 
+START: 131	Meet: %=        	R74: value' -> - item value' 
+START: 131	Meet: ,         	R74: value' -> - item value' 
+START: 131	Meet: ;         	R74: value' -> - item value' 
+START: 131	Meet: &&        	R74: value' -> - item value' 
+START: 131	Meet: ||        	R74: value' -> - item value' 
+START: 131	Meet: )         	R74: value' -> - item value' 
+START: 132	Meet: +         	R77: item' -> * factor item' 
+START: 132	Meet: -         	R77: item' -> * factor item' 
+START: 132	Meet: >         	R77: item' -> * factor item' 
+START: 132	Meet: >=        	R77: item' -> * factor item' 
+START: 132	Meet: <         	R77: item' -> * factor item' 
+START: 132	Meet: <=        	R77: item' -> * factor item' 
+START: 132	Meet: ==        	R77: item' -> * factor item' 
+START: 132	Meet: !=        	R77: item' -> * factor item' 
+START: 132	Meet: =         	R77: item' -> * factor item' 
+START: 132	Meet: +=        	R77: item' -> * factor item' 
+START: 132	Meet: -=        	R77: item' -> * factor item' 
+START: 132	Meet: *=        	R77: item' -> * factor item' 
+START: 132	Meet: /=        	R77: item' -> * factor item' 
+START: 132	Meet: %=        	R77: item' -> * factor item' 
+START: 132	Meet: ,         	R77: item' -> * factor item' 
+START: 132	Meet: ;         	R77: item' -> * factor item' 
+START: 132	Meet: &&        	R77: item' -> * factor item' 
+START: 132	Meet: ||        	R77: item' -> * factor item' 
+START: 132	Meet: )         	R77: item' -> * factor item' 
+START: 133	Meet: +         	R78: item' -> / factor item' 
+START: 133	Meet: -         	R78: item' -> / factor item' 
+START: 133	Meet: >         	R78: item' -> / factor item' 
+START: 133	Meet: >=        	R78: item' -> / factor item' 
+START: 133	Meet: <         	R78: item' -> / factor item' 
+START: 133	Meet: <=        	R78: item' -> / factor item' 
+START: 133	Meet: ==        	R78: item' -> / factor item' 
+START: 133	Meet: !=        	R78: item' -> / factor item' 
+START: 133	Meet: =         	R78: item' -> / factor item' 
+START: 133	Meet: +=        	R78: item' -> / factor item' 
+START: 133	Meet: -=        	R78: item' -> / factor item' 
+START: 133	Meet: *=        	R78: item' -> / factor item' 
+START: 133	Meet: /=        	R78: item' -> / factor item' 
+START: 133	Meet: %=        	R78: item' -> / factor item' 
+START: 133	Meet: ,         	R78: item' -> / factor item' 
+START: 133	Meet: ;         	R78: item' -> / factor item' 
+START: 133	Meet: &&        	R78: item' -> / factor item' 
+START: 133	Meet: ||        	R78: item' -> / factor item' 
+START: 133	Meet: )         	R78: item' -> / factor item' 
+START: 134	Meet: +         	R79: item' -> % factor item' 
+START: 134	Meet: -         	R79: item' -> % factor item' 
+START: 134	Meet: >         	R79: item' -> % factor item' 
+START: 134	Meet: >=        	R79: item' -> % factor item' 
+START: 134	Meet: <         	R79: item' -> % factor item' 
+START: 134	Meet: <=        	R79: item' -> % factor item' 
+START: 134	Meet: ==        	R79: item' -> % factor item' 
+START: 134	Meet: !=        	R79: item' -> % factor item' 
+START: 134	Meet: =         	R79: item' -> % factor item' 
+START: 134	Meet: +=        	R79: item' -> % factor item' 
+START: 134	Meet: -=        	R79: item' -> % factor item' 
+START: 134	Meet: *=        	R79: item' -> % factor item' 
+START: 134	Meet: /=        	R79: item' -> % factor item' 
+START: 134	Meet: %=        	R79: item' -> % factor item' 
+START: 134	Meet: ,         	R79: item' -> % factor item' 
+START: 134	Meet: ;         	R79: item' -> % factor item' 
+START: 134	Meet: &&        	R79: item' -> % factor item' 
+START: 134	Meet: ||        	R79: item' -> % factor item' 
+START: 134	Meet: )         	R79: item' -> % factor item' 
+START: 135	Meet: *         	R84: call_func -> ( es ) 
+START: 135	Meet: /         	R84: call_func -> ( es ) 
+START: 135	Meet: %         	R84: call_func -> ( es ) 
+START: 135	Meet: +         	R84: call_func -> ( es ) 
+START: 135	Meet: -         	R84: call_func -> ( es ) 
+START: 135	Meet: >         	R84: call_func -> ( es ) 
+START: 135	Meet: >=        	R84: call_func -> ( es ) 
+START: 135	Meet: <         	R84: call_func -> ( es ) 
+START: 135	Meet: <=        	R84: call_func -> ( es ) 
+START: 135	Meet: ==        	R84: call_func -> ( es ) 
+START: 135	Meet: !=        	R84: call_func -> ( es ) 
+START: 135	Meet: =         	R84: call_func -> ( es ) 
+START: 135	Meet: +=        	R84: call_func -> ( es ) 
+START: 135	Meet: -=        	R84: call_func -> ( es ) 
+START: 135	Meet: *=        	R84: call_func -> ( es ) 
+START: 135	Meet: /=        	R84: call_func -> ( es ) 
+START: 135	Meet: %=        	R84: call_func -> ( es ) 
+START: 135	Meet: ,         	R84: call_func -> ( es ) 
+START: 135	Meet: ;         	R84: call_func -> ( es ) 
+START: 135	Meet: &&        	R84: call_func -> ( es ) 
+START: 135	Meet: ||        	R84: call_func -> ( es ) 
+START: 135	Meet: )         	R84: call_func -> ( es ) 
+START: 136	Meet: )         	R86: es -> isnull_expr isnull_es 
+START: 137	Meet: ;         	R55: isnull_expr -> $ 
+START: 137	Meet: )         	R55: isnull_expr -> $ 
+START: 137	Meet: ,         	R55: isnull_expr -> $ 
+START: 138	Meet: int       	R21: define_stmt -> type id init vars ; 
+START: 138	Meet: short     	R21: define_stmt -> type id init vars ; 
+START: 138	Meet: long      	R21: define_stmt -> type id init vars ; 
+START: 138	Meet: char      	R21: define_stmt -> type id init vars ; 
+START: 138	Meet: float     	R21: define_stmt -> type id init vars ; 
+START: 138	Meet: double    	R21: define_stmt -> type id init vars ; 
+START: 138	Meet: void      	R21: define_stmt -> type id init vars ; 
+START: 138	Meet: unsigned  	R21: define_stmt -> type id init vars ; 
+START: 138	Meet: continue  	R21: define_stmt -> type id init vars ; 
+START: 138	Meet: break     	R21: define_stmt -> type id init vars ; 
+START: 138	Meet: return    	R21: define_stmt -> type id init vars ; 
+START: 138	Meet: while     	R21: define_stmt -> type id init vars ; 
+START: 138	Meet: for       	R21: define_stmt -> type id init vars ; 
+START: 138	Meet: do        	R21: define_stmt -> type id init vars ; 
+START: 138	Meet: if        	R21: define_stmt -> type id init vars ; 
+START: 138	Meet: switch    	R21: define_stmt -> type id init vars ; 
+START: 138	Meet: (         	R21: define_stmt -> type id init vars ; 
+START: 138	Meet: id        	R21: define_stmt -> type id init vars ; 
+START: 138	Meet: digit     	R21: define_stmt -> type id init vars ; 
+START: 138	Meet: }         	R21: define_stmt -> type id init vars ; 
+START: 139	Meet: ,         	R23: init -> $ 
+START: 139	Meet: ;         	R23: init -> $ 
+START: 140	Meet: continue  	R36: iteration_stmt -> while ( logical_expression ) block_stmt 
+START: 140	Meet: break     	R36: iteration_stmt -> while ( logical_expression ) block_stmt 
+START: 140	Meet: return    	R36: iteration_stmt -> while ( logical_expression ) block_stmt 
+START: 140	Meet: while     	R36: iteration_stmt -> while ( logical_expression ) block_stmt 
+START: 140	Meet: for       	R36: iteration_stmt -> while ( logical_expression ) block_stmt 
+START: 140	Meet: do        	R36: iteration_stmt -> while ( logical_expression ) block_stmt 
+START: 140	Meet: if        	R36: iteration_stmt -> while ( logical_expression ) block_stmt 
+START: 140	Meet: switch    	R36: iteration_stmt -> while ( logical_expression ) block_stmt 
+START: 140	Meet: (         	R36: iteration_stmt -> while ( logical_expression ) block_stmt 
+START: 140	Meet: id        	R36: iteration_stmt -> while ( logical_expression ) block_stmt 
+START: 140	Meet: digit     	R36: iteration_stmt -> while ( logical_expression ) block_stmt 
+START: 140	Meet: }         	R36: iteration_stmt -> while ( logical_expression ) block_stmt 
+START: 140	Meet: case      	R36: iteration_stmt -> while ( logical_expression ) block_stmt 
+START: 140	Meet: default   	R36: iteration_stmt -> while ( logical_expression ) block_stmt 
+START: 141	Meet: )         	R42: logical_expression -> ! expression bool_expression 
+START: 142	Meet: )         	R45: bool_expression -> $ 
+START: 145	Meet: continue  	R41: result -> $ 
+START: 145	Meet: break     	R41: result -> $ 
+START: 145	Meet: return    	R41: result -> $ 
+START: 145	Meet: while     	R41: result -> $ 
+START: 145	Meet: for       	R41: result -> $ 
+START: 145	Meet: do        	R41: result -> $ 
+START: 145	Meet: if        	R41: result -> $ 
+START: 145	Meet: switch    	R41: result -> $ 
+START: 145	Meet: (         	R41: result -> $ 
+START: 145	Meet: id        	R41: result -> $ 
+START: 145	Meet: digit     	R41: result -> $ 
+START: 145	Meet: }         	R41: result -> $ 
+START: 145	Meet: case      	R41: result -> $ 
+START: 145	Meet: default   	R41: result -> $ 
+START: 147	Meet: )         	R88: isnull_es -> $ 
+START: 148	Meet: ;         	R25: vars -> $ 
+START: 149	Meet: )         	R44: bool_expression -> lop expression bool_expression 
+START: 150	Meet: ;         	R55: isnull_expr -> $ 
+START: 150	Meet: )         	R55: isnull_expr -> $ 
+START: 150	Meet: ,         	R55: isnull_expr -> $ 
+START: 152	Meet: continue  	R39: branch_stmt -> if ( logical_expression ) block_stmt result 
+START: 152	Meet: break     	R39: branch_stmt -> if ( logical_expression ) block_stmt result 
+START: 152	Meet: return    	R39: branch_stmt -> if ( logical_expression ) block_stmt result 
+START: 152	Meet: while     	R39: branch_stmt -> if ( logical_expression ) block_stmt result 
+START: 152	Meet: for       	R39: branch_stmt -> if ( logical_expression ) block_stmt result 
+START: 152	Meet: do        	R39: branch_stmt -> if ( logical_expression ) block_stmt result 
+START: 152	Meet: if        	R39: branch_stmt -> if ( logical_expression ) block_stmt result 
+START: 152	Meet: switch    	R39: branch_stmt -> if ( logical_expression ) block_stmt result 
+START: 152	Meet: (         	R39: branch_stmt -> if ( logical_expression ) block_stmt result 
+START: 152	Meet: id        	R39: branch_stmt -> if ( logical_expression ) block_stmt result 
+START: 152	Meet: digit     	R39: branch_stmt -> if ( logical_expression ) block_stmt result 
+START: 152	Meet: }         	R39: branch_stmt -> if ( logical_expression ) block_stmt result 
+START: 152	Meet: case      	R39: branch_stmt -> if ( logical_expression ) block_stmt result 
+START: 152	Meet: default   	R39: branch_stmt -> if ( logical_expression ) block_stmt result 
+START: 154	Meet: default   	R50: case_stmts -> $ 
+START: 156	Meet: )         	R87: isnull_es -> , isnull_expr isnull_es 
+START: 157	Meet: ;         	R24: vars -> , id init vars 
+START: 159	Meet: continue  	R38: iteration_stmt -> do block_stmt while ( logical_expression ) ; 
+START: 159	Meet: break     	R38: iteration_stmt -> do block_stmt while ( logical_expression ) ; 
+START: 159	Meet: return    	R38: iteration_stmt -> do block_stmt while ( logical_expression ) ; 
+START: 159	Meet: while     	R38: iteration_stmt -> do block_stmt while ( logical_expression ) ; 
+START: 159	Meet: for       	R38: iteration_stmt -> do block_stmt while ( logical_expression ) ; 
+START: 159	Meet: do        	R38: iteration_stmt -> do block_stmt while ( logical_expression ) ; 
+START: 159	Meet: if        	R38: iteration_stmt -> do block_stmt while ( logical_expression ) ; 
+START: 159	Meet: switch    	R38: iteration_stmt -> do block_stmt while ( logical_expression ) ; 
+START: 159	Meet: (         	R38: iteration_stmt -> do block_stmt while ( logical_expression ) ; 
+START: 159	Meet: id        	R38: iteration_stmt -> do block_stmt while ( logical_expression ) ; 
+START: 159	Meet: digit     	R38: iteration_stmt -> do block_stmt while ( logical_expression ) ; 
+START: 159	Meet: }         	R38: iteration_stmt -> do block_stmt while ( logical_expression ) ; 
+START: 159	Meet: case      	R38: iteration_stmt -> do block_stmt while ( logical_expression ) ; 
+START: 159	Meet: default   	R38: iteration_stmt -> do block_stmt while ( logical_expression ) ; 
+START: 160	Meet: continue  	R40: result -> else block_stmt 
+START: 160	Meet: break     	R40: result -> else block_stmt 
+START: 160	Meet: return    	R40: result -> else block_stmt 
+START: 160	Meet: while     	R40: result -> else block_stmt 
+START: 160	Meet: for       	R40: result -> else block_stmt 
+START: 160	Meet: do        	R40: result -> else block_stmt 
+START: 160	Meet: if        	R40: result -> else block_stmt 
+START: 160	Meet: switch    	R40: result -> else block_stmt 
+START: 160	Meet: (         	R40: result -> else block_stmt 
+START: 160	Meet: id        	R40: result -> else block_stmt 
+START: 160	Meet: digit     	R40: result -> else block_stmt 
+START: 160	Meet: }         	R40: result -> else block_stmt 
+START: 160	Meet: case      	R40: result -> else block_stmt 
+START: 160	Meet: default   	R40: result -> else block_stmt 
+START: 162	Meet: default   	R50: case_stmts -> $ 
+START: 167	Meet: default   	R49: case_stmts -> case_stmt case_stmts 
+START: 168	Meet: }         	R27: stmts -> $ 
+START: 168	Meet: case      	R27: stmts -> $ 
+START: 168	Meet: default   	R27: stmts -> $ 
+START: 169	Meet: continue  	R37: iteration_stmt -> for ( isnull_expr ; isnull_expr ; isnull_expr ) block_stmt 
+START: 169	Meet: break     	R37: iteration_stmt -> for ( isnull_expr ; isnull_expr ; isnull_expr ) block_stmt 
+START: 169	Meet: return    	R37: iteration_stmt -> for ( isnull_expr ; isnull_expr ; isnull_expr ) block_stmt 
+START: 169	Meet: while     	R37: iteration_stmt -> for ( isnull_expr ; isnull_expr ; isnull_expr ) block_stmt 
+START: 169	Meet: for       	R37: iteration_stmt -> for ( isnull_expr ; isnull_expr ; isnull_expr ) block_stmt 
+START: 169	Meet: do        	R37: iteration_stmt -> for ( isnull_expr ; isnull_expr ; isnull_expr ) block_stmt 
+START: 169	Meet: if        	R37: iteration_stmt -> for ( isnull_expr ; isnull_expr ; isnull_expr ) block_stmt 
+START: 169	Meet: switch    	R37: iteration_stmt -> for ( isnull_expr ; isnull_expr ; isnull_expr ) block_stmt 
+START: 169	Meet: (         	R37: iteration_stmt -> for ( isnull_expr ; isnull_expr ; isnull_expr ) block_stmt 
+START: 169	Meet: id        	R37: iteration_stmt -> for ( isnull_expr ; isnull_expr ; isnull_expr ) block_stmt 
+START: 169	Meet: digit     	R37: iteration_stmt -> for ( isnull_expr ; isnull_expr ; isnull_expr ) block_stmt 
+START: 169	Meet: }         	R37: iteration_stmt -> for ( isnull_expr ; isnull_expr ; isnull_expr ) block_stmt 
+START: 169	Meet: case      	R37: iteration_stmt -> for ( isnull_expr ; isnull_expr ; isnull_expr ) block_stmt 
+START: 169	Meet: default   	R37: iteration_stmt -> for ( isnull_expr ; isnull_expr ; isnull_expr ) block_stmt 
+START: 170	Meet: continue  	R48: branch_stmt -> switch ( id ) { case_stmt case_stmts default_stmt } 
+START: 170	Meet: break     	R48: branch_stmt -> switch ( id ) { case_stmt case_stmts default_stmt } 
+START: 170	Meet: return    	R48: branch_stmt -> switch ( id ) { case_stmt case_stmts default_stmt } 
+START: 170	Meet: while     	R48: branch_stmt -> switch ( id ) { case_stmt case_stmts default_stmt } 
+START: 170	Meet: for       	R48: branch_stmt -> switch ( id ) { case_stmt case_stmts default_stmt } 
+START: 170	Meet: do        	R48: branch_stmt -> switch ( id ) { case_stmt case_stmts default_stmt } 
+START: 170	Meet: if        	R48: branch_stmt -> switch ( id ) { case_stmt case_stmts default_stmt } 
+START: 170	Meet: switch    	R48: branch_stmt -> switch ( id ) { case_stmt case_stmts default_stmt } 
+START: 170	Meet: (         	R48: branch_stmt -> switch ( id ) { case_stmt case_stmts default_stmt } 
+START: 170	Meet: id        	R48: branch_stmt -> switch ( id ) { case_stmt case_stmts default_stmt } 
+START: 170	Meet: digit     	R48: branch_stmt -> switch ( id ) { case_stmt case_stmts default_stmt } 
+START: 170	Meet: }         	R48: branch_stmt -> switch ( id ) { case_stmt case_stmts default_stmt } 
+START: 170	Meet: case      	R48: branch_stmt -> switch ( id ) { case_stmt case_stmts default_stmt } 
+START: 170	Meet: default   	R48: branch_stmt -> switch ( id ) { case_stmt case_stmts default_stmt } 
+START: 171	Meet: }         	R27: stmts -> $ 
+START: 171	Meet: case      	R27: stmts -> $ 
+START: 171	Meet: default   	R27: stmts -> $ 
+START: 172	Meet: case      	R51: case_stmt -> case const : stmts 
+START: 172	Meet: default   	R51: case_stmt -> case const : stmts 
+START: 173	Meet: }         	R52: default_stmt -> default : stmts 
