@@ -3,8 +3,8 @@
 
 #include "Token.hpp"
 
-extern std::vector<std::string> split(const std::string &, const std::string &); 
-extern std::string& trim(std::string &);
+class Production;
+extern std::ostream &operator<<(std::ostream &os, Production &p);
 
 class Production {
 public:
@@ -17,20 +17,5 @@ private:
     std::string left;
     std::vector<std::string> right;
 };
-
-const std::string &Production::get_left() const {
-    return left;
-}
-
-const std::vector<std::string> &Production::get_right() const {
-    return right;
-}
-
-std::ostream &operator<<(std::ostream &os, Production &p) {
-    os << p.get_left() << " -> ";
-    for (auto str : p.get_right()) 
-        os << str << " ";
-    return os;
-}
 
 #endif /* PRODUCTION_HPP */

@@ -1,12 +1,13 @@
 #include <iostream>
 #include <fstream>
 #include <stack>
-
 #include <cstdlib>
 
 #include "lib/Production.hpp"
 #include "lib/BasicFunc.hpp"
 #include "lib/Item.hpp"
+
+#include "lib/parser.hpp"
 
 using std::string;
 using std::vector;
@@ -345,6 +346,10 @@ int searchReduceTable(int state, const string &sym) {
 }
 
 void analysis(const vector<string> &seq) {
+    getFirstSet();
+    getFollowSet();
+    getClosureSet();
+    getReductionTable();
     StateStack.push(0);
     size_t i = 0;
     bool accepted = false, done = false;
@@ -384,34 +389,31 @@ void analysis(const vector<string> &seq) {
     }
 }
 
-int main(int argc, char *argv[]) {
-    read_grammar("../file/grammar/grammar.txt");
-//    read_grammar("../file/grammar/std_grammar.txt");
-    getFirstSet();
-    getFollowSet();
-    getClosureSet();
-    getReductionTable();
-    std::ofstream os("../file/log/debug.log");
-    print_info(os);
-    os.close();
-//    for (auto closure : ClosureSet)
-//        for (auto item : closure)
-//            if (item.reduce_from(*ProdVec[2]))
-//                std::cout << item << std::endl;
-//    analysis({"id", "=", "id", "+", "id", "*", "id", ";", "#"});
-//    analysis({"item", "=", "item", "+", "item", "*", "item", ";", "#"});
-    analysis({"int", "id", "(", "int", "id", ")", ";", "#"});
-//    int i = 0;
-//    vector<string> input;
-//    string tmp;
-//    while (std::cin >> tmp) {
-//        input.push_back(tmp);
-//    }
-//    input.push_back("#");
-//    std::cout << input.size() << std::endl;
-//    for (auto var : input) 
-//        std::cout << var << " ";
-//    std::cout << std::endl;
-//    analysis(input);
-    return EXIT_SUCCESS;
-}
+// int main(int argc, char *argv[]) {
+//     read_grammar("../file/grammar/grammar.txt");
+// //    std::cout << TokenVec.size() << std::endl;
+// //    read_grammar("../file/grammar/std_grammar.txt");
+// //    std::ofstream os("../file/log/debug.log");
+// //    print_info(os);
+// //    os.close();
+// //    for (auto closure : ClosureSet)
+// //        for (auto item : closure)
+// //            if (item.reduce_from(*ProdVec[2]))
+// //                std::cout << item << std::endl;
+// //    analysis({"id", "=", "id", "+", "id", "*", "id", ";", "#"});
+// //    analysis({"item", "=", "item", "+", "item", "*", "item", ";", "#"});
+//     analysis({"int", "id", "(", "int", "id", ")", ";", "#"});
+// //    int i = 0;
+// //    vector<string> input;
+// //    string tmp;
+// //    while (std::cin >> tmp) {
+// //        input.push_back(tmp);
+// //    }
+// //    input.push_back("#");
+// //    std::cout << input.size() << std::endl;
+// //    for (auto var : input) 
+// //        std::cout << var << " ";
+// //    std::cout << std::endl;
+// //    analysis(input);
+//     return EXIT_SUCCESS;
+// }

@@ -1,12 +1,3 @@
+Comment: [line:1]  // Test
 while          WHILE         9
 (             LPARTH        36
-num               ID        0x7fc00ec03608
-!=                NE        26
-100             CINT        43
-)             RPARTH        37
-{             LBRACE        40
-++               INC        27
-num               ID        0x7fc00ec03608
-;               SEMI        32
-}             RBRACE        41
-

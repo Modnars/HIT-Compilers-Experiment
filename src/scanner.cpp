@@ -5,11 +5,12 @@
 #include <cstdlib>
 #include <cstring>
 
-#include "lib/SymbolTable.hpp"
 #include "lib/Token.hpp"
+#include "lib/SymbolTable.hpp"
+#include "lib/scanner.hpp"
 
 int line_no = 1;
-std::vector<std::shared_ptr<Token>> tokenVec;
+std::vector<std::shared_ptr<Token>> TokenVec;
 auto SymbolTable = std::make_shared<Symbol>("SymbolTable");
 
 // Define the DFA's states.
@@ -25,7 +26,7 @@ void addToken(const TokenType &tt, const std::string &str) {
         symbol->decl_line_no = line_no;
         token->sptr = insert_symbol(SymbolTable, symbol);
     }
-    tokenVec.push_back(token);
+    TokenVec.push_back(token);
 }
 
 /**
@@ -50,7 +51,7 @@ void write_log(std::ostream &os, const TokenType &tt, const std::string &str) {
     else if (tt == ENDFILE)
         os << std::endl;
     else 
-        os << *tokenVec.back();
+        os << *TokenVec.back();
 }
 
 void getToken(std::istream &is, std::ostream &os = std::cout) {
@@ -320,8 +321,8 @@ void getToken(std::istream &is, std::ostream &os = std::cout) {
     }
 }
 
-int scan_file(const std::string &filename, std::ostream &os = std::cout) {
-    tokenVec.clear();
+int scan_file(const std::string &filename, std::ostream &os) {
+    TokenVec.clear();
     std::ifstream input(filename);
     if (!input) {
         std::cerr << "[T_T] Error when opening file \"" << filename
@@ -336,33 +337,33 @@ int scan_file(const std::string &filename, std::ostream &os = std::cout) {
             break;
         }
     }
-    std::cerr << "[*_*] Recognised Token's number: " << tokenVec.size()
+    std::cerr << "[*_*] Recognised Token's number: " << TokenVec.size()
               << std::endl << std::endl;
     input.close();
     return EXIT_SUCCESS;
 }
 
-int main(int argc, char *argv[]) {
-    if (argc > 1) {
-        if (!strcmp(argv[1], "-n")) {
-            std::ofstream output("../file/log/info.log");
-            if (!output) {
-                std::cerr << "[T_T] Error when writing log information." << std::endl;
-                return EXIT_FAILURE;
-            }
-            for (int i = 2; i < argc; ++i)
-                if (scan_file(argv[i], output))
-                    return EXIT_FAILURE;
-            output.close();
-        } else {
-            for (int i = 1; i < argc; ++i)
-                if (scan_file(argv[i]))
-                    return EXIT_FAILURE;
-        }
-    } else {
-        std::cout << "[Usage] ./scanner [-n] filename1 [filename2 ... ]" << std::endl;
-        return EXIT_FAILURE;
-    }
-    print_symbol_table(SymbolTable);
-    return EXIT_SUCCESS;
-}
+//int main(int argc, char *argv[]) {
+//    if (argc > 1) {
+//        if (!strcmp(argv[1], "-n")) {
+//            std::ofstream output("../file/log/info.log");
+//            if (!output) {
+//                std::cerr << "[T_T] Error when writing log information." << std::endl;
+//                return EXIT_FAILURE;
+//            }
+//            for (int i = 2; i < argc; ++i)
+//                if (scan_file(argv[i], output))
+//                    return EXIT_FAILURE;
+//            output.close();
+//        } else {
+//            for (int i = 1; i < argc; ++i)
+//                if (scan_file(argv[i]))
+//                    return EXIT_FAILURE;
+//        }
+//    } else {
+//        std::cout << "[Usage] ./scanner [-n] filename1 [filename2 ... ]" << std::endl;
+//        return EXIT_FAILURE;
+//    }
+//    print_symbol_table(SymbolTable);
+//    return EXIT_SUCCESS;
+//}
