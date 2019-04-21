@@ -52,11 +52,16 @@ int execute_ui_command(int argc, char *argv[]) {
 int main(int argc, char *argv[]) {
     if (argc > 1 && !strcmp("-n", argv[1])) {
         return execute_ui_command(argc, argv);
+    } else if (argc == 2 && !strcmp("-1", argv[1])) {
+        scan_file("../test/test.cpp");
+        read_grammar("../file/grammar/grammar.txt");
+        TokenShift();
+        analysis(SymVec);
+    } else if (argc == 2 && !strcmp("-2", argv[1])) {
+        scan_file("../test/test1.cpp");
+        read_grammar("../file/grammar/std_grammar.txt");
+        TokenShift();
+        analysis(SymVec);
     }
-    scan_file("../test/test.cpp");
-    read_grammar("../file/grammar/grammar.txt");
-    TokenShift();
-    std::cout << TokenVec.size() << std::endl;
-    analysis(SymVec);
     return EXIT_SUCCESS;
 }

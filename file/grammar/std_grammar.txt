@@ -1,44 +1,12 @@
-Start -> P
-P -> D
-P -> S
-S -> S S
-D -> D D
-D -> proc id ; D S
-D -> T id ;
-T -> X C
-T -> record D
-X -> integer 
-X -> real
-C -> [ num ] C
-C -> $
-S -> id = E ;
-S -> L = E ;
-E -> E + E 
-E -> E * E
-E -> - E
-E -> ( E )
-E -> id
-E -> digit
-E -> L
-L -> id [ E ]
-L -> L [ E ]
-S -> if B then S
-S -> if B then S else S2
-S -> while B do S
-B -> B or B
-B -> B and B
-B -> not B
-B -> ( B )
-B -> E relop E
-B -> true
-B -> false
-relop -> <
-relop -> <=
-relop -> ==
-relop -> !=
-relop -> >
-relop -> >=
-S -> call id ( Elist )
-Elist -> Elist , E
-Elist -> E
-E -> $
+S -> Q
+Q -> P = E 
+E -> E + T
+E -> E - T
+E -> T
+T -> T * F
+T -> T / F
+T -> F
+F -> ( E )
+F -> id
+Q -> id
+P -> id

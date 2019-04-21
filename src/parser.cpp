@@ -107,24 +107,24 @@ void print_info(std::ostream &os = std::cout) {
 
 void print_ReduceTable(std::ostream &os) {
     for (auto var : ReduceTable) {
-        os << std::left << std::setw(10) << var.state;
-        os << std::setw(20) << var.symbol;
+        os << std::left << std::setw(10) << var.state << "\t";
+        os << std::setw(20) << var.symbol << "\t";
         os << "R" << var.prod_id << ": " << *ProdVec[var.prod_id] << std::endl;
     }
 }
 
 void print_ShiftTable(std::ostream &os) {
     for (auto var : ShiftTable) {
-        os << std::left << std::setw(10) << var.start;
-        os << std::setw(20) << var.symbol;
+        os << std::left << std::setw(10) << var.start << "\t";
+        os << std::setw(20) << var.symbol << "\t";
         os << var.end << std::endl;
     }
 }
 
 void print_GotoTable(std::ostream &os) {
     for (auto var : GotoTable) {
-        os << std::left << std::setw(10) << var.start;
-        os << std::setw(30) << var.symbol;
+        os << std::left << std::setw(10) << var.start << "\t";
+        os << std::setw(30) << var.symbol << "\t";
         os << var.end << std::endl;
     }
 }
