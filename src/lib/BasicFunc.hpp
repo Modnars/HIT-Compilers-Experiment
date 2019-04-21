@@ -32,7 +32,7 @@ extern bool contains(const std::vector<T> &svec, const T &val) {
 template <typename T>
 extern void print_que(std::queue<T> que, std::ostream &os = std::cout) {
     while (!que.empty()) {
-        os << que.front() << std::endl;
+        os << que.front() << " ";
         que.pop();
     }
     os << std::endl;
@@ -46,20 +46,20 @@ extern void print_stk(std::stack<T> stk, std::ostream &os = std::cout) {
         stk.pop();
     }
     for (auto iter = tmpVec.crbegin(); iter != tmpVec.crend(); ++iter)
-        os << *iter;
+        os << *iter << " ";
 }
 
 template <typename T>
 extern void print_vec(const std::vector<T> &vec, std::ostream &os = std::cout) {
     for (auto var : vec) 
-        os << var << std::endl;
+        os << var << " ";
     os << std::endl;
 }
 
 template <typename T>
 extern void print_vec1(const std::vector<std::shared_ptr<T>> &vec = std::cout) {
     for (auto var : vec)
-        std::cout << *var << std::endl;
+        std::cout << *var << " ";
     std::cout << std::endl;
 }
 

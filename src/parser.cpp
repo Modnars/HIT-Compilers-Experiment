@@ -61,6 +61,7 @@ int read_grammar(const std::string &filename) {
             right.push_back(trim(tmp_vec[i]));
         ProdVec.push_back(std::make_shared<Production>(left, right));
     }
+    is.close();
     for (auto p : ProdVec) 
         for (auto sym : p->get_right()) 
             if (!contains(NonTerminalSet, sym) && sym != "$")
@@ -101,6 +102,30 @@ void print_info(std::ostream &os = std::cout) {
         os << "START: " << var.state;
         os << "\tMeet: " << std::left << std::setw(10) << var.symbol;
         os << "\tR" << var.prod_id << ": " << *ProdVec[var.prod_id] << std::endl;
+    }
+}
+
+void print_ReduceTable(std::ostream &os) {
+    for (auto var : ReduceTable) {
+        os << std::left << std::setw(10) << var.state;
+        os << std::setw(20) << var.symbol;
+        os << "R" << var.prod_id << ": " << *ProdVec[var.prod_id] << std::endl;
+    }
+}
+
+void print_ShiftTable(std::ostream &os) {
+    for (auto var : ShiftTable) {
+        os << std::left << std::setw(10) << var.start;
+        os << std::setw(20) << var.symbol;
+        os << var.end << std::endl;
+    }
+}
+
+void print_GotoTable(std::ostream &os) {
+    for (auto var : GotoTable) {
+        os << std::left << std::setw(10) << var.start;
+        os << std::setw(30) << var.symbol;
+        os << var.end << std::endl;
     }
 }
 
@@ -193,19 +218,6 @@ void getFollowSet() {
         } /* for (int i ...) loop */
         if (flag) break;
     } /* while (true) */
-
-//    // Remove the "#" in FOLLOW Set.
-//    // 清除FOLLOW集中的"#"
-//    for (auto var : NonTerminalSet) {
-//        auto svec_ptr = FollowSet[var];
-//        for (auto iter = svec_ptr->begin(); iter != svec_ptr->end();) {
-//            if (*iter == "#") {
-//                iter = svec_ptr->erase(iter);
-//            } else {
-//                ++iter;
-//            }
-//        }
-//    }
 }
 
 void getI0() {
@@ -303,49 +315,49 @@ void getReductionTable() {
     } /* for (size_t i = 0; ...) loop */
 }
 
-int searchGotoTable(int state, const string &sym) {
+int searchGotoTable(int state, const string &sym, std::ostream &os = std::cout) {
     for (auto var : GotoTable) 
         if (var.start == state && var.symbol == sym) {
-            std::cout << "GOTO:   ";
-            print_stk(StateStack);
-            std::cout << "#";
-            print_stk(SymbolStack);
-            std::cout << "\t\t" << sym;
-            std::cout << "\t\tGOTO:" << var.end << std::endl;
+            os << "GOTO:   ";
+            print_stk(StateStack, os);
+            os << "#";
+            print_stk(SymbolStack, os);
+            os << "\t\t" << sym;
+            os << "\t\tGOTO:" << var.end << std::endl;
             return var.end;
         }
     return -1;
 }
 
-int searchShiftTable(int state, const string &sym) {
+int searchShiftTable(int state, const string &sym, std::ostream &os = std::cout) {
     for (auto var : ShiftTable) 
         if (var.start == state && var.symbol == sym) {
-            std::cout << "SHIFT:  ";
-            print_stk(StateStack);
-            std::cout << "#";
-            print_stk(SymbolStack);
-            std::cout << "\t\t" << sym;
-            std::cout << "\t\tS" << var.end << std::endl;
+            os << "SHIFT:  ";
+            print_stk(StateStack, os);
+            os << "#";
+            print_stk(SymbolStack, os);
+            os << "\t\t" << sym;
+            os << "\t\tS" << var.end << std::endl;
             return var.end;
         }
     return -1;
 }
 
-int searchReduceTable(int state, const string &sym) {
+int searchReduceTable(int state, const string &sym, std::ostream &os = std::cout) {
     for (auto var : ReduceTable) 
         if (var.state == state && var.symbol == sym) {
-            std::cout << "REDUCE: ";
-            print_stk(StateStack);
-            std::cout << "#";
-            print_stk(SymbolStack);
-            std::cout << "\t\t" << sym;
-            std::cout << "\t\tR" << var.prod_id << ": " << *ProdVec[var.prod_id] << std::endl;
+            os << "REDUCE: ";
+            print_stk(StateStack, os);
+            os << "#";
+            print_stk(SymbolStack, os);
+            os << "\t\t" << sym;
+            os << "\t\tR" << var.prod_id << ": " << *ProdVec[var.prod_id] << std::endl;
             return var.prod_id;
         }
     return -1;
 }
 
-void analysis(const vector<string> &seq) {
+void analysis(const vector<string> &seq, std::ostream &os) {
     getFirstSet();
     getFollowSet();
     getClosureSet();
@@ -357,18 +369,18 @@ void analysis(const vector<string> &seq) {
         int res;
         if (StateStack.top() == 1 && seq[i] == "#") {
             accepted = true;
-        } else if ((res = searchShiftTable(StateStack.top(), seq[i])) > -1) {
+        } else if ((res = searchShiftTable(StateStack.top(), seq[i], os)) > -1) {
             StateStack.push(res);
             SymbolStack.push(seq[i]);
             ++i;
-        } else if ((res = searchReduceTable(StateStack.top(), seq[i])) > -1) {
+        } else if ((res = searchReduceTable(StateStack.top(), seq[i], os)) > -1) {
             if (ProdVec[res]->get_right()[0] != "$") // TODO
                 for (int k = 0; k < ProdVec[res]->get_right().size(); ++k) {
                     StateStack.pop();
                     SymbolStack.pop();
                 }
             SymbolStack.push(ProdVec[res]->get_left());
-            if ((res = searchGotoTable(StateStack.top(), SymbolStack.top())) > -1) {
+            if ((res = searchGotoTable(StateStack.top(), SymbolStack.top(), os)) > -1) {
                 StateStack.push(res);
             } else {
                 done = true;
@@ -378,14 +390,14 @@ void analysis(const vector<string> &seq) {
         }
     }
     if (accepted) {
-        std::cout << "Accepted!" << std::endl;
+        os << "Accepted!" << std::endl;
     } else {
-        std::cout << "Error!" << std::endl << "Remain string: ";
+        os << "Error!" << std::endl << "Remain string: ";
         while (i < seq.size()) {
-            std::cout << seq[i];
+            os << seq[i];
             ++i;
         }
-        std::cout << std::endl;
+        os << std::endl;
     }
 }
 

@@ -1,0 +1,28 @@
+[Symbol]       0x7fc8d5500858 
+[Name]         b              
+[Type]         0              
+[Value]        
+[Decl_pos]     3              
+[Next]         0x7fc8d5500658 
+
+[Symbol]       0x7fc8d5500658 
+[Name]         i              
+[Type]         0              
+[Value]        
+[Decl_pos]     2              
+[Next]         0x7fc8d55003a8 
+
+[Symbol]       0x7fc8d55003a8 
+[Name]         a              
+[Type]         0              
+[Value]        
+[Decl_pos]     2              
+[Next]         0x7fc8d55000c8 
+
+[Symbol]       0x7fc8d55000c8 
+[Name]         main           
+[Type]         0              
+[Value]        
+[Decl_pos]     1              
+[Next]         0x0            
+

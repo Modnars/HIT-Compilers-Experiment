@@ -24,6 +24,10 @@ extern std::stack<std::string> SymbolStack; // Store the Symbol Stack informatio
 extern int read_grammar(const std::string &filename);
 
 // Analysis the input string sequence.
-extern void analysis(const vector<string> &seq);
+extern void analysis(const vector<string> &seq, std::ostream &os = std::cout);
+
+extern void print_ReduceTable(std::ostream &os = std::cout);
+extern void print_ShiftTable(std::ostream &os = std::cout);
+extern void print_GotoTable(std::ostream &os = std::cout);
 
 #endif /* PARSER_HPP */
