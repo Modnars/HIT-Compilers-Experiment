@@ -4,18 +4,15 @@
 #include "Token.hpp"
 
 class Production;
-extern std::ostream &operator<<(std::ostream &os, Production &p);
+extern std::ostream &operator<<(std::ostream &os, const Production &p);
 
 class Production {
 public:
-    Production(const std::string &left, const std::vector<std::string> &right) :
-            left(left), right(right) { }
-    const std::string &get_left() const ;
-    const std::vector<std::string> &get_right() const ;
+    Production(const std::string &left, const std::vector<std::string> &rights) :
+            left(left), rights(rights) { }
 
-private:
-    std::string left;
-    std::vector<std::string> right;
+    const std::string left;
+    const std::vector<std::string> rights;
 };
 
 #endif /* PRODUCTION_HPP */

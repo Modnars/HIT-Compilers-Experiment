@@ -17,8 +17,8 @@ extern bool operator==(const GotoItem &it1, const GotoItem &it2);
 
 class Item {
 public:
-    Item(const std::string &left, const std::vector<std::string> &right) :
-            left(left), right(right) { }
+    Item(const std::string &left, const std::vector<std::string> &rights) :
+            left(left), rights(rights) { }
 
     bool could_reduce() const ;
     bool reduce_from(const Production&) const ;
@@ -27,7 +27,7 @@ public:
     std::string prev_sym() const; 
 
     const std::string left;
-    const std::vector<std::string> right;
+    const std::vector<std::string> rights;
 };
 
 class ReduceItem {

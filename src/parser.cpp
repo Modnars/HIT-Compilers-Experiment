@@ -49,7 +49,7 @@ int read_grammar(const std::string &filename) {
     }
     is.close();
     for (auto p : ProdVec) 
-        for (auto sym : p->get_right()) 
+        for (auto sym : p->rights) 
             if (!contains(NonTerminalSet, sym) && sym != "$")
                 TerminalSet.insert(sym);
     return 0;
@@ -118,7 +118,7 @@ void print_GotoTable(std::ostream &os) {
 // Judge whether the production could be null directly.
 bool could_be_null(const string &prod) {
     for (auto pptr : ProdVec) 
-        if (pptr->get_right()[0] == "$")
+        if (pptr->rights[0] == "$")
             return true;
     return false;
 }
@@ -135,8 +135,8 @@ void getFirstSet() {
     while (true) {
         extending = false;
         for (auto pptr : ProdVec) {
-            auto left = pptr->get_left();
-            for (auto right : pptr->get_right()) {
+            auto left = pptr->left;
+            for (auto right : pptr->rights) {
                 if (right != "$") {
                     for (auto new_sym : *FirstSet[right])
                         if (!contains(*FirstSet[left], new_sym)) {
@@ -163,7 +163,7 @@ void getFollowSet() {
         flag = true;
         for (int i = 0; i < ProdVec.size(); ++i) {
             string left, right;
-            vector<string> rights = ProdVec[i]->get_right();
+            vector<string> rights = ProdVec[i]->rights;
             for (int j = 0; j < rights.size(); ++j) {
                 right = rights[j];
                 if (contains(NonTerminalSet, right)) {
@@ -185,7 +185,7 @@ void getFollowSet() {
                         }
                     } /* for (int k ...) loop */
                     if (fab) {
-                        left = ProdVec[i]->get_left();
+                        left = ProdVec[i]->left;
                         for (int p = 0; p < FollowSet[left]->size(); ++p) {
                             if (contains(*FollowSet[right], (*FollowSet[left])[p])) {
                                 continue;
@@ -204,15 +204,15 @@ void getFollowSet() {
 
 void getI0() {
     vector<string> rights = {"@"};
-    for (auto var : ProdVec[0]->get_right())
+    for (auto var : ProdVec[0]->rights)
         rights.push_back(var);
-    vector<Item> closure = {Item(ProdVec[0]->get_left(), rights)};
+    vector<Item> closure = {Item(ProdVec[0]->left, rights)};
     string left;
     for (size_t i = 0; i < closure.size(); ++i) {
         for (auto pptr : ProdVec) {
-            if ((left = pptr->get_left()) == closure[i].next_sym()) {
+            if ((left = pptr->left) == closure[i].next_sym()) {
                 rights = {"@"};
-                for (auto var : pptr->get_right()) 
+                for (auto var : pptr->rights) 
                     rights.push_back(var);
                 auto new_item = Item(left, rights);
                 if (!contains(closure, new_item))
@@ -228,9 +228,9 @@ void extend(vector<Item> &closure) {
     string left;
     for (size_t i = 0; i < closure.size(); ++i) {
         for (auto pptr : ProdVec) {
-            if ((left = pptr->get_left()) == closure[i].next_sym()) {
+            if ((left = pptr->left) == closure[i].next_sym()) {
                 rights = {"@"};
-                for (auto var : pptr->get_right()) 
+                for (auto var : pptr->rights) 
                     rights.push_back(var);
                 auto new_item = Item(left, rights);
                 if (!contains(closure, new_item))
@@ -356,12 +356,12 @@ void analysis(const vector<string> &seq, std::ostream &os) {
             SymbolStack.push(seq[i]);
             ++i;
         } else if ((res = searchReduceTable(StateStack.top(), seq[i], os)) > -1) {
-            if (ProdVec[res]->get_right()[0] != "$") // TODO
-                for (int k = 0; k < ProdVec[res]->get_right().size(); ++k) {
+            if (ProdVec[res]->rights[0] != "$") // TODO
+                for (int k = 0; k < ProdVec[res]->rights.size(); ++k) {
                     StateStack.pop();
                     SymbolStack.pop();
                 }
-            SymbolStack.push(ProdVec[res]->get_left());
+            SymbolStack.push(ProdVec[res]->left);
             if ((res = searchGotoTable(StateStack.top(), SymbolStack.top(), os)) > -1) {
                 StateStack.push(res);
             } else {
