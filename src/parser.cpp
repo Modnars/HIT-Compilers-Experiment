@@ -28,20 +28,6 @@ std::vector<GotoItem> GotoTable;     // Store the Goto Action information.
 std::stack<int> StateStack;  // Store the State Stack information.
 std::stack<std::string> SymbolStack; // Store the Symbol Stack information.
 
-// Judge whether the production could be null.
-bool could_be_null(const string &prod) {
-    vector<string> rights;
-    for (int i = 0; i < ProdVec.size(); ++i) {
-        if (ProdVec[i]->get_left() == prod) {
-            rights = ProdVec[i]->get_right();
-            if (rights[0] == "$") {
-                return true;
-            }
-        }
-    }
-    return false;
-}
-
 // Read the grammar from file.
 int read_grammar(const std::string &filename) {
     std::ifstream is(filename);
@@ -129,45 +115,41 @@ void print_GotoTable(std::ostream &os) {
     }
 }
 
-// Get the FIRST Set of the grammar.
+// Judge whether the production could be null directly.
+bool could_be_null(const string &prod) {
+    for (auto pptr : ProdVec) 
+        if (pptr->get_right()[0] == "$")
+            return true;
+    return false;
+}
+
 void getFirstSet() {
     std::shared_ptr<vector<string>> first;
-    for (auto var : TerminalSet) {
-        first = std::make_shared<vector<string>>();
-        first->push_back(var);
-        FirstSet[var] = first;
+    for (auto var : TerminalSet) { // Terminal symbol's first set is itself.
+        FirstSet[var] = std::make_shared<vector<string>>();
+        FirstSet[var]->push_back(var);
     }
-    for (auto var : NonTerminalSet) {
-        first = std::make_shared<vector<string>>();
-        FirstSet[var] = first;
-    }
-    bool flag;
+    for (auto var : NonTerminalSet) // Initilize the non-terminal symbol's first set.
+        FirstSet[var] = std::make_shared<vector<string>>();
+    bool extending = true;
     while (true) {
-        flag = true;
-        string left, right;
-        vector<string> rights;
-        for (int i = 0; i < ProdVec.size(); ++i) {
-            left = ProdVec[i]->get_left();
-            rights = ProdVec[i]->get_right();
-            for (int j = 0; j < rights.size(); ++j) {
-                right = rights[j];
+        extending = false;
+        for (auto pptr : ProdVec) {
+            auto left = pptr->get_left();
+            for (auto right : pptr->get_right()) {
                 if (right != "$") {
-                    for (int l = 0; l < FirstSet[right]->size(); ++l)
-                        if (contains(*FirstSet[left], (*FirstSet[right])[l])) {
-                            continue;
-                        } else {
-                            FirstSet[left]->push_back((*FirstSet[right])[l]);
-                            flag = false;
+                    for (auto new_sym : *FirstSet[right])
+                        if (!contains(*FirstSet[left], new_sym)) {
+                            FirstSet[left]->push_back(new_sym);
+                            extending = true;
                         }
                 }
-                if (could_be_null(right)) {
-                    continue;
-                } else {
+                if (!could_be_null(right))
                     break;
-                }
             }
         }
-        if (flag) break;
+        if (!extending)
+            break;
     }
 }
 
