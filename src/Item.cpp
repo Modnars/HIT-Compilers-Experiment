@@ -7,7 +7,7 @@ Item Item::shift() const {
             std::swap(svec[i], svec[i+1]);
             break;
         }
-    return Item(left, svec);
+    return Item(left, svec, search);
 }
 
 bool Item::could_reduce() const {
@@ -39,20 +39,30 @@ std::string Item::next_sym() const {
     return "";
 }
 
-std::string Item::prev_sym() const {
-    if (rights[0] == "#")
-        return "@";
-    for (size_t i = 0; i < rights.size(); ++i)
+int Item::pos() const {
+    for (int i = 0; i < rights.size(); ++i)
         if (rights[i] == "@")
-            return rights[i-1];
-    return "";
+            return i;
+    return -1;
 }
 
 std::ostream &operator<<(std::ostream &os, const Item &it) {
     os << it.left << " -> ";
     for (auto var : it.rights)
         os << var << " ";
+    if (it.search != "")
+        os << "Search: " <<  it.search;
     return os;
+}
+
+bool operator<(const Item &a, const Item &b) {
+    if (a.left < b.left) 
+        return true;
+    else if (a.left == b.left && a.rights < b.rights) 
+        return true;
+    else if (a.left == b.left && a.rights == b.rights && a.search < b.search) 
+        return true;
+    return false;
 }
 
 std::ostream &operator<<(std::ostream &os, const ReduceItem &rdit) {
@@ -68,7 +78,7 @@ std::ostream &operator<<(std::ostream &os, const GotoItem &gtit) {
 }
 
 bool operator==(const Item &a, const Item &b) {
-    return (a.left == b.left) && (a.rights == b.rights);
+    return (a.left == b.left) && (a.rights == b.rights) && (a.search == b.search);
 }
 
 bool operator==(const GotoItem &it1, const GotoItem &it2) {

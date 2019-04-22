@@ -29,12 +29,24 @@ extern bool contains(const std::vector<T> &svec, const T &val) {
     return false;
 }
 
+template <typename K, typename T>
+extern bool contains(const std::map<K, T> &smap, const K &val) {
+    return smap.find(val) != smap.end();
+}
+
 template <typename T>
 extern void print_que(std::queue<T> que, std::ostream &os = std::cout) {
     while (!que.empty()) {
         os << que.front() << " ";
         que.pop();
     }
+    os << std::endl;
+}
+
+template <typename T>
+extern void print_set(std::set<T> vset, std::ostream &os = std::cout) {
+    for (auto iter = vset.begin(); iter != vset.end(); ++iter) 
+        os << *iter << "\n";
     os << std::endl;
 }
 

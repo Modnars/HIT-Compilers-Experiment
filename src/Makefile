@@ -1,7 +1,7 @@
 CC=g++
 CFLAGS=-std=c++11 -Wall
 LIBS=
-PARSER=parser
+PARSER=parsers
 SCANNER=scanner
 MAIN=main
 OBJ1=$(SCANNER).o SymbolTable.o Token.o Base.o
