@@ -40,7 +40,7 @@ std::vector<std::pair<TokenType, std::string>> TokenGrammaSymVec =
          {ASSIGN, "="},      {DOT, "."},         {QUOTE, "\""},
          {LPARTH, "("},      {RPARTH, ")"},      {LBRACK, "["}, 
          {RBRACK, "]"},      {LBRACE, "{"},      {RBRACE, "}"}, 
-         {ID, "id"},         {CINT, "digit"},    {CSTRING, "CSTRING"},
+         {ID, "id"},         {CINT, "CINT"},    {CSTRING, "CSTRING"},
          {CNUM, "CNUM"},     {CFLOAT, "const"},  {CBOOL, "CBOOL"},   
          {CCHAR, "CCHAR"},   {ERROR, "ERROR"},   {UNKNOWN, "UNKNOWN"},
          {NONE, "NONE"},     {ENDFILE, "ENDFILE"}};

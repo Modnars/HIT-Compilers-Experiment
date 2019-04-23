@@ -1,6 +1,74 @@
-G -> S
-S -> L = R
-S -> R
-L -> * R
-L -> i
-R -> L
+S -> func funcs
+funcs -> func funcs
+funcs -> $
+func -> type id ( args ) func_body
+type -> int
+type -> char
+type -> float
+type -> void
+type -> bool
+args -> type id arg
+args -> $
+arg -> , type id arg
+arg -> $
+func_body -> ;
+func_body -> block
+block -> { define_stmts stmts }
+define_stmts -> define_stmt define_stmts
+define_stmts -> $
+define_stmt -> type id init vars ;
+init -> = expression
+init -> $
+vars -> , id init vars
+vars -> $
+stmts -> stmt stmts
+stmts -> $
+stmt -> assign_stmt
+stmt -> jump_stmt
+stmt -> iteration_stmt
+stmt -> branch_stmt
+assign_stmt -> expression ;
+jump_stmt -> continue ;
+jump_stmt -> break ;
+jump_stmt -> return isnull_expr ;
+iteration_stmt -> while ( logical_expression ) block_stmt
+iteration_stmt -> do block_stmt while ( logical_expression ) ;
+branch_stmt -> if ( logical_expression ) block_stmt result
+result -> else block_stmt
+result -> $
+logical_expression -> ! expression bool_expression
+logical_expression -> expression bool_expression
+bool_expression -> lop expression bool_expression
+bool_expression -> $
+lop -> &&
+lop -> ||
+block_stmt -> { stmts }
+expression -> value operation
+operation -> compare_op value
+operation -> oper_op value
+operation -> $
+compare_op -> >
+compare_op -> >=
+compare_op -> <
+compare_op -> <=
+compare_op -> ==
+compare_op -> !=
+oper_op -> =
+oper_op -> +=
+oper_op -> -=
+oper_op -> *=
+oper_op -> /=
+value -> item
+value -> value + item
+value -> value - item
+item -> factor
+item -> item * factor
+item -> item / factor
+item -> item % factor
+factor -> ( value )
+factor -> id
+factor -> const
+const -> CINT
+const -> CFLOAT
+const -> CCHAR
+const -> CBOOL

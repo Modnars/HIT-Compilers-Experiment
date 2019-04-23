@@ -168,7 +168,7 @@ void getI0() {
 
 // Get all the closures.
 // This function also is the key to judge whether the grammar is LR grammar.
-void getClosureSet() {
+void getClosureSet(std::ostream &os = std::cout) {
     getI0();
     std::set<Item> closure;
     vector<string> tmpVec, rights; // Store the temp next_sym.
@@ -198,8 +198,8 @@ void getClosureSet() {
                             (*ActionTable[i])[sym] = j;
                         } else {
                             for (auto item : closure) 
-                                std::cout << item << std::endl;
-                            std::cout << "Error! [1] The Gramma fill the action table repeatly!" << std::endl;
+                                os << item << std::endl;
+                            os << "Error! [1] The Gramma fill the ActionTable repeatly!" << std::endl;
                         }
                     } // ... Done
                     found = true;
@@ -216,7 +216,7 @@ void getClosureSet() {
                     if (!contains(*ActionTable[i], sym)) {
                         (*ActionTable[i])[sym] = ClosureSet.size()-1;
                     } else {
-                        std::cout << "Error! [2] The Gramma fill the action table repeatly!" << std::endl;
+                        os << "Error! [2] The Gramma fill the ActionTable repeatly!" << std::endl;
                     }
                 } // ... Done
             }
@@ -226,7 +226,7 @@ void getClosureSet() {
 
 // Fill the ReduceTable when has gotten all the closures.
 // This function also is the key to judge whether the grammar is LR grammar.
-void fillReduceAction() {
+void fillReduceAction(std::ostream &os = std::cout) {
     int base = ClosureSet.size();
     for (int i = 0; i < ClosureSet.size(); ++i) {
         for (auto item : ClosureSet[i]) {
@@ -241,9 +241,10 @@ void fillReduceAction() {
                             if (!contains(*ActionTable[i], item.search)) {
                                 (*ActionTable[i])[item.search] = base + j;
                             } else if ((*ActionTable[i])[item.search] != base + j) {
-                                std::cout << i << " " << base + j << " " << item.search << std::endl;
-                                std::cout << "Contains:" << (*ActionTable[i])[item.search] << std::endl;
-                                std::cout << "Error! [3] The Gramma fill the action table repeatly!" << std::endl;
+                                os << "\nError! [3] The Gramma fill the ActionTable repeatly!" << std::endl;
+                                os << "Production: " << *ProdVec[j] << std::endl;
+                                os << "Pos: " << i << ", " << item.search << std::endl;
+                                os << "Have Existed: " << (*ActionTable[i])[item.search] << std::endl;
                             }
                         } // ... Done
                         break;
@@ -315,6 +316,12 @@ void analysis(const vector<string> &seq, std::ostream &os) {
         }
         os << std::endl;
     }
+}
+
+void checkGrammar(std::ostream &os) {
+    getClosureSet();
+    os << "STATUS NUMBER: " << ClosureSet.size() << std::endl;
+    fillReduceAction();
 }
 
 // int main(int argc, char *argv[]) {

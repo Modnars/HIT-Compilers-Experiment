@@ -64,5 +64,7 @@ int main(int argc, char *argv[]) {
         TokenShift();
         analysis(SymVec);
     }
+//    read_grammar("../file/grammar/grammar.txt");
+//    checkGrammar();
     return EXIT_SUCCESS;
 }

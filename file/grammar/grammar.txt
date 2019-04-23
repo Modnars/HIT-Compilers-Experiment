@@ -3,8 +3,6 @@ funcs -> func funcs
 funcs -> $
 func -> type id ( args ) func_body
 type -> int
-type -> short
-type -> long
 type -> char
 type -> float
 type -> double
@@ -56,7 +54,7 @@ isnull_expr -> expression
 isnull_expr -> $
 expression -> value operation
 operation -> compare_op value
-operation -> equal_op value
+operation -> assign_op value
 operation -> $
 compare_op -> >
 compare_op -> >=
@@ -64,21 +62,19 @@ compare_op -> <
 compare_op -> <=
 compare_op -> ==
 compare_op -> !=
-equal_op -> =
-equal_op -> +=
-equal_op -> -=
-equal_op -> *=
-equal_op -> /=
-equal_op -> %=
-value -> item value'
-value' -> + item value'
-value' -> - item value'
-value' -> $
-item -> factor item'
-item' -> * factor item'
-item' -> / factor item'
-item' -> % factor item'
-item' -> $
+assign_op -> =
+assign_op -> +=
+assign_op -> -=
+assign_op -> *=
+assign_op -> /=
+assign_op -> %=
+value -> item
+value -> value + item
+value -> value - item
+item -> factor
+item -> item * factor
+item -> item / factor
+item -> item % factor
 factor -> ( value )
 factor -> id call_func
 factor -> const
@@ -87,4 +83,7 @@ call_func -> $
 es -> isnull_expr isnull_es
 isnull_es -> , isnull_expr isnull_es
 isnull_es -> $
-const -> digit
+const -> CINT
+const -> CFLOAT
+const -> CCHAR
+const -> CBOOL
