@@ -42,6 +42,7 @@
 | 14 | [src/Token.cpp](./src/Token.cpp) | C++11 | |
 | 15 | [src/main.cpp](./src/main.cpp) | C++11 | |
 | 16 | [src/scanner.cpp](./src/scanner.cpp) | C++11 | |
-| 17 | [src/parser.cpp](./src/parser.cpp) | C++11 | |
-| 18 | [src/compiler.py](./src/compiler.py) | Python3.7 | Simple UI |
+| 17 | [src/parser.cpp](./src/parser.cpp) | C++11 | SLR(1) |
+| 18 | [src/parsers.cpp](./src/parsers.cpp) | C++11 | LR(1) |
+| 19 | [src/compiler.py](./src/compiler.py) | Python3.7 | Simple UI |
 

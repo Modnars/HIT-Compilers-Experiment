@@ -1,0 +1,18 @@
+G -> P
+P -> D
+P -> S
+S -> S S
+D -> D D
+D -> proc id ; D S
+D -> T id ;
+S -> id = E ;
+S -> L = E ;
+E -> E + E ;
+E -> E * E ;
+E -> - E ;
+E -> ( E )
+E -> id
+E -> digit
+E -> L
+L -> id [ E ]
+L -> L [ E ]

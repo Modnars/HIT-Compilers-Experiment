@@ -1,5 +1,5 @@
-#ifndef ASTNODE_H
-#define ASTNODE_H
+#ifndef ASTNODE_HPP
+#define ASTNODE_HPP
 
 #include <vector>
 #include <string>

@@ -1,5 +1,5 @@
-#ifndef SYMBOLTABLE_H
-#define SYMBOLTABLE_H
+#ifndef SYMBOLTABLE_HPP
+#define SYMBOLTABLE_HPP
 
 #include "Base.hpp"
 

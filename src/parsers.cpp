@@ -63,7 +63,7 @@ bool could_be_null(const string &sym) {
 
 // Generate the FirstSet. And the FirstSet generated will contains '$' for each non-terminal if 
 // the symbol could be null.
-// At the last of the function, it will remove '$' from FirstSet and TerminalSet.
+// At the end of the function, it will remove '$' from FirstSet and TerminalSet.
 void getFirstSet() {
     std::shared_ptr<vector<string>> first;
     for (auto var : TerminalSet) {
