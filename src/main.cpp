@@ -1,5 +1,6 @@
 #include <fstream>
 
+#include "lib/ASTNode.hpp"
 #include "lib/Base.hpp"
 #include "lib/BasicFunc.hpp"
 #include "lib/Item.hpp"
@@ -9,15 +10,7 @@
 
 #include "lib/parser.hpp"
 #include "lib/scanner.hpp"
-
-vector<string> SymVec; // Store the Token's symbols.
-
-// Shift Token sequence to standard symbols in grammar.txt.
-void TokenShift() {
-    for (auto token : TokenVec)
-        SymVec.push_back(token2string(*token));
-    SymVec.push_back("#");
-}
+#include "lib/translator.hpp"
 
 // int execute_ui_command(int argc, char *argv[]) {
 //     if (argc != 3)
@@ -50,21 +43,26 @@ void TokenShift() {
 //     return EXIT_SUCCESS;
 // }
 
+// int main(int argc, char *argv[]) {
+//     if (argc > 1 && !strcmp("-n", argv[1])) {
+// //        return execute_ui_command(argc, argv);
+//     } else if (argc == 2 && !strcmp("-0", argv[1])) {
+//         scan_file("../test/test.cpp");
+//         read_grammar("../file/grammar/grammar.txt");
+//         parse(TokenVec);
+//     } else if (argc == 2 && !strcmp("-1", argv[1])) {
+//         scan_file("../test/test1.cpp");
+//         read_grammar("../file/grammar/grammar1.txt");
+//         parse(TokenVec);
+//     }
+// //    read_grammar("../file/grammar/grammar.txt");
+// //    checkGrammar();
+//     return EXIT_SUCCESS;
+// }
+
 int main(int argc, char *argv[]) {
-    if (argc > 1 && !strcmp("-n", argv[1])) {
-//        return execute_ui_command(argc, argv);
-    } else if (argc == 2 && !strcmp("-0", argv[1])) {
-        scan_file("../test/test.cpp");
-        read_grammar("../file/grammar/grammar.txt");
-        TokenShift();
-        analysis(SymVec);
-    } else if (argc == 2 && !strcmp("-1", argv[1])) {
-        scan_file("../test/test1.cpp");
-        read_grammar("../file/grammar/grammar1.txt");
-        TokenShift();
-        analysis(SymVec);
-    }
-//    read_grammar("../file/grammar/grammar.txt");
-//    checkGrammar();
-    return EXIT_SUCCESS;
+    scan_file("../test/test.cpp");
+    read_grammar("../file/grammar/grammar.txt");
+    parse(TokenVec);
+    return 0;
 }

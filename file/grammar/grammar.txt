@@ -7,7 +7,6 @@ type -> char
 type -> float
 type -> double
 type -> void
-type -> unsigned type
 args -> type id arg
 args -> $
 arg -> , type id arg
@@ -44,11 +43,6 @@ bool_expression -> lop expression bool_expression
 bool_expression -> $
 lop -> &&
 lop -> ||
-branch_stmt -> switch ( id ) { case_stmt case_stmts default_stmt }
-case_stmts -> case_stmt case_stmts
-case_stmts -> $
-case_stmt -> case const : stmts
-default_stmt -> default : stmts
 block_stmt -> { stmts }
 isnull_expr -> expression
 isnull_expr -> $
@@ -63,11 +57,6 @@ compare_op -> <=
 compare_op -> ==
 compare_op -> !=
 assign_op -> =
-assign_op -> +=
-assign_op -> -=
-assign_op -> *=
-assign_op -> /=
-assign_op -> %=
 value -> item
 value -> value + item
 value -> value - item

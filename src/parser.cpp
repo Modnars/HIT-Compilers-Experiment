@@ -383,6 +383,15 @@ void analysis(const vector<string> &seq, std::ostream &os) {
     }
 }
 
+// Parse the Token sequences.
+void parse(const vector<std::shared_ptr<Token>> &token_seq, std::ostream &os) {
+    vector<string> sym_seq;
+    for (auto token : token_seq)
+        sym_seq.push_back(token2string(*token));
+    sym_seq.push_back("#");
+    analysis(sym_seq, os);   
+}
+
 // int main(int argc, char *argv[]) {
 //     read_grammar("../file/grammar/grammar.txt");
 // //    std::cout << TokenVec.size() << std::endl;
