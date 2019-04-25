@@ -20,7 +20,8 @@ std::vector<std::pair<TokenType, std::string>> type_name =
          {ID, "ID"},         {CINT, "CINT"},     {CSTRING, "CSTRING"},
          {CNUM, "CNUM"},     {CFLOAT, "CFLOAT"}, {CBOOL, "CBOOL"},   
          {CCHAR, "CCHAR"},   {ERROR, "ERROR"},   {UNKNOWN, "UNKNOWN"},
-         {NONE, "NONE"},     {ENDFILE, "ENDFILE"}};
+         {CALL, "CALL"},     {PROC, "PROC"},     {RECORD, "RECORD"},
+         {THEN, "THEN"},     {NONE, "NONE"},     {ENDFILE, "ENDFILE"}};
 
 // Use Token type to query the standard symbol in grammar file.
 // Warning: This is added in for gramma analysis and the vector is related to the
@@ -40,10 +41,11 @@ std::vector<std::pair<TokenType, std::string>> TokenGrammaSymVec =
          {ASSIGN, "="},      {DOT, "."},         {QUOTE, "\""},
          {LPARTH, "("},      {RPARTH, ")"},      {LBRACK, "["}, 
          {RBRACK, "]"},      {LBRACE, "{"},      {RBRACE, "}"}, 
-         {ID, "id"},         {CINT, "CINT"},    {CSTRING, "CSTRING"},
-         {CNUM, "CNUM"},     {CFLOAT, "const"},  {CBOOL, "CBOOL"},   
+         {ID, "id"},         {CINT, "CINT"},     {CSTRING, "CSTRING"},
+         {CNUM, "CNUM"},     {CFLOAT, "CFLOAT"}, {CBOOL, "CBOOL"},   
          {CCHAR, "CCHAR"},   {ERROR, "ERROR"},   {UNKNOWN, "UNKNOWN"},
-         {NONE, "NONE"},     {ENDFILE, "ENDFILE"}};
+         {CALL, "call"},     {PROC, "proc"},     {RECORD, "record"},
+         {THEN, "then"},     {NONE, "NONE"},     {ENDFILE, "ENDFILE"}};
 
 // Store the special symbols. The key is the symbols' string, and the value is the
 // symbol's token type.
@@ -66,7 +68,8 @@ std::map<std::string, TokenType> resd_words =
          {"float", FLOAT},   {"double", DOUBLE},     {"bool", BOOL}, 
          {"string", STRING}, {"break", BREAK},       {"for", FOR}, 
          {"while", WHILE},   {"continue", CONTINUE}, {"if", IF}, 
-         {"else", ELSE},     {"return", RETURN}};
+         {"else", ELSE},     {"return", RETURN},     {"record", RECORD},
+         {"proc", PROC},     {"call", CALL},         {"then", THEN}};
 
 void set_value(Value *value, TokenType type, void *val) {
     if (value == nullptr) {

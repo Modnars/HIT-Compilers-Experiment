@@ -64,5 +64,6 @@ int main(int argc, char *argv[]) {
     scan_file("../test/test.cpp");
     read_grammar("../file/grammar/grammar.txt");
     parse(TokenVec);
+    translate();
     return 0;
 }

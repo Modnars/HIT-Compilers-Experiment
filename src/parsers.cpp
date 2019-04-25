@@ -7,13 +7,18 @@
 #include "lib/BasicFunc.hpp"
 #include "lib/Item.hpp"
 
+#include "lib/scanner.hpp"
 #include "lib/parser.hpp"
 #include "lib/translator.hpp"
 
 using std::string;
 using std::vector;
 
+// For semantic analysis.
 int idx;
+// For semantic analysis.
+std::stack<std::shared_ptr<Token>> TokenStack;
+
 std::vector<std::shared_ptr<Production>> ProdVec; // Store the Production sequence.
 std::set<std::string> NonTerminalSet;             // Store the non-terminal symbols.
 std::set<std::string> TerminalSet;                // Store the terminal symbols.
@@ -267,7 +272,7 @@ int searchTable(int state, const string &sym, std::ostream &os = std::cout) {
     int base = ClosureSet.size();
     if (res >= base) {
         os << "R" << res-base << ": " << *ProdVec[res-base] << std::endl;
-        semantic(res-base);
+        semantic(res-base); // Using semantic actions.
     } else if (contains(NonTerminalSet, sym))
         os << "GOTO:" << res << std::endl;
     else 
@@ -289,6 +294,9 @@ void analysis(const vector<string> &seq, std::ostream &os) {
         if (res > -1 && res < base) {
             StateStack.push(res);
             SymbolStack.push(seq[idx]);
+            // Store the tokens whose type is ID. The "id" symbol is related to grammar.
+            if (seq[idx] == "id" || seq[idx] == "CINT" || seq[idx] == "CINT") 
+                TokenStack.push(TokenVec[idx]);
             ++idx;
         } else if (res >= base) {
             if (res == base && seq[idx] == "#") {
@@ -323,6 +331,7 @@ void analysis(const vector<string> &seq, std::ostream &os) {
 }
 
 // Parse the Token sequences.
+// Could use TokenVec directly when referenced from "lib/scanner.hpp".
 void parse(const vector<std::shared_ptr<Token>> &token_seq, std::ostream &os) {
     vector<string> sym_seq;
     for (auto token : token_seq)
