@@ -273,10 +273,11 @@ int searchTable(int state, const string &sym, std::ostream &os = std::cout) {
     if (res >= base) {
         os << "R" << res-base << ": " << *ProdVec[res-base] << std::endl;
         semantic(res-base); // Using semantic actions.
-    } else if (contains(NonTerminalSet, sym))
-        os << "GOTO:" << res << std::endl;
-    else 
-        os << "S" << res << std::endl;
+    } else if (contains(NonTerminalSet, sym)) {
+        //os << "GOTO:" << res << std::endl; // TODO : remove the comment.
+    } else {
+        //os << "S" << res << std::endl; // TODO : remove the comment.
+    }
     return res;
 }
 
@@ -295,7 +296,7 @@ void analysis(const vector<string> &seq, std::ostream &os) {
             StateStack.push(res);
             SymbolStack.push(seq[idx]);
             // Store the tokens whose type is ID. The "id" symbol is related to grammar.
-            if (seq[idx] == "id" || seq[idx] == "CINT" || seq[idx] == "CINT") 
+            if (seq[idx] == "id" || seq[idx] == "CINT" || seq[idx] == "CFLOAT" || seq[idx] == "CBOOL") 
                 TokenStack.push(TokenVec[idx]);
             ++idx;
         } else if (res >= base) {

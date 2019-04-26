@@ -20,6 +20,8 @@ void print_nodes(std::shared_ptr<Node> &self, std::ostream &os) {
             for (auto ptr = self->sibling; ptr != nullptr; ptr = ptr->sibling)
                 os << ptr->name << " ";
         }
+        if (self->parent)
+            os << "Parent: " << self->parent->name << std::endl;
         os << std::endl;
     }
 }

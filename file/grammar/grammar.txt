@@ -37,8 +37,7 @@ B -> ( B && B )
 B -> ! B
 B -> ( B )
 B -> E relop E
-B -> true
-B -> false
+B -> CBOOL
 relop -> <
 relop -> <=
 relop -> >
