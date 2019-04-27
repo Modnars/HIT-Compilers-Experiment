@@ -279,6 +279,7 @@ void semantic(int ProdNo) {
                 backpatch(B1->falselist, W2->value.ival);
                 tempnode->nextlist = merge(S1->nextlist, merge(N->nextlist, S2->nextlist));
             }
+            backpatch(tempnode->nextlist, nextquad); // Modnar is so cool !
             NodeStack.push(tempnode);
             break;
         case 20 : // R -> else { W S } // TODO
@@ -289,10 +290,22 @@ void semantic(int ProdNo) {
             tempnode = new_node("NULL", NONE, nullptr);
             NodeStack.push(tempnode);
             break;
-        case 22 : // S -> while B { S } // TODO
+        case 22 : // S -> while W B { W S } // TODO
             tempnode = new_node("S[22]", WHILE, nullptr);
-            add_child(tempnode, NodeStack.top()); NodeStack.pop();
-            add_child(tempnode, NodeStack.top()); NodeStack.pop();
+            S1 = NodeStack.top(); NodeStack.pop();
+            W2 = NodeStack.top(); NodeStack.pop();
+            B1 = NodeStack.top(); NodeStack.pop();
+            W1 = NodeStack.top(); NodeStack.pop();
+            backpatch(S1->nextlist, W1->value.ival);
+            backpatch(B1->truelist, W2->value.ival);
+            tempnode->nextlist = B1->falselist;
+            code = new_code();
+            code->action = "J";
+            code->arg1 = "_";
+            code->arg2 = "_";
+            code->result = get_val(W1->value.ival);
+            CodeVec.push_back(code);
+            backpatch(tempnode->nextlist, nextquad);
             NodeStack.push(tempnode);
             break;
         case 23 : // S -> call id ( Elist ) // TODO
@@ -432,7 +445,7 @@ void semantic(int ProdNo) {
             CodeVec.push_back(code); 
             NodeStack.push(tempnode);
             break;
-        case 39 : // B -> CBOOL // TODO
+        case 39 : // B -> CBOOL 
             tempnode = new_node("B[39]", CBOOL, nullptr);
             tempnode->kind = P39;
             tempnode->value.bval = TokenStack.top()->bval;
@@ -450,32 +463,32 @@ void semantic(int ProdNo) {
             ++nextquad;
             NodeStack.push(tempnode);
             break;
-        case 40 : // relop -> < // TODO
+        case 40 : // relop -> < 
             tempnode = new_node("<", LT, nullptr);
             tempnode->kind = P40;
             NodeStack.push(tempnode);
             break;
-        case 41 : // relop -> <= // TODO
+        case 41 : // relop -> <= 
             tempnode = new_node("<=", LE, nullptr);
             tempnode->kind = P41;
             NodeStack.push(tempnode);
             break;
-        case 42 : // relop -> >  // TODO
+        case 42 : // relop -> >  
             tempnode = new_node(">", GT, nullptr);
             tempnode->kind = P42;
             NodeStack.push(tempnode);
             break;
-        case 43 : // relop -> >= // TODO
+        case 43 : // relop -> >= 
             tempnode = new_node(">=", GE, nullptr);
             tempnode->kind = P43;
             NodeStack.push(tempnode);
             break;
-        case 44 : // relop -> == // TODO
+        case 44 : // relop -> == 
             tempnode = new_node("==", EQ, nullptr);
             tempnode->kind = P44;
             NodeStack.push(tempnode);
             break;
-        case 45 : // relop -> != // TODO
+        case 45 : // relop -> != 
             tempnode = new_node("!=", NE, nullptr);
             tempnode->kind = P45;
             NodeStack.push(tempnode);

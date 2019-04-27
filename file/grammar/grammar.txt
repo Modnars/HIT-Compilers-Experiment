@@ -17,10 +17,10 @@ X -> float
 C -> [ CINT ] C
 C -> $
 S -> L = E ;
-S -> if B { S } R  
-R -> else { S }
+S -> if B { W S N } R  
+R -> else { W S }
 R -> $
-S -> while B { S }
+S -> while W B { W S }
 S -> call id ( Elist ) ;
 S -> return E ;
 L -> L [ CINT ] 
@@ -32,8 +32,8 @@ G -> F
 F -> ( E ) 
 F -> CINT
 F -> id
-B -> ( B || B )
-B -> ( B && B )
+B -> ( B || Q B )
+B -> ( B && Q B )
 B -> ! B
 B -> ( B )
 B -> E relop E
@@ -46,3 +46,6 @@ relop -> ==
 relop -> !=
 Elist -> Elist , E
 Elist -> E
+Q -> $
+W -> $
+N -> $
