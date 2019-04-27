@@ -3,6 +3,7 @@
 std::shared_ptr<Symbol> new_symbol(const std::string &name) {
     std::shared_ptr<Symbol> symbol = std::make_shared<Symbol>(name);
     symbol->decl_line_no = 0;
+    symbol->offset = 0;
     symbol->type = VOID;
     set_value(&symbol->value, VOID, nullptr);
     symbol->params = -1;
@@ -54,9 +55,17 @@ void print_symbol(std::shared_ptr<Symbol> symbol, std::ostream &os) {
         os << "[NULL]" << std::endl;
         return;
     }
+    std::string _type;
+    for (size_t i = 0; i < type_name.size(); ++i)
+        if (type_name[i].first == symbol->type) {
+            _type = type_name[i].second;
+            break;
+        }
     os << std::left << std::setw(15) << "[Symbol]" << std::setw(15) << symbol 
        << std::endl << std::setw(15) << "[Name]" << std::setw(15) << symbol->name
-       << std::endl << std::setw(15) << "[Type]" << std::setw(15) << symbol->type
+       << std::endl << std::setw(15) << "[Type]" << std::setw(15) << _type
+       << std::endl << std::setw(15) << "[Width]" << std::setw(15) << symbol->width
+       << std::endl << std::setw(15) << "[Offset]" << std::setw(15) << symbol->offset
        << std::endl << std::setw(15) << "[Value]";
     print_value(&symbol->value, symbol->type, os);
     os << std::left << std::setw(15) << "[Decl_pos]" 

@@ -7,7 +7,7 @@ TRANSLATOR=translator
 MAIN=main
 OBJ1=$(SCANNER).o SymbolTable.o Token.o Base.o
 OBJ2=$(PARSER).o BasicFunc.o Item.o Production.o 
-OBJ3=$(TRANSLATOR).o ASTNode.o
+OBJ3=$(TRANSLATOR).o ASTNode.o Code.o
 OBJS=$(OBJ1) $(OBJ2)
 HEADFILES=lib/*.hpp
 PROGRAM=res
@@ -20,7 +20,7 @@ $(MAIN).out : $(OBJ1) $(OBJ2) $(OBJ3) $(MAIN).o
 
 $(MAIN).o : $(MAIN).cpp lib/Token.hpp lib/SymbolTable.hpp lib/Base.hpp \
         lib/Item.hpp lib/Production.hpp lib/BasicFunc.hpp lib/parser.hpp \
-        lib/scanner.hpp lib/translator.hpp lib/ASTNode.hpp
+        lib/scanner.hpp lib/translator.hpp lib/ASTNode.hpp lib/Code.hpp
 	$(CC) $(CFLAGS) $(MAIN).cpp -c
 
 s : $(SCANNER)
@@ -41,8 +41,9 @@ $(OBJ2) : $(PARSER).cpp lib/Item.hpp lib/Production.hpp lib/BasicFunc.hpp \
         Item.cpp Production.cpp BasicFunc.cpp 
 	$(CC) $(CFLAGS) $(PARSER).cpp Item.cpp Production.cpp BasicFunc.cpp -c
 
-$(OBJ3) : $(TRANSLATOR).cpp lib/translator.hpp ASTNode.cpp lib/ASTNode.hpp
-	$(CC) $(CFLAGS) $(TRANSLATOR).cpp ASTNode.cpp -c
+$(OBJ3) : $(TRANSLATOR).cpp lib/translator.hpp ASTNode.cpp lib/ASTNode.hpp \
+        Code.cpp lib/Code.hpp
+	$(CC) $(CFLAGS) $(TRANSLATOR).cpp ASTNode.cpp Code.cpp -c 
 
 d :
 	$(CC) $(CFLAGS) *.cpp -o $(MAIN).dbg -g

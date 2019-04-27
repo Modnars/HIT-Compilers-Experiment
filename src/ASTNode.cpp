@@ -1,3 +1,5 @@
+#include <sstream>
+
 #include "lib/ASTNode.hpp"
 
 std::shared_ptr<Node> new_node(const std::string &name, TokenType type, 
@@ -44,19 +46,6 @@ int get_node_value_as_int(std::shared_ptr<Node> &self) {
     if (self->type == ID)
         return self->symbol->value.ival;
     return self->value.ival;
-}
-
-int get_node_child_counter(std::shared_ptr<Node> &self) {
-    return self->child_count++;
-}
-
-bool check_node_error(std::shared_ptr<Node> &self) {
-    if (self == nullptr || self->type == ERROR)
-        return true;
-    for (auto ptr = self->child; ptr != nullptr; ptr = ptr->sibling)
-        if (check_node_error(ptr))
-            return true;
-    return false;
 }
 
 void add_child(std::shared_ptr<Node> &self, std::shared_ptr<Node> &child) {

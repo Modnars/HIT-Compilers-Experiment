@@ -1,6 +1,8 @@
 #include <fstream>
 
 #include "lib/ASTNode.hpp"
+#include "lib/ASTVisitor.hpp"
+#include "lib/Printer.hpp"
 #include "lib/Base.hpp"
 #include "lib/BasicFunc.hpp"
 #include "lib/Item.hpp"
@@ -64,6 +66,8 @@ int main(int argc, char *argv[]) {
     scan_file("../test/test.cpp");
     read_grammar("../file/grammar/grammar.txt");
     parse(TokenVec);
+//    auto visitor = new_printer();
+//    visit_node(Root, visitor);
     translate();
     return 0;
 }

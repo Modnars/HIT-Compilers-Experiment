@@ -21,6 +21,7 @@ public:
     std::string name;
     int decl_line_no;
     TokenType type; // Here, the type should only choose from basic data type
+    int offset;
     int width;
     Value value;
 
