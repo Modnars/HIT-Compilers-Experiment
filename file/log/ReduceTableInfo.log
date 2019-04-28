@@ -1,847 +1,634 @@
-1         	#                   	R2: funcs -> $ 
-3         	id                  	R4: type -> int 
-4         	id                  	R5: type -> short 
-5         	id                  	R6: type -> long 
-6         	id                  	R7: type -> char 
-7         	id                  	R8: type -> float 
-8         	id                  	R9: type -> double 
-9         	id                  	R10: type -> void 
-11        	#                   	R0: S -> func funcs 
-12        	#                   	R2: funcs -> $ 
-14        	id                  	R11: type -> unsigned type 
-15        	#                   	R1: funcs -> func funcs 
-16        	)                   	R13: args -> $ 
-20        	)                   	R15: arg -> $ 
-21        	int                 	R3: func -> type id ( args ) func_body 
-21        	short               	R3: func -> type id ( args ) func_body 
-21        	long                	R3: func -> type id ( args ) func_body 
-21        	char                	R3: func -> type id ( args ) func_body 
-21        	float               	R3: func -> type id ( args ) func_body 
-21        	double              	R3: func -> type id ( args ) func_body 
-21        	void                	R3: func -> type id ( args ) func_body 
-21        	unsigned            	R3: func -> type id ( args ) func_body 
-21        	#                   	R3: func -> type id ( args ) func_body 
-22        	int                 	R16: func_body -> ; 
-22        	short               	R16: func_body -> ; 
-22        	long                	R16: func_body -> ; 
-22        	char                	R16: func_body -> ; 
-22        	float               	R16: func_body -> ; 
-22        	double              	R16: func_body -> ; 
-22        	void                	R16: func_body -> ; 
-22        	unsigned            	R16: func_body -> ; 
-22        	#                   	R16: func_body -> ; 
-23        	int                 	R17: func_body -> block 
-23        	short               	R17: func_body -> block 
-23        	long                	R17: func_body -> block 
-23        	char                	R17: func_body -> block 
-23        	float               	R17: func_body -> block 
-23        	double              	R17: func_body -> block 
-23        	void                	R17: func_body -> block 
-23        	unsigned            	R17: func_body -> block 
-23        	#                   	R17: func_body -> block 
-24        	continue            	R20: define_stmts -> $ 
-24        	break               	R20: define_stmts -> $ 
-24        	return              	R20: define_stmts -> $ 
-24        	while               	R20: define_stmts -> $ 
-24        	for                 	R20: define_stmts -> $ 
-24        	do                  	R20: define_stmts -> $ 
-24        	if                  	R20: define_stmts -> $ 
-24        	switch              	R20: define_stmts -> $ 
-24        	(                   	R20: define_stmts -> $ 
-24        	id                  	R20: define_stmts -> $ 
-24        	digit               	R20: define_stmts -> $ 
-24        	}                   	R20: define_stmts -> $ 
-25        	)                   	R12: args -> type id arg 
-27        	}                   	R27: stmts -> $ 
-27        	case                	R27: stmts -> $ 
-27        	default             	R27: stmts -> $ 
-28        	continue            	R20: define_stmts -> $ 
-28        	break               	R20: define_stmts -> $ 
-28        	return              	R20: define_stmts -> $ 
-28        	while               	R20: define_stmts -> $ 
-28        	for                 	R20: define_stmts -> $ 
-28        	do                  	R20: define_stmts -> $ 
-28        	if                  	R20: define_stmts -> $ 
-28        	switch              	R20: define_stmts -> $ 
-28        	(                   	R20: define_stmts -> $ 
-28        	id                  	R20: define_stmts -> $ 
-28        	digit               	R20: define_stmts -> $ 
-28        	}                   	R20: define_stmts -> $ 
-32        	}                   	R27: stmts -> $ 
-32        	case                	R27: stmts -> $ 
-32        	default             	R27: stmts -> $ 
-33        	continue            	R28: stmt -> assign_stmt 
-33        	break               	R28: stmt -> assign_stmt 
-33        	return              	R28: stmt -> assign_stmt 
-33        	while               	R28: stmt -> assign_stmt 
-33        	for                 	R28: stmt -> assign_stmt 
-33        	do                  	R28: stmt -> assign_stmt 
-33        	if                  	R28: stmt -> assign_stmt 
-33        	switch              	R28: stmt -> assign_stmt 
-33        	(                   	R28: stmt -> assign_stmt 
-33        	id                  	R28: stmt -> assign_stmt 
-33        	digit               	R28: stmt -> assign_stmt 
-33        	}                   	R28: stmt -> assign_stmt 
-33        	case                	R28: stmt -> assign_stmt 
-33        	default             	R28: stmt -> assign_stmt 
-34        	continue            	R29: stmt -> jump_stmt 
-34        	break               	R29: stmt -> jump_stmt 
-34        	return              	R29: stmt -> jump_stmt 
-34        	while               	R29: stmt -> jump_stmt 
-34        	for                 	R29: stmt -> jump_stmt 
-34        	do                  	R29: stmt -> jump_stmt 
-34        	if                  	R29: stmt -> jump_stmt 
-34        	switch              	R29: stmt -> jump_stmt 
-34        	(                   	R29: stmt -> jump_stmt 
-34        	id                  	R29: stmt -> jump_stmt 
-34        	digit               	R29: stmt -> jump_stmt 
-34        	}                   	R29: stmt -> jump_stmt 
-34        	case                	R29: stmt -> jump_stmt 
-34        	default             	R29: stmt -> jump_stmt 
-35        	continue            	R30: stmt -> iteration_stmt 
-35        	break               	R30: stmt -> iteration_stmt 
-35        	return              	R30: stmt -> iteration_stmt 
-35        	while               	R30: stmt -> iteration_stmt 
-35        	for                 	R30: stmt -> iteration_stmt 
-35        	do                  	R30: stmt -> iteration_stmt 
-35        	if                  	R30: stmt -> iteration_stmt 
-35        	switch              	R30: stmt -> iteration_stmt 
-35        	(                   	R30: stmt -> iteration_stmt 
-35        	id                  	R30: stmt -> iteration_stmt 
-35        	digit               	R30: stmt -> iteration_stmt 
-35        	}                   	R30: stmt -> iteration_stmt 
-35        	case                	R30: stmt -> iteration_stmt 
-35        	default             	R30: stmt -> iteration_stmt 
-36        	continue            	R31: stmt -> branch_stmt 
-36        	break               	R31: stmt -> branch_stmt 
-36        	return              	R31: stmt -> branch_stmt 
-36        	while               	R31: stmt -> branch_stmt 
-36        	for                 	R31: stmt -> branch_stmt 
-36        	do                  	R31: stmt -> branch_stmt 
-36        	if                  	R31: stmt -> branch_stmt 
-36        	switch              	R31: stmt -> branch_stmt 
-36        	(                   	R31: stmt -> branch_stmt 
-36        	id                  	R31: stmt -> branch_stmt 
-36        	digit               	R31: stmt -> branch_stmt 
-36        	}                   	R31: stmt -> branch_stmt 
-36        	case                	R31: stmt -> branch_stmt 
-36        	default             	R31: stmt -> branch_stmt 
-40        	;                   	R55: isnull_expr -> $ 
-40        	)                   	R55: isnull_expr -> $ 
-40        	,                   	R55: isnull_expr -> $ 
-46        	,                   	R59: operation -> $ 
-46        	;                   	R59: operation -> $ 
-46        	&&                  	R59: operation -> $ 
-46        	||                  	R59: operation -> $ 
-46        	)                   	R59: operation -> $ 
-47        	>                   	R75: value' -> $ 
-47        	>=                  	R75: value' -> $ 
-47        	<                   	R75: value' -> $ 
-47        	<=                  	R75: value' -> $ 
-47        	==                  	R75: value' -> $ 
-47        	!=                  	R75: value' -> $ 
-47        	=                   	R75: value' -> $ 
-47        	+=                  	R75: value' -> $ 
-47        	-=                  	R75: value' -> $ 
-47        	*=                  	R75: value' -> $ 
-47        	/=                  	R75: value' -> $ 
-47        	%=                  	R75: value' -> $ 
-47        	,                   	R75: value' -> $ 
-47        	;                   	R75: value' -> $ 
-47        	&&                  	R75: value' -> $ 
-47        	||                  	R75: value' -> $ 
-47        	)                   	R75: value' -> $ 
-48        	+                   	R80: item' -> $ 
-48        	-                   	R80: item' -> $ 
-48        	>                   	R80: item' -> $ 
-48        	>=                  	R80: item' -> $ 
-48        	<                   	R80: item' -> $ 
-48        	<=                  	R80: item' -> $ 
-48        	==                  	R80: item' -> $ 
-48        	!=                  	R80: item' -> $ 
-48        	=                   	R80: item' -> $ 
-48        	+=                  	R80: item' -> $ 
-48        	-=                  	R80: item' -> $ 
-48        	*=                  	R80: item' -> $ 
-48        	/=                  	R80: item' -> $ 
-48        	%=                  	R80: item' -> $ 
-48        	,                   	R80: item' -> $ 
-48        	;                   	R80: item' -> $ 
-48        	&&                  	R80: item' -> $ 
-48        	||                  	R80: item' -> $ 
-48        	)                   	R80: item' -> $ 
-50        	*                   	R85: call_func -> $ 
-50        	/                   	R85: call_func -> $ 
-50        	%                   	R85: call_func -> $ 
-50        	+                   	R85: call_func -> $ 
-50        	-                   	R85: call_func -> $ 
-50        	>                   	R85: call_func -> $ 
-50        	>=                  	R85: call_func -> $ 
-50        	<                   	R85: call_func -> $ 
-50        	<=                  	R85: call_func -> $ 
-50        	==                  	R85: call_func -> $ 
-50        	!=                  	R85: call_func -> $ 
-50        	=                   	R85: call_func -> $ 
-50        	+=                  	R85: call_func -> $ 
-50        	-=                  	R85: call_func -> $ 
-50        	*=                  	R85: call_func -> $ 
-50        	/=                  	R85: call_func -> $ 
-50        	%=                  	R85: call_func -> $ 
-50        	,                   	R85: call_func -> $ 
-50        	;                   	R85: call_func -> $ 
-50        	&&                  	R85: call_func -> $ 
-50        	||                  	R85: call_func -> $ 
-50        	)                   	R85: call_func -> $ 
-51        	*                   	R83: factor -> const 
-51        	/                   	R83: factor -> const 
-51        	%                   	R83: factor -> const 
-51        	+                   	R83: factor -> const 
-51        	-                   	R83: factor -> const 
-51        	>                   	R83: factor -> const 
-51        	>=                  	R83: factor -> const 
-51        	<                   	R83: factor -> const 
-51        	<=                  	R83: factor -> const 
-51        	==                  	R83: factor -> const 
-51        	!=                  	R83: factor -> const 
-51        	=                   	R83: factor -> const 
-51        	+=                  	R83: factor -> const 
-51        	-=                  	R83: factor -> const 
-51        	*=                  	R83: factor -> const 
-51        	/=                  	R83: factor -> const 
-51        	%=                  	R83: factor -> const 
-51        	,                   	R83: factor -> const 
-51        	;                   	R83: factor -> const 
-51        	&&                  	R83: factor -> const 
-51        	||                  	R83: factor -> const 
-51        	)                   	R83: factor -> const 
-52        	:                   	R89: const -> digit 
-52        	*                   	R89: const -> digit 
-52        	/                   	R89: const -> digit 
-52        	%                   	R89: const -> digit 
-52        	+                   	R89: const -> digit 
-52        	-                   	R89: const -> digit 
-52        	>                   	R89: const -> digit 
-52        	>=                  	R89: const -> digit 
-52        	<                   	R89: const -> digit 
-52        	<=                  	R89: const -> digit 
-52        	==                  	R89: const -> digit 
-52        	!=                  	R89: const -> digit 
-52        	=                   	R89: const -> digit 
-52        	+=                  	R89: const -> digit 
-52        	-=                  	R89: const -> digit 
-52        	*=                  	R89: const -> digit 
-52        	/=                  	R89: const -> digit 
-52        	%=                  	R89: const -> digit 
-52        	,                   	R89: const -> digit 
-52        	;                   	R89: const -> digit 
-52        	&&                  	R89: const -> digit 
-52        	||                  	R89: const -> digit 
-52        	)                   	R89: const -> digit 
-53        	continue            	R19: define_stmts -> define_stmt define_stmts 
-53        	break               	R19: define_stmts -> define_stmt define_stmts 
-53        	return              	R19: define_stmts -> define_stmt define_stmts 
-53        	while               	R19: define_stmts -> define_stmt define_stmts 
-53        	for                 	R19: define_stmts -> define_stmt define_stmts 
-53        	do                  	R19: define_stmts -> define_stmt define_stmts 
-53        	if                  	R19: define_stmts -> define_stmt define_stmts 
-53        	switch              	R19: define_stmts -> define_stmt define_stmts 
-53        	(                   	R19: define_stmts -> define_stmt define_stmts 
-53        	id                  	R19: define_stmts -> define_stmt define_stmts 
-53        	digit               	R19: define_stmts -> define_stmt define_stmts 
-53        	}                   	R19: define_stmts -> define_stmt define_stmts 
-54        	,                   	R23: init -> $ 
-54        	;                   	R23: init -> $ 
-55        	)                   	R15: arg -> $ 
-56        	int                 	R18: block -> { define_stmts stmts } 
-56        	short               	R18: block -> { define_stmts stmts } 
-56        	long                	R18: block -> { define_stmts stmts } 
-56        	char                	R18: block -> { define_stmts stmts } 
-56        	float               	R18: block -> { define_stmts stmts } 
-56        	double              	R18: block -> { define_stmts stmts } 
-56        	void                	R18: block -> { define_stmts stmts } 
-56        	unsigned            	R18: block -> { define_stmts stmts } 
-56        	#                   	R18: block -> { define_stmts stmts } 
-57        	}                   	R26: stmts -> stmt stmts 
-57        	case                	R26: stmts -> stmt stmts 
-57        	default             	R26: stmts -> stmt stmts 
-58        	continue            	R32: assign_stmt -> expression ; 
-58        	break               	R32: assign_stmt -> expression ; 
-58        	return              	R32: assign_stmt -> expression ; 
-58        	while               	R32: assign_stmt -> expression ; 
-58        	for                 	R32: assign_stmt -> expression ; 
-58        	do                  	R32: assign_stmt -> expression ; 
-58        	if                  	R32: assign_stmt -> expression ; 
-58        	switch              	R32: assign_stmt -> expression ; 
-58        	(                   	R32: assign_stmt -> expression ; 
-58        	id                  	R32: assign_stmt -> expression ; 
-58        	digit               	R32: assign_stmt -> expression ; 
-58        	}                   	R32: assign_stmt -> expression ; 
-58        	case                	R32: assign_stmt -> expression ; 
-58        	default             	R32: assign_stmt -> expression ; 
-59        	continue            	R33: jump_stmt -> continue ; 
-59        	break               	R33: jump_stmt -> continue ; 
-59        	return              	R33: jump_stmt -> continue ; 
-59        	while               	R33: jump_stmt -> continue ; 
-59        	for                 	R33: jump_stmt -> continue ; 
-59        	do                  	R33: jump_stmt -> continue ; 
-59        	if                  	R33: jump_stmt -> continue ; 
-59        	switch              	R33: jump_stmt -> continue ; 
-59        	(                   	R33: jump_stmt -> continue ; 
-59        	id                  	R33: jump_stmt -> continue ; 
-59        	digit               	R33: jump_stmt -> continue ; 
-59        	}                   	R33: jump_stmt -> continue ; 
-59        	case                	R33: jump_stmt -> continue ; 
-59        	default             	R33: jump_stmt -> continue ; 
-60        	continue            	R34: jump_stmt -> break ; 
-60        	break               	R34: jump_stmt -> break ; 
-60        	return              	R34: jump_stmt -> break ; 
-60        	while               	R34: jump_stmt -> break ; 
-60        	for                 	R34: jump_stmt -> break ; 
-60        	do                  	R34: jump_stmt -> break ; 
-60        	if                  	R34: jump_stmt -> break ; 
-60        	switch              	R34: jump_stmt -> break ; 
-60        	(                   	R34: jump_stmt -> break ; 
-60        	id                  	R34: jump_stmt -> break ; 
-60        	digit               	R34: jump_stmt -> break ; 
-60        	}                   	R34: jump_stmt -> break ; 
-60        	case                	R34: jump_stmt -> break ; 
-60        	default             	R34: jump_stmt -> break ; 
-62        	;                   	R54: isnull_expr -> expression 
-62        	)                   	R54: isnull_expr -> expression 
-62        	,                   	R54: isnull_expr -> expression 
-64        	;                   	R55: isnull_expr -> $ 
-64        	)                   	R55: isnull_expr -> $ 
-64        	,                   	R55: isnull_expr -> $ 
-66        	}                   	R27: stmts -> $ 
-66        	case                	R27: stmts -> $ 
-66        	default             	R27: stmts -> $ 
-69        	,                   	R56: expression -> value operation 
-69        	;                   	R56: expression -> value operation 
-69        	&&                  	R56: expression -> value operation 
-69        	||                  	R56: expression -> value operation 
-69        	)                   	R56: expression -> value operation 
-72        	(                   	R60: compare_op -> > 
-72        	id                  	R60: compare_op -> > 
-72        	digit               	R60: compare_op -> > 
-73        	(                   	R61: compare_op -> >= 
-73        	id                  	R61: compare_op -> >= 
-73        	digit               	R61: compare_op -> >= 
-74        	(                   	R62: compare_op -> < 
-74        	id                  	R62: compare_op -> < 
-74        	digit               	R62: compare_op -> < 
-75        	(                   	R63: compare_op -> <= 
-75        	id                  	R63: compare_op -> <= 
-75        	digit               	R63: compare_op -> <= 
-76        	(                   	R64: compare_op -> == 
-76        	id                  	R64: compare_op -> == 
-76        	digit               	R64: compare_op -> == 
-77        	(                   	R65: compare_op -> != 
-77        	id                  	R65: compare_op -> != 
-77        	digit               	R65: compare_op -> != 
-78        	(                   	R66: equal_op -> = 
-78        	id                  	R66: equal_op -> = 
-78        	digit               	R66: equal_op -> = 
-79        	(                   	R67: equal_op -> += 
-79        	id                  	R67: equal_op -> += 
-79        	digit               	R67: equal_op -> += 
-80        	(                   	R68: equal_op -> -= 
-80        	id                  	R68: equal_op -> -= 
-80        	digit               	R68: equal_op -> -= 
-81        	(                   	R69: equal_op -> *= 
-81        	id                  	R69: equal_op -> *= 
-81        	digit               	R69: equal_op -> *= 
-82        	(                   	R70: equal_op -> /= 
-82        	id                  	R70: equal_op -> /= 
-82        	digit               	R70: equal_op -> /= 
-83        	(                   	R71: equal_op -> %= 
-83        	id                  	R71: equal_op -> %= 
-83        	digit               	R71: equal_op -> %= 
-84        	>                   	R72: value -> item value' 
-84        	>=                  	R72: value -> item value' 
-84        	<                   	R72: value -> item value' 
-84        	<=                  	R72: value -> item value' 
-84        	==                  	R72: value -> item value' 
-84        	!=                  	R72: value -> item value' 
-84        	=                   	R72: value -> item value' 
-84        	+=                  	R72: value -> item value' 
-84        	-=                  	R72: value -> item value' 
-84        	*=                  	R72: value -> item value' 
-84        	/=                  	R72: value -> item value' 
-84        	%=                  	R72: value -> item value' 
-84        	,                   	R72: value -> item value' 
-84        	;                   	R72: value -> item value' 
-84        	&&                  	R72: value -> item value' 
-84        	||                  	R72: value -> item value' 
-84        	)                   	R72: value -> item value' 
-87        	+                   	R76: item -> factor item' 
-87        	-                   	R76: item -> factor item' 
-87        	>                   	R76: item -> factor item' 
-87        	>=                  	R76: item -> factor item' 
-87        	<                   	R76: item -> factor item' 
-87        	<=                  	R76: item -> factor item' 
-87        	==                  	R76: item -> factor item' 
-87        	!=                  	R76: item -> factor item' 
-87        	=                   	R76: item -> factor item' 
-87        	+=                  	R76: item -> factor item' 
-87        	-=                  	R76: item -> factor item' 
-87        	*=                  	R76: item -> factor item' 
-87        	/=                  	R76: item -> factor item' 
-87        	%=                  	R76: item -> factor item' 
-87        	,                   	R76: item -> factor item' 
-87        	;                   	R76: item -> factor item' 
-87        	&&                  	R76: item -> factor item' 
-87        	||                  	R76: item -> factor item' 
-87        	)                   	R76: item -> factor item' 
-92        	*                   	R82: factor -> id call_func 
-92        	/                   	R82: factor -> id call_func 
-92        	%                   	R82: factor -> id call_func 
-92        	+                   	R82: factor -> id call_func 
-92        	-                   	R82: factor -> id call_func 
-92        	>                   	R82: factor -> id call_func 
-92        	>=                  	R82: factor -> id call_func 
-92        	<                   	R82: factor -> id call_func 
-92        	<=                  	R82: factor -> id call_func 
-92        	==                  	R82: factor -> id call_func 
-92        	!=                  	R82: factor -> id call_func 
-92        	=                   	R82: factor -> id call_func 
-92        	+=                  	R82: factor -> id call_func 
-92        	-=                  	R82: factor -> id call_func 
-92        	*=                  	R82: factor -> id call_func 
-92        	/=                  	R82: factor -> id call_func 
-92        	%=                  	R82: factor -> id call_func 
-92        	,                   	R82: factor -> id call_func 
-92        	;                   	R82: factor -> id call_func 
-92        	&&                  	R82: factor -> id call_func 
-92        	||                  	R82: factor -> id call_func 
-92        	)                   	R82: factor -> id call_func 
-93        	;                   	R55: isnull_expr -> $ 
-93        	)                   	R55: isnull_expr -> $ 
-93        	,                   	R55: isnull_expr -> $ 
-94        	;                   	R25: vars -> $ 
-96        	)                   	R14: arg -> , type id arg 
-97        	continue            	R35: jump_stmt -> return isnull_expr ; 
-97        	break               	R35: jump_stmt -> return isnull_expr ; 
-97        	return              	R35: jump_stmt -> return isnull_expr ; 
-97        	while               	R35: jump_stmt -> return isnull_expr ; 
-97        	for                 	R35: jump_stmt -> return isnull_expr ; 
-97        	do                  	R35: jump_stmt -> return isnull_expr ; 
-97        	if                  	R35: jump_stmt -> return isnull_expr ; 
-97        	switch              	R35: jump_stmt -> return isnull_expr ; 
-97        	(                   	R35: jump_stmt -> return isnull_expr ; 
-97        	id                  	R35: jump_stmt -> return isnull_expr ; 
-97        	digit               	R35: jump_stmt -> return isnull_expr ; 
-97        	}                   	R35: jump_stmt -> return isnull_expr ; 
-97        	case                	R35: jump_stmt -> return isnull_expr ; 
-97        	default             	R35: jump_stmt -> return isnull_expr ; 
-100       	)                   	R45: bool_expression -> $ 
-106       	,                   	R57: operation -> compare_op value 
-106       	;                   	R57: operation -> compare_op value 
-106       	&&                  	R57: operation -> compare_op value 
-106       	||                  	R57: operation -> compare_op value 
-106       	)                   	R57: operation -> compare_op value 
-107       	,                   	R58: operation -> equal_op value 
-107       	;                   	R58: operation -> equal_op value 
-107       	&&                  	R58: operation -> equal_op value 
-107       	||                  	R58: operation -> equal_op value 
-107       	)                   	R58: operation -> equal_op value 
-108       	>                   	R75: value' -> $ 
-108       	>=                  	R75: value' -> $ 
-108       	<                   	R75: value' -> $ 
-108       	<=                  	R75: value' -> $ 
-108       	==                  	R75: value' -> $ 
-108       	!=                  	R75: value' -> $ 
-108       	=                   	R75: value' -> $ 
-108       	+=                  	R75: value' -> $ 
-108       	-=                  	R75: value' -> $ 
-108       	*=                  	R75: value' -> $ 
-108       	/=                  	R75: value' -> $ 
-108       	%=                  	R75: value' -> $ 
-108       	,                   	R75: value' -> $ 
-108       	;                   	R75: value' -> $ 
-108       	&&                  	R75: value' -> $ 
-108       	||                  	R75: value' -> $ 
-108       	)                   	R75: value' -> $ 
-109       	>                   	R75: value' -> $ 
-109       	>=                  	R75: value' -> $ 
-109       	<                   	R75: value' -> $ 
-109       	<=                  	R75: value' -> $ 
-109       	==                  	R75: value' -> $ 
-109       	!=                  	R75: value' -> $ 
-109       	=                   	R75: value' -> $ 
-109       	+=                  	R75: value' -> $ 
-109       	-=                  	R75: value' -> $ 
-109       	*=                  	R75: value' -> $ 
-109       	/=                  	R75: value' -> $ 
-109       	%=                  	R75: value' -> $ 
-109       	,                   	R75: value' -> $ 
-109       	;                   	R75: value' -> $ 
-109       	&&                  	R75: value' -> $ 
-109       	||                  	R75: value' -> $ 
-109       	)                   	R75: value' -> $ 
-110       	+                   	R80: item' -> $ 
-110       	-                   	R80: item' -> $ 
-110       	>                   	R80: item' -> $ 
-110       	>=                  	R80: item' -> $ 
-110       	<                   	R80: item' -> $ 
-110       	<=                  	R80: item' -> $ 
-110       	==                  	R80: item' -> $ 
-110       	!=                  	R80: item' -> $ 
-110       	=                   	R80: item' -> $ 
-110       	+=                  	R80: item' -> $ 
-110       	-=                  	R80: item' -> $ 
-110       	*=                  	R80: item' -> $ 
-110       	/=                  	R80: item' -> $ 
-110       	%=                  	R80: item' -> $ 
-110       	,                   	R80: item' -> $ 
-110       	;                   	R80: item' -> $ 
-110       	&&                  	R80: item' -> $ 
-110       	||                  	R80: item' -> $ 
-110       	)                   	R80: item' -> $ 
-111       	+                   	R80: item' -> $ 
-111       	-                   	R80: item' -> $ 
-111       	>                   	R80: item' -> $ 
-111       	>=                  	R80: item' -> $ 
-111       	<                   	R80: item' -> $ 
-111       	<=                  	R80: item' -> $ 
-111       	==                  	R80: item' -> $ 
-111       	!=                  	R80: item' -> $ 
-111       	=                   	R80: item' -> $ 
-111       	+=                  	R80: item' -> $ 
-111       	-=                  	R80: item' -> $ 
-111       	*=                  	R80: item' -> $ 
-111       	/=                  	R80: item' -> $ 
-111       	%=                  	R80: item' -> $ 
-111       	,                   	R80: item' -> $ 
-111       	;                   	R80: item' -> $ 
-111       	&&                  	R80: item' -> $ 
-111       	||                  	R80: item' -> $ 
-111       	)                   	R80: item' -> $ 
-112       	+                   	R80: item' -> $ 
-112       	-                   	R80: item' -> $ 
-112       	>                   	R80: item' -> $ 
-112       	>=                  	R80: item' -> $ 
-112       	<                   	R80: item' -> $ 
-112       	<=                  	R80: item' -> $ 
-112       	==                  	R80: item' -> $ 
-112       	!=                  	R80: item' -> $ 
-112       	=                   	R80: item' -> $ 
-112       	+=                  	R80: item' -> $ 
-112       	-=                  	R80: item' -> $ 
-112       	*=                  	R80: item' -> $ 
-112       	/=                  	R80: item' -> $ 
-112       	%=                  	R80: item' -> $ 
-112       	,                   	R80: item' -> $ 
-112       	;                   	R80: item' -> $ 
-112       	&&                  	R80: item' -> $ 
-112       	||                  	R80: item' -> $ 
-112       	)                   	R80: item' -> $ 
-113       	*                   	R81: factor -> ( value ) 
-113       	/                   	R81: factor -> ( value ) 
-113       	%                   	R81: factor -> ( value ) 
-113       	+                   	R81: factor -> ( value ) 
-113       	-                   	R81: factor -> ( value ) 
-113       	>                   	R81: factor -> ( value ) 
-113       	>=                  	R81: factor -> ( value ) 
-113       	<                   	R81: factor -> ( value ) 
-113       	<=                  	R81: factor -> ( value ) 
-113       	==                  	R81: factor -> ( value ) 
-113       	!=                  	R81: factor -> ( value ) 
-113       	=                   	R81: factor -> ( value ) 
-113       	+=                  	R81: factor -> ( value ) 
-113       	-=                  	R81: factor -> ( value ) 
-113       	*=                  	R81: factor -> ( value ) 
-113       	/=                  	R81: factor -> ( value ) 
-113       	%=                  	R81: factor -> ( value ) 
-113       	,                   	R81: factor -> ( value ) 
-113       	;                   	R81: factor -> ( value ) 
-113       	&&                  	R81: factor -> ( value ) 
-113       	||                  	R81: factor -> ( value ) 
-113       	)                   	R81: factor -> ( value ) 
-115       	)                   	R88: isnull_es -> $ 
-118       	,                   	R22: init -> = expression 
-118       	;                   	R22: init -> = expression 
-120       	)                   	R45: bool_expression -> $ 
-121       	)                   	R43: logical_expression -> expression bool_expression 
-123       	(                   	R46: lop -> && 
-123       	id                  	R46: lop -> && 
-123       	digit               	R46: lop -> && 
-124       	(                   	R47: lop -> || 
-124       	id                  	R47: lop -> || 
-124       	digit               	R47: lop -> || 
-125       	;                   	R55: isnull_expr -> $ 
-125       	)                   	R55: isnull_expr -> $ 
-125       	,                   	R55: isnull_expr -> $ 
-127       	continue            	R53: block_stmt -> { stmts } 
-127       	break               	R53: block_stmt -> { stmts } 
-127       	return              	R53: block_stmt -> { stmts } 
-127       	while               	R53: block_stmt -> { stmts } 
-127       	for                 	R53: block_stmt -> { stmts } 
-127       	do                  	R53: block_stmt -> { stmts } 
-127       	if                  	R53: block_stmt -> { stmts } 
-127       	switch              	R53: block_stmt -> { stmts } 
-127       	(                   	R53: block_stmt -> { stmts } 
-127       	id                  	R53: block_stmt -> { stmts } 
-127       	digit               	R53: block_stmt -> { stmts } 
-127       	}                   	R53: block_stmt -> { stmts } 
-127       	else                	R53: block_stmt -> { stmts } 
-127       	case                	R53: block_stmt -> { stmts } 
-127       	default             	R53: block_stmt -> { stmts } 
-130       	>                   	R73: value' -> + item value' 
-130       	>=                  	R73: value' -> + item value' 
-130       	<                   	R73: value' -> + item value' 
-130       	<=                  	R73: value' -> + item value' 
-130       	==                  	R73: value' -> + item value' 
-130       	!=                  	R73: value' -> + item value' 
-130       	=                   	R73: value' -> + item value' 
-130       	+=                  	R73: value' -> + item value' 
-130       	-=                  	R73: value' -> + item value' 
-130       	*=                  	R73: value' -> + item value' 
-130       	/=                  	R73: value' -> + item value' 
-130       	%=                  	R73: value' -> + item value' 
-130       	,                   	R73: value' -> + item value' 
-130       	;                   	R73: value' -> + item value' 
-130       	&&                  	R73: value' -> + item value' 
-130       	||                  	R73: value' -> + item value' 
-130       	)                   	R73: value' -> + item value' 
-131       	>                   	R74: value' -> - item value' 
-131       	>=                  	R74: value' -> - item value' 
-131       	<                   	R74: value' -> - item value' 
-131       	<=                  	R74: value' -> - item value' 
-131       	==                  	R74: value' -> - item value' 
-131       	!=                  	R74: value' -> - item value' 
-131       	=                   	R74: value' -> - item value' 
-131       	+=                  	R74: value' -> - item value' 
-131       	-=                  	R74: value' -> - item value' 
-131       	*=                  	R74: value' -> - item value' 
-131       	/=                  	R74: value' -> - item value' 
-131       	%=                  	R74: value' -> - item value' 
-131       	,                   	R74: value' -> - item value' 
-131       	;                   	R74: value' -> - item value' 
-131       	&&                  	R74: value' -> - item value' 
-131       	||                  	R74: value' -> - item value' 
-131       	)                   	R74: value' -> - item value' 
-132       	+                   	R77: item' -> * factor item' 
-132       	-                   	R77: item' -> * factor item' 
-132       	>                   	R77: item' -> * factor item' 
-132       	>=                  	R77: item' -> * factor item' 
-132       	<                   	R77: item' -> * factor item' 
-132       	<=                  	R77: item' -> * factor item' 
-132       	==                  	R77: item' -> * factor item' 
-132       	!=                  	R77: item' -> * factor item' 
-132       	=                   	R77: item' -> * factor item' 
-132       	+=                  	R77: item' -> * factor item' 
-132       	-=                  	R77: item' -> * factor item' 
-132       	*=                  	R77: item' -> * factor item' 
-132       	/=                  	R77: item' -> * factor item' 
-132       	%=                  	R77: item' -> * factor item' 
-132       	,                   	R77: item' -> * factor item' 
-132       	;                   	R77: item' -> * factor item' 
-132       	&&                  	R77: item' -> * factor item' 
-132       	||                  	R77: item' -> * factor item' 
-132       	)                   	R77: item' -> * factor item' 
-133       	+                   	R78: item' -> / factor item' 
-133       	-                   	R78: item' -> / factor item' 
-133       	>                   	R78: item' -> / factor item' 
-133       	>=                  	R78: item' -> / factor item' 
-133       	<                   	R78: item' -> / factor item' 
-133       	<=                  	R78: item' -> / factor item' 
-133       	==                  	R78: item' -> / factor item' 
-133       	!=                  	R78: item' -> / factor item' 
-133       	=                   	R78: item' -> / factor item' 
-133       	+=                  	R78: item' -> / factor item' 
-133       	-=                  	R78: item' -> / factor item' 
-133       	*=                  	R78: item' -> / factor item' 
-133       	/=                  	R78: item' -> / factor item' 
-133       	%=                  	R78: item' -> / factor item' 
-133       	,                   	R78: item' -> / factor item' 
-133       	;                   	R78: item' -> / factor item' 
-133       	&&                  	R78: item' -> / factor item' 
-133       	||                  	R78: item' -> / factor item' 
-133       	)                   	R78: item' -> / factor item' 
-134       	+                   	R79: item' -> % factor item' 
-134       	-                   	R79: item' -> % factor item' 
-134       	>                   	R79: item' -> % factor item' 
-134       	>=                  	R79: item' -> % factor item' 
-134       	<                   	R79: item' -> % factor item' 
-134       	<=                  	R79: item' -> % factor item' 
-134       	==                  	R79: item' -> % factor item' 
-134       	!=                  	R79: item' -> % factor item' 
-134       	=                   	R79: item' -> % factor item' 
-134       	+=                  	R79: item' -> % factor item' 
-134       	-=                  	R79: item' -> % factor item' 
-134       	*=                  	R79: item' -> % factor item' 
-134       	/=                  	R79: item' -> % factor item' 
-134       	%=                  	R79: item' -> % factor item' 
-134       	,                   	R79: item' -> % factor item' 
-134       	;                   	R79: item' -> % factor item' 
-134       	&&                  	R79: item' -> % factor item' 
-134       	||                  	R79: item' -> % factor item' 
-134       	)                   	R79: item' -> % factor item' 
-135       	*                   	R84: call_func -> ( es ) 
-135       	/                   	R84: call_func -> ( es ) 
-135       	%                   	R84: call_func -> ( es ) 
-135       	+                   	R84: call_func -> ( es ) 
-135       	-                   	R84: call_func -> ( es ) 
-135       	>                   	R84: call_func -> ( es ) 
-135       	>=                  	R84: call_func -> ( es ) 
-135       	<                   	R84: call_func -> ( es ) 
-135       	<=                  	R84: call_func -> ( es ) 
-135       	==                  	R84: call_func -> ( es ) 
-135       	!=                  	R84: call_func -> ( es ) 
-135       	=                   	R84: call_func -> ( es ) 
-135       	+=                  	R84: call_func -> ( es ) 
-135       	-=                  	R84: call_func -> ( es ) 
-135       	*=                  	R84: call_func -> ( es ) 
-135       	/=                  	R84: call_func -> ( es ) 
-135       	%=                  	R84: call_func -> ( es ) 
-135       	,                   	R84: call_func -> ( es ) 
-135       	;                   	R84: call_func -> ( es ) 
-135       	&&                  	R84: call_func -> ( es ) 
-135       	||                  	R84: call_func -> ( es ) 
-135       	)                   	R84: call_func -> ( es ) 
-136       	)                   	R86: es -> isnull_expr isnull_es 
-137       	;                   	R55: isnull_expr -> $ 
-137       	)                   	R55: isnull_expr -> $ 
-137       	,                   	R55: isnull_expr -> $ 
-138       	int                 	R21: define_stmt -> type id init vars ; 
-138       	short               	R21: define_stmt -> type id init vars ; 
-138       	long                	R21: define_stmt -> type id init vars ; 
-138       	char                	R21: define_stmt -> type id init vars ; 
-138       	float               	R21: define_stmt -> type id init vars ; 
-138       	double              	R21: define_stmt -> type id init vars ; 
-138       	void                	R21: define_stmt -> type id init vars ; 
-138       	unsigned            	R21: define_stmt -> type id init vars ; 
-138       	continue            	R21: define_stmt -> type id init vars ; 
-138       	break               	R21: define_stmt -> type id init vars ; 
-138       	return              	R21: define_stmt -> type id init vars ; 
-138       	while               	R21: define_stmt -> type id init vars ; 
-138       	for                 	R21: define_stmt -> type id init vars ; 
-138       	do                  	R21: define_stmt -> type id init vars ; 
-138       	if                  	R21: define_stmt -> type id init vars ; 
-138       	switch              	R21: define_stmt -> type id init vars ; 
-138       	(                   	R21: define_stmt -> type id init vars ; 
-138       	id                  	R21: define_stmt -> type id init vars ; 
-138       	digit               	R21: define_stmt -> type id init vars ; 
-138       	}                   	R21: define_stmt -> type id init vars ; 
-139       	,                   	R23: init -> $ 
-139       	;                   	R23: init -> $ 
-140       	continue            	R36: iteration_stmt -> while ( logical_expression ) block_stmt 
-140       	break               	R36: iteration_stmt -> while ( logical_expression ) block_stmt 
-140       	return              	R36: iteration_stmt -> while ( logical_expression ) block_stmt 
-140       	while               	R36: iteration_stmt -> while ( logical_expression ) block_stmt 
-140       	for                 	R36: iteration_stmt -> while ( logical_expression ) block_stmt 
-140       	do                  	R36: iteration_stmt -> while ( logical_expression ) block_stmt 
-140       	if                  	R36: iteration_stmt -> while ( logical_expression ) block_stmt 
-140       	switch              	R36: iteration_stmt -> while ( logical_expression ) block_stmt 
-140       	(                   	R36: iteration_stmt -> while ( logical_expression ) block_stmt 
-140       	id                  	R36: iteration_stmt -> while ( logical_expression ) block_stmt 
-140       	digit               	R36: iteration_stmt -> while ( logical_expression ) block_stmt 
-140       	}                   	R36: iteration_stmt -> while ( logical_expression ) block_stmt 
-140       	case                	R36: iteration_stmt -> while ( logical_expression ) block_stmt 
-140       	default             	R36: iteration_stmt -> while ( logical_expression ) block_stmt 
-141       	)                   	R42: logical_expression -> ! expression bool_expression 
-142       	)                   	R45: bool_expression -> $ 
-145       	continue            	R41: result -> $ 
-145       	break               	R41: result -> $ 
-145       	return              	R41: result -> $ 
-145       	while               	R41: result -> $ 
-145       	for                 	R41: result -> $ 
-145       	do                  	R41: result -> $ 
-145       	if                  	R41: result -> $ 
-145       	switch              	R41: result -> $ 
-145       	(                   	R41: result -> $ 
-145       	id                  	R41: result -> $ 
-145       	digit               	R41: result -> $ 
-145       	}                   	R41: result -> $ 
-145       	case                	R41: result -> $ 
-145       	default             	R41: result -> $ 
-147       	)                   	R88: isnull_es -> $ 
-148       	;                   	R25: vars -> $ 
-149       	)                   	R44: bool_expression -> lop expression bool_expression 
-150       	;                   	R55: isnull_expr -> $ 
-150       	)                   	R55: isnull_expr -> $ 
-150       	,                   	R55: isnull_expr -> $ 
-152       	continue            	R39: branch_stmt -> if ( logical_expression ) block_stmt result 
-152       	break               	R39: branch_stmt -> if ( logical_expression ) block_stmt result 
-152       	return              	R39: branch_stmt -> if ( logical_expression ) block_stmt result 
-152       	while               	R39: branch_stmt -> if ( logical_expression ) block_stmt result 
-152       	for                 	R39: branch_stmt -> if ( logical_expression ) block_stmt result 
-152       	do                  	R39: branch_stmt -> if ( logical_expression ) block_stmt result 
-152       	if                  	R39: branch_stmt -> if ( logical_expression ) block_stmt result 
-152       	switch              	R39: branch_stmt -> if ( logical_expression ) block_stmt result 
-152       	(                   	R39: branch_stmt -> if ( logical_expression ) block_stmt result 
-152       	id                  	R39: branch_stmt -> if ( logical_expression ) block_stmt result 
-152       	digit               	R39: branch_stmt -> if ( logical_expression ) block_stmt result 
-152       	}                   	R39: branch_stmt -> if ( logical_expression ) block_stmt result 
-152       	case                	R39: branch_stmt -> if ( logical_expression ) block_stmt result 
-152       	default             	R39: branch_stmt -> if ( logical_expression ) block_stmt result 
-154       	default             	R50: case_stmts -> $ 
-156       	)                   	R87: isnull_es -> , isnull_expr isnull_es 
-157       	;                   	R24: vars -> , id init vars 
-159       	continue            	R38: iteration_stmt -> do block_stmt while ( logical_expression ) ; 
-159       	break               	R38: iteration_stmt -> do block_stmt while ( logical_expression ) ; 
-159       	return              	R38: iteration_stmt -> do block_stmt while ( logical_expression ) ; 
-159       	while               	R38: iteration_stmt -> do block_stmt while ( logical_expression ) ; 
-159       	for                 	R38: iteration_stmt -> do block_stmt while ( logical_expression ) ; 
-159       	do                  	R38: iteration_stmt -> do block_stmt while ( logical_expression ) ; 
-159       	if                  	R38: iteration_stmt -> do block_stmt while ( logical_expression ) ; 
-159       	switch              	R38: iteration_stmt -> do block_stmt while ( logical_expression ) ; 
-159       	(                   	R38: iteration_stmt -> do block_stmt while ( logical_expression ) ; 
-159       	id                  	R38: iteration_stmt -> do block_stmt while ( logical_expression ) ; 
-159       	digit               	R38: iteration_stmt -> do block_stmt while ( logical_expression ) ; 
-159       	}                   	R38: iteration_stmt -> do block_stmt while ( logical_expression ) ; 
-159       	case                	R38: iteration_stmt -> do block_stmt while ( logical_expression ) ; 
-159       	default             	R38: iteration_stmt -> do block_stmt while ( logical_expression ) ; 
-160       	continue            	R40: result -> else block_stmt 
-160       	break               	R40: result -> else block_stmt 
-160       	return              	R40: result -> else block_stmt 
-160       	while               	R40: result -> else block_stmt 
-160       	for                 	R40: result -> else block_stmt 
-160       	do                  	R40: result -> else block_stmt 
-160       	if                  	R40: result -> else block_stmt 
-160       	switch              	R40: result -> else block_stmt 
-160       	(                   	R40: result -> else block_stmt 
-160       	id                  	R40: result -> else block_stmt 
-160       	digit               	R40: result -> else block_stmt 
-160       	}                   	R40: result -> else block_stmt 
-160       	case                	R40: result -> else block_stmt 
-160       	default             	R40: result -> else block_stmt 
-162       	default             	R50: case_stmts -> $ 
-167       	default             	R49: case_stmts -> case_stmt case_stmts 
-168       	}                   	R27: stmts -> $ 
-168       	case                	R27: stmts -> $ 
-168       	default             	R27: stmts -> $ 
-169       	continue            	R37: iteration_stmt -> for ( isnull_expr ; isnull_expr ; isnull_expr ) block_stmt 
-169       	break               	R37: iteration_stmt -> for ( isnull_expr ; isnull_expr ; isnull_expr ) block_stmt 
-169       	return              	R37: iteration_stmt -> for ( isnull_expr ; isnull_expr ; isnull_expr ) block_stmt 
-169       	while               	R37: iteration_stmt -> for ( isnull_expr ; isnull_expr ; isnull_expr ) block_stmt 
-169       	for                 	R37: iteration_stmt -> for ( isnull_expr ; isnull_expr ; isnull_expr ) block_stmt 
-169       	do                  	R37: iteration_stmt -> for ( isnull_expr ; isnull_expr ; isnull_expr ) block_stmt 
-169       	if                  	R37: iteration_stmt -> for ( isnull_expr ; isnull_expr ; isnull_expr ) block_stmt 
-169       	switch              	R37: iteration_stmt -> for ( isnull_expr ; isnull_expr ; isnull_expr ) block_stmt 
-169       	(                   	R37: iteration_stmt -> for ( isnull_expr ; isnull_expr ; isnull_expr ) block_stmt 
-169       	id                  	R37: iteration_stmt -> for ( isnull_expr ; isnull_expr ; isnull_expr ) block_stmt 
-169       	digit               	R37: iteration_stmt -> for ( isnull_expr ; isnull_expr ; isnull_expr ) block_stmt 
-169       	}                   	R37: iteration_stmt -> for ( isnull_expr ; isnull_expr ; isnull_expr ) block_stmt 
-169       	case                	R37: iteration_stmt -> for ( isnull_expr ; isnull_expr ; isnull_expr ) block_stmt 
-169       	default             	R37: iteration_stmt -> for ( isnull_expr ; isnull_expr ; isnull_expr ) block_stmt 
-170       	continue            	R48: branch_stmt -> switch ( id ) { case_stmt case_stmts default_stmt } 
-170       	break               	R48: branch_stmt -> switch ( id ) { case_stmt case_stmts default_stmt } 
-170       	return              	R48: branch_stmt -> switch ( id ) { case_stmt case_stmts default_stmt } 
-170       	while               	R48: branch_stmt -> switch ( id ) { case_stmt case_stmts default_stmt } 
-170       	for                 	R48: branch_stmt -> switch ( id ) { case_stmt case_stmts default_stmt } 
-170       	do                  	R48: branch_stmt -> switch ( id ) { case_stmt case_stmts default_stmt } 
-170       	if                  	R48: branch_stmt -> switch ( id ) { case_stmt case_stmts default_stmt } 
-170       	switch              	R48: branch_stmt -> switch ( id ) { case_stmt case_stmts default_stmt } 
-170       	(                   	R48: branch_stmt -> switch ( id ) { case_stmt case_stmts default_stmt } 
-170       	id                  	R48: branch_stmt -> switch ( id ) { case_stmt case_stmts default_stmt } 
-170       	digit               	R48: branch_stmt -> switch ( id ) { case_stmt case_stmts default_stmt } 
-170       	}                   	R48: branch_stmt -> switch ( id ) { case_stmt case_stmts default_stmt } 
-170       	case                	R48: branch_stmt -> switch ( id ) { case_stmt case_stmts default_stmt } 
-170       	default             	R48: branch_stmt -> switch ( id ) { case_stmt case_stmts default_stmt } 
-171       	}                   	R27: stmts -> $ 
-171       	case                	R27: stmts -> $ 
-171       	default             	R27: stmts -> $ 
-172       	case                	R51: case_stmt -> case const : stmts 
-172       	default             	R51: case_stmt -> case const : stmts 
-173       	}                   	R52: default_stmt -> default : stmts 
+0	#	R3: P -> $ 
+5	=	R26: L -> id 
+5	[	R26: L -> id 
+6	#	R3: P -> $ 
+7	#	R3: P -> $ 
+8	#	R0: Program -> P 
+12	!	R49: W -> $ 
+12	(	R49: W -> $ 
+12	CBOOL	R49: W -> $ 
+12	CINT	R49: W -> $ 
+12	id	R49: W -> $ 
+13	id	R17: C -> $ 
+14	[	R15: X -> float 
+14	id	R15: X -> float 
+15	[	R14: X -> int 
+15	id	R14: X -> int 
+16	;	R9: A -> $ 
+18	id	R15: X -> float 
+19	id	R14: X -> int 
+23	#	R1: P -> D P 
+24	#	R2: P -> S P 
+28	{	R39: B -> CBOOL 
+30	!=	R28: E -> G 
+30	+	R28: E -> G 
+30	<	R28: E -> G 
+30	<=	R28: E -> G 
+30	==	R28: E -> G 
+30	>	R28: E -> G 
+30	>=	R28: E -> G 
+31	!=	R32: F -> CINT 
+31	*	R32: F -> CINT 
+31	+	R32: F -> CINT 
+31	<	R32: F -> CINT 
+31	<=	R32: F -> CINT 
+31	==	R32: F -> CINT 
+31	>	R32: F -> CINT 
+31	>=	R32: F -> CINT 
+32	!=	R33: F -> id 
+32	*	R33: F -> id 
+32	+	R33: F -> id 
+32	<	R33: F -> id 
+32	<=	R33: F -> id 
+32	==	R33: F -> id 
+32	>	R33: F -> id 
+32	>=	R33: F -> id 
+33	!=	R30: G -> F 
+33	*	R30: G -> F 
+33	+	R30: G -> F 
+33	<	R30: G -> F 
+33	<=	R30: G -> F 
+33	==	R30: G -> F 
+33	>	R30: G -> F 
+33	>=	R30: G -> F 
+36	+	R28: E -> G 
+36	;	R28: E -> G 
+38	*	R32: F -> CINT 
+38	+	R32: F -> CINT 
+38	;	R32: F -> CINT 
+39	*	R33: F -> id 
+39	+	R33: F -> id 
+39	;	R33: F -> id 
+40	*	R30: G -> F 
+40	+	R30: G -> F 
+40	;	R30: G -> F 
+43	id	R13: T -> X C 
+48	}	R3: P -> $ 
+52	{	R36: B -> ! B 
+56	&&	R39: B -> CBOOL 
+56	)	R39: B -> CBOOL 
+56	||	R39: B -> CBOOL 
+58	!=	R28: E -> G 
+58	)	R28: E -> G 
+58	+	R28: E -> G 
+58	<	R28: E -> G 
+58	<=	R28: E -> G 
+58	==	R28: E -> G 
+58	>	R28: E -> G 
+58	>=	R28: E -> G 
+59	!=	R32: F -> CINT 
+59	)	R32: F -> CINT 
+59	*	R32: F -> CINT 
+59	+	R32: F -> CINT 
+59	<	R32: F -> CINT 
+59	<=	R32: F -> CINT 
+59	==	R32: F -> CINT 
+59	>	R32: F -> CINT 
+59	>=	R32: F -> CINT 
+60	!=	R33: F -> id 
+60	)	R33: F -> id 
+60	*	R33: F -> id 
+60	+	R33: F -> id 
+60	<	R33: F -> id 
+60	<=	R33: F -> id 
+60	==	R33: F -> id 
+60	>	R33: F -> id 
+60	>=	R33: F -> id 
+61	!=	R30: G -> F 
+61	)	R30: G -> F 
+61	*	R30: G -> F 
+61	+	R30: G -> F 
+61	<	R30: G -> F 
+61	<=	R30: G -> F 
+61	==	R30: G -> F 
+61	>	R30: G -> F 
+61	>=	R30: G -> F 
+64	(	R45: relop -> != 
+64	CINT	R45: relop -> != 
+64	id	R45: relop -> != 
+65	(	R40: relop -> < 
+65	CINT	R40: relop -> < 
+65	id	R40: relop -> < 
+66	(	R41: relop -> <= 
+66	CINT	R41: relop -> <= 
+66	id	R41: relop -> <= 
+67	(	R44: relop -> == 
+67	CINT	R44: relop -> == 
+67	id	R44: relop -> == 
+68	(	R42: relop -> > 
+68	CINT	R42: relop -> > 
+68	id	R42: relop -> > 
+69	(	R43: relop -> >= 
+69	CINT	R43: relop -> >= 
+69	id	R43: relop -> >= 
+71	call	R49: W -> $ 
+71	id	R49: W -> $ 
+71	if	R49: W -> $ 
+71	return	R49: W -> $ 
+71	while	R49: W -> $ 
+73	#	R24: S -> return E ; 
+73	call	R24: S -> return E ; 
+73	float	R24: S -> return E ; 
+73	id	R24: S -> return E ; 
+73	if	R24: S -> return E ; 
+73	int	R24: S -> return E ; 
+73	proc	R24: S -> return E ; 
+73	record	R24: S -> return E ; 
+73	return	R24: S -> return E ; 
+73	while	R24: S -> return E ; 
+76	)	R28: E -> G 
+76	+	R28: E -> G 
+78	)	R32: F -> CINT 
+78	*	R32: F -> CINT 
+78	+	R32: F -> CINT 
+79	)	R33: F -> id 
+79	*	R33: F -> id 
+79	+	R33: F -> id 
+80	)	R30: G -> F 
+80	*	R30: G -> F 
+80	+	R30: G -> F 
+83	;	R9: A -> $ 
+84	;	R9: A -> $ 
+86	,	R32: F -> CINT 
+86	;	R32: F -> CINT 
+86	=	R32: F -> CINT 
+87	,	R33: F -> id 
+87	;	R33: F -> id 
+87	=	R33: F -> id 
+88	#	R5: D -> T id A ; 
+88	call	R5: D -> T id A ; 
+88	float	R5: D -> T id A ; 
+88	id	R5: D -> T id A ; 
+88	if	R5: D -> T id A ; 
+88	int	R5: D -> T id A ; 
+88	proc	R5: D -> T id A ; 
+88	record	R5: D -> T id A ; 
+88	return	R5: D -> T id A ; 
+88	while	R5: D -> T id A ; 
+89	)	R12: M -> $ 
+89	,	R12: M -> $ 
+95	}	R3: P -> $ 
+96	}	R3: P -> $ 
+100	!	R49: W -> $ 
+100	(	R49: W -> $ 
+100	CBOOL	R49: W -> $ 
+100	CINT	R49: W -> $ 
+100	id	R49: W -> $ 
+101	=	R25: L -> L [ CINT ] 
+101	[	R25: L -> L [ CINT ] 
+102	#	R18: S -> L = E ; 
+102	call	R18: S -> L = E ; 
+102	float	R18: S -> L = E ; 
+102	id	R18: S -> L = E ; 
+102	if	R18: S -> L = E ; 
+102	int	R18: S -> L = E ; 
+102	proc	R18: S -> L = E ; 
+102	record	R18: S -> L = E ; 
+102	return	R18: S -> L = E ; 
+102	while	R18: S -> L = E ; 
+103	)	R47: Elist -> E 
+103	,	R47: Elist -> E 
+104	)	R28: E -> G 
+104	+	R28: E -> G 
+104	,	R28: E -> G 
+107	)	R32: F -> CINT 
+107	*	R32: F -> CINT 
+107	+	R32: F -> CINT 
+107	,	R32: F -> CINT 
+108	)	R33: F -> id 
+108	*	R33: F -> id 
+108	+	R33: F -> id 
+108	,	R33: F -> id 
+109	)	R30: G -> F 
+109	*	R30: G -> F 
+109	+	R30: G -> F 
+109	,	R30: G -> F 
+110	!	R48: Q -> $ 
+110	(	R48: Q -> $ 
+110	CBOOL	R48: Q -> $ 
+110	CINT	R48: Q -> $ 
+110	id	R48: Q -> $ 
+111	{	R37: B -> ( B ) 
+112	!	R48: Q -> $ 
+112	(	R48: Q -> $ 
+112	CBOOL	R48: Q -> $ 
+112	CINT	R48: Q -> $ 
+112	id	R48: Q -> $ 
+113	&&	R36: B -> ! B 
+113	)	R36: B -> ! B 
+113	||	R36: B -> ! B 
+120	!=	R31: F -> ( E ) 
+120	*	R31: F -> ( E ) 
+120	+	R31: F -> ( E ) 
+120	<	R31: F -> ( E ) 
+120	<=	R31: F -> ( E ) 
+120	==	R31: F -> ( E ) 
+120	>	R31: F -> ( E ) 
+120	>=	R31: F -> ( E ) 
+122	{	R38: B -> E relop E 
+123	+	R28: E -> G 
+123	{	R28: E -> G 
+125	*	R32: F -> CINT 
+125	+	R32: F -> CINT 
+125	{	R32: F -> CINT 
+126	*	R33: F -> id 
+126	+	R33: F -> id 
+126	{	R33: F -> id 
+127	*	R30: G -> F 
+127	+	R30: G -> F 
+127	{	R30: G -> F 
+128	!=	R27: E -> E + G 
+128	+	R27: E -> E + G 
+128	<	R27: E -> E + G 
+128	<=	R27: E -> E + G 
+128	==	R27: E -> E + G 
+128	>	R27: E -> E + G 
+128	>=	R27: E -> E + G 
+130	!=	R29: G -> G * F 
+130	*	R29: G -> G * F 
+130	+	R29: G -> G * F 
+130	<	R29: G -> G * F 
+130	<=	R29: G -> G * F 
+130	==	R29: G -> G * F 
+130	>	R29: G -> G * F 
+130	>=	R29: G -> G * F 
+132	+	R27: E -> E + G 
+132	;	R27: E -> E + G 
+133	*	R29: G -> G * F 
+133	+	R29: G -> G * F 
+133	;	R29: G -> G * F 
+135	*	R31: F -> ( E ) 
+135	+	R31: F -> ( E ) 
+135	;	R31: F -> ( E ) 
+138	call	R49: W -> $ 
+138	id	R49: W -> $ 
+138	if	R49: W -> $ 
+138	return	R49: W -> $ 
+138	while	R49: W -> $ 
+139	id	R17: C -> $ 
+140	;	R8: A -> , id A 
+141	;	R7: A -> = F A 
+145	;	R9: A -> $ 
+148	#	R6: D -> record id { P } 
+148	call	R6: D -> record id { P } 
+148	float	R6: D -> record id { P } 
+148	id	R6: D -> record id { P } 
+148	if	R6: D -> record id { P } 
+148	int	R6: D -> record id { P } 
+148	proc	R6: D -> record id { P } 
+148	record	R6: D -> record id { P } 
+148	return	R6: D -> record id { P } 
+148	while	R6: D -> record id { P } 
+150	}	R1: P -> D P 
+151	}	R2: P -> S P 
+163	!	R48: Q -> $ 
+163	(	R48: Q -> $ 
+163	CBOOL	R48: Q -> $ 
+163	CINT	R48: Q -> $ 
+163	id	R48: Q -> $ 
+164	&&	R37: B -> ( B ) 
+164	)	R37: B -> ( B ) 
+164	||	R37: B -> ( B ) 
+165	!	R48: Q -> $ 
+165	(	R48: Q -> $ 
+165	CBOOL	R48: Q -> $ 
+165	CINT	R48: Q -> $ 
+165	id	R48: Q -> $ 
+166	!=	R31: F -> ( E ) 
+166	)	R31: F -> ( E ) 
+166	*	R31: F -> ( E ) 
+166	+	R31: F -> ( E ) 
+166	<	R31: F -> ( E ) 
+166	<=	R31: F -> ( E ) 
+166	==	R31: F -> ( E ) 
+166	>	R31: F -> ( E ) 
+166	>=	R31: F -> ( E ) 
+167	&&	R38: B -> E relop E 
+167	)	R38: B -> E relop E 
+167	||	R38: B -> E relop E 
+168	&&	R28: E -> G 
+168	)	R28: E -> G 
+168	+	R28: E -> G 
+168	||	R28: E -> G 
+170	&&	R32: F -> CINT 
+170	)	R32: F -> CINT 
+170	*	R32: F -> CINT 
+170	+	R32: F -> CINT 
+170	||	R32: F -> CINT 
+171	&&	R33: F -> id 
+171	)	R33: F -> id 
+171	*	R33: F -> id 
+171	+	R33: F -> id 
+171	||	R33: F -> id 
+172	&&	R30: G -> F 
+172	)	R30: G -> F 
+172	*	R30: G -> F 
+172	+	R30: G -> F 
+172	||	R30: G -> F 
+173	!=	R27: E -> E + G 
+173	)	R27: E -> E + G 
+173	+	R27: E -> E + G 
+173	<	R27: E -> E + G 
+173	<=	R27: E -> E + G 
+173	==	R27: E -> E + G 
+173	>	R27: E -> E + G 
+173	>=	R27: E -> E + G 
+175	!=	R29: G -> G * F 
+175	)	R29: G -> G * F 
+175	*	R29: G -> G * F 
+175	+	R29: G -> G * F 
+175	<	R29: G -> G * F 
+175	<=	R29: G -> G * F 
+175	==	R29: G -> G * F 
+175	>	R29: G -> G * F 
+175	>=	R29: G -> G * F 
+184	!	R49: W -> $ 
+184	(	R49: W -> $ 
+184	CBOOL	R49: W -> $ 
+184	CINT	R49: W -> $ 
+184	id	R49: W -> $ 
+185	}	R50: N -> $ 
+186	)	R27: E -> E + G 
+186	+	R27: E -> E + G 
+187	)	R29: G -> G * F 
+187	*	R29: G -> G * F 
+187	+	R29: G -> G * F 
+188	)	R31: F -> ( E ) 
+188	*	R31: F -> ( E ) 
+188	+	R31: F -> ( E ) 
+190	id	R16: C -> [ CINT ] C 
+191	,	R31: F -> ( E ) 
+191	;	R31: F -> ( E ) 
+191	=	R31: F -> ( E ) 
+194	)	R11: M -> X id 
+194	,	R11: M -> X id 
+197	}	R3: P -> $ 
+200	call	R49: W -> $ 
+200	id	R49: W -> $ 
+200	if	R49: W -> $ 
+200	return	R49: W -> $ 
+200	while	R49: W -> $ 
+201	call	R24: S -> return E ; 
+201	float	R24: S -> return E ; 
+201	id	R24: S -> return E ; 
+201	if	R24: S -> return E ; 
+201	int	R24: S -> return E ; 
+201	proc	R24: S -> return E ; 
+201	record	R24: S -> return E ; 
+201	return	R24: S -> return E ; 
+201	while	R24: S -> return E ; 
+201	}	R24: S -> return E ; 
+203	)	R27: E -> E + G 
+203	+	R27: E -> E + G 
+203	,	R27: E -> E + G 
+204	)	R29: G -> G * F 
+204	*	R29: G -> G * F 
+204	+	R29: G -> G * F 
+204	,	R29: G -> G * F 
+205	)	R46: Elist -> Elist , E 
+205	,	R46: Elist -> Elist , E 
+206	#	R23: S -> call id ( Elist ) ; 
+206	call	R23: S -> call id ( Elist ) ; 
+206	float	R23: S -> call id ( Elist ) ; 
+206	id	R23: S -> call id ( Elist ) ; 
+206	if	R23: S -> call id ( Elist ) ; 
+206	int	R23: S -> call id ( Elist ) ; 
+206	proc	R23: S -> call id ( Elist ) ; 
+206	record	R23: S -> call id ( Elist ) ; 
+206	return	R23: S -> call id ( Elist ) ; 
+206	while	R23: S -> call id ( Elist ) ; 
+207	)	R31: F -> ( E ) 
+207	*	R31: F -> ( E ) 
+207	+	R31: F -> ( E ) 
+207	,	R31: F -> ( E ) 
+211	)	R39: B -> CBOOL 
+220	+	R27: E -> E + G 
+220	{	R27: E -> E + G 
+221	*	R29: G -> G * F 
+221	+	R29: G -> G * F 
+221	{	R29: G -> G * F 
+222	*	R31: F -> ( E ) 
+222	+	R31: F -> ( E ) 
+222	{	R31: F -> ( E ) 
+230	}	R3: P -> $ 
+232	call	R5: D -> T id A ; 
+232	float	R5: D -> T id A ; 
+232	id	R5: D -> T id A ; 
+232	if	R5: D -> T id A ; 
+232	int	R5: D -> T id A ; 
+232	proc	R5: D -> T id A ; 
+232	record	R5: D -> T id A ; 
+232	return	R5: D -> T id A ; 
+232	while	R5: D -> T id A ; 
+232	}	R5: D -> T id A ; 
+233	)	R12: M -> $ 
+233	,	R12: M -> $ 
+235	call	R18: S -> L = E ; 
+235	float	R18: S -> L = E ; 
+235	id	R18: S -> L = E ; 
+235	if	R18: S -> L = E ; 
+235	int	R18: S -> L = E ; 
+235	proc	R18: S -> L = E ; 
+235	record	R18: S -> L = E ; 
+235	return	R18: S -> L = E ; 
+235	while	R18: S -> L = E ; 
+235	}	R18: S -> L = E ; 
+238	call	R49: W -> $ 
+238	id	R49: W -> $ 
+238	if	R49: W -> $ 
+238	return	R49: W -> $ 
+238	while	R49: W -> $ 
+239	{	R35: B -> ( B && Q B ) 
+240	)	R36: B -> ! B 
+243	{	R34: B -> ( B || Q B ) 
+246	&&	R27: E -> E + G 
+246	)	R27: E -> E + G 
+246	+	R27: E -> E + G 
+246	||	R27: E -> E + G 
+247	&&	R29: G -> G * F 
+247	)	R29: G -> G * F 
+247	*	R29: G -> G * F 
+247	+	R29: G -> G * F 
+247	||	R29: G -> G * F 
+248	&&	R31: F -> ( E ) 
+248	)	R31: F -> ( E ) 
+248	*	R31: F -> ( E ) 
+248	+	R31: F -> ( E ) 
+248	||	R31: F -> ( E ) 
+251	call	R49: W -> $ 
+251	id	R49: W -> $ 
+251	if	R49: W -> $ 
+251	return	R49: W -> $ 
+251	while	R49: W -> $ 
+252	}	R24: S -> return E ; 
+254	#	R21: R -> $ 
+254	call	R21: R -> $ 
+254	float	R21: R -> $ 
+254	id	R21: R -> $ 
+254	if	R21: R -> $ 
+254	int	R21: R -> $ 
+254	proc	R21: R -> $ 
+254	record	R21: R -> $ 
+254	return	R21: R -> $ 
+254	while	R21: R -> $ 
+255	#	R22: S -> while W B { W S } 
+255	call	R22: S -> while W B { W S } 
+255	float	R22: S -> while W B { W S } 
+255	id	R22: S -> while W B { W S } 
+255	if	R22: S -> while W B { W S } 
+255	int	R22: S -> while W B { W S } 
+255	proc	R22: S -> while W B { W S } 
+255	record	R22: S -> while W B { W S } 
+255	return	R22: S -> while W B { W S } 
+255	while	R22: S -> while W B { W S } 
+257	)	R10: M -> M , X id 
+257	,	R10: M -> M , X id 
+259	call	R6: D -> record id { P } 
+259	float	R6: D -> record id { P } 
+259	id	R6: D -> record id { P } 
+259	if	R6: D -> record id { P } 
+259	int	R6: D -> record id { P } 
+259	proc	R6: D -> record id { P } 
+259	record	R6: D -> record id { P } 
+259	return	R6: D -> record id { P } 
+259	while	R6: D -> record id { P } 
+259	}	R6: D -> record id { P } 
+261	}	R50: N -> $ 
+263	!	R48: Q -> $ 
+263	(	R48: Q -> $ 
+263	CBOOL	R48: Q -> $ 
+263	CINT	R48: Q -> $ 
+263	id	R48: Q -> $ 
+264	)	R37: B -> ( B ) 
+265	!	R48: Q -> $ 
+265	(	R48: Q -> $ 
+265	CBOOL	R48: Q -> $ 
+265	CINT	R48: Q -> $ 
+265	id	R48: Q -> $ 
+266	)	R38: B -> E relop E 
+267	&&	R35: B -> ( B && Q B ) 
+267	)	R35: B -> ( B && Q B ) 
+267	||	R35: B -> ( B && Q B ) 
+268	&&	R34: B -> ( B || Q B ) 
+268	)	R34: B -> ( B || Q B ) 
+268	||	R34: B -> ( B || Q B ) 
+269	}	R18: S -> L = E ; 
+272	call	R49: W -> $ 
+272	id	R49: W -> $ 
+272	if	R49: W -> $ 
+272	return	R49: W -> $ 
+272	while	R49: W -> $ 
+274	#	R19: S -> if B { W S N } R 
+274	call	R19: S -> if B { W S N } R 
+274	float	R19: S -> if B { W S N } R 
+274	id	R19: S -> if B { W S N } R 
+274	if	R19: S -> if B { W S N } R 
+274	int	R19: S -> if B { W S N } R 
+274	proc	R19: S -> if B { W S N } R 
+274	record	R19: S -> if B { W S N } R 
+274	return	R19: S -> if B { W S N } R 
+274	while	R19: S -> if B { W S N } R 
+275	#	R4: D -> proc X id ( M ) { P } 
+275	call	R4: D -> proc X id ( M ) { P } 
+275	float	R4: D -> proc X id ( M ) { P } 
+275	id	R4: D -> proc X id ( M ) { P } 
+275	if	R4: D -> proc X id ( M ) { P } 
+275	int	R4: D -> proc X id ( M ) { P } 
+275	proc	R4: D -> proc X id ( M ) { P } 
+275	record	R4: D -> proc X id ( M ) { P } 
+275	return	R4: D -> proc X id ( M ) { P } 
+275	while	R4: D -> proc X id ( M ) { P } 
+277	call	R23: S -> call id ( Elist ) ; 
+277	float	R23: S -> call id ( Elist ) ; 
+277	id	R23: S -> call id ( Elist ) ; 
+277	if	R23: S -> call id ( Elist ) ; 
+277	int	R23: S -> call id ( Elist ) ; 
+277	proc	R23: S -> call id ( Elist ) ; 
+277	record	R23: S -> call id ( Elist ) ; 
+277	return	R23: S -> call id ( Elist ) ; 
+277	while	R23: S -> call id ( Elist ) ; 
+277	}	R23: S -> call id ( Elist ) ; 
+283	}	R50: N -> $ 
+285	call	R49: W -> $ 
+285	id	R49: W -> $ 
+285	if	R49: W -> $ 
+285	return	R49: W -> $ 
+285	while	R49: W -> $ 
+286	}	R3: P -> $ 
+287	call	R21: R -> $ 
+287	float	R21: R -> $ 
+287	id	R21: R -> $ 
+287	if	R21: R -> $ 
+287	int	R21: R -> $ 
+287	proc	R21: R -> $ 
+287	record	R21: R -> $ 
+287	return	R21: R -> $ 
+287	while	R21: R -> $ 
+287	}	R21: R -> $ 
+288	call	R22: S -> while W B { W S } 
+288	float	R22: S -> while W B { W S } 
+288	id	R22: S -> while W B { W S } 
+288	if	R22: S -> while W B { W S } 
+288	int	R22: S -> while W B { W S } 
+288	proc	R22: S -> while W B { W S } 
+288	record	R22: S -> while W B { W S } 
+288	return	R22: S -> while W B { W S } 
+288	while	R22: S -> while W B { W S } 
+288	}	R22: S -> while W B { W S } 
+291	}	R23: S -> call id ( Elist ) ; 
+297	call	R19: S -> if B { W S N } R 
+297	float	R19: S -> if B { W S N } R 
+297	id	R19: S -> if B { W S N } R 
+297	if	R19: S -> if B { W S N } R 
+297	int	R19: S -> if B { W S N } R 
+297	proc	R19: S -> if B { W S N } R 
+297	record	R19: S -> if B { W S N } R 
+297	return	R19: S -> if B { W S N } R 
+297	while	R19: S -> if B { W S N } R 
+297	}	R19: S -> if B { W S N } R 
+298	)	R35: B -> ( B && Q B ) 
+299	)	R34: B -> ( B || Q B ) 
+300	}	R21: R -> $ 
+301	}	R22: S -> while W B { W S } 
+303	call	R4: D -> proc X id ( M ) { P } 
+303	float	R4: D -> proc X id ( M ) { P } 
+303	id	R4: D -> proc X id ( M ) { P } 
+303	if	R4: D -> proc X id ( M ) { P } 
+303	int	R4: D -> proc X id ( M ) { P } 
+303	proc	R4: D -> proc X id ( M ) { P } 
+303	record	R4: D -> proc X id ( M ) { P } 
+303	return	R4: D -> proc X id ( M ) { P } 
+303	while	R4: D -> proc X id ( M ) { P } 
+303	}	R4: D -> proc X id ( M ) { P } 
+304	call	R49: W -> $ 
+304	id	R49: W -> $ 
+304	if	R49: W -> $ 
+304	return	R49: W -> $ 
+304	while	R49: W -> $ 
+306	}	R19: S -> if B { W S N } R 
+307	#	R20: R -> else { W S } 
+307	call	R20: R -> else { W S } 
+307	float	R20: R -> else { W S } 
+307	id	R20: R -> else { W S } 
+307	if	R20: R -> else { W S } 
+307	int	R20: R -> else { W S } 
+307	proc	R20: R -> else { W S } 
+307	record	R20: R -> else { W S } 
+307	return	R20: R -> else { W S } 
+307	while	R20: R -> else { W S } 
+309	call	R49: W -> $ 
+309	id	R49: W -> $ 
+309	if	R49: W -> $ 
+309	return	R49: W -> $ 
+309	while	R49: W -> $ 
+312	call	R20: R -> else { W S } 
+312	float	R20: R -> else { W S } 
+312	id	R20: R -> else { W S } 
+312	if	R20: R -> else { W S } 
+312	int	R20: R -> else { W S } 
+312	proc	R20: R -> else { W S } 
+312	record	R20: R -> else { W S } 
+312	return	R20: R -> else { W S } 
+312	while	R20: R -> else { W S } 
+312	}	R20: R -> else { W S } 
+314	}	R20: R -> else { W S } 

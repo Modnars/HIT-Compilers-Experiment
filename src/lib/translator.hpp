@@ -8,6 +8,6 @@
 extern std::shared_ptr<Node> Root;
 
 extern void semantic(int);
-extern void translate(std::ostream &os = std::cout);
+extern void translate(bool format = true, std::ostream &os = std::cout);
 
 #endif /* TRANSLATOR_HPP */

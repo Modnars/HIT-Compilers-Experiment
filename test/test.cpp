@@ -1,5 +1,7 @@
 int a, b;
 int c, d;
+int e, f;
+float g;
 int x, y, z;
 if (a < b || (c < d && e < f)) {
     z = x + y;
@@ -7,7 +9,11 @@ if (a < b || (c < d && e < f)) {
     z = x * y;
 }
 z = x + y;
-while (z < 10) {
-    y = x + z;
+if (a > b && e > f) {
+    z = a + b;
 }
-t = h + y;
+z = x * y;
+while (z < 100) {
+    z = z + 1;
+}
+z = z + 100;

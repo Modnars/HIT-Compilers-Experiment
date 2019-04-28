@@ -1,90 +1,90 @@
 [Symbol]       0x7fec124044a8 
 [Name]         z              
-[Type]         VOID           
-[Width]        0              
-[Offset]       0              
-[Value]        
+[Type]         INT            
+[Width]        4              
+[Offset]       40             
+[Value]                 0
 [Decl_pos]     5              
 [Next]         0x7fec12404398 
 
 [Symbol]       0x7fec12404398 
 [Name]         y              
-[Type]         VOID           
-[Width]        0              
-[Offset]       0              
-[Value]        
+[Type]         INT            
+[Width]        4              
+[Offset]       36             
+[Value]                 0
 [Decl_pos]     5              
 [Next]         0x7fec12404288 
 
 [Symbol]       0x7fec12404288 
 [Name]         x              
-[Type]         VOID           
-[Width]        0              
-[Offset]       0              
-[Value]        
+[Type]         INT            
+[Width]        4              
+[Offset]       32             
+[Value]                 0
 [Decl_pos]     5              
 [Next]         0x7fec12404018 
 
 [Symbol]       0x7fec12404018 
 [Name]         g              
-[Type]         VOID           
-[Width]        0              
-[Offset]       0              
+[Type]         FLOAT          
+[Width]        8              
+[Offset]       24             
 [Value]        
 [Decl_pos]     4              
 [Next]         0x7fec12403eb8 
 
 [Symbol]       0x7fec12403eb8 
 [Name]         f              
-[Type]         VOID           
-[Width]        0              
-[Offset]       0              
-[Value]        
+[Type]         INT            
+[Width]        4              
+[Offset]       20             
+[Value]                 0
 [Decl_pos]     3              
 [Next]         0x7fec12403da8 
 
 [Symbol]       0x7fec12403da8 
 [Name]         e              
-[Type]         VOID           
-[Width]        0              
-[Offset]       0              
-[Value]        
+[Type]         INT            
+[Width]        4              
+[Offset]       16             
+[Value]                 0
 [Decl_pos]     3              
 [Next]         0x7fec12403b48 
 
 [Symbol]       0x7fec12403b48 
 [Name]         d              
-[Type]         VOID           
-[Width]        0              
-[Offset]       0              
-[Value]        
+[Type]         INT            
+[Width]        4              
+[Offset]       12             
+[Value]                 0
 [Decl_pos]     2              
 [Next]         0x7fec12403a38 
 
 [Symbol]       0x7fec12403a38 
 [Name]         c              
-[Type]         VOID           
-[Width]        0              
-[Offset]       0              
-[Value]        
+[Type]         INT            
+[Width]        4              
+[Offset]       8              
+[Value]                 0
 [Decl_pos]     2              
 [Next]         0x7fec12403858 
 
 [Symbol]       0x7fec12403858 
 [Name]         b              
-[Type]         VOID           
-[Width]        0              
-[Offset]       0              
-[Value]        
+[Type]         INT            
+[Width]        4              
+[Offset]       4              
+[Value]                 0
 [Decl_pos]     1              
 [Next]         0x7fec12403708 
 
 [Symbol]       0x7fec12403708 
 [Name]         a              
-[Type]         VOID           
-[Width]        0              
+[Type]         INT            
+[Width]        4              
 [Offset]       0              
-[Value]        
+[Value]                 0
 [Decl_pos]     1              
 [Next]         0x0            
 

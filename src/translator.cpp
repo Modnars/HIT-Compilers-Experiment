@@ -9,13 +9,15 @@
 #include "lib/parser.hpp"
 #include "lib/translator.hpp"
 
+// Store the code which generated from semantic analysis.
 std::vector<std::shared_ptr<Code>> CodeVec;
-std::shared_ptr<Node> Root;
+// Mark the current code's index (current CodeVec's size).
 int nextquad;
 
 // Store the temp middle nodes of AST.
 std::stack<std::shared_ptr<Node>> NodeStack;
 
+// Exchange number to string.
 template <typename T>
 std::string get_val(T val) {
     std::stringstream ss;
@@ -25,16 +27,19 @@ std::string get_val(T val) {
     return res;
 }
 
+// Backpatch the code whose index in lst. And use 'quad' to fill its result.
 void backpatch(std::vector<int> lst, int quad) {
     for (auto idx : lst)
         CodeVec[idx]->result = get_val(quad);
 }
 
+// Get a vector (list) which only contains the current code's index.
 std::vector<int> makelist() {
     std::vector<int> res = { nextquad };
     return res;
 }
 
+// Merge two list as one. Which is used to make sure the comman exit of branch statements.
 std::vector<int> merge(std::vector<int> lst1, std::vector<int> lst2) {
     std::vector<int> ret;
     for (auto var : lst1)
@@ -44,6 +49,7 @@ std::vector<int> merge(std::vector<int> lst1, std::vector<int> lst2) {
     return ret;
 }
 
+// Get a new label for a new temp variable.
 std::string new_temp() {
     static int i = 0;
     std::stringstream ss;
@@ -54,10 +60,13 @@ std::string new_temp() {
     return "t" + res;
 }
 
+// Get a new code item (the function return a pointer points to it).
 std::shared_ptr<Code> new_code() {
     return std::make_shared<Code>();
 }
 
+// The main functioin of semantic analysis. Which is called at grammar analysis (See 
+// parsers.cpp [func: analysis]), and generate the specific code.
 void semantic(int ProdNo) {
     // The node to add, the const number node, the temp new node.
     std::shared_ptr<Node> tempnode, add_node, B1, B2, S1, S2, W1, W2, N; 
@@ -68,7 +77,6 @@ void semantic(int ProdNo) {
             tempnode = new_node("Program[0]", NONE, nullptr);
             tempnode->kind = P0;
             SymbolTable->offset = 0;
-            Root = tempnode;
             NodeStack.pop();
             NodeStack.push(tempnode);
             break;
@@ -267,6 +275,7 @@ void semantic(int ProdNo) {
                 B1 = NodeStack.top(); NodeStack.pop();
                 backpatch(B1->truelist, W1->value.ival);
                 tempnode->nextlist = merge(B1->falselist, S1->nextlist);
+                CodeVec[nextquad-1]->result = get_val(nextquad);
             } else if (NodeStack.top()->name == "else") {
                 NodeStack.pop();
                 S2 = NodeStack.top(); NodeStack.pop();
@@ -305,7 +314,7 @@ void semantic(int ProdNo) {
             code->arg2 = "_";
             code->result = get_val(W1->value.ival);
             CodeVec.push_back(code);
-            backpatch(tempnode->nextlist, nextquad);
+            backpatch(tempnode->nextlist, nextquad+1); // Jump out of the loop.
             NodeStack.push(tempnode);
             break;
         case 23 : // S -> call id ( Elist ) // TODO
@@ -372,16 +381,9 @@ void semantic(int ProdNo) {
             NodeStack.top()->kind = P31;
             break;
         case 32 : // F -> CINT
-            tempnode = new_node(new_temp(), CINT, nullptr);
+            tempnode = new_node(get_val(TokenStack.top()->ival), CINT, nullptr);
             tempnode->kind = P32;
             tempnode->value.ival = TokenStack.top()->ival; TokenStack.pop();
-            code = new_code();
-            code->action = "=";
-            code->arg1 = get_val(tempnode->value.ival);
-            code->arg2 = "_";
-            code->result = tempnode->name;
-            CodeVec.push_back(code);
-            ++nextquad;
             NodeStack.push(tempnode);
             break;
         case 33 : // F -> id 
@@ -438,7 +440,7 @@ void semantic(int ProdNo) {
             code->result = "goto -";
             CodeVec.push_back(code); ++nextquad;
             code = new_code();
-            code->action = "J ";
+            code->action = "J";
             code->arg1 = "_";
             code->arg2 = "_";
             code->result = "goto -";
@@ -523,7 +525,7 @@ void semantic(int ProdNo) {
             tempnode->kind = P48;
             tempnode->nextlist = makelist();
             code = new_code();
-            code->action = "J ";
+            code->action = "J";
             code->arg1 = "_";
             code->arg2 = "_";
             code->result = "goto -";
@@ -535,10 +537,14 @@ void semantic(int ProdNo) {
     }
 }
 
-void translate(std::ostream &os) {
-    os << NodeStack.size() << std::endl;
-//    print_nodes(Root, os);
-//    print_symbol_table(SymbolTable);
-    for (int i = 0; i < CodeVec.size(); ++i)
-        os << std::setw(3) << i << " " << *CodeVec[i] << std::endl;
+// Redirect the output stream.
+void translate(bool format, std::ostream &os) {
+    if (format) {
+        for (int i = 0; i < CodeVec.size(); ++i)
+            os << std::setw(3) << i << " " << *CodeVec[i] << std::endl;
+    } else { 
+        for (int i = 0; i < CodeVec.size(); ++i)
+            os << CodeVec[i]->action << "\t" << CodeVec[i]->arg1 << "\t" 
+               << CodeVec[i]->arg2 << "\t" << CodeVec[i]->result << std::endl;
+    }
 }

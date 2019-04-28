@@ -1,618 +1,436 @@
-SHIFT:  0 #		int		S3
-REDUCE: 0 3 #int 		id		R4: type -> int 
-GOTO:   0 #type 		type		GOTO:2
-SHIFT:  0 2 #type 		id		S13
-SHIFT:  0 2 13 #type id 		(		S16
-REDUCE: 0 2 13 16 #type id ( 		)		R13: args -> $ 
-GOTO:   0 2 13 16 #type id ( args 		args		GOTO:17
-SHIFT:  0 2 13 16 17 #type id ( args 		)		S19
-SHIFT:  0 2 13 16 17 19 #type id ( args ) 		{		S24
-SHIFT:  0 2 13 16 17 19 24 #type id ( args ) { 		int		S3
-REDUCE: 0 2 13 16 17 19 24 3 #type id ( args ) { int 		id		R4: type -> int 
-GOTO:   0 2 13 16 17 19 24 #type id ( args ) { type 		type		GOTO:29
-SHIFT:  0 2 13 16 17 19 24 29 #type id ( args ) { type 		id		S54
-SHIFT:  0 2 13 16 17 19 24 29 54 #type id ( args ) { type id 		=		S95
-SHIFT:  0 2 13 16 17 19 24 29 54 95 #type id ( args ) { type id = 		digit		S52
-REDUCE: 0 2 13 16 17 19 24 29 54 95 52 #type id ( args ) { type id = digit 		,		R89: const -> digit 
-GOTO:   0 2 13 16 17 19 24 29 54 95 #type id ( args ) { type id = const 		const		GOTO:51
-REDUCE: 0 2 13 16 17 19 24 29 54 95 51 #type id ( args ) { type id = const 		,		R83: factor -> const 
-GOTO:   0 2 13 16 17 19 24 29 54 95 #type id ( args ) { type id = factor 		factor		GOTO:48
-REDUCE: 0 2 13 16 17 19 24 29 54 95 48 #type id ( args ) { type id = factor 		,		R80: item' -> $ 
-GOTO:   0 2 13 16 17 19 24 29 54 95 48 #type id ( args ) { type id = factor item' 		item'		GOTO:87
-REDUCE: 0 2 13 16 17 19 24 29 54 95 48 87 #type id ( args ) { type id = factor item' 		,		R76: item -> factor item' 
-GOTO:   0 2 13 16 17 19 24 29 54 95 #type id ( args ) { type id = item 		item		GOTO:47
-REDUCE: 0 2 13 16 17 19 24 29 54 95 47 #type id ( args ) { type id = item 		,		R75: value' -> $ 
-GOTO:   0 2 13 16 17 19 24 29 54 95 47 #type id ( args ) { type id = item value' 		value'		GOTO:84
-REDUCE: 0 2 13 16 17 19 24 29 54 95 47 84 #type id ( args ) { type id = item value' 		,		R72: value -> item value' 
-GOTO:   0 2 13 16 17 19 24 29 54 95 #type id ( args ) { type id = value 		value		GOTO:46
-REDUCE: 0 2 13 16 17 19 24 29 54 95 46 #type id ( args ) { type id = value 		,		R59: operation -> $ 
-GOTO:   0 2 13 16 17 19 24 29 54 95 46 #type id ( args ) { type id = value operation 		operation		GOTO:69
-REDUCE: 0 2 13 16 17 19 24 29 54 95 46 69 #type id ( args ) { type id = value operation 		,		R56: expression -> value operation 
-GOTO:   0 2 13 16 17 19 24 29 54 95 #type id ( args ) { type id = expression 		expression		GOTO:118
-REDUCE: 0 2 13 16 17 19 24 29 54 95 118 #type id ( args ) { type id = expression 		,		R22: init -> = expression 
-GOTO:   0 2 13 16 17 19 24 29 54 #type id ( args ) { type id init 		init		GOTO:94
-SHIFT:  0 2 13 16 17 19 24 29 54 94 #type id ( args ) { type id init 		,		S117
-SHIFT:  0 2 13 16 17 19 24 29 54 94 117 #type id ( args ) { type id init , 		id		S139
-SHIFT:  0 2 13 16 17 19 24 29 54 94 117 139 #type id ( args ) { type id init , id 		=		S95
-SHIFT:  0 2 13 16 17 19 24 29 54 94 117 139 95 #type id ( args ) { type id init , id = 		digit		S52
-REDUCE: 0 2 13 16 17 19 24 29 54 94 117 139 95 52 #type id ( args ) { type id init , id = digit 		;		R89: const -> digit 
-GOTO:   0 2 13 16 17 19 24 29 54 94 117 139 95 #type id ( args ) { type id init , id = const 		const		GOTO:51
-REDUCE: 0 2 13 16 17 19 24 29 54 94 117 139 95 51 #type id ( args ) { type id init , id = const 		;		R83: factor -> const 
-GOTO:   0 2 13 16 17 19 24 29 54 94 117 139 95 #type id ( args ) { type id init , id = factor 		factor		GOTO:48
-REDUCE: 0 2 13 16 17 19 24 29 54 94 117 139 95 48 #type id ( args ) { type id init , id = factor 		;		R80: item' -> $ 
-GOTO:   0 2 13 16 17 19 24 29 54 94 117 139 95 48 #type id ( args ) { type id init , id = factor item' 		item'		GOTO:87
-REDUCE: 0 2 13 16 17 19 24 29 54 94 117 139 95 48 87 #type id ( args ) { type id init , id = factor item' 		;		R76: item -> factor item' 
-GOTO:   0 2 13 16 17 19 24 29 54 94 117 139 95 #type id ( args ) { type id init , id = item 		item		GOTO:47
-REDUCE: 0 2 13 16 17 19 24 29 54 94 117 139 95 47 #type id ( args ) { type id init , id = item 		;		R75: value' -> $ 
-GOTO:   0 2 13 16 17 19 24 29 54 94 117 139 95 47 #type id ( args ) { type id init , id = item value' 		value'		GOTO:84
-REDUCE: 0 2 13 16 17 19 24 29 54 94 117 139 95 47 84 #type id ( args ) { type id init , id = item value' 		;		R72: value -> item value' 
-GOTO:   0 2 13 16 17 19 24 29 54 94 117 139 95 #type id ( args ) { type id init , id = value 		value		GOTO:46
-REDUCE: 0 2 13 16 17 19 24 29 54 94 117 139 95 46 #type id ( args ) { type id init , id = value 		;		R59: operation -> $ 
-GOTO:   0 2 13 16 17 19 24 29 54 94 117 139 95 46 #type id ( args ) { type id init , id = value operation 		operation		GOTO:69
-REDUCE: 0 2 13 16 17 19 24 29 54 94 117 139 95 46 69 #type id ( args ) { type id init , id = value operation 		;		R56: expression -> value operation 
-GOTO:   0 2 13 16 17 19 24 29 54 94 117 139 95 #type id ( args ) { type id init , id = expression 		expression		GOTO:118
-REDUCE: 0 2 13 16 17 19 24 29 54 94 117 139 95 118 #type id ( args ) { type id init , id = expression 		;		R22: init -> = expression 
-GOTO:   0 2 13 16 17 19 24 29 54 94 117 139 #type id ( args ) { type id init , id init 		init		GOTO:148
-REDUCE: 0 2 13 16 17 19 24 29 54 94 117 139 148 #type id ( args ) { type id init , id init 		;		R25: vars -> $ 
-GOTO:   0 2 13 16 17 19 24 29 54 94 117 139 148 #type id ( args ) { type id init , id init vars 		vars		GOTO:157
-REDUCE: 0 2 13 16 17 19 24 29 54 94 117 139 148 157 #type id ( args ) { type id init , id init vars 		;		R24: vars -> , id init vars 
-GOTO:   0 2 13 16 17 19 24 29 54 94 #type id ( args ) { type id init vars 		vars		GOTO:116
-SHIFT:  0 2 13 16 17 19 24 29 54 94 116 #type id ( args ) { type id init vars 		;		S138
-REDUCE: 0 2 13 16 17 19 24 29 54 94 116 138 #type id ( args ) { type id init vars ; 		int		R21: define_stmt -> type id init vars ; 
-GOTO:   0 2 13 16 17 19 24 #type id ( args ) { define_stmt 		define_stmt		GOTO:28
-SHIFT:  0 2 13 16 17 19 24 28 #type id ( args ) { define_stmt 		int		S3
-REDUCE: 0 2 13 16 17 19 24 28 3 #type id ( args ) { define_stmt int 		id		R4: type -> int 
-GOTO:   0 2 13 16 17 19 24 28 #type id ( args ) { define_stmt type 		type		GOTO:29
-SHIFT:  0 2 13 16 17 19 24 28 29 #type id ( args ) { define_stmt type 		id		S54
-SHIFT:  0 2 13 16 17 19 24 28 29 54 #type id ( args ) { define_stmt type id 		=		S95
-SHIFT:  0 2 13 16 17 19 24 28 29 54 95 #type id ( args ) { define_stmt type id = 		digit		S52
-REDUCE: 0 2 13 16 17 19 24 28 29 54 95 52 #type id ( args ) { define_stmt type id = digit 		;		R89: const -> digit 
-GOTO:   0 2 13 16 17 19 24 28 29 54 95 #type id ( args ) { define_stmt type id = const 		const		GOTO:51
-REDUCE: 0 2 13 16 17 19 24 28 29 54 95 51 #type id ( args ) { define_stmt type id = const 		;		R83: factor -> const 
-GOTO:   0 2 13 16 17 19 24 28 29 54 95 #type id ( args ) { define_stmt type id = factor 		factor		GOTO:48
-REDUCE: 0 2 13 16 17 19 24 28 29 54 95 48 #type id ( args ) { define_stmt type id = factor 		;		R80: item' -> $ 
-GOTO:   0 2 13 16 17 19 24 28 29 54 95 48 #type id ( args ) { define_stmt type id = factor item' 		item'		GOTO:87
-REDUCE: 0 2 13 16 17 19 24 28 29 54 95 48 87 #type id ( args ) { define_stmt type id = factor item' 		;		R76: item -> factor item' 
-GOTO:   0 2 13 16 17 19 24 28 29 54 95 #type id ( args ) { define_stmt type id = item 		item		GOTO:47
-REDUCE: 0 2 13 16 17 19 24 28 29 54 95 47 #type id ( args ) { define_stmt type id = item 		;		R75: value' -> $ 
-GOTO:   0 2 13 16 17 19 24 28 29 54 95 47 #type id ( args ) { define_stmt type id = item value' 		value'		GOTO:84
-REDUCE: 0 2 13 16 17 19 24 28 29 54 95 47 84 #type id ( args ) { define_stmt type id = item value' 		;		R72: value -> item value' 
-GOTO:   0 2 13 16 17 19 24 28 29 54 95 #type id ( args ) { define_stmt type id = value 		value		GOTO:46
-REDUCE: 0 2 13 16 17 19 24 28 29 54 95 46 #type id ( args ) { define_stmt type id = value 		;		R59: operation -> $ 
-GOTO:   0 2 13 16 17 19 24 28 29 54 95 46 #type id ( args ) { define_stmt type id = value operation 		operation		GOTO:69
-REDUCE: 0 2 13 16 17 19 24 28 29 54 95 46 69 #type id ( args ) { define_stmt type id = value operation 		;		R56: expression -> value operation 
-GOTO:   0 2 13 16 17 19 24 28 29 54 95 #type id ( args ) { define_stmt type id = expression 		expression		GOTO:118
-REDUCE: 0 2 13 16 17 19 24 28 29 54 95 118 #type id ( args ) { define_stmt type id = expression 		;		R22: init -> = expression 
-GOTO:   0 2 13 16 17 19 24 28 29 54 #type id ( args ) { define_stmt type id init 		init		GOTO:94
-REDUCE: 0 2 13 16 17 19 24 28 29 54 94 #type id ( args ) { define_stmt type id init 		;		R25: vars -> $ 
-GOTO:   0 2 13 16 17 19 24 28 29 54 94 #type id ( args ) { define_stmt type id init vars 		vars		GOTO:116
-SHIFT:  0 2 13 16 17 19 24 28 29 54 94 116 #type id ( args ) { define_stmt type id init vars 		;		S138
-REDUCE: 0 2 13 16 17 19 24 28 29 54 94 116 138 #type id ( args ) { define_stmt type id init vars ; 		while		R21: define_stmt -> type id init vars ; 
-GOTO:   0 2 13 16 17 19 24 28 #type id ( args ) { define_stmt define_stmt 		define_stmt		GOTO:28
-REDUCE: 0 2 13 16 17 19 24 28 28 #type id ( args ) { define_stmt define_stmt 		while		R20: define_stmts -> $ 
-GOTO:   0 2 13 16 17 19 24 28 28 #type id ( args ) { define_stmt define_stmt define_stmts 		define_stmts		GOTO:53
-REDUCE: 0 2 13 16 17 19 24 28 28 53 #type id ( args ) { define_stmt define_stmt define_stmts 		while		R19: define_stmts -> define_stmt define_stmts 
-GOTO:   0 2 13 16 17 19 24 28 #type id ( args ) { define_stmt define_stmts 		define_stmts		GOTO:53
-REDUCE: 0 2 13 16 17 19 24 28 53 #type id ( args ) { define_stmt define_stmts 		while		R19: define_stmts -> define_stmt define_stmts 
-GOTO:   0 2 13 16 17 19 24 #type id ( args ) { define_stmts 		define_stmts		GOTO:27
-SHIFT:  0 2 13 16 17 19 24 27 #type id ( args ) { define_stmts 		while		S41
-SHIFT:  0 2 13 16 17 19 24 27 41 #type id ( args ) { define_stmts while 		(		S63
-SHIFT:  0 2 13 16 17 19 24 27 41 63 #type id ( args ) { define_stmts while ( 		id		S50
-REDUCE: 0 2 13 16 17 19 24 27 41 63 50 #type id ( args ) { define_stmts while ( id 		>		R85: call_func -> $ 
-GOTO:   0 2 13 16 17 19 24 27 41 63 50 #type id ( args ) { define_stmts while ( id call_func 		call_func		GOTO:92
-REDUCE: 0 2 13 16 17 19 24 27 41 63 50 92 #type id ( args ) { define_stmts while ( id call_func 		>		R82: factor -> id call_func 
-GOTO:   0 2 13 16 17 19 24 27 41 63 #type id ( args ) { define_stmts while ( factor 		factor		GOTO:48
-REDUCE: 0 2 13 16 17 19 24 27 41 63 48 #type id ( args ) { define_stmts while ( factor 		>		R80: item' -> $ 
-GOTO:   0 2 13 16 17 19 24 27 41 63 48 #type id ( args ) { define_stmts while ( factor item' 		item'		GOTO:87
-REDUCE: 0 2 13 16 17 19 24 27 41 63 48 87 #type id ( args ) { define_stmts while ( factor item' 		>		R76: item -> factor item' 
-GOTO:   0 2 13 16 17 19 24 27 41 63 #type id ( args ) { define_stmts while ( item 		item		GOTO:47
-REDUCE: 0 2 13 16 17 19 24 27 41 63 47 #type id ( args ) { define_stmts while ( item 		>		R75: value' -> $ 
-GOTO:   0 2 13 16 17 19 24 27 41 63 47 #type id ( args ) { define_stmts while ( item value' 		value'		GOTO:84
-REDUCE: 0 2 13 16 17 19 24 27 41 63 47 84 #type id ( args ) { define_stmts while ( item value' 		>		R72: value -> item value' 
-GOTO:   0 2 13 16 17 19 24 27 41 63 #type id ( args ) { define_stmts while ( value 		value		GOTO:46
-SHIFT:  0 2 13 16 17 19 24 27 41 63 46 #type id ( args ) { define_stmts while ( value 		>		S72
-REDUCE: 0 2 13 16 17 19 24 27 41 63 46 72 #type id ( args ) { define_stmts while ( value > 		digit		R60: compare_op -> > 
-GOTO:   0 2 13 16 17 19 24 27 41 63 46 #type id ( args ) { define_stmts while ( value compare_op 		compare_op		GOTO:70
-SHIFT:  0 2 13 16 17 19 24 27 41 63 46 70 #type id ( args ) { define_stmts while ( value compare_op 		digit		S52
-REDUCE: 0 2 13 16 17 19 24 27 41 63 46 70 52 #type id ( args ) { define_stmts while ( value compare_op digit 		)		R89: const -> digit 
-GOTO:   0 2 13 16 17 19 24 27 41 63 46 70 #type id ( args ) { define_stmts while ( value compare_op const 		const		GOTO:51
-REDUCE: 0 2 13 16 17 19 24 27 41 63 46 70 51 #type id ( args ) { define_stmts while ( value compare_op const 		)		R83: factor -> const 
-GOTO:   0 2 13 16 17 19 24 27 41 63 46 70 #type id ( args ) { define_stmts while ( value compare_op factor 		factor		GOTO:48
-REDUCE: 0 2 13 16 17 19 24 27 41 63 46 70 48 #type id ( args ) { define_stmts while ( value compare_op factor 		)		R80: item' -> $ 
-GOTO:   0 2 13 16 17 19 24 27 41 63 46 70 48 #type id ( args ) { define_stmts while ( value compare_op factor item' 		item'		GOTO:87
-REDUCE: 0 2 13 16 17 19 24 27 41 63 46 70 48 87 #type id ( args ) { define_stmts while ( value compare_op factor item' 		)		R76: item -> factor item' 
-GOTO:   0 2 13 16 17 19 24 27 41 63 46 70 #type id ( args ) { define_stmts while ( value compare_op item 		item		GOTO:47
-REDUCE: 0 2 13 16 17 19 24 27 41 63 46 70 47 #type id ( args ) { define_stmts while ( value compare_op item 		)		R75: value' -> $ 
-GOTO:   0 2 13 16 17 19 24 27 41 63 46 70 47 #type id ( args ) { define_stmts while ( value compare_op item value' 		value'		GOTO:84
-REDUCE: 0 2 13 16 17 19 24 27 41 63 46 70 47 84 #type id ( args ) { define_stmts while ( value compare_op item value' 		)		R72: value -> item value' 
-GOTO:   0 2 13 16 17 19 24 27 41 63 46 70 #type id ( args ) { define_stmts while ( value compare_op value 		value		GOTO:106
-REDUCE: 0 2 13 16 17 19 24 27 41 63 46 70 106 #type id ( args ) { define_stmts while ( value compare_op value 		)		R57: operation -> compare_op value 
-GOTO:   0 2 13 16 17 19 24 27 41 63 46 #type id ( args ) { define_stmts while ( value operation 		operation		GOTO:69
-REDUCE: 0 2 13 16 17 19 24 27 41 63 46 69 #type id ( args ) { define_stmts while ( value operation 		)		R56: expression -> value operation 
-GOTO:   0 2 13 16 17 19 24 27 41 63 #type id ( args ) { define_stmts while ( expression 		expression		GOTO:100
-REDUCE: 0 2 13 16 17 19 24 27 41 63 100 #type id ( args ) { define_stmts while ( expression 		)		R45: bool_expression -> $ 
-GOTO:   0 2 13 16 17 19 24 27 41 63 100 #type id ( args ) { define_stmts while ( expression bool_expression 		bool_expression		GOTO:121
-REDUCE: 0 2 13 16 17 19 24 27 41 63 100 121 #type id ( args ) { define_stmts while ( expression bool_expression 		)		R43: logical_expression -> expression bool_expression 
-GOTO:   0 2 13 16 17 19 24 27 41 63 #type id ( args ) { define_stmts while ( logical_expression 		logical_expression		GOTO:98
-SHIFT:  0 2 13 16 17 19 24 27 41 63 98 #type id ( args ) { define_stmts while ( logical_expression 		)		S119
-SHIFT:  0 2 13 16 17 19 24 27 41 63 98 119 #type id ( args ) { define_stmts while ( logical_expression ) 		{		S66
-SHIFT:  0 2 13 16 17 19 24 27 41 63 98 119 66 #type id ( args ) { define_stmts while ( logical_expression ) { 		id		S50
-REDUCE: 0 2 13 16 17 19 24 27 41 63 98 119 66 50 #type id ( args ) { define_stmts while ( logical_expression ) { id 		=		R85: call_func -> $ 
-GOTO:   0 2 13 16 17 19 24 27 41 63 98 119 66 50 #type id ( args ) { define_stmts while ( logical_expression ) { id call_func 		call_func		GOTO:92
-REDUCE: 0 2 13 16 17 19 24 27 41 63 98 119 66 50 92 #type id ( args ) { define_stmts while ( logical_expression ) { id call_func 		=		R82: factor -> id call_func 
-GOTO:   0 2 13 16 17 19 24 27 41 63 98 119 66 #type id ( args ) { define_stmts while ( logical_expression ) { factor 		factor		GOTO:48
-REDUCE: 0 2 13 16 17 19 24 27 41 63 98 119 66 48 #type id ( args ) { define_stmts while ( logical_expression ) { factor 		=		R80: item' -> $ 
-GOTO:   0 2 13 16 17 19 24 27 41 63 98 119 66 48 #type id ( args ) { define_stmts while ( logical_expression ) { factor item' 		item'		GOTO:87
-REDUCE: 0 2 13 16 17 19 24 27 41 63 98 119 66 48 87 #type id ( args ) { define_stmts while ( logical_expression ) { factor item' 		=		R76: item -> factor item' 
-GOTO:   0 2 13 16 17 19 24 27 41 63 98 119 66 #type id ( args ) { define_stmts while ( logical_expression ) { item 		item		GOTO:47
-REDUCE: 0 2 13 16 17 19 24 27 41 63 98 119 66 47 #type id ( args ) { define_stmts while ( logical_expression ) { item 		=		R75: value' -> $ 
-GOTO:   0 2 13 16 17 19 24 27 41 63 98 119 66 47 #type id ( args ) { define_stmts while ( logical_expression ) { item value' 		value'		GOTO:84
-REDUCE: 0 2 13 16 17 19 24 27 41 63 98 119 66 47 84 #type id ( args ) { define_stmts while ( logical_expression ) { item value' 		=		R72: value -> item value' 
-GOTO:   0 2 13 16 17 19 24 27 41 63 98 119 66 #type id ( args ) { define_stmts while ( logical_expression ) { value 		value		GOTO:46
-SHIFT:  0 2 13 16 17 19 24 27 41 63 98 119 66 46 #type id ( args ) { define_stmts while ( logical_expression ) { value 		=		S78
-REDUCE: 0 2 13 16 17 19 24 27 41 63 98 119 66 46 78 #type id ( args ) { define_stmts while ( logical_expression ) { value = 		id		R66: equal_op -> = 
-GOTO:   0 2 13 16 17 19 24 27 41 63 98 119 66 46 #type id ( args ) { define_stmts while ( logical_expression ) { value equal_op 		equal_op		GOTO:71
-SHIFT:  0 2 13 16 17 19 24 27 41 63 98 119 66 46 71 #type id ( args ) { define_stmts while ( logical_expression ) { value equal_op 		id		S50
-REDUCE: 0 2 13 16 17 19 24 27 41 63 98 119 66 46 71 50 #type id ( args ) { define_stmts while ( logical_expression ) { value equal_op id 		+		R85: call_func -> $ 
-GOTO:   0 2 13 16 17 19 24 27 41 63 98 119 66 46 71 50 #type id ( args ) { define_stmts while ( logical_expression ) { value equal_op id call_func 		call_func		GOTO:92
-REDUCE: 0 2 13 16 17 19 24 27 41 63 98 119 66 46 71 50 92 #type id ( args ) { define_stmts while ( logical_expression ) { value equal_op id call_func 		+		R82: factor -> id call_func 
-GOTO:   0 2 13 16 17 19 24 27 41 63 98 119 66 46 71 #type id ( args ) { define_stmts while ( logical_expression ) { value equal_op factor 		factor		GOTO:48
-REDUCE: 0 2 13 16 17 19 24 27 41 63 98 119 66 46 71 48 #type id ( args ) { define_stmts while ( logical_expression ) { value equal_op factor 		+		R80: item' -> $ 
-GOTO:   0 2 13 16 17 19 24 27 41 63 98 119 66 46 71 48 #type id ( args ) { define_stmts while ( logical_expression ) { value equal_op factor item' 		item'		GOTO:87
-REDUCE: 0 2 13 16 17 19 24 27 41 63 98 119 66 46 71 48 87 #type id ( args ) { define_stmts while ( logical_expression ) { value equal_op factor item' 		+		R76: item -> factor item' 
-GOTO:   0 2 13 16 17 19 24 27 41 63 98 119 66 46 71 #type id ( args ) { define_stmts while ( logical_expression ) { value equal_op item 		item		GOTO:47
-SHIFT:  0 2 13 16 17 19 24 27 41 63 98 119 66 46 71 47 #type id ( args ) { define_stmts while ( logical_expression ) { value equal_op item 		+		S85
-SHIFT:  0 2 13 16 17 19 24 27 41 63 98 119 66 46 71 47 85 #type id ( args ) { define_stmts while ( logical_expression ) { value equal_op item + 		id		S50
-REDUCE: 0 2 13 16 17 19 24 27 41 63 98 119 66 46 71 47 85 50 #type id ( args ) { define_stmts while ( logical_expression ) { value equal_op item + id 		;		R85: call_func -> $ 
-GOTO:   0 2 13 16 17 19 24 27 41 63 98 119 66 46 71 47 85 50 #type id ( args ) { define_stmts while ( logical_expression ) { value equal_op item + id call_func 		call_func		GOTO:92
-REDUCE: 0 2 13 16 17 19 24 27 41 63 98 119 66 46 71 47 85 50 92 #type id ( args ) { define_stmts while ( logical_expression ) { value equal_op item + id call_func 		;		R82: factor -> id call_func 
-GOTO:   0 2 13 16 17 19 24 27 41 63 98 119 66 46 71 47 85 #type id ( args ) { define_stmts while ( logical_expression ) { value equal_op item + factor 		factor		GOTO:48
-REDUCE: 0 2 13 16 17 19 24 27 41 63 98 119 66 46 71 47 85 48 #type id ( args ) { define_stmts while ( logical_expression ) { value equal_op item + factor 		;		R80: item' -> $ 
-GOTO:   0 2 13 16 17 19 24 27 41 63 98 119 66 46 71 47 85 48 #type id ( args ) { define_stmts while ( logical_expression ) { value equal_op item + factor item' 		item'		GOTO:87
-REDUCE: 0 2 13 16 17 19 24 27 41 63 98 119 66 46 71 47 85 48 87 #type id ( args ) { define_stmts while ( logical_expression ) { value equal_op item + factor item' 		;		R76: item -> factor item' 
-GOTO:   0 2 13 16 17 19 24 27 41 63 98 119 66 46 71 47 85 #type id ( args ) { define_stmts while ( logical_expression ) { value equal_op item + item 		item		GOTO:108
-REDUCE: 0 2 13 16 17 19 24 27 41 63 98 119 66 46 71 47 85 108 #type id ( args ) { define_stmts while ( logical_expression ) { value equal_op item + item 		;		R75: value' -> $ 
-GOTO:   0 2 13 16 17 19 24 27 41 63 98 119 66 46 71 47 85 108 #type id ( args ) { define_stmts while ( logical_expression ) { value equal_op item + item value' 		value'		GOTO:130
-REDUCE: 0 2 13 16 17 19 24 27 41 63 98 119 66 46 71 47 85 108 130 #type id ( args ) { define_stmts while ( logical_expression ) { value equal_op item + item value' 		;		R73: value' -> + item value' 
-GOTO:   0 2 13 16 17 19 24 27 41 63 98 119 66 46 71 47 #type id ( args ) { define_stmts while ( logical_expression ) { value equal_op item value' 		value'		GOTO:84
-REDUCE: 0 2 13 16 17 19 24 27 41 63 98 119 66 46 71 47 84 #type id ( args ) { define_stmts while ( logical_expression ) { value equal_op item value' 		;		R72: value -> item value' 
-GOTO:   0 2 13 16 17 19 24 27 41 63 98 119 66 46 71 #type id ( args ) { define_stmts while ( logical_expression ) { value equal_op value 		value		GOTO:107
-REDUCE: 0 2 13 16 17 19 24 27 41 63 98 119 66 46 71 107 #type id ( args ) { define_stmts while ( logical_expression ) { value equal_op value 		;		R58: operation -> equal_op value 
-GOTO:   0 2 13 16 17 19 24 27 41 63 98 119 66 46 #type id ( args ) { define_stmts while ( logical_expression ) { value operation 		operation		GOTO:69
-REDUCE: 0 2 13 16 17 19 24 27 41 63 98 119 66 46 69 #type id ( args ) { define_stmts while ( logical_expression ) { value operation 		;		R56: expression -> value operation 
-GOTO:   0 2 13 16 17 19 24 27 41 63 98 119 66 #type id ( args ) { define_stmts while ( logical_expression ) { expression 		expression		GOTO:37
-SHIFT:  0 2 13 16 17 19 24 27 41 63 98 119 66 37 #type id ( args ) { define_stmts while ( logical_expression ) { expression 		;		S58
-REDUCE: 0 2 13 16 17 19 24 27 41 63 98 119 66 37 58 #type id ( args ) { define_stmts while ( logical_expression ) { expression ; 		id		R32: assign_stmt -> expression ; 
-GOTO:   0 2 13 16 17 19 24 27 41 63 98 119 66 #type id ( args ) { define_stmts while ( logical_expression ) { assign_stmt 		assign_stmt		GOTO:33
-REDUCE: 0 2 13 16 17 19 24 27 41 63 98 119 66 33 #type id ( args ) { define_stmts while ( logical_expression ) { assign_stmt 		id		R28: stmt -> assign_stmt 
-GOTO:   0 2 13 16 17 19 24 27 41 63 98 119 66 #type id ( args ) { define_stmts while ( logical_expression ) { stmt 		stmt		GOTO:32
-SHIFT:  0 2 13 16 17 19 24 27 41 63 98 119 66 32 #type id ( args ) { define_stmts while ( logical_expression ) { stmt 		id		S50
-REDUCE: 0 2 13 16 17 19 24 27 41 63 98 119 66 32 50 #type id ( args ) { define_stmts while ( logical_expression ) { stmt id 		=		R85: call_func -> $ 
-GOTO:   0 2 13 16 17 19 24 27 41 63 98 119 66 32 50 #type id ( args ) { define_stmts while ( logical_expression ) { stmt id call_func 		call_func		GOTO:92
-REDUCE: 0 2 13 16 17 19 24 27 41 63 98 119 66 32 50 92 #type id ( args ) { define_stmts while ( logical_expression ) { stmt id call_func 		=		R82: factor -> id call_func 
-GOTO:   0 2 13 16 17 19 24 27 41 63 98 119 66 32 #type id ( args ) { define_stmts while ( logical_expression ) { stmt factor 		factor		GOTO:48
-REDUCE: 0 2 13 16 17 19 24 27 41 63 98 119 66 32 48 #type id ( args ) { define_stmts while ( logical_expression ) { stmt factor 		=		R80: item' -> $ 
-GOTO:   0 2 13 16 17 19 24 27 41 63 98 119 66 32 48 #type id ( args ) { define_stmts while ( logical_expression ) { stmt factor item' 		item'		GOTO:87
-REDUCE: 0 2 13 16 17 19 24 27 41 63 98 119 66 32 48 87 #type id ( args ) { define_stmts while ( logical_expression ) { stmt factor item' 		=		R76: item -> factor item' 
-GOTO:   0 2 13 16 17 19 24 27 41 63 98 119 66 32 #type id ( args ) { define_stmts while ( logical_expression ) { stmt item 		item		GOTO:47
-REDUCE: 0 2 13 16 17 19 24 27 41 63 98 119 66 32 47 #type id ( args ) { define_stmts while ( logical_expression ) { stmt item 		=		R75: value' -> $ 
-GOTO:   0 2 13 16 17 19 24 27 41 63 98 119 66 32 47 #type id ( args ) { define_stmts while ( logical_expression ) { stmt item value' 		value'		GOTO:84
-REDUCE: 0 2 13 16 17 19 24 27 41 63 98 119 66 32 47 84 #type id ( args ) { define_stmts while ( logical_expression ) { stmt item value' 		=		R72: value -> item value' 
-GOTO:   0 2 13 16 17 19 24 27 41 63 98 119 66 32 #type id ( args ) { define_stmts while ( logical_expression ) { stmt value 		value		GOTO:46
-SHIFT:  0 2 13 16 17 19 24 27 41 63 98 119 66 32 46 #type id ( args ) { define_stmts while ( logical_expression ) { stmt value 		=		S78
-REDUCE: 0 2 13 16 17 19 24 27 41 63 98 119 66 32 46 78 #type id ( args ) { define_stmts while ( logical_expression ) { stmt value = 		id		R66: equal_op -> = 
-GOTO:   0 2 13 16 17 19 24 27 41 63 98 119 66 32 46 #type id ( args ) { define_stmts while ( logical_expression ) { stmt value equal_op 		equal_op		GOTO:71
-SHIFT:  0 2 13 16 17 19 24 27 41 63 98 119 66 32 46 71 #type id ( args ) { define_stmts while ( logical_expression ) { stmt value equal_op 		id		S50
-REDUCE: 0 2 13 16 17 19 24 27 41 63 98 119 66 32 46 71 50 #type id ( args ) { define_stmts while ( logical_expression ) { stmt value equal_op id 		+		R85: call_func -> $ 
-GOTO:   0 2 13 16 17 19 24 27 41 63 98 119 66 32 46 71 50 #type id ( args ) { define_stmts while ( logical_expression ) { stmt value equal_op id call_func 		call_func		GOTO:92
-REDUCE: 0 2 13 16 17 19 24 27 41 63 98 119 66 32 46 71 50 92 #type id ( args ) { define_stmts while ( logical_expression ) { stmt value equal_op id call_func 		+		R82: factor -> id call_func 
-GOTO:   0 2 13 16 17 19 24 27 41 63 98 119 66 32 46 71 #type id ( args ) { define_stmts while ( logical_expression ) { stmt value equal_op factor 		factor		GOTO:48
-REDUCE: 0 2 13 16 17 19 24 27 41 63 98 119 66 32 46 71 48 #type id ( args ) { define_stmts while ( logical_expression ) { stmt value equal_op factor 		+		R80: item' -> $ 
-GOTO:   0 2 13 16 17 19 24 27 41 63 98 119 66 32 46 71 48 #type id ( args ) { define_stmts while ( logical_expression ) { stmt value equal_op factor item' 		item'		GOTO:87
-REDUCE: 0 2 13 16 17 19 24 27 41 63 98 119 66 32 46 71 48 87 #type id ( args ) { define_stmts while ( logical_expression ) { stmt value equal_op factor item' 		+		R76: item -> factor item' 
-GOTO:   0 2 13 16 17 19 24 27 41 63 98 119 66 32 46 71 #type id ( args ) { define_stmts while ( logical_expression ) { stmt value equal_op item 		item		GOTO:47
-SHIFT:  0 2 13 16 17 19 24 27 41 63 98 119 66 32 46 71 47 #type id ( args ) { define_stmts while ( logical_expression ) { stmt value equal_op item 		+		S85
-SHIFT:  0 2 13 16 17 19 24 27 41 63 98 119 66 32 46 71 47 85 #type id ( args ) { define_stmts while ( logical_expression ) { stmt value equal_op item + 		digit		S52
-REDUCE: 0 2 13 16 17 19 24 27 41 63 98 119 66 32 46 71 47 85 52 #type id ( args ) { define_stmts while ( logical_expression ) { stmt value equal_op item + digit 		;		R89: const -> digit 
-GOTO:   0 2 13 16 17 19 24 27 41 63 98 119 66 32 46 71 47 85 #type id ( args ) { define_stmts while ( logical_expression ) { stmt value equal_op item + const 		const		GOTO:51
-REDUCE: 0 2 13 16 17 19 24 27 41 63 98 119 66 32 46 71 47 85 51 #type id ( args ) { define_stmts while ( logical_expression ) { stmt value equal_op item + const 		;		R83: factor -> const 
-GOTO:   0 2 13 16 17 19 24 27 41 63 98 119 66 32 46 71 47 85 #type id ( args ) { define_stmts while ( logical_expression ) { stmt value equal_op item + factor 		factor		GOTO:48
-REDUCE: 0 2 13 16 17 19 24 27 41 63 98 119 66 32 46 71 47 85 48 #type id ( args ) { define_stmts while ( logical_expression ) { stmt value equal_op item + factor 		;		R80: item' -> $ 
-GOTO:   0 2 13 16 17 19 24 27 41 63 98 119 66 32 46 71 47 85 48 #type id ( args ) { define_stmts while ( logical_expression ) { stmt value equal_op item + factor item' 		item'		GOTO:87
-REDUCE: 0 2 13 16 17 19 24 27 41 63 98 119 66 32 46 71 47 85 48 87 #type id ( args ) { define_stmts while ( logical_expression ) { stmt value equal_op item + factor item' 		;		R76: item -> factor item' 
-GOTO:   0 2 13 16 17 19 24 27 41 63 98 119 66 32 46 71 47 85 #type id ( args ) { define_stmts while ( logical_expression ) { stmt value equal_op item + item 		item		GOTO:108
-REDUCE: 0 2 13 16 17 19 24 27 41 63 98 119 66 32 46 71 47 85 108 #type id ( args ) { define_stmts while ( logical_expression ) { stmt value equal_op item + item 		;		R75: value' -> $ 
-GOTO:   0 2 13 16 17 19 24 27 41 63 98 119 66 32 46 71 47 85 108 #type id ( args ) { define_stmts while ( logical_expression ) { stmt value equal_op item + item value' 		value'		GOTO:130
-REDUCE: 0 2 13 16 17 19 24 27 41 63 98 119 66 32 46 71 47 85 108 130 #type id ( args ) { define_stmts while ( logical_expression ) { stmt value equal_op item + item value' 		;		R73: value' -> + item value' 
-GOTO:   0 2 13 16 17 19 24 27 41 63 98 119 66 32 46 71 47 #type id ( args ) { define_stmts while ( logical_expression ) { stmt value equal_op item value' 		value'		GOTO:84
-REDUCE: 0 2 13 16 17 19 24 27 41 63 98 119 66 32 46 71 47 84 #type id ( args ) { define_stmts while ( logical_expression ) { stmt value equal_op item value' 		;		R72: value -> item value' 
-GOTO:   0 2 13 16 17 19 24 27 41 63 98 119 66 32 46 71 #type id ( args ) { define_stmts while ( logical_expression ) { stmt value equal_op value 		value		GOTO:107
-REDUCE: 0 2 13 16 17 19 24 27 41 63 98 119 66 32 46 71 107 #type id ( args ) { define_stmts while ( logical_expression ) { stmt value equal_op value 		;		R58: operation -> equal_op value 
-GOTO:   0 2 13 16 17 19 24 27 41 63 98 119 66 32 46 #type id ( args ) { define_stmts while ( logical_expression ) { stmt value operation 		operation		GOTO:69
-REDUCE: 0 2 13 16 17 19 24 27 41 63 98 119 66 32 46 69 #type id ( args ) { define_stmts while ( logical_expression ) { stmt value operation 		;		R56: expression -> value operation 
-GOTO:   0 2 13 16 17 19 24 27 41 63 98 119 66 32 #type id ( args ) { define_stmts while ( logical_expression ) { stmt expression 		expression		GOTO:37
-SHIFT:  0 2 13 16 17 19 24 27 41 63 98 119 66 32 37 #type id ( args ) { define_stmts while ( logical_expression ) { stmt expression 		;		S58
-REDUCE: 0 2 13 16 17 19 24 27 41 63 98 119 66 32 37 58 #type id ( args ) { define_stmts while ( logical_expression ) { stmt expression ; 		break		R32: assign_stmt -> expression ; 
-GOTO:   0 2 13 16 17 19 24 27 41 63 98 119 66 32 #type id ( args ) { define_stmts while ( logical_expression ) { stmt assign_stmt 		assign_stmt		GOTO:33
-REDUCE: 0 2 13 16 17 19 24 27 41 63 98 119 66 32 33 #type id ( args ) { define_stmts while ( logical_expression ) { stmt assign_stmt 		break		R28: stmt -> assign_stmt 
-GOTO:   0 2 13 16 17 19 24 27 41 63 98 119 66 32 #type id ( args ) { define_stmts while ( logical_expression ) { stmt stmt 		stmt		GOTO:32
-SHIFT:  0 2 13 16 17 19 24 27 41 63 98 119 66 32 32 #type id ( args ) { define_stmts while ( logical_expression ) { stmt stmt 		break		S39
-SHIFT:  0 2 13 16 17 19 24 27 41 63 98 119 66 32 32 39 #type id ( args ) { define_stmts while ( logical_expression ) { stmt stmt break 		;		S60
-REDUCE: 0 2 13 16 17 19 24 27 41 63 98 119 66 32 32 39 60 #type id ( args ) { define_stmts while ( logical_expression ) { stmt stmt break ; 		}		R34: jump_stmt -> break ; 
-GOTO:   0 2 13 16 17 19 24 27 41 63 98 119 66 32 32 #type id ( args ) { define_stmts while ( logical_expression ) { stmt stmt jump_stmt 		jump_stmt		GOTO:34
-REDUCE: 0 2 13 16 17 19 24 27 41 63 98 119 66 32 32 34 #type id ( args ) { define_stmts while ( logical_expression ) { stmt stmt jump_stmt 		}		R29: stmt -> jump_stmt 
-GOTO:   0 2 13 16 17 19 24 27 41 63 98 119 66 32 32 #type id ( args ) { define_stmts while ( logical_expression ) { stmt stmt stmt 		stmt		GOTO:32
-REDUCE: 0 2 13 16 17 19 24 27 41 63 98 119 66 32 32 32 #type id ( args ) { define_stmts while ( logical_expression ) { stmt stmt stmt 		}		R27: stmts -> $ 
-GOTO:   0 2 13 16 17 19 24 27 41 63 98 119 66 32 32 32 #type id ( args ) { define_stmts while ( logical_expression ) { stmt stmt stmt stmts 		stmts		GOTO:57
-REDUCE: 0 2 13 16 17 19 24 27 41 63 98 119 66 32 32 32 57 #type id ( args ) { define_stmts while ( logical_expression ) { stmt stmt stmt stmts 		}		R26: stmts -> stmt stmts 
-GOTO:   0 2 13 16 17 19 24 27 41 63 98 119 66 32 32 #type id ( args ) { define_stmts while ( logical_expression ) { stmt stmt stmts 		stmts		GOTO:57
-REDUCE: 0 2 13 16 17 19 24 27 41 63 98 119 66 32 32 57 #type id ( args ) { define_stmts while ( logical_expression ) { stmt stmt stmts 		}		R26: stmts -> stmt stmts 
-GOTO:   0 2 13 16 17 19 24 27 41 63 98 119 66 32 #type id ( args ) { define_stmts while ( logical_expression ) { stmt stmts 		stmts		GOTO:57
-REDUCE: 0 2 13 16 17 19 24 27 41 63 98 119 66 32 57 #type id ( args ) { define_stmts while ( logical_expression ) { stmt stmts 		}		R26: stmts -> stmt stmts 
-GOTO:   0 2 13 16 17 19 24 27 41 63 98 119 66 #type id ( args ) { define_stmts while ( logical_expression ) { stmts 		stmts		GOTO:103
-SHIFT:  0 2 13 16 17 19 24 27 41 63 98 119 66 103 #type id ( args ) { define_stmts while ( logical_expression ) { stmts 		}		S127
-REDUCE: 0 2 13 16 17 19 24 27 41 63 98 119 66 103 127 #type id ( args ) { define_stmts while ( logical_expression ) { stmts } 		if		R53: block_stmt -> { stmts } 
-GOTO:   0 2 13 16 17 19 24 27 41 63 98 119 #type id ( args ) { define_stmts while ( logical_expression ) block_stmt 		block_stmt		GOTO:140
-REDUCE: 0 2 13 16 17 19 24 27 41 63 98 119 140 #type id ( args ) { define_stmts while ( logical_expression ) block_stmt 		if		R36: iteration_stmt -> while ( logical_expression ) block_stmt 
-GOTO:   0 2 13 16 17 19 24 27 #type id ( args ) { define_stmts iteration_stmt 		iteration_stmt		GOTO:35
-REDUCE: 0 2 13 16 17 19 24 27 35 #type id ( args ) { define_stmts iteration_stmt 		if		R30: stmt -> iteration_stmt 
-GOTO:   0 2 13 16 17 19 24 27 #type id ( args ) { define_stmts stmt 		stmt		GOTO:32
-SHIFT:  0 2 13 16 17 19 24 27 32 #type id ( args ) { define_stmts stmt 		if		S44
-SHIFT:  0 2 13 16 17 19 24 27 32 44 #type id ( args ) { define_stmts stmt if 		(		S67
-SHIFT:  0 2 13 16 17 19 24 27 32 44 67 #type id ( args ) { define_stmts stmt if ( 		id		S50
-REDUCE: 0 2 13 16 17 19 24 27 32 44 67 50 #type id ( args ) { define_stmts stmt if ( id 		>		R85: call_func -> $ 
-GOTO:   0 2 13 16 17 19 24 27 32 44 67 50 #type id ( args ) { define_stmts stmt if ( id call_func 		call_func		GOTO:92
-REDUCE: 0 2 13 16 17 19 24 27 32 44 67 50 92 #type id ( args ) { define_stmts stmt if ( id call_func 		>		R82: factor -> id call_func 
-GOTO:   0 2 13 16 17 19 24 27 32 44 67 #type id ( args ) { define_stmts stmt if ( factor 		factor		GOTO:48
-REDUCE: 0 2 13 16 17 19 24 27 32 44 67 48 #type id ( args ) { define_stmts stmt if ( factor 		>		R80: item' -> $ 
-GOTO:   0 2 13 16 17 19 24 27 32 44 67 48 #type id ( args ) { define_stmts stmt if ( factor item' 		item'		GOTO:87
-REDUCE: 0 2 13 16 17 19 24 27 32 44 67 48 87 #type id ( args ) { define_stmts stmt if ( factor item' 		>		R76: item -> factor item' 
-GOTO:   0 2 13 16 17 19 24 27 32 44 67 #type id ( args ) { define_stmts stmt if ( item 		item		GOTO:47
-REDUCE: 0 2 13 16 17 19 24 27 32 44 67 47 #type id ( args ) { define_stmts stmt if ( item 		>		R75: value' -> $ 
-GOTO:   0 2 13 16 17 19 24 27 32 44 67 47 #type id ( args ) { define_stmts stmt if ( item value' 		value'		GOTO:84
-REDUCE: 0 2 13 16 17 19 24 27 32 44 67 47 84 #type id ( args ) { define_stmts stmt if ( item value' 		>		R72: value -> item value' 
-GOTO:   0 2 13 16 17 19 24 27 32 44 67 #type id ( args ) { define_stmts stmt if ( value 		value		GOTO:46
-SHIFT:  0 2 13 16 17 19 24 27 32 44 67 46 #type id ( args ) { define_stmts stmt if ( value 		>		S72
-REDUCE: 0 2 13 16 17 19 24 27 32 44 67 46 72 #type id ( args ) { define_stmts stmt if ( value > 		digit		R60: compare_op -> > 
-GOTO:   0 2 13 16 17 19 24 27 32 44 67 46 #type id ( args ) { define_stmts stmt if ( value compare_op 		compare_op		GOTO:70
-SHIFT:  0 2 13 16 17 19 24 27 32 44 67 46 70 #type id ( args ) { define_stmts stmt if ( value compare_op 		digit		S52
-REDUCE: 0 2 13 16 17 19 24 27 32 44 67 46 70 52 #type id ( args ) { define_stmts stmt if ( value compare_op digit 		&&		R89: const -> digit 
-GOTO:   0 2 13 16 17 19 24 27 32 44 67 46 70 #type id ( args ) { define_stmts stmt if ( value compare_op const 		const		GOTO:51
-REDUCE: 0 2 13 16 17 19 24 27 32 44 67 46 70 51 #type id ( args ) { define_stmts stmt if ( value compare_op const 		&&		R83: factor -> const 
-GOTO:   0 2 13 16 17 19 24 27 32 44 67 46 70 #type id ( args ) { define_stmts stmt if ( value compare_op factor 		factor		GOTO:48
-REDUCE: 0 2 13 16 17 19 24 27 32 44 67 46 70 48 #type id ( args ) { define_stmts stmt if ( value compare_op factor 		&&		R80: item' -> $ 
-GOTO:   0 2 13 16 17 19 24 27 32 44 67 46 70 48 #type id ( args ) { define_stmts stmt if ( value compare_op factor item' 		item'		GOTO:87
-REDUCE: 0 2 13 16 17 19 24 27 32 44 67 46 70 48 87 #type id ( args ) { define_stmts stmt if ( value compare_op factor item' 		&&		R76: item -> factor item' 
-GOTO:   0 2 13 16 17 19 24 27 32 44 67 46 70 #type id ( args ) { define_stmts stmt if ( value compare_op item 		item		GOTO:47
-REDUCE: 0 2 13 16 17 19 24 27 32 44 67 46 70 47 #type id ( args ) { define_stmts stmt if ( value compare_op item 		&&		R75: value' -> $ 
-GOTO:   0 2 13 16 17 19 24 27 32 44 67 46 70 47 #type id ( args ) { define_stmts stmt if ( value compare_op item value' 		value'		GOTO:84
-REDUCE: 0 2 13 16 17 19 24 27 32 44 67 46 70 47 84 #type id ( args ) { define_stmts stmt if ( value compare_op item value' 		&&		R72: value -> item value' 
-GOTO:   0 2 13 16 17 19 24 27 32 44 67 46 70 #type id ( args ) { define_stmts stmt if ( value compare_op value 		value		GOTO:106
-REDUCE: 0 2 13 16 17 19 24 27 32 44 67 46 70 106 #type id ( args ) { define_stmts stmt if ( value compare_op value 		&&		R57: operation -> compare_op value 
-GOTO:   0 2 13 16 17 19 24 27 32 44 67 46 #type id ( args ) { define_stmts stmt if ( value operation 		operation		GOTO:69
-REDUCE: 0 2 13 16 17 19 24 27 32 44 67 46 69 #type id ( args ) { define_stmts stmt if ( value operation 		&&		R56: expression -> value operation 
-GOTO:   0 2 13 16 17 19 24 27 32 44 67 #type id ( args ) { define_stmts stmt if ( expression 		expression		GOTO:100
-SHIFT:  0 2 13 16 17 19 24 27 32 44 67 100 #type id ( args ) { define_stmts stmt if ( expression 		&&		S123
-REDUCE: 0 2 13 16 17 19 24 27 32 44 67 100 123 #type id ( args ) { define_stmts stmt if ( expression && 		id		R46: lop -> && 
-GOTO:   0 2 13 16 17 19 24 27 32 44 67 100 #type id ( args ) { define_stmts stmt if ( expression lop 		lop		GOTO:122
-SHIFT:  0 2 13 16 17 19 24 27 32 44 67 100 122 #type id ( args ) { define_stmts stmt if ( expression lop 		id		S50
-REDUCE: 0 2 13 16 17 19 24 27 32 44 67 100 122 50 #type id ( args ) { define_stmts stmt if ( expression lop id 		<		R85: call_func -> $ 
-GOTO:   0 2 13 16 17 19 24 27 32 44 67 100 122 50 #type id ( args ) { define_stmts stmt if ( expression lop id call_func 		call_func		GOTO:92
-REDUCE: 0 2 13 16 17 19 24 27 32 44 67 100 122 50 92 #type id ( args ) { define_stmts stmt if ( expression lop id call_func 		<		R82: factor -> id call_func 
-GOTO:   0 2 13 16 17 19 24 27 32 44 67 100 122 #type id ( args ) { define_stmts stmt if ( expression lop factor 		factor		GOTO:48
-REDUCE: 0 2 13 16 17 19 24 27 32 44 67 100 122 48 #type id ( args ) { define_stmts stmt if ( expression lop factor 		<		R80: item' -> $ 
-GOTO:   0 2 13 16 17 19 24 27 32 44 67 100 122 48 #type id ( args ) { define_stmts stmt if ( expression lop factor item' 		item'		GOTO:87
-REDUCE: 0 2 13 16 17 19 24 27 32 44 67 100 122 48 87 #type id ( args ) { define_stmts stmt if ( expression lop factor item' 		<		R76: item -> factor item' 
-GOTO:   0 2 13 16 17 19 24 27 32 44 67 100 122 #type id ( args ) { define_stmts stmt if ( expression lop item 		item		GOTO:47
-REDUCE: 0 2 13 16 17 19 24 27 32 44 67 100 122 47 #type id ( args ) { define_stmts stmt if ( expression lop item 		<		R75: value' -> $ 
-GOTO:   0 2 13 16 17 19 24 27 32 44 67 100 122 47 #type id ( args ) { define_stmts stmt if ( expression lop item value' 		value'		GOTO:84
-REDUCE: 0 2 13 16 17 19 24 27 32 44 67 100 122 47 84 #type id ( args ) { define_stmts stmt if ( expression lop item value' 		<		R72: value -> item value' 
-GOTO:   0 2 13 16 17 19 24 27 32 44 67 100 122 #type id ( args ) { define_stmts stmt if ( expression lop value 		value		GOTO:46
-SHIFT:  0 2 13 16 17 19 24 27 32 44 67 100 122 46 #type id ( args ) { define_stmts stmt if ( expression lop value 		<		S74
-REDUCE: 0 2 13 16 17 19 24 27 32 44 67 100 122 46 74 #type id ( args ) { define_stmts stmt if ( expression lop value < 		digit		R62: compare_op -> < 
-GOTO:   0 2 13 16 17 19 24 27 32 44 67 100 122 46 #type id ( args ) { define_stmts stmt if ( expression lop value compare_op 		compare_op		GOTO:70
-SHIFT:  0 2 13 16 17 19 24 27 32 44 67 100 122 46 70 #type id ( args ) { define_stmts stmt if ( expression lop value compare_op 		digit		S52
-REDUCE: 0 2 13 16 17 19 24 27 32 44 67 100 122 46 70 52 #type id ( args ) { define_stmts stmt if ( expression lop value compare_op digit 		||		R89: const -> digit 
-GOTO:   0 2 13 16 17 19 24 27 32 44 67 100 122 46 70 #type id ( args ) { define_stmts stmt if ( expression lop value compare_op const 		const		GOTO:51
-REDUCE: 0 2 13 16 17 19 24 27 32 44 67 100 122 46 70 51 #type id ( args ) { define_stmts stmt if ( expression lop value compare_op const 		||		R83: factor -> const 
-GOTO:   0 2 13 16 17 19 24 27 32 44 67 100 122 46 70 #type id ( args ) { define_stmts stmt if ( expression lop value compare_op factor 		factor		GOTO:48
-REDUCE: 0 2 13 16 17 19 24 27 32 44 67 100 122 46 70 48 #type id ( args ) { define_stmts stmt if ( expression lop value compare_op factor 		||		R80: item' -> $ 
-GOTO:   0 2 13 16 17 19 24 27 32 44 67 100 122 46 70 48 #type id ( args ) { define_stmts stmt if ( expression lop value compare_op factor item' 		item'		GOTO:87
-REDUCE: 0 2 13 16 17 19 24 27 32 44 67 100 122 46 70 48 87 #type id ( args ) { define_stmts stmt if ( expression lop value compare_op factor item' 		||		R76: item -> factor item' 
-GOTO:   0 2 13 16 17 19 24 27 32 44 67 100 122 46 70 #type id ( args ) { define_stmts stmt if ( expression lop value compare_op item 		item		GOTO:47
-REDUCE: 0 2 13 16 17 19 24 27 32 44 67 100 122 46 70 47 #type id ( args ) { define_stmts stmt if ( expression lop value compare_op item 		||		R75: value' -> $ 
-GOTO:   0 2 13 16 17 19 24 27 32 44 67 100 122 46 70 47 #type id ( args ) { define_stmts stmt if ( expression lop value compare_op item value' 		value'		GOTO:84
-REDUCE: 0 2 13 16 17 19 24 27 32 44 67 100 122 46 70 47 84 #type id ( args ) { define_stmts stmt if ( expression lop value compare_op item value' 		||		R72: value -> item value' 
-GOTO:   0 2 13 16 17 19 24 27 32 44 67 100 122 46 70 #type id ( args ) { define_stmts stmt if ( expression lop value compare_op value 		value		GOTO:106
-REDUCE: 0 2 13 16 17 19 24 27 32 44 67 100 122 46 70 106 #type id ( args ) { define_stmts stmt if ( expression lop value compare_op value 		||		R57: operation -> compare_op value 
-GOTO:   0 2 13 16 17 19 24 27 32 44 67 100 122 46 #type id ( args ) { define_stmts stmt if ( expression lop value operation 		operation		GOTO:69
-REDUCE: 0 2 13 16 17 19 24 27 32 44 67 100 122 46 69 #type id ( args ) { define_stmts stmt if ( expression lop value operation 		||		R56: expression -> value operation 
-GOTO:   0 2 13 16 17 19 24 27 32 44 67 100 122 #type id ( args ) { define_stmts stmt if ( expression lop expression 		expression		GOTO:142
-SHIFT:  0 2 13 16 17 19 24 27 32 44 67 100 122 142 #type id ( args ) { define_stmts stmt if ( expression lop expression 		||		S124
-REDUCE: 0 2 13 16 17 19 24 27 32 44 67 100 122 142 124 #type id ( args ) { define_stmts stmt if ( expression lop expression || 		id		R47: lop -> || 
-GOTO:   0 2 13 16 17 19 24 27 32 44 67 100 122 142 #type id ( args ) { define_stmts stmt if ( expression lop expression lop 		lop		GOTO:122
-SHIFT:  0 2 13 16 17 19 24 27 32 44 67 100 122 142 122 #type id ( args ) { define_stmts stmt if ( expression lop expression lop 		id		S50
-REDUCE: 0 2 13 16 17 19 24 27 32 44 67 100 122 142 122 50 #type id ( args ) { define_stmts stmt if ( expression lop expression lop id 		==		R85: call_func -> $ 
-GOTO:   0 2 13 16 17 19 24 27 32 44 67 100 122 142 122 50 #type id ( args ) { define_stmts stmt if ( expression lop expression lop id call_func 		call_func		GOTO:92
-REDUCE: 0 2 13 16 17 19 24 27 32 44 67 100 122 142 122 50 92 #type id ( args ) { define_stmts stmt if ( expression lop expression lop id call_func 		==		R82: factor -> id call_func 
-GOTO:   0 2 13 16 17 19 24 27 32 44 67 100 122 142 122 #type id ( args ) { define_stmts stmt if ( expression lop expression lop factor 		factor		GOTO:48
-REDUCE: 0 2 13 16 17 19 24 27 32 44 67 100 122 142 122 48 #type id ( args ) { define_stmts stmt if ( expression lop expression lop factor 		==		R80: item' -> $ 
-GOTO:   0 2 13 16 17 19 24 27 32 44 67 100 122 142 122 48 #type id ( args ) { define_stmts stmt if ( expression lop expression lop factor item' 		item'		GOTO:87
-REDUCE: 0 2 13 16 17 19 24 27 32 44 67 100 122 142 122 48 87 #type id ( args ) { define_stmts stmt if ( expression lop expression lop factor item' 		==		R76: item -> factor item' 
-GOTO:   0 2 13 16 17 19 24 27 32 44 67 100 122 142 122 #type id ( args ) { define_stmts stmt if ( expression lop expression lop item 		item		GOTO:47
-REDUCE: 0 2 13 16 17 19 24 27 32 44 67 100 122 142 122 47 #type id ( args ) { define_stmts stmt if ( expression lop expression lop item 		==		R75: value' -> $ 
-GOTO:   0 2 13 16 17 19 24 27 32 44 67 100 122 142 122 47 #type id ( args ) { define_stmts stmt if ( expression lop expression lop item value' 		value'		GOTO:84
-REDUCE: 0 2 13 16 17 19 24 27 32 44 67 100 122 142 122 47 84 #type id ( args ) { define_stmts stmt if ( expression lop expression lop item value' 		==		R72: value -> item value' 
-GOTO:   0 2 13 16 17 19 24 27 32 44 67 100 122 142 122 #type id ( args ) { define_stmts stmt if ( expression lop expression lop value 		value		GOTO:46
-SHIFT:  0 2 13 16 17 19 24 27 32 44 67 100 122 142 122 46 #type id ( args ) { define_stmts stmt if ( expression lop expression lop value 		==		S76
-REDUCE: 0 2 13 16 17 19 24 27 32 44 67 100 122 142 122 46 76 #type id ( args ) { define_stmts stmt if ( expression lop expression lop value == 		digit		R64: compare_op -> == 
-GOTO:   0 2 13 16 17 19 24 27 32 44 67 100 122 142 122 46 #type id ( args ) { define_stmts stmt if ( expression lop expression lop value compare_op 		compare_op		GOTO:70
-SHIFT:  0 2 13 16 17 19 24 27 32 44 67 100 122 142 122 46 70 #type id ( args ) { define_stmts stmt if ( expression lop expression lop value compare_op 		digit		S52
-REDUCE: 0 2 13 16 17 19 24 27 32 44 67 100 122 142 122 46 70 52 #type id ( args ) { define_stmts stmt if ( expression lop expression lop value compare_op digit 		)		R89: const -> digit 
-GOTO:   0 2 13 16 17 19 24 27 32 44 67 100 122 142 122 46 70 #type id ( args ) { define_stmts stmt if ( expression lop expression lop value compare_op const 		const		GOTO:51
-REDUCE: 0 2 13 16 17 19 24 27 32 44 67 100 122 142 122 46 70 51 #type id ( args ) { define_stmts stmt if ( expression lop expression lop value compare_op const 		)		R83: factor -> const 
-GOTO:   0 2 13 16 17 19 24 27 32 44 67 100 122 142 122 46 70 #type id ( args ) { define_stmts stmt if ( expression lop expression lop value compare_op factor 		factor		GOTO:48
-REDUCE: 0 2 13 16 17 19 24 27 32 44 67 100 122 142 122 46 70 48 #type id ( args ) { define_stmts stmt if ( expression lop expression lop value compare_op factor 		)		R80: item' -> $ 
-GOTO:   0 2 13 16 17 19 24 27 32 44 67 100 122 142 122 46 70 48 #type id ( args ) { define_stmts stmt if ( expression lop expression lop value compare_op factor item' 		item'		GOTO:87
-REDUCE: 0 2 13 16 17 19 24 27 32 44 67 100 122 142 122 46 70 48 87 #type id ( args ) { define_stmts stmt if ( expression lop expression lop value compare_op factor item' 		)		R76: item -> factor item' 
-GOTO:   0 2 13 16 17 19 24 27 32 44 67 100 122 142 122 46 70 #type id ( args ) { define_stmts stmt if ( expression lop expression lop value compare_op item 		item		GOTO:47
-REDUCE: 0 2 13 16 17 19 24 27 32 44 67 100 122 142 122 46 70 47 #type id ( args ) { define_stmts stmt if ( expression lop expression lop value compare_op item 		)		R75: value' -> $ 
-GOTO:   0 2 13 16 17 19 24 27 32 44 67 100 122 142 122 46 70 47 #type id ( args ) { define_stmts stmt if ( expression lop expression lop value compare_op item value' 		value'		GOTO:84
-REDUCE: 0 2 13 16 17 19 24 27 32 44 67 100 122 142 122 46 70 47 84 #type id ( args ) { define_stmts stmt if ( expression lop expression lop value compare_op item value' 		)		R72: value -> item value' 
-GOTO:   0 2 13 16 17 19 24 27 32 44 67 100 122 142 122 46 70 #type id ( args ) { define_stmts stmt if ( expression lop expression lop value compare_op value 		value		GOTO:106
-REDUCE: 0 2 13 16 17 19 24 27 32 44 67 100 122 142 122 46 70 106 #type id ( args ) { define_stmts stmt if ( expression lop expression lop value compare_op value 		)		R57: operation -> compare_op value 
-GOTO:   0 2 13 16 17 19 24 27 32 44 67 100 122 142 122 46 #type id ( args ) { define_stmts stmt if ( expression lop expression lop value operation 		operation		GOTO:69
-REDUCE: 0 2 13 16 17 19 24 27 32 44 67 100 122 142 122 46 69 #type id ( args ) { define_stmts stmt if ( expression lop expression lop value operation 		)		R56: expression -> value operation 
-GOTO:   0 2 13 16 17 19 24 27 32 44 67 100 122 142 122 #type id ( args ) { define_stmts stmt if ( expression lop expression lop expression 		expression		GOTO:142
-REDUCE: 0 2 13 16 17 19 24 27 32 44 67 100 122 142 122 142 #type id ( args ) { define_stmts stmt if ( expression lop expression lop expression 		)		R45: bool_expression -> $ 
-GOTO:   0 2 13 16 17 19 24 27 32 44 67 100 122 142 122 142 #type id ( args ) { define_stmts stmt if ( expression lop expression lop expression bool_expression 		bool_expression		GOTO:149
-REDUCE: 0 2 13 16 17 19 24 27 32 44 67 100 122 142 122 142 149 #type id ( args ) { define_stmts stmt if ( expression lop expression lop expression bool_expression 		)		R44: bool_expression -> lop expression bool_expression 
-GOTO:   0 2 13 16 17 19 24 27 32 44 67 100 122 142 #type id ( args ) { define_stmts stmt if ( expression lop expression bool_expression 		bool_expression		GOTO:149
-REDUCE: 0 2 13 16 17 19 24 27 32 44 67 100 122 142 149 #type id ( args ) { define_stmts stmt if ( expression lop expression bool_expression 		)		R44: bool_expression -> lop expression bool_expression 
-GOTO:   0 2 13 16 17 19 24 27 32 44 67 100 #type id ( args ) { define_stmts stmt if ( expression bool_expression 		bool_expression		GOTO:121
-REDUCE: 0 2 13 16 17 19 24 27 32 44 67 100 121 #type id ( args ) { define_stmts stmt if ( expression bool_expression 		)		R43: logical_expression -> expression bool_expression 
-GOTO:   0 2 13 16 17 19 24 27 32 44 67 #type id ( args ) { define_stmts stmt if ( logical_expression 		logical_expression		GOTO:104
-SHIFT:  0 2 13 16 17 19 24 27 32 44 67 104 #type id ( args ) { define_stmts stmt if ( logical_expression 		)		S128
-SHIFT:  0 2 13 16 17 19 24 27 32 44 67 104 128 #type id ( args ) { define_stmts stmt if ( logical_expression ) 		{		S66
-SHIFT:  0 2 13 16 17 19 24 27 32 44 67 104 128 66 #type id ( args ) { define_stmts stmt if ( logical_expression ) { 		id		S50
-REDUCE: 0 2 13 16 17 19 24 27 32 44 67 104 128 66 50 #type id ( args ) { define_stmts stmt if ( logical_expression ) { id 		=		R85: call_func -> $ 
-GOTO:   0 2 13 16 17 19 24 27 32 44 67 104 128 66 50 #type id ( args ) { define_stmts stmt if ( logical_expression ) { id call_func 		call_func		GOTO:92
-REDUCE: 0 2 13 16 17 19 24 27 32 44 67 104 128 66 50 92 #type id ( args ) { define_stmts stmt if ( logical_expression ) { id call_func 		=		R82: factor -> id call_func 
-GOTO:   0 2 13 16 17 19 24 27 32 44 67 104 128 66 #type id ( args ) { define_stmts stmt if ( logical_expression ) { factor 		factor		GOTO:48
-REDUCE: 0 2 13 16 17 19 24 27 32 44 67 104 128 66 48 #type id ( args ) { define_stmts stmt if ( logical_expression ) { factor 		=		R80: item' -> $ 
-GOTO:   0 2 13 16 17 19 24 27 32 44 67 104 128 66 48 #type id ( args ) { define_stmts stmt if ( logical_expression ) { factor item' 		item'		GOTO:87
-REDUCE: 0 2 13 16 17 19 24 27 32 44 67 104 128 66 48 87 #type id ( args ) { define_stmts stmt if ( logical_expression ) { factor item' 		=		R76: item -> factor item' 
-GOTO:   0 2 13 16 17 19 24 27 32 44 67 104 128 66 #type id ( args ) { define_stmts stmt if ( logical_expression ) { item 		item		GOTO:47
-REDUCE: 0 2 13 16 17 19 24 27 32 44 67 104 128 66 47 #type id ( args ) { define_stmts stmt if ( logical_expression ) { item 		=		R75: value' -> $ 
-GOTO:   0 2 13 16 17 19 24 27 32 44 67 104 128 66 47 #type id ( args ) { define_stmts stmt if ( logical_expression ) { item value' 		value'		GOTO:84
-REDUCE: 0 2 13 16 17 19 24 27 32 44 67 104 128 66 47 84 #type id ( args ) { define_stmts stmt if ( logical_expression ) { item value' 		=		R72: value -> item value' 
-GOTO:   0 2 13 16 17 19 24 27 32 44 67 104 128 66 #type id ( args ) { define_stmts stmt if ( logical_expression ) { value 		value		GOTO:46
-SHIFT:  0 2 13 16 17 19 24 27 32 44 67 104 128 66 46 #type id ( args ) { define_stmts stmt if ( logical_expression ) { value 		=		S78
-REDUCE: 0 2 13 16 17 19 24 27 32 44 67 104 128 66 46 78 #type id ( args ) { define_stmts stmt if ( logical_expression ) { value = 		id		R66: equal_op -> = 
-GOTO:   0 2 13 16 17 19 24 27 32 44 67 104 128 66 46 #type id ( args ) { define_stmts stmt if ( logical_expression ) { value equal_op 		equal_op		GOTO:71
-SHIFT:  0 2 13 16 17 19 24 27 32 44 67 104 128 66 46 71 #type id ( args ) { define_stmts stmt if ( logical_expression ) { value equal_op 		id		S50
-REDUCE: 0 2 13 16 17 19 24 27 32 44 67 104 128 66 46 71 50 #type id ( args ) { define_stmts stmt if ( logical_expression ) { value equal_op id 		-		R85: call_func -> $ 
-GOTO:   0 2 13 16 17 19 24 27 32 44 67 104 128 66 46 71 50 #type id ( args ) { define_stmts stmt if ( logical_expression ) { value equal_op id call_func 		call_func		GOTO:92
-REDUCE: 0 2 13 16 17 19 24 27 32 44 67 104 128 66 46 71 50 92 #type id ( args ) { define_stmts stmt if ( logical_expression ) { value equal_op id call_func 		-		R82: factor -> id call_func 
-GOTO:   0 2 13 16 17 19 24 27 32 44 67 104 128 66 46 71 #type id ( args ) { define_stmts stmt if ( logical_expression ) { value equal_op factor 		factor		GOTO:48
-REDUCE: 0 2 13 16 17 19 24 27 32 44 67 104 128 66 46 71 48 #type id ( args ) { define_stmts stmt if ( logical_expression ) { value equal_op factor 		-		R80: item' -> $ 
-GOTO:   0 2 13 16 17 19 24 27 32 44 67 104 128 66 46 71 48 #type id ( args ) { define_stmts stmt if ( logical_expression ) { value equal_op factor item' 		item'		GOTO:87
-REDUCE: 0 2 13 16 17 19 24 27 32 44 67 104 128 66 46 71 48 87 #type id ( args ) { define_stmts stmt if ( logical_expression ) { value equal_op factor item' 		-		R76: item -> factor item' 
-GOTO:   0 2 13 16 17 19 24 27 32 44 67 104 128 66 46 71 #type id ( args ) { define_stmts stmt if ( logical_expression ) { value equal_op item 		item		GOTO:47
-SHIFT:  0 2 13 16 17 19 24 27 32 44 67 104 128 66 46 71 47 #type id ( args ) { define_stmts stmt if ( logical_expression ) { value equal_op item 		-		S86
-SHIFT:  0 2 13 16 17 19 24 27 32 44 67 104 128 66 46 71 47 86 #type id ( args ) { define_stmts stmt if ( logical_expression ) { value equal_op item - 		digit		S52
-REDUCE: 0 2 13 16 17 19 24 27 32 44 67 104 128 66 46 71 47 86 52 #type id ( args ) { define_stmts stmt if ( logical_expression ) { value equal_op item - digit 		;		R89: const -> digit 
-GOTO:   0 2 13 16 17 19 24 27 32 44 67 104 128 66 46 71 47 86 #type id ( args ) { define_stmts stmt if ( logical_expression ) { value equal_op item - const 		const		GOTO:51
-REDUCE: 0 2 13 16 17 19 24 27 32 44 67 104 128 66 46 71 47 86 51 #type id ( args ) { define_stmts stmt if ( logical_expression ) { value equal_op item - const 		;		R83: factor -> const 
-GOTO:   0 2 13 16 17 19 24 27 32 44 67 104 128 66 46 71 47 86 #type id ( args ) { define_stmts stmt if ( logical_expression ) { value equal_op item - factor 		factor		GOTO:48
-REDUCE: 0 2 13 16 17 19 24 27 32 44 67 104 128 66 46 71 47 86 48 #type id ( args ) { define_stmts stmt if ( logical_expression ) { value equal_op item - factor 		;		R80: item' -> $ 
-GOTO:   0 2 13 16 17 19 24 27 32 44 67 104 128 66 46 71 47 86 48 #type id ( args ) { define_stmts stmt if ( logical_expression ) { value equal_op item - factor item' 		item'		GOTO:87
-REDUCE: 0 2 13 16 17 19 24 27 32 44 67 104 128 66 46 71 47 86 48 87 #type id ( args ) { define_stmts stmt if ( logical_expression ) { value equal_op item - factor item' 		;		R76: item -> factor item' 
-GOTO:   0 2 13 16 17 19 24 27 32 44 67 104 128 66 46 71 47 86 #type id ( args ) { define_stmts stmt if ( logical_expression ) { value equal_op item - item 		item		GOTO:109
-REDUCE: 0 2 13 16 17 19 24 27 32 44 67 104 128 66 46 71 47 86 109 #type id ( args ) { define_stmts stmt if ( logical_expression ) { value equal_op item - item 		;		R75: value' -> $ 
-GOTO:   0 2 13 16 17 19 24 27 32 44 67 104 128 66 46 71 47 86 109 #type id ( args ) { define_stmts stmt if ( logical_expression ) { value equal_op item - item value' 		value'		GOTO:131
-REDUCE: 0 2 13 16 17 19 24 27 32 44 67 104 128 66 46 71 47 86 109 131 #type id ( args ) { define_stmts stmt if ( logical_expression ) { value equal_op item - item value' 		;		R74: value' -> - item value' 
-GOTO:   0 2 13 16 17 19 24 27 32 44 67 104 128 66 46 71 47 #type id ( args ) { define_stmts stmt if ( logical_expression ) { value equal_op item value' 		value'		GOTO:84
-REDUCE: 0 2 13 16 17 19 24 27 32 44 67 104 128 66 46 71 47 84 #type id ( args ) { define_stmts stmt if ( logical_expression ) { value equal_op item value' 		;		R72: value -> item value' 
-GOTO:   0 2 13 16 17 19 24 27 32 44 67 104 128 66 46 71 #type id ( args ) { define_stmts stmt if ( logical_expression ) { value equal_op value 		value		GOTO:107
-REDUCE: 0 2 13 16 17 19 24 27 32 44 67 104 128 66 46 71 107 #type id ( args ) { define_stmts stmt if ( logical_expression ) { value equal_op value 		;		R58: operation -> equal_op value 
-GOTO:   0 2 13 16 17 19 24 27 32 44 67 104 128 66 46 #type id ( args ) { define_stmts stmt if ( logical_expression ) { value operation 		operation		GOTO:69
-REDUCE: 0 2 13 16 17 19 24 27 32 44 67 104 128 66 46 69 #type id ( args ) { define_stmts stmt if ( logical_expression ) { value operation 		;		R56: expression -> value operation 
-GOTO:   0 2 13 16 17 19 24 27 32 44 67 104 128 66 #type id ( args ) { define_stmts stmt if ( logical_expression ) { expression 		expression		GOTO:37
-SHIFT:  0 2 13 16 17 19 24 27 32 44 67 104 128 66 37 #type id ( args ) { define_stmts stmt if ( logical_expression ) { expression 		;		S58
-REDUCE: 0 2 13 16 17 19 24 27 32 44 67 104 128 66 37 58 #type id ( args ) { define_stmts stmt if ( logical_expression ) { expression ; 		}		R32: assign_stmt -> expression ; 
-GOTO:   0 2 13 16 17 19 24 27 32 44 67 104 128 66 #type id ( args ) { define_stmts stmt if ( logical_expression ) { assign_stmt 		assign_stmt		GOTO:33
-REDUCE: 0 2 13 16 17 19 24 27 32 44 67 104 128 66 33 #type id ( args ) { define_stmts stmt if ( logical_expression ) { assign_stmt 		}		R28: stmt -> assign_stmt 
-GOTO:   0 2 13 16 17 19 24 27 32 44 67 104 128 66 #type id ( args ) { define_stmts stmt if ( logical_expression ) { stmt 		stmt		GOTO:32
-REDUCE: 0 2 13 16 17 19 24 27 32 44 67 104 128 66 32 #type id ( args ) { define_stmts stmt if ( logical_expression ) { stmt 		}		R27: stmts -> $ 
-GOTO:   0 2 13 16 17 19 24 27 32 44 67 104 128 66 32 #type id ( args ) { define_stmts stmt if ( logical_expression ) { stmt stmts 		stmts		GOTO:57
-REDUCE: 0 2 13 16 17 19 24 27 32 44 67 104 128 66 32 57 #type id ( args ) { define_stmts stmt if ( logical_expression ) { stmt stmts 		}		R26: stmts -> stmt stmts 
-GOTO:   0 2 13 16 17 19 24 27 32 44 67 104 128 66 #type id ( args ) { define_stmts stmt if ( logical_expression ) { stmts 		stmts		GOTO:103
-SHIFT:  0 2 13 16 17 19 24 27 32 44 67 104 128 66 103 #type id ( args ) { define_stmts stmt if ( logical_expression ) { stmts 		}		S127
-REDUCE: 0 2 13 16 17 19 24 27 32 44 67 104 128 66 103 127 #type id ( args ) { define_stmts stmt if ( logical_expression ) { stmts } 		if		R53: block_stmt -> { stmts } 
-GOTO:   0 2 13 16 17 19 24 27 32 44 67 104 128 #type id ( args ) { define_stmts stmt if ( logical_expression ) block_stmt 		block_stmt		GOTO:145
-REDUCE: 0 2 13 16 17 19 24 27 32 44 67 104 128 145 #type id ( args ) { define_stmts stmt if ( logical_expression ) block_stmt 		if		R41: result -> $ 
-GOTO:   0 2 13 16 17 19 24 27 32 44 67 104 128 145 #type id ( args ) { define_stmts stmt if ( logical_expression ) block_stmt result 		result		GOTO:152
-REDUCE: 0 2 13 16 17 19 24 27 32 44 67 104 128 145 152 #type id ( args ) { define_stmts stmt if ( logical_expression ) block_stmt result 		if		R39: branch_stmt -> if ( logical_expression ) block_stmt result 
-GOTO:   0 2 13 16 17 19 24 27 32 #type id ( args ) { define_stmts stmt branch_stmt 		branch_stmt		GOTO:36
-REDUCE: 0 2 13 16 17 19 24 27 32 36 #type id ( args ) { define_stmts stmt branch_stmt 		if		R31: stmt -> branch_stmt 
-GOTO:   0 2 13 16 17 19 24 27 32 #type id ( args ) { define_stmts stmt stmt 		stmt		GOTO:32
-SHIFT:  0 2 13 16 17 19 24 27 32 32 #type id ( args ) { define_stmts stmt stmt 		if		S44
-SHIFT:  0 2 13 16 17 19 24 27 32 32 44 #type id ( args ) { define_stmts stmt stmt if 		(		S67
-SHIFT:  0 2 13 16 17 19 24 27 32 32 44 67 #type id ( args ) { define_stmts stmt stmt if ( 		!		S99
-SHIFT:  0 2 13 16 17 19 24 27 32 32 44 67 99 #type id ( args ) { define_stmts stmt stmt if ( ! 		id		S50
-REDUCE: 0 2 13 16 17 19 24 27 32 32 44 67 99 50 #type id ( args ) { define_stmts stmt stmt if ( ! id 		)		R85: call_func -> $ 
-GOTO:   0 2 13 16 17 19 24 27 32 32 44 67 99 50 #type id ( args ) { define_stmts stmt stmt if ( ! id call_func 		call_func		GOTO:92
-REDUCE: 0 2 13 16 17 19 24 27 32 32 44 67 99 50 92 #type id ( args ) { define_stmts stmt stmt if ( ! id call_func 		)		R82: factor -> id call_func 
-GOTO:   0 2 13 16 17 19 24 27 32 32 44 67 99 #type id ( args ) { define_stmts stmt stmt if ( ! factor 		factor		GOTO:48
-REDUCE: 0 2 13 16 17 19 24 27 32 32 44 67 99 48 #type id ( args ) { define_stmts stmt stmt if ( ! factor 		)		R80: item' -> $ 
-GOTO:   0 2 13 16 17 19 24 27 32 32 44 67 99 48 #type id ( args ) { define_stmts stmt stmt if ( ! factor item' 		item'		GOTO:87
-REDUCE: 0 2 13 16 17 19 24 27 32 32 44 67 99 48 87 #type id ( args ) { define_stmts stmt stmt if ( ! factor item' 		)		R76: item -> factor item' 
-GOTO:   0 2 13 16 17 19 24 27 32 32 44 67 99 #type id ( args ) { define_stmts stmt stmt if ( ! item 		item		GOTO:47
-REDUCE: 0 2 13 16 17 19 24 27 32 32 44 67 99 47 #type id ( args ) { define_stmts stmt stmt if ( ! item 		)		R75: value' -> $ 
-GOTO:   0 2 13 16 17 19 24 27 32 32 44 67 99 47 #type id ( args ) { define_stmts stmt stmt if ( ! item value' 		value'		GOTO:84
-REDUCE: 0 2 13 16 17 19 24 27 32 32 44 67 99 47 84 #type id ( args ) { define_stmts stmt stmt if ( ! item value' 		)		R72: value -> item value' 
-GOTO:   0 2 13 16 17 19 24 27 32 32 44 67 99 #type id ( args ) { define_stmts stmt stmt if ( ! value 		value		GOTO:46
-REDUCE: 0 2 13 16 17 19 24 27 32 32 44 67 99 46 #type id ( args ) { define_stmts stmt stmt if ( ! value 		)		R59: operation -> $ 
-GOTO:   0 2 13 16 17 19 24 27 32 32 44 67 99 46 #type id ( args ) { define_stmts stmt stmt if ( ! value operation 		operation		GOTO:69
-REDUCE: 0 2 13 16 17 19 24 27 32 32 44 67 99 46 69 #type id ( args ) { define_stmts stmt stmt if ( ! value operation 		)		R56: expression -> value operation 
-GOTO:   0 2 13 16 17 19 24 27 32 32 44 67 99 #type id ( args ) { define_stmts stmt stmt if ( ! expression 		expression		GOTO:120
-REDUCE: 0 2 13 16 17 19 24 27 32 32 44 67 99 120 #type id ( args ) { define_stmts stmt stmt if ( ! expression 		)		R45: bool_expression -> $ 
-GOTO:   0 2 13 16 17 19 24 27 32 32 44 67 99 120 #type id ( args ) { define_stmts stmt stmt if ( ! expression bool_expression 		bool_expression		GOTO:141
-REDUCE: 0 2 13 16 17 19 24 27 32 32 44 67 99 120 141 #type id ( args ) { define_stmts stmt stmt if ( ! expression bool_expression 		)		R42: logical_expression -> ! expression bool_expression 
-GOTO:   0 2 13 16 17 19 24 27 32 32 44 67 #type id ( args ) { define_stmts stmt stmt if ( logical_expression 		logical_expression		GOTO:104
-SHIFT:  0 2 13 16 17 19 24 27 32 32 44 67 104 #type id ( args ) { define_stmts stmt stmt if ( logical_expression 		)		S128
-SHIFT:  0 2 13 16 17 19 24 27 32 32 44 67 104 128 #type id ( args ) { define_stmts stmt stmt if ( logical_expression ) 		{		S66
-SHIFT:  0 2 13 16 17 19 24 27 32 32 44 67 104 128 66 #type id ( args ) { define_stmts stmt stmt if ( logical_expression ) { 		id		S50
-REDUCE: 0 2 13 16 17 19 24 27 32 32 44 67 104 128 66 50 #type id ( args ) { define_stmts stmt stmt if ( logical_expression ) { id 		=		R85: call_func -> $ 
-GOTO:   0 2 13 16 17 19 24 27 32 32 44 67 104 128 66 50 #type id ( args ) { define_stmts stmt stmt if ( logical_expression ) { id call_func 		call_func		GOTO:92
-REDUCE: 0 2 13 16 17 19 24 27 32 32 44 67 104 128 66 50 92 #type id ( args ) { define_stmts stmt stmt if ( logical_expression ) { id call_func 		=		R82: factor -> id call_func 
-GOTO:   0 2 13 16 17 19 24 27 32 32 44 67 104 128 66 #type id ( args ) { define_stmts stmt stmt if ( logical_expression ) { factor 		factor		GOTO:48
-REDUCE: 0 2 13 16 17 19 24 27 32 32 44 67 104 128 66 48 #type id ( args ) { define_stmts stmt stmt if ( logical_expression ) { factor 		=		R80: item' -> $ 
-GOTO:   0 2 13 16 17 19 24 27 32 32 44 67 104 128 66 48 #type id ( args ) { define_stmts stmt stmt if ( logical_expression ) { factor item' 		item'		GOTO:87
-REDUCE: 0 2 13 16 17 19 24 27 32 32 44 67 104 128 66 48 87 #type id ( args ) { define_stmts stmt stmt if ( logical_expression ) { factor item' 		=		R76: item -> factor item' 
-GOTO:   0 2 13 16 17 19 24 27 32 32 44 67 104 128 66 #type id ( args ) { define_stmts stmt stmt if ( logical_expression ) { item 		item		GOTO:47
-REDUCE: 0 2 13 16 17 19 24 27 32 32 44 67 104 128 66 47 #type id ( args ) { define_stmts stmt stmt if ( logical_expression ) { item 		=		R75: value' -> $ 
-GOTO:   0 2 13 16 17 19 24 27 32 32 44 67 104 128 66 47 #type id ( args ) { define_stmts stmt stmt if ( logical_expression ) { item value' 		value'		GOTO:84
-REDUCE: 0 2 13 16 17 19 24 27 32 32 44 67 104 128 66 47 84 #type id ( args ) { define_stmts stmt stmt if ( logical_expression ) { item value' 		=		R72: value -> item value' 
-GOTO:   0 2 13 16 17 19 24 27 32 32 44 67 104 128 66 #type id ( args ) { define_stmts stmt stmt if ( logical_expression ) { value 		value		GOTO:46
-SHIFT:  0 2 13 16 17 19 24 27 32 32 44 67 104 128 66 46 #type id ( args ) { define_stmts stmt stmt if ( logical_expression ) { value 		=		S78
-REDUCE: 0 2 13 16 17 19 24 27 32 32 44 67 104 128 66 46 78 #type id ( args ) { define_stmts stmt stmt if ( logical_expression ) { value = 		digit		R66: equal_op -> = 
-GOTO:   0 2 13 16 17 19 24 27 32 32 44 67 104 128 66 46 #type id ( args ) { define_stmts stmt stmt if ( logical_expression ) { value equal_op 		equal_op		GOTO:71
-SHIFT:  0 2 13 16 17 19 24 27 32 32 44 67 104 128 66 46 71 #type id ( args ) { define_stmts stmt stmt if ( logical_expression ) { value equal_op 		digit		S52
-REDUCE: 0 2 13 16 17 19 24 27 32 32 44 67 104 128 66 46 71 52 #type id ( args ) { define_stmts stmt stmt if ( logical_expression ) { value equal_op digit 		;		R89: const -> digit 
-GOTO:   0 2 13 16 17 19 24 27 32 32 44 67 104 128 66 46 71 #type id ( args ) { define_stmts stmt stmt if ( logical_expression ) { value equal_op const 		const		GOTO:51
-REDUCE: 0 2 13 16 17 19 24 27 32 32 44 67 104 128 66 46 71 51 #type id ( args ) { define_stmts stmt stmt if ( logical_expression ) { value equal_op const 		;		R83: factor -> const 
-GOTO:   0 2 13 16 17 19 24 27 32 32 44 67 104 128 66 46 71 #type id ( args ) { define_stmts stmt stmt if ( logical_expression ) { value equal_op factor 		factor		GOTO:48
-REDUCE: 0 2 13 16 17 19 24 27 32 32 44 67 104 128 66 46 71 48 #type id ( args ) { define_stmts stmt stmt if ( logical_expression ) { value equal_op factor 		;		R80: item' -> $ 
-GOTO:   0 2 13 16 17 19 24 27 32 32 44 67 104 128 66 46 71 48 #type id ( args ) { define_stmts stmt stmt if ( logical_expression ) { value equal_op factor item' 		item'		GOTO:87
-REDUCE: 0 2 13 16 17 19 24 27 32 32 44 67 104 128 66 46 71 48 87 #type id ( args ) { define_stmts stmt stmt if ( logical_expression ) { value equal_op factor item' 		;		R76: item -> factor item' 
-GOTO:   0 2 13 16 17 19 24 27 32 32 44 67 104 128 66 46 71 #type id ( args ) { define_stmts stmt stmt if ( logical_expression ) { value equal_op item 		item		GOTO:47
-REDUCE: 0 2 13 16 17 19 24 27 32 32 44 67 104 128 66 46 71 47 #type id ( args ) { define_stmts stmt stmt if ( logical_expression ) { value equal_op item 		;		R75: value' -> $ 
-GOTO:   0 2 13 16 17 19 24 27 32 32 44 67 104 128 66 46 71 47 #type id ( args ) { define_stmts stmt stmt if ( logical_expression ) { value equal_op item value' 		value'		GOTO:84
-REDUCE: 0 2 13 16 17 19 24 27 32 32 44 67 104 128 66 46 71 47 84 #type id ( args ) { define_stmts stmt stmt if ( logical_expression ) { value equal_op item value' 		;		R72: value -> item value' 
-GOTO:   0 2 13 16 17 19 24 27 32 32 44 67 104 128 66 46 71 #type id ( args ) { define_stmts stmt stmt if ( logical_expression ) { value equal_op value 		value		GOTO:107
-REDUCE: 0 2 13 16 17 19 24 27 32 32 44 67 104 128 66 46 71 107 #type id ( args ) { define_stmts stmt stmt if ( logical_expression ) { value equal_op value 		;		R58: operation -> equal_op value 
-GOTO:   0 2 13 16 17 19 24 27 32 32 44 67 104 128 66 46 #type id ( args ) { define_stmts stmt stmt if ( logical_expression ) { value operation 		operation		GOTO:69
-REDUCE: 0 2 13 16 17 19 24 27 32 32 44 67 104 128 66 46 69 #type id ( args ) { define_stmts stmt stmt if ( logical_expression ) { value operation 		;		R56: expression -> value operation 
-GOTO:   0 2 13 16 17 19 24 27 32 32 44 67 104 128 66 #type id ( args ) { define_stmts stmt stmt if ( logical_expression ) { expression 		expression		GOTO:37
-SHIFT:  0 2 13 16 17 19 24 27 32 32 44 67 104 128 66 37 #type id ( args ) { define_stmts stmt stmt if ( logical_expression ) { expression 		;		S58
-REDUCE: 0 2 13 16 17 19 24 27 32 32 44 67 104 128 66 37 58 #type id ( args ) { define_stmts stmt stmt if ( logical_expression ) { expression ; 		}		R32: assign_stmt -> expression ; 
-GOTO:   0 2 13 16 17 19 24 27 32 32 44 67 104 128 66 #type id ( args ) { define_stmts stmt stmt if ( logical_expression ) { assign_stmt 		assign_stmt		GOTO:33
-REDUCE: 0 2 13 16 17 19 24 27 32 32 44 67 104 128 66 33 #type id ( args ) { define_stmts stmt stmt if ( logical_expression ) { assign_stmt 		}		R28: stmt -> assign_stmt 
-GOTO:   0 2 13 16 17 19 24 27 32 32 44 67 104 128 66 #type id ( args ) { define_stmts stmt stmt if ( logical_expression ) { stmt 		stmt		GOTO:32
-REDUCE: 0 2 13 16 17 19 24 27 32 32 44 67 104 128 66 32 #type id ( args ) { define_stmts stmt stmt if ( logical_expression ) { stmt 		}		R27: stmts -> $ 
-GOTO:   0 2 13 16 17 19 24 27 32 32 44 67 104 128 66 32 #type id ( args ) { define_stmts stmt stmt if ( logical_expression ) { stmt stmts 		stmts		GOTO:57
-REDUCE: 0 2 13 16 17 19 24 27 32 32 44 67 104 128 66 32 57 #type id ( args ) { define_stmts stmt stmt if ( logical_expression ) { stmt stmts 		}		R26: stmts -> stmt stmts 
-GOTO:   0 2 13 16 17 19 24 27 32 32 44 67 104 128 66 #type id ( args ) { define_stmts stmt stmt if ( logical_expression ) { stmts 		stmts		GOTO:103
-SHIFT:  0 2 13 16 17 19 24 27 32 32 44 67 104 128 66 103 #type id ( args ) { define_stmts stmt stmt if ( logical_expression ) { stmts 		}		S127
-REDUCE: 0 2 13 16 17 19 24 27 32 32 44 67 104 128 66 103 127 #type id ( args ) { define_stmts stmt stmt if ( logical_expression ) { stmts } 		else		R53: block_stmt -> { stmts } 
-GOTO:   0 2 13 16 17 19 24 27 32 32 44 67 104 128 #type id ( args ) { define_stmts stmt stmt if ( logical_expression ) block_stmt 		block_stmt		GOTO:145
-SHIFT:  0 2 13 16 17 19 24 27 32 32 44 67 104 128 145 #type id ( args ) { define_stmts stmt stmt if ( logical_expression ) block_stmt 		else		S153
-SHIFT:  0 2 13 16 17 19 24 27 32 32 44 67 104 128 145 153 #type id ( args ) { define_stmts stmt stmt if ( logical_expression ) block_stmt else 		{		S66
-SHIFT:  0 2 13 16 17 19 24 27 32 32 44 67 104 128 145 153 66 #type id ( args ) { define_stmts stmt stmt if ( logical_expression ) block_stmt else { 		id		S50
-REDUCE: 0 2 13 16 17 19 24 27 32 32 44 67 104 128 145 153 66 50 #type id ( args ) { define_stmts stmt stmt if ( logical_expression ) block_stmt else { id 		=		R85: call_func -> $ 
-GOTO:   0 2 13 16 17 19 24 27 32 32 44 67 104 128 145 153 66 50 #type id ( args ) { define_stmts stmt stmt if ( logical_expression ) block_stmt else { id call_func 		call_func		GOTO:92
-REDUCE: 0 2 13 16 17 19 24 27 32 32 44 67 104 128 145 153 66 50 92 #type id ( args ) { define_stmts stmt stmt if ( logical_expression ) block_stmt else { id call_func 		=		R82: factor -> id call_func 
-GOTO:   0 2 13 16 17 19 24 27 32 32 44 67 104 128 145 153 66 #type id ( args ) { define_stmts stmt stmt if ( logical_expression ) block_stmt else { factor 		factor		GOTO:48
-REDUCE: 0 2 13 16 17 19 24 27 32 32 44 67 104 128 145 153 66 48 #type id ( args ) { define_stmts stmt stmt if ( logical_expression ) block_stmt else { factor 		=		R80: item' -> $ 
-GOTO:   0 2 13 16 17 19 24 27 32 32 44 67 104 128 145 153 66 48 #type id ( args ) { define_stmts stmt stmt if ( logical_expression ) block_stmt else { factor item' 		item'		GOTO:87
-REDUCE: 0 2 13 16 17 19 24 27 32 32 44 67 104 128 145 153 66 48 87 #type id ( args ) { define_stmts stmt stmt if ( logical_expression ) block_stmt else { factor item' 		=		R76: item -> factor item' 
-GOTO:   0 2 13 16 17 19 24 27 32 32 44 67 104 128 145 153 66 #type id ( args ) { define_stmts stmt stmt if ( logical_expression ) block_stmt else { item 		item		GOTO:47
-REDUCE: 0 2 13 16 17 19 24 27 32 32 44 67 104 128 145 153 66 47 #type id ( args ) { define_stmts stmt stmt if ( logical_expression ) block_stmt else { item 		=		R75: value' -> $ 
-GOTO:   0 2 13 16 17 19 24 27 32 32 44 67 104 128 145 153 66 47 #type id ( args ) { define_stmts stmt stmt if ( logical_expression ) block_stmt else { item value' 		value'		GOTO:84
-REDUCE: 0 2 13 16 17 19 24 27 32 32 44 67 104 128 145 153 66 47 84 #type id ( args ) { define_stmts stmt stmt if ( logical_expression ) block_stmt else { item value' 		=		R72: value -> item value' 
-GOTO:   0 2 13 16 17 19 24 27 32 32 44 67 104 128 145 153 66 #type id ( args ) { define_stmts stmt stmt if ( logical_expression ) block_stmt else { value 		value		GOTO:46
-SHIFT:  0 2 13 16 17 19 24 27 32 32 44 67 104 128 145 153 66 46 #type id ( args ) { define_stmts stmt stmt if ( logical_expression ) block_stmt else { value 		=		S78
-REDUCE: 0 2 13 16 17 19 24 27 32 32 44 67 104 128 145 153 66 46 78 #type id ( args ) { define_stmts stmt stmt if ( logical_expression ) block_stmt else { value = 		id		R66: equal_op -> = 
-GOTO:   0 2 13 16 17 19 24 27 32 32 44 67 104 128 145 153 66 46 #type id ( args ) { define_stmts stmt stmt if ( logical_expression ) block_stmt else { value equal_op 		equal_op		GOTO:71
-SHIFT:  0 2 13 16 17 19 24 27 32 32 44 67 104 128 145 153 66 46 71 #type id ( args ) { define_stmts stmt stmt if ( logical_expression ) block_stmt else { value equal_op 		id		S50
-REDUCE: 0 2 13 16 17 19 24 27 32 32 44 67 104 128 145 153 66 46 71 50 #type id ( args ) { define_stmts stmt stmt if ( logical_expression ) block_stmt else { value equal_op id 		+		R85: call_func -> $ 
-GOTO:   0 2 13 16 17 19 24 27 32 32 44 67 104 128 145 153 66 46 71 50 #type id ( args ) { define_stmts stmt stmt if ( logical_expression ) block_stmt else { value equal_op id call_func 		call_func		GOTO:92
-REDUCE: 0 2 13 16 17 19 24 27 32 32 44 67 104 128 145 153 66 46 71 50 92 #type id ( args ) { define_stmts stmt stmt if ( logical_expression ) block_stmt else { value equal_op id call_func 		+		R82: factor -> id call_func 
-GOTO:   0 2 13 16 17 19 24 27 32 32 44 67 104 128 145 153 66 46 71 #type id ( args ) { define_stmts stmt stmt if ( logical_expression ) block_stmt else { value equal_op factor 		factor		GOTO:48
-REDUCE: 0 2 13 16 17 19 24 27 32 32 44 67 104 128 145 153 66 46 71 48 #type id ( args ) { define_stmts stmt stmt if ( logical_expression ) block_stmt else { value equal_op factor 		+		R80: item' -> $ 
-GOTO:   0 2 13 16 17 19 24 27 32 32 44 67 104 128 145 153 66 46 71 48 #type id ( args ) { define_stmts stmt stmt if ( logical_expression ) block_stmt else { value equal_op factor item' 		item'		GOTO:87
-REDUCE: 0 2 13 16 17 19 24 27 32 32 44 67 104 128 145 153 66 46 71 48 87 #type id ( args ) { define_stmts stmt stmt if ( logical_expression ) block_stmt else { value equal_op factor item' 		+		R76: item -> factor item' 
-GOTO:   0 2 13 16 17 19 24 27 32 32 44 67 104 128 145 153 66 46 71 #type id ( args ) { define_stmts stmt stmt if ( logical_expression ) block_stmt else { value equal_op item 		item		GOTO:47
-SHIFT:  0 2 13 16 17 19 24 27 32 32 44 67 104 128 145 153 66 46 71 47 #type id ( args ) { define_stmts stmt stmt if ( logical_expression ) block_stmt else { value equal_op item 		+		S85
-SHIFT:  0 2 13 16 17 19 24 27 32 32 44 67 104 128 145 153 66 46 71 47 85 #type id ( args ) { define_stmts stmt stmt if ( logical_expression ) block_stmt else { value equal_op item + 		id		S50
-REDUCE: 0 2 13 16 17 19 24 27 32 32 44 67 104 128 145 153 66 46 71 47 85 50 #type id ( args ) { define_stmts stmt stmt if ( logical_expression ) block_stmt else { value equal_op item + id 		;		R85: call_func -> $ 
-GOTO:   0 2 13 16 17 19 24 27 32 32 44 67 104 128 145 153 66 46 71 47 85 50 #type id ( args ) { define_stmts stmt stmt if ( logical_expression ) block_stmt else { value equal_op item + id call_func 		call_func		GOTO:92
-REDUCE: 0 2 13 16 17 19 24 27 32 32 44 67 104 128 145 153 66 46 71 47 85 50 92 #type id ( args ) { define_stmts stmt stmt if ( logical_expression ) block_stmt else { value equal_op item + id call_func 		;		R82: factor -> id call_func 
-GOTO:   0 2 13 16 17 19 24 27 32 32 44 67 104 128 145 153 66 46 71 47 85 #type id ( args ) { define_stmts stmt stmt if ( logical_expression ) block_stmt else { value equal_op item + factor 		factor		GOTO:48
-REDUCE: 0 2 13 16 17 19 24 27 32 32 44 67 104 128 145 153 66 46 71 47 85 48 #type id ( args ) { define_stmts stmt stmt if ( logical_expression ) block_stmt else { value equal_op item + factor 		;		R80: item' -> $ 
-GOTO:   0 2 13 16 17 19 24 27 32 32 44 67 104 128 145 153 66 46 71 47 85 48 #type id ( args ) { define_stmts stmt stmt if ( logical_expression ) block_stmt else { value equal_op item + factor item' 		item'		GOTO:87
-REDUCE: 0 2 13 16 17 19 24 27 32 32 44 67 104 128 145 153 66 46 71 47 85 48 87 #type id ( args ) { define_stmts stmt stmt if ( logical_expression ) block_stmt else { value equal_op item + factor item' 		;		R76: item -> factor item' 
-GOTO:   0 2 13 16 17 19 24 27 32 32 44 67 104 128 145 153 66 46 71 47 85 #type id ( args ) { define_stmts stmt stmt if ( logical_expression ) block_stmt else { value equal_op item + item 		item		GOTO:108
-REDUCE: 0 2 13 16 17 19 24 27 32 32 44 67 104 128 145 153 66 46 71 47 85 108 #type id ( args ) { define_stmts stmt stmt if ( logical_expression ) block_stmt else { value equal_op item + item 		;		R75: value' -> $ 
-GOTO:   0 2 13 16 17 19 24 27 32 32 44 67 104 128 145 153 66 46 71 47 85 108 #type id ( args ) { define_stmts stmt stmt if ( logical_expression ) block_stmt else { value equal_op item + item value' 		value'		GOTO:130
-REDUCE: 0 2 13 16 17 19 24 27 32 32 44 67 104 128 145 153 66 46 71 47 85 108 130 #type id ( args ) { define_stmts stmt stmt if ( logical_expression ) block_stmt else { value equal_op item + item value' 		;		R73: value' -> + item value' 
-GOTO:   0 2 13 16 17 19 24 27 32 32 44 67 104 128 145 153 66 46 71 47 #type id ( args ) { define_stmts stmt stmt if ( logical_expression ) block_stmt else { value equal_op item value' 		value'		GOTO:84
-REDUCE: 0 2 13 16 17 19 24 27 32 32 44 67 104 128 145 153 66 46 71 47 84 #type id ( args ) { define_stmts stmt stmt if ( logical_expression ) block_stmt else { value equal_op item value' 		;		R72: value -> item value' 
-GOTO:   0 2 13 16 17 19 24 27 32 32 44 67 104 128 145 153 66 46 71 #type id ( args ) { define_stmts stmt stmt if ( logical_expression ) block_stmt else { value equal_op value 		value		GOTO:107
-REDUCE: 0 2 13 16 17 19 24 27 32 32 44 67 104 128 145 153 66 46 71 107 #type id ( args ) { define_stmts stmt stmt if ( logical_expression ) block_stmt else { value equal_op value 		;		R58: operation -> equal_op value 
-GOTO:   0 2 13 16 17 19 24 27 32 32 44 67 104 128 145 153 66 46 #type id ( args ) { define_stmts stmt stmt if ( logical_expression ) block_stmt else { value operation 		operation		GOTO:69
-REDUCE: 0 2 13 16 17 19 24 27 32 32 44 67 104 128 145 153 66 46 69 #type id ( args ) { define_stmts stmt stmt if ( logical_expression ) block_stmt else { value operation 		;		R56: expression -> value operation 
-GOTO:   0 2 13 16 17 19 24 27 32 32 44 67 104 128 145 153 66 #type id ( args ) { define_stmts stmt stmt if ( logical_expression ) block_stmt else { expression 		expression		GOTO:37
-SHIFT:  0 2 13 16 17 19 24 27 32 32 44 67 104 128 145 153 66 37 #type id ( args ) { define_stmts stmt stmt if ( logical_expression ) block_stmt else { expression 		;		S58
-REDUCE: 0 2 13 16 17 19 24 27 32 32 44 67 104 128 145 153 66 37 58 #type id ( args ) { define_stmts stmt stmt if ( logical_expression ) block_stmt else { expression ; 		}		R32: assign_stmt -> expression ; 
-GOTO:   0 2 13 16 17 19 24 27 32 32 44 67 104 128 145 153 66 #type id ( args ) { define_stmts stmt stmt if ( logical_expression ) block_stmt else { assign_stmt 		assign_stmt		GOTO:33
-REDUCE: 0 2 13 16 17 19 24 27 32 32 44 67 104 128 145 153 66 33 #type id ( args ) { define_stmts stmt stmt if ( logical_expression ) block_stmt else { assign_stmt 		}		R28: stmt -> assign_stmt 
-GOTO:   0 2 13 16 17 19 24 27 32 32 44 67 104 128 145 153 66 #type id ( args ) { define_stmts stmt stmt if ( logical_expression ) block_stmt else { stmt 		stmt		GOTO:32
-REDUCE: 0 2 13 16 17 19 24 27 32 32 44 67 104 128 145 153 66 32 #type id ( args ) { define_stmts stmt stmt if ( logical_expression ) block_stmt else { stmt 		}		R27: stmts -> $ 
-GOTO:   0 2 13 16 17 19 24 27 32 32 44 67 104 128 145 153 66 32 #type id ( args ) { define_stmts stmt stmt if ( logical_expression ) block_stmt else { stmt stmts 		stmts		GOTO:57
-REDUCE: 0 2 13 16 17 19 24 27 32 32 44 67 104 128 145 153 66 32 57 #type id ( args ) { define_stmts stmt stmt if ( logical_expression ) block_stmt else { stmt stmts 		}		R26: stmts -> stmt stmts 
-GOTO:   0 2 13 16 17 19 24 27 32 32 44 67 104 128 145 153 66 #type id ( args ) { define_stmts stmt stmt if ( logical_expression ) block_stmt else { stmts 		stmts		GOTO:103
-SHIFT:  0 2 13 16 17 19 24 27 32 32 44 67 104 128 145 153 66 103 #type id ( args ) { define_stmts stmt stmt if ( logical_expression ) block_stmt else { stmts 		}		S127
-REDUCE: 0 2 13 16 17 19 24 27 32 32 44 67 104 128 145 153 66 103 127 #type id ( args ) { define_stmts stmt stmt if ( logical_expression ) block_stmt else { stmts } 		return		R53: block_stmt -> { stmts } 
-GOTO:   0 2 13 16 17 19 24 27 32 32 44 67 104 128 145 153 #type id ( args ) { define_stmts stmt stmt if ( logical_expression ) block_stmt else block_stmt 		block_stmt		GOTO:160
-REDUCE: 0 2 13 16 17 19 24 27 32 32 44 67 104 128 145 153 160 #type id ( args ) { define_stmts stmt stmt if ( logical_expression ) block_stmt else block_stmt 		return		R40: result -> else block_stmt 
-GOTO:   0 2 13 16 17 19 24 27 32 32 44 67 104 128 145 #type id ( args ) { define_stmts stmt stmt if ( logical_expression ) block_stmt result 		result		GOTO:152
-REDUCE: 0 2 13 16 17 19 24 27 32 32 44 67 104 128 145 152 #type id ( args ) { define_stmts stmt stmt if ( logical_expression ) block_stmt result 		return		R39: branch_stmt -> if ( logical_expression ) block_stmt result 
-GOTO:   0 2 13 16 17 19 24 27 32 32 #type id ( args ) { define_stmts stmt stmt branch_stmt 		branch_stmt		GOTO:36
-REDUCE: 0 2 13 16 17 19 24 27 32 32 36 #type id ( args ) { define_stmts stmt stmt branch_stmt 		return		R31: stmt -> branch_stmt 
-GOTO:   0 2 13 16 17 19 24 27 32 32 #type id ( args ) { define_stmts stmt stmt stmt 		stmt		GOTO:32
-SHIFT:  0 2 13 16 17 19 24 27 32 32 32 #type id ( args ) { define_stmts stmt stmt stmt 		return		S40
-SHIFT:  0 2 13 16 17 19 24 27 32 32 32 40 #type id ( args ) { define_stmts stmt stmt stmt return 		digit		S52
-REDUCE: 0 2 13 16 17 19 24 27 32 32 32 40 52 #type id ( args ) { define_stmts stmt stmt stmt return digit 		;		R89: const -> digit 
-GOTO:   0 2 13 16 17 19 24 27 32 32 32 40 #type id ( args ) { define_stmts stmt stmt stmt return const 		const		GOTO:51
-REDUCE: 0 2 13 16 17 19 24 27 32 32 32 40 51 #type id ( args ) { define_stmts stmt stmt stmt return const 		;		R83: factor -> const 
-GOTO:   0 2 13 16 17 19 24 27 32 32 32 40 #type id ( args ) { define_stmts stmt stmt stmt return factor 		factor		GOTO:48
-REDUCE: 0 2 13 16 17 19 24 27 32 32 32 40 48 #type id ( args ) { define_stmts stmt stmt stmt return factor 		;		R80: item' -> $ 
-GOTO:   0 2 13 16 17 19 24 27 32 32 32 40 48 #type id ( args ) { define_stmts stmt stmt stmt return factor item' 		item'		GOTO:87
-REDUCE: 0 2 13 16 17 19 24 27 32 32 32 40 48 87 #type id ( args ) { define_stmts stmt stmt stmt return factor item' 		;		R76: item -> factor item' 
-GOTO:   0 2 13 16 17 19 24 27 32 32 32 40 #type id ( args ) { define_stmts stmt stmt stmt return item 		item		GOTO:47
-REDUCE: 0 2 13 16 17 19 24 27 32 32 32 40 47 #type id ( args ) { define_stmts stmt stmt stmt return item 		;		R75: value' -> $ 
-GOTO:   0 2 13 16 17 19 24 27 32 32 32 40 47 #type id ( args ) { define_stmts stmt stmt stmt return item value' 		value'		GOTO:84
-REDUCE: 0 2 13 16 17 19 24 27 32 32 32 40 47 84 #type id ( args ) { define_stmts stmt stmt stmt return item value' 		;		R72: value -> item value' 
-GOTO:   0 2 13 16 17 19 24 27 32 32 32 40 #type id ( args ) { define_stmts stmt stmt stmt return value 		value		GOTO:46
-REDUCE: 0 2 13 16 17 19 24 27 32 32 32 40 46 #type id ( args ) { define_stmts stmt stmt stmt return value 		;		R59: operation -> $ 
-GOTO:   0 2 13 16 17 19 24 27 32 32 32 40 46 #type id ( args ) { define_stmts stmt stmt stmt return value operation 		operation		GOTO:69
-REDUCE: 0 2 13 16 17 19 24 27 32 32 32 40 46 69 #type id ( args ) { define_stmts stmt stmt stmt return value operation 		;		R56: expression -> value operation 
-GOTO:   0 2 13 16 17 19 24 27 32 32 32 40 #type id ( args ) { define_stmts stmt stmt stmt return expression 		expression		GOTO:62
-REDUCE: 0 2 13 16 17 19 24 27 32 32 32 40 62 #type id ( args ) { define_stmts stmt stmt stmt return expression 		;		R54: isnull_expr -> expression 
-GOTO:   0 2 13 16 17 19 24 27 32 32 32 40 #type id ( args ) { define_stmts stmt stmt stmt return isnull_expr 		isnull_expr		GOTO:61
-SHIFT:  0 2 13 16 17 19 24 27 32 32 32 40 61 #type id ( args ) { define_stmts stmt stmt stmt return isnull_expr 		;		S97
-REDUCE: 0 2 13 16 17 19 24 27 32 32 32 40 61 97 #type id ( args ) { define_stmts stmt stmt stmt return isnull_expr ; 		}		R35: jump_stmt -> return isnull_expr ; 
-GOTO:   0 2 13 16 17 19 24 27 32 32 32 #type id ( args ) { define_stmts stmt stmt stmt jump_stmt 		jump_stmt		GOTO:34
-REDUCE: 0 2 13 16 17 19 24 27 32 32 32 34 #type id ( args ) { define_stmts stmt stmt stmt jump_stmt 		}		R29: stmt -> jump_stmt 
-GOTO:   0 2 13 16 17 19 24 27 32 32 32 #type id ( args ) { define_stmts stmt stmt stmt stmt 		stmt		GOTO:32
-REDUCE: 0 2 13 16 17 19 24 27 32 32 32 32 #type id ( args ) { define_stmts stmt stmt stmt stmt 		}		R27: stmts -> $ 
-GOTO:   0 2 13 16 17 19 24 27 32 32 32 32 #type id ( args ) { define_stmts stmt stmt stmt stmt stmts 		stmts		GOTO:57
-REDUCE: 0 2 13 16 17 19 24 27 32 32 32 32 57 #type id ( args ) { define_stmts stmt stmt stmt stmt stmts 		}		R26: stmts -> stmt stmts 
-GOTO:   0 2 13 16 17 19 24 27 32 32 32 #type id ( args ) { define_stmts stmt stmt stmt stmts 		stmts		GOTO:57
-REDUCE: 0 2 13 16 17 19 24 27 32 32 32 57 #type id ( args ) { define_stmts stmt stmt stmt stmts 		}		R26: stmts -> stmt stmts 
-GOTO:   0 2 13 16 17 19 24 27 32 32 #type id ( args ) { define_stmts stmt stmt stmts 		stmts		GOTO:57
-REDUCE: 0 2 13 16 17 19 24 27 32 32 57 #type id ( args ) { define_stmts stmt stmt stmts 		}		R26: stmts -> stmt stmts 
-GOTO:   0 2 13 16 17 19 24 27 32 #type id ( args ) { define_stmts stmt stmts 		stmts		GOTO:57
-REDUCE: 0 2 13 16 17 19 24 27 32 57 #type id ( args ) { define_stmts stmt stmts 		}		R26: stmts -> stmt stmts 
-GOTO:   0 2 13 16 17 19 24 27 #type id ( args ) { define_stmts stmts 		stmts		GOTO:31
-SHIFT:  0 2 13 16 17 19 24 27 31 #type id ( args ) { define_stmts stmts 		}		S56
-REDUCE: 0 2 13 16 17 19 24 27 31 56 #type id ( args ) { define_stmts stmts } 		#		R18: block -> { define_stmts stmts } 
-GOTO:   0 2 13 16 17 19 #type id ( args ) block 		block		GOTO:23
-REDUCE: 0 2 13 16 17 19 23 #type id ( args ) block 		#		R17: func_body -> block 
-GOTO:   0 2 13 16 17 19 #type id ( args ) func_body 		func_body		GOTO:21
-REDUCE: 0 2 13 16 17 19 21 #type id ( args ) func_body 		#		R3: func -> type id ( args ) func_body 
-GOTO:   0 #func 		func		GOTO:1
+S15
+R14: X -> int 
+GOTO:13
+R17: C -> $ 
+GOTO:43
+R13: T -> X C 
+GOTO:1
+S16
+S44
+S83
+R9: A -> $ 
+GOTO:140
+R8: A -> , id A 
+GOTO:46
+S88
+R5: D -> T id A ; 
+GOTO:6
+S15
+R14: X -> int 
+GOTO:13
+R17: C -> $ 
+GOTO:43
+R13: T -> X C 
+GOTO:1
+S16
+S44
+S83
+R9: A -> $ 
+GOTO:140
+R8: A -> , id A 
+GOTO:46
+S88
+R5: D -> T id A ; 
+GOTO:6
+S15
+R14: X -> int 
+GOTO:13
+R17: C -> $ 
+GOTO:43
+R13: T -> X C 
+GOTO:1
+S16
+S44
+S83
+R9: A -> $ 
+GOTO:140
+R8: A -> , id A 
+GOTO:46
+S88
+R5: D -> T id A ; 
+GOTO:6
+S14
+R15: X -> float 
+GOTO:13
+R17: C -> $ 
+GOTO:43
+R13: T -> X C 
+GOTO:1
+S16
+R9: A -> $ 
+GOTO:46
+S88
+R5: D -> T id A ; 
+GOTO:6
+S15
+R14: X -> int 
+GOTO:13
+R17: C -> $ 
+GOTO:43
+R13: T -> X C 
+GOTO:1
+S16
+S44
+S83
+S44
+S83
+R9: A -> $ 
+GOTO:140
+R8: A -> , id A 
+GOTO:140
+R8: A -> , id A 
+GOTO:46
+S88
+R5: D -> T id A ; 
+GOTO:6
+S10
+S27
+S60
+R33: F -> id 
+GOTO:61
+R30: G -> F 
+GOTO:58
+R28: E -> G 
+GOTO:57
+S65
+R40: relop -> < 
+GOTO:118
+S171
+R33: F -> id 
+GOTO:172
+R30: G -> F 
+GOTO:168
+R28: E -> G 
+GOTO:167
+R38: B -> E relop E 
+GOTO:53
+S112
+R48: Q -> $ 
+GOTO:162
+S210
+S60
+R33: F -> id 
+GOTO:61
+R30: G -> F 
+GOTO:58
+R28: E -> G 
+GOTO:57
+S65
+R40: relop -> < 
+GOTO:118
+S171
+R33: F -> id 
+GOTO:172
+R30: G -> F 
+GOTO:168
+R28: E -> G 
+GOTO:167
+R38: B -> E relop E 
+GOTO:241
+S263
+R48: Q -> $ 
+GOTO:280
+S32
+R33: F -> id 
+GOTO:33
+R30: G -> F 
+GOTO:30
+R28: E -> G 
+GOTO:212
+S65
+R40: relop -> < 
+GOTO:242
+S79
+R33: F -> id 
+GOTO:80
+R30: G -> F 
+GOTO:76
+R28: E -> G 
+GOTO:266
+R38: B -> E relop E 
+GOTO:289
+S298
+R35: B -> ( B && Q B ) 
+GOTO:213
+S243
+R34: B -> ( B || Q B ) 
+GOTO:34
+S71
+R49: W -> $ 
+GOTO:131
+S5
+R26: L -> id 
+GOTO:180
+S223
+S39
+R33: F -> id 
+GOTO:40
+R30: G -> F 
+GOTO:36
+R28: E -> G 
+GOTO:249
+S72
+S39
+R33: F -> id 
+GOTO:40
+R30: G -> F 
+GOTO:132
+R27: E -> E + G 
+GOTO:249
+S269
+R18: S -> L = E ; 
+GOTO:185
+R50: N -> $ 
+GOTO:228
+S254
+S273
+S285
+R49: W -> $ 
+GOTO:294
+S5
+R26: L -> id 
+GOTO:180
+S223
+S39
+R33: F -> id 
+GOTO:40
+R30: G -> F 
+GOTO:36
+S74
+S39
+R33: F -> id 
+GOTO:133
+R29: G -> G * F 
+GOTO:36
+R28: E -> G 
+GOTO:249
+S269
+R18: S -> L = E ; 
+GOTO:302
+S307
+R20: R -> else { W S } 
+GOTO:274
+R19: S -> if B { W S N } R 
+GOTO:7
+S5
+R26: L -> id 
+GOTO:4
+S22
+S39
+R33: F -> id 
+GOTO:40
+R30: G -> F 
+GOTO:36
+R28: E -> G 
+GOTO:50
+S72
+S39
+R33: F -> id 
+GOTO:40
+R30: G -> F 
+GOTO:132
+R27: E -> E + G 
+GOTO:50
+S102
+R18: S -> L = E ; 
+GOTO:7
+S10
+S27
+S60
+R33: F -> id 
+GOTO:61
+R30: G -> F 
+GOTO:58
+R28: E -> G 
+GOTO:57
+S68
+R42: relop -> > 
+GOTO:118
+S171
+R33: F -> id 
+GOTO:172
+R30: G -> F 
+GOTO:168
+R28: E -> G 
+GOTO:167
+R38: B -> E relop E 
+GOTO:53
+S110
+R48: Q -> $ 
+GOTO:161
+S32
+R33: F -> id 
+GOTO:33
+R30: G -> F 
+GOTO:30
+R28: E -> G 
+GOTO:212
+S68
+R42: relop -> > 
+GOTO:242
+S79
+R33: F -> id 
+GOTO:80
+R30: G -> F 
+GOTO:76
+R28: E -> G 
+GOTO:266
+R38: B -> E relop E 
+GOTO:208
+S239
+R35: B -> ( B && Q B ) 
+GOTO:34
+S71
+R49: W -> $ 
+GOTO:131
+S5
+R26: L -> id 
+GOTO:180
+S223
+S39
+R33: F -> id 
+GOTO:40
+R30: G -> F 
+GOTO:36
+R28: E -> G 
+GOTO:249
+S72
+S39
+R33: F -> id 
+GOTO:40
+R30: G -> F 
+GOTO:132
+R27: E -> E + G 
+GOTO:249
+S269
+R18: S -> L = E ; 
+GOTO:185
+R50: N -> $ 
+GOTO:228
+S254
+R21: R -> $ 
+GOTO:274
+R19: S -> if B { W S N } R 
+GOTO:7
+S5
+R26: L -> id 
+GOTO:4
+S22
+S39
+R33: F -> id 
+GOTO:40
+R30: G -> F 
+GOTO:36
+S74
+S39
+R33: F -> id 
+GOTO:133
+R29: G -> G * F 
+GOTO:36
+R28: E -> G 
+GOTO:50
+S102
+R18: S -> L = E ; 
+GOTO:7
+S12
+R49: W -> $ 
+GOTO:41
+S27
+S60
+R33: F -> id 
+GOTO:61
+R30: G -> F 
+GOTO:58
+R28: E -> G 
+GOTO:57
+S65
+R40: relop -> < 
+GOTO:118
+S170
+R32: F -> CINT 
+GOTO:172
+R30: G -> F 
+GOTO:168
+R28: E -> G 
+GOTO:167
+R38: B -> E relop E 
+GOTO:53
+S111
+R37: B -> ( B ) 
+GOTO:81
+S138
+R49: W -> $ 
+GOTO:189
+S5
+R26: L -> id 
+GOTO:180
+S223
+S39
+R33: F -> id 
+GOTO:40
+R30: G -> F 
+GOTO:36
+R28: E -> G 
+GOTO:249
+S72
+S38
+R32: F -> CINT 
+GOTO:40
+R30: G -> F 
+GOTO:132
+R27: E -> E + G 
+GOTO:249
+S269
+R18: S -> L = E ; 
+GOTO:229
+S255
+R22: S -> while W B { W S } 
+GOTO:7
+S5
+R26: L -> id 
+GOTO:4
+S22
+S39
+R33: F -> id 
+GOTO:40
+R30: G -> F 
+GOTO:36
+R28: E -> G 
+GOTO:50
+S72
+S38
+R32: F -> CINT 
+GOTO:40
+R30: G -> F 
+GOTO:132
+R27: E -> E + G 
+GOTO:50
+S102
+R18: S -> L = E ; 
+GOTO:7
+R3: P -> $ 
+GOTO:24
+R2: P -> S P 
+GOTO:24
+R2: P -> S P 
+GOTO:24
+R2: P -> S P 
+GOTO:24
+R2: P -> S P 
+GOTO:24
+R2: P -> S P 
+GOTO:24
+R2: P -> S P 
+GOTO:23
+R1: P -> D P 
+GOTO:23
+R1: P -> D P 
+GOTO:23
+R1: P -> D P 
+GOTO:23
+R1: P -> D P 
+GOTO:23
+R1: P -> D P 
+GOTO:8
+R0: Program -> P 
 Accepted!

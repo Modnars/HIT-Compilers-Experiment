@@ -274,9 +274,9 @@ int searchTable(int state, const string &sym, std::ostream &os = std::cout) {
         os << "R" << res-base << ": " << *ProdVec[res-base] << std::endl;
         semantic(res-base); // Using semantic actions.
     } else if (contains(NonTerminalSet, sym)) {
-        //os << "GOTO:" << res << std::endl; // TODO : remove the comment.
+        os << "GOTO:" << res << std::endl; 
     } else {
-        //os << "S" << res << std::endl; // TODO : remove the comment.
+        os << "S" << res << std::endl; 
     }
     return res;
 }
@@ -347,46 +347,36 @@ void checkGrammar(std::ostream &os) {
     fillReduceAction();
 }
 
-// int main(int argc, char *argv[]) {
-//     read_grammar("../file/grammar/grammar.txt");
-// //    read_grammar("../file/grammar/grammar1.txt");
-// //    read_grammar("../file/grammar/grammar2.txt");
-// //    read_grammar("../file/grammar/grammar3.txt"); // Not Accepted!
-// //    read_grammar("../file/grammar/grammar4.txt"); 
-// //    read_grammar("../file/grammar/grammar5.txt"); 
-// //    read_grammar("../file/grammar/grammar6.txt"); 
-// //    getFirstSet();
-// //    getI0();
-// //    getClosureSet();
-// //    fillReduceAction();
-// //    std::vector<string> seq = {"id", "=", "*", "id", "#"}; // for grammar
-// //    std::vector<string> seq = {"a", "b", "a", "b", "#"}; // for grammar1
-// //    std::vector<string> seq = {"c", "c", "c", "d", "c", "d", "#"}; // for grammar2
-// //    std::vector<string> seq = {"int", "id", "=", "id", "[", "id", "]", ";", "#"}; // for grammar3
-// //    for (auto sym : FirstSet) {
-// //        std::cout << sym.first << ": ";
-// //        for (auto f : *sym.second)
-// //            std::cout << f << " ";
-// //        std::cout << std::endl;
-// //    }
-// //    getClosureSet();
-// //    int i = 0;
-// //    for (auto closure : ClosureSet) {
-// //        std::cout << "STATUS" << i++ << std::endl;
-// //        for (auto item : closure) 
-// //            std::cout << item << std::endl;
-// //    }
-// //    fillReduceAction();
-// //    std::vector<string> seq = {"id", "+", "id", "*", "id", "#"}; // for grammar3
-// //    std::vector<string> seq = {"id", "=", "id", "+", "id", "*", "id", "#"}; // for grammar3
-// //    analysis(seq);
-// 
-// //    for (auto val1 : ActionTable) {
-// //        std::cout << "STATUS " << val1.first << std::endl;
-// //        for (auto val2 : *val1.second)
-// //            std::cout << val2.first << " " << val2.second << std::endl;
-// //    }
-//     std::vector<string> seq = {"int", "id", "(", ")", "{", "int", "id", "=", "digit", ",", "id", "=", "digit", ";", "int", "id", "=", "digit", ";", "while", "(", "id", ">", "digit", ")", "{", "id", "=", "id", "+", "id", ";", "id", "=", "id", "+", "digit", ";", "break", ";", "}", "if", "(", "id", ">", "digit", "&&", "id", "<", "digit", "||", "id", "==", "digit", ")", "{", "id", "=", "id", "-", "digit", ";", "}", "if", "(", "!", "id", ")", "{", "id", "=", "digit", ";", "}", "else", "{", "id", "=", "id", "+", "id", ";", "}", "return", "digit", ";", "}", "#"};
-//     analysis(seq);
-//     return EXIT_SUCCESS;
-// }
+void print_ReduceTable(std::ostream &os) {
+    auto base = ClosureSet.size();
+    for (auto status : ActionTable) {
+        for (auto item : *status.second) {
+            if (item.second >= base) {
+                os << status.first << "\t" << item.first << "\tR" << (item.second-base);
+                os << ": " << *ProdVec[item.second-base] << std::endl;
+            }
+        }
+    }
+}
+
+void print_ShiftTable(std::ostream &os) {
+    for (auto status : ActionTable) {
+        for (auto item : *status.second) {
+            if (!contains(NonTerminalSet, item.first)) {
+                os << status.first << "\t" << item.first << "\t" << item.second 
+                   << std::endl;
+            }
+        }
+    }
+}
+
+void print_GotoTable(std::ostream &os) {
+    for (auto status : ActionTable) {
+        for (auto item : *status.second) {
+            if (contains(NonTerminalSet, item.first)) {
+                os << status.first << "\t" << item.first << "\t" << item.second
+                   << std::endl;
+            }
+        }
+    }
+}
