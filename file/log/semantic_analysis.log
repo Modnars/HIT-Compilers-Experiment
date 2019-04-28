@@ -1,90 +1,108 @@
-[Symbol]       0x7fec124044a8 
+[Symbol]       0x7fb62b4048b8 
 [Name]         z              
 [Type]         INT            
 [Width]        4              
-[Offset]       40             
+[Offset]       1644           
 [Value]                 0
-[Decl_pos]     5              
-[Next]         0x7fec12404398 
+[Decl_pos]     7              
+[Next]         0x7fb62b4047a8 
 
-[Symbol]       0x7fec12404398 
+[Symbol]       0x7fb62b4047a8 
 [Name]         y              
 [Type]         INT            
 [Width]        4              
-[Offset]       36             
+[Offset]       1640           
 [Value]                 0
-[Decl_pos]     5              
-[Next]         0x7fec12404288 
+[Decl_pos]     7              
+[Next]         0x7fb62b404028 
 
-[Symbol]       0x7fec12404288 
+[Symbol]       0x7fb62b404028 
 [Name]         x              
 [Type]         INT            
 [Width]        4              
-[Offset]       32             
+[Offset]       1636           
 [Value]                 0
-[Decl_pos]     5              
-[Next]         0x7fec12404018 
+[Decl_pos]     7              
+[Next]         0x7fb62b404698 
 
-[Symbol]       0x7fec12404018 
+[Symbol]       0x7fb62b404698 
+[Name]         h              
+[Type]         INT            
+[Width]        4              
+[Offset]       1632           
+[Value]                 0
+[Decl_pos]     6              
+[Next]         0x7fb62b404498 
+
+[Symbol]       0x7fb62b404498 
 [Name]         g              
 [Type]         FLOAT          
 [Width]        8              
-[Offset]       24             
+[Offset]       1624           
 [Value]        
-[Decl_pos]     4              
-[Next]         0x7fec12403eb8 
+[Decl_pos]     5              
+[Next]         0x7fb62b404338 
 
-[Symbol]       0x7fec12403eb8 
+[Symbol]       0x7fb62b404338 
 [Name]         f              
 [Type]         INT            
 [Width]        4              
-[Offset]       20             
+[Offset]       1620           
 [Value]                 0
-[Decl_pos]     3              
-[Next]         0x7fec12403da8 
+[Decl_pos]     4              
+[Next]         0x7fb62b404228 
 
-[Symbol]       0x7fec12403da8 
+[Symbol]       0x7fb62b404228 
 [Name]         e              
 [Type]         INT            
 [Width]        4              
-[Offset]       16             
+[Offset]       1616           
 [Value]                 0
-[Decl_pos]     3              
-[Next]         0x7fec12403b48 
+[Decl_pos]     4              
+[Next]         0x7fb62b403ab8 
 
-[Symbol]       0x7fec12403b48 
+[Symbol]       0x7fb62b403ab8 
 [Name]         d              
 [Type]         INT            
 [Width]        4              
-[Offset]       12             
+[Offset]       1612           
 [Value]                 0
-[Decl_pos]     2              
-[Next]         0x7fec12403a38 
+[Decl_pos]     3              
+[Next]         0x7fb62b403e78 
 
-[Symbol]       0x7fec12403a38 
+[Symbol]       0x7fb62b403e78 
 [Name]         c              
 [Type]         INT            
 [Width]        4              
-[Offset]       8              
+[Offset]       1608           
 [Value]                 0
-[Decl_pos]     2              
-[Next]         0x7fec12403858 
+[Decl_pos]     3              
+[Next]         0x7fb62b403d18 
 
-[Symbol]       0x7fec12403858 
+[Symbol]       0x7fb62b403d18 
 [Name]         b              
 [Type]         INT            
 [Width]        4              
-[Offset]       4              
+[Offset]       1604           
 [Value]                 0
-[Decl_pos]     1              
-[Next]         0x7fec12403708 
+[Decl_pos]     2              
+[Next]         0x7fb62b403c08 
 
-[Symbol]       0x7fec12403708 
+[Symbol]       0x7fb62b403c08 
 [Name]         a              
 [Type]         INT            
 [Width]        4              
-[Offset]       0              
+[Offset]       1600           
 [Value]                 0
+[Decl_pos]     2              
+[Next]         0x7fb62b4039a8 
+
+[Symbol]       0x7fb62b4039a8 
+[Name]         lst            
+[Type]         ARRAY          
+[Width]        1600           
+[Offset]       0              
+[Value]        
 [Decl_pos]     1              
 [Next]         0x0            
 

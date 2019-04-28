@@ -49,3 +49,4 @@ Elist -> E
 Q -> $
 W -> $
 N -> $
+F -> CFLOAT

@@ -1,411 +1,459 @@
 S15
 R14: X -> int 
 GOTO:13
+S44
+S86
+S146
+S44
+S86
+S146
 R17: C -> $ 
-GOTO:43
+GOTO:198
+R16: C -> [ CINT ] C 
+GOTO:198
+R16: C -> [ CINT ] C 
+GOTO:45
 R13: T -> X C 
 GOTO:1
 S16
-S44
-S83
 R9: A -> $ 
-GOTO:140
-R8: A -> , id A 
-GOTO:46
-S88
+GOTO:48
+S93
 R5: D -> T id A ; 
 GOTO:6
 S15
 R14: X -> int 
 GOTO:13
 R17: C -> $ 
-GOTO:43
+GOTO:45
 R13: T -> X C 
 GOTO:1
 S16
-S44
-S83
+S46
+S87
 R9: A -> $ 
-GOTO:140
+GOTO:147
 R8: A -> , id A 
-GOTO:46
-S88
+GOTO:48
+S93
 R5: D -> T id A ; 
 GOTO:6
 S15
 R14: X -> int 
 GOTO:13
 R17: C -> $ 
-GOTO:43
+GOTO:45
 R13: T -> X C 
 GOTO:1
 S16
-S44
-S83
+S46
+S87
 R9: A -> $ 
-GOTO:140
+GOTO:147
 R8: A -> , id A 
-GOTO:46
-S88
+GOTO:48
+S93
+R5: D -> T id A ; 
+GOTO:6
+S15
+R14: X -> int 
+GOTO:13
+R17: C -> $ 
+GOTO:45
+R13: T -> X C 
+GOTO:1
+S16
+S46
+S87
+R9: A -> $ 
+GOTO:147
+R8: A -> , id A 
+GOTO:48
+S93
 R5: D -> T id A ; 
 GOTO:6
 S14
 R15: X -> float 
 GOTO:13
 R17: C -> $ 
-GOTO:43
+GOTO:45
 R13: T -> X C 
 GOTO:1
 S16
+S47
+S90
+R51: F -> CFLOAT 
+GOTO:88
 R9: A -> $ 
-GOTO:46
-S88
+GOTO:148
+R7: A -> = F A 
+GOTO:48
+S93
 R5: D -> T id A ; 
 GOTO:6
 S15
 R14: X -> int 
 GOTO:13
 R17: C -> $ 
-GOTO:43
+GOTO:45
 R13: T -> X C 
 GOTO:1
 S16
-S44
-S83
-S44
-S83
+S47
+S90
+R51: F -> CFLOAT 
+GOTO:88
 R9: A -> $ 
-GOTO:140
+GOTO:148
+R7: A -> = F A 
+GOTO:48
+S93
+R5: D -> T id A ; 
+GOTO:6
+S15
+R14: X -> int 
+GOTO:13
+R17: C -> $ 
+GOTO:45
+R13: T -> X C 
+GOTO:1
+S16
+S46
+S87
+S46
+S87
+R9: A -> $ 
+GOTO:147
 R8: A -> , id A 
-GOTO:140
+GOTO:147
 R8: A -> , id A 
-GOTO:46
-S88
+GOTO:48
+S93
 R5: D -> T id A ; 
 GOTO:6
 S10
 S27
-S60
+S63
 R33: F -> id 
-GOTO:61
+GOTO:64
 R30: G -> F 
-GOTO:58
+GOTO:60
 R28: E -> G 
-GOTO:57
-S65
+GOTO:59
+S68
 R40: relop -> < 
-GOTO:118
-S171
+GOTO:124
+S179
 R33: F -> id 
-GOTO:172
+GOTO:180
 R30: G -> F 
-GOTO:168
+GOTO:175
 R28: E -> G 
-GOTO:167
+GOTO:174
 R38: B -> E relop E 
-GOTO:53
-S112
+GOTO:55
+S118
 R48: Q -> $ 
-GOTO:162
-S210
-S60
+GOTO:169
+S218
+S63
 R33: F -> id 
-GOTO:61
+GOTO:64
 R30: G -> F 
-GOTO:58
+GOTO:60
 R28: E -> G 
-GOTO:57
-S65
+GOTO:59
+S68
 R40: relop -> < 
-GOTO:118
-S171
+GOTO:124
+S179
 R33: F -> id 
-GOTO:172
+GOTO:180
 R30: G -> F 
-GOTO:168
+GOTO:175
 R28: E -> G 
-GOTO:167
+GOTO:174
 R38: B -> E relop E 
-GOTO:241
-S263
+GOTO:249
+S271
 R48: Q -> $ 
-GOTO:280
-S32
+GOTO:288
+S33
 R33: F -> id 
-GOTO:33
+GOTO:34
 R30: G -> F 
 GOTO:30
 R28: E -> G 
-GOTO:212
-S65
+GOTO:220
+S68
 R40: relop -> < 
-GOTO:242
-S79
+GOTO:250
+S83
 R33: F -> id 
-GOTO:80
+GOTO:84
 R30: G -> F 
-GOTO:76
+GOTO:79
 R28: E -> G 
-GOTO:266
-R38: B -> E relop E 
-GOTO:289
-S298
-R35: B -> ( B && Q B ) 
-GOTO:213
-S243
-R34: B -> ( B || Q B ) 
-GOTO:34
-S71
-R49: W -> $ 
-GOTO:131
-S5
-R26: L -> id 
-GOTO:180
-S223
-S39
-R33: F -> id 
-GOTO:40
-R30: G -> F 
-GOTO:36
-R28: E -> G 
-GOTO:249
-S72
-S39
-R33: F -> id 
-GOTO:40
-R30: G -> F 
-GOTO:132
-R27: E -> E + G 
-GOTO:249
-S269
-R18: S -> L = E ; 
-GOTO:185
-R50: N -> $ 
-GOTO:228
-S254
-S273
-S285
-R49: W -> $ 
-GOTO:294
-S5
-R26: L -> id 
-GOTO:180
-S223
-S39
-R33: F -> id 
-GOTO:40
-R30: G -> F 
-GOTO:36
-S74
-S39
-R33: F -> id 
-GOTO:133
-R29: G -> G * F 
-GOTO:36
-R28: E -> G 
-GOTO:249
-S269
-R18: S -> L = E ; 
-GOTO:302
-S307
-R20: R -> else { W S } 
 GOTO:274
+R38: B -> E relop E 
+GOTO:297
+S306
+R35: B -> ( B && Q B ) 
+GOTO:221
+S251
+R34: B -> ( B || Q B ) 
+GOTO:35
+S74
+R49: W -> $ 
+GOTO:138
+S5
+R26: L -> id 
+GOTO:188
+S231
+S41
+R33: F -> id 
+GOTO:42
+R30: G -> F 
+GOTO:37
+R28: E -> G 
+GOTO:257
+S75
+S41
+R33: F -> id 
+GOTO:42
+R30: G -> F 
+GOTO:139
+R27: E -> E + G 
+GOTO:257
+S277
+R18: S -> L = E ; 
+GOTO:193
+R50: N -> $ 
+GOTO:236
+S262
+S281
+S293
+R49: W -> $ 
+GOTO:302
+S5
+R26: L -> id 
+GOTO:188
+S231
+S41
+R33: F -> id 
+GOTO:42
+R30: G -> F 
+GOTO:37
+S77
+S41
+R33: F -> id 
+GOTO:140
+R29: G -> G * F 
+GOTO:37
+R28: E -> G 
+GOTO:257
+S277
+R18: S -> L = E ; 
+GOTO:310
+S315
+R20: R -> else { W S } 
+GOTO:282
 R19: S -> if B { W S N } R 
 GOTO:7
 S5
 R26: L -> id 
 GOTO:4
 S22
-S39
+S41
 R33: F -> id 
-GOTO:40
+GOTO:42
 R30: G -> F 
-GOTO:36
+GOTO:37
 R28: E -> G 
-GOTO:50
-S72
-S39
+GOTO:52
+S75
+S41
 R33: F -> id 
-GOTO:40
+GOTO:42
 R30: G -> F 
-GOTO:132
+GOTO:139
 R27: E -> E + G 
-GOTO:50
-S102
+GOTO:52
+S107
 R18: S -> L = E ; 
 GOTO:7
 S10
 S27
-S60
+S63
 R33: F -> id 
-GOTO:61
+GOTO:64
 R30: G -> F 
-GOTO:58
+GOTO:60
 R28: E -> G 
-GOTO:57
-S68
+GOTO:59
+S71
 R42: relop -> > 
-GOTO:118
-S171
+GOTO:124
+S179
 R33: F -> id 
-GOTO:172
+GOTO:180
 R30: G -> F 
-GOTO:168
+GOTO:175
 R28: E -> G 
-GOTO:167
+GOTO:174
 R38: B -> E relop E 
-GOTO:53
-S110
+GOTO:55
+S116
 R48: Q -> $ 
-GOTO:161
-S32
+GOTO:168
+S33
 R33: F -> id 
-GOTO:33
+GOTO:34
 R30: G -> F 
 GOTO:30
 R28: E -> G 
-GOTO:212
-S68
-R42: relop -> > 
-GOTO:242
-S79
-R33: F -> id 
-GOTO:80
-R30: G -> F 
-GOTO:76
-R28: E -> G 
-GOTO:266
-R38: B -> E relop E 
-GOTO:208
-S239
-R35: B -> ( B && Q B ) 
-GOTO:34
+GOTO:220
 S71
+R42: relop -> > 
+GOTO:250
+S83
+R33: F -> id 
+GOTO:84
+R30: G -> F 
+GOTO:79
+R28: E -> G 
+GOTO:274
+R38: B -> E relop E 
+GOTO:216
+S247
+R35: B -> ( B && Q B ) 
+GOTO:35
+S74
 R49: W -> $ 
-GOTO:131
+GOTO:138
 S5
 R26: L -> id 
-GOTO:180
-S223
-S39
+GOTO:188
+S231
+S41
 R33: F -> id 
-GOTO:40
+GOTO:42
 R30: G -> F 
-GOTO:36
+GOTO:37
 R28: E -> G 
-GOTO:249
-S72
-S39
+GOTO:257
+S75
+S41
 R33: F -> id 
-GOTO:40
+GOTO:42
 R30: G -> F 
-GOTO:132
+GOTO:139
 R27: E -> E + G 
-GOTO:249
-S269
+GOTO:257
+S277
 R18: S -> L = E ; 
-GOTO:185
+GOTO:193
 R50: N -> $ 
-GOTO:228
-S254
+GOTO:236
+S262
 R21: R -> $ 
-GOTO:274
+GOTO:282
 R19: S -> if B { W S N } R 
 GOTO:7
 S5
 R26: L -> id 
 GOTO:4
 S22
-S39
+S41
 R33: F -> id 
-GOTO:40
+GOTO:42
 R30: G -> F 
-GOTO:36
-S74
-S39
+GOTO:37
+S77
+S41
 R33: F -> id 
-GOTO:133
+GOTO:140
 R29: G -> G * F 
-GOTO:36
+GOTO:37
 R28: E -> G 
-GOTO:50
-S102
+GOTO:52
+S107
 R18: S -> L = E ; 
 GOTO:7
 S12
 R49: W -> $ 
-GOTO:41
+GOTO:43
 S27
-S60
+S63
 R33: F -> id 
-GOTO:61
+GOTO:64
 R30: G -> F 
-GOTO:58
+GOTO:60
 R28: E -> G 
-GOTO:57
-S65
+GOTO:59
+S68
 R40: relop -> < 
-GOTO:118
-S170
+GOTO:124
+S178
 R32: F -> CINT 
-GOTO:172
+GOTO:180
 R30: G -> F 
-GOTO:168
+GOTO:175
 R28: E -> G 
-GOTO:167
+GOTO:174
 R38: B -> E relop E 
-GOTO:53
-S111
+GOTO:55
+S117
 R37: B -> ( B ) 
-GOTO:81
-S138
+GOTO:85
+S145
 R49: W -> $ 
-GOTO:189
+GOTO:197
 S5
 R26: L -> id 
-GOTO:180
-S223
-S39
+GOTO:188
+S231
+S41
 R33: F -> id 
-GOTO:40
+GOTO:42
 R30: G -> F 
-GOTO:36
+GOTO:37
 R28: E -> G 
-GOTO:249
-S72
-S38
+GOTO:257
+S75
+S40
 R32: F -> CINT 
-GOTO:40
+GOTO:42
 R30: G -> F 
-GOTO:132
+GOTO:139
 R27: E -> E + G 
-GOTO:249
-S269
+GOTO:257
+S277
 R18: S -> L = E ; 
-GOTO:229
-S255
+GOTO:237
+S263
 R22: S -> while W B { W S } 
 GOTO:7
 S5
 R26: L -> id 
 GOTO:4
 S22
-S39
+S41
 R33: F -> id 
-GOTO:40
+GOTO:42
 R30: G -> F 
-GOTO:36
+GOTO:37
 R28: E -> G 
-GOTO:50
-S72
-S38
+GOTO:52
+S75
+S40
 R32: F -> CINT 
-GOTO:40
+GOTO:42
 R30: G -> F 
-GOTO:132
+GOTO:139
 R27: E -> E + G 
-GOTO:50
-S102
+GOTO:52
+S107
 R18: S -> L = E ; 
 GOTO:7
 R3: P -> $ 
@@ -421,6 +469,10 @@ GOTO:24
 R2: P -> S P 
 GOTO:24
 R2: P -> S P 
+GOTO:23
+R1: P -> D P 
+GOTO:23
+R1: P -> D P 
 GOTO:23
 R1: P -> D P 
 GOTO:23

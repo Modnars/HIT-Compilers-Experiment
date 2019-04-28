@@ -71,6 +71,7 @@ void semantic(int ProdNo) {
     // The node to add, the const number node, the temp new node.
     std::shared_ptr<Node> tempnode, add_node, B1, B2, S1, S2, W1, W2, N; 
     std::shared_ptr<Code> code;
+    bool found;
     TokenType _type;
     switch (ProdNo) {
         case 0 : // Program -> P
@@ -116,8 +117,19 @@ void semantic(int ProdNo) {
             add_node = new_node(TokenStack.top()->sptr->name, ID, TokenStack.top()->sptr); 
             TokenStack.pop();  add_node->kind = P48; // Mark the node is terminal.
             add_child(tempnode, add_node);
-            add_child(tempnode, NodeStack.top()); NodeStack.pop();
+            add_child(tempnode, NodeStack.top()); 
+            found = false;
+            if (NodeStack.top()->type == ARRAY && NodeStack.top()->value.ival != 0) {
+                add_node->symbol->type = ARRAY;
+                add_node->symbol->width = NodeStack.top()->value.ival * 4;
+                add_node->symbol->offset = SymbolTable->offset;
+                SymbolTable->offset += NodeStack.top()->value.ival * 4;
+                found = true;
+            }
+            NodeStack.pop();
             NodeStack.push(tempnode);
+            if (found)
+                break;
             // Fill the specific id information.
             add_node->symbol->type = add_node->sibling->type; // id's type from T
             _type = add_node->symbol->type;
@@ -129,11 +141,15 @@ void semantic(int ProdNo) {
                 add_node->symbol->width = 8;
                 add_node->symbol->offset = SymbolTable->offset;
                 SymbolTable->offset += 8;
-            }
+            } 
             if (tempnode->child->type == ASSIGN) {
                 code = new_code();
                 code->action = "=";
                 code->arg1 = tempnode->child->name;
+                if (_type == INT)
+                    for (auto ch : tempnode->child->name)
+                        if (ch == '.')
+                            std::cerr << "Warning: implicit conversion from 'float' to 'int'" << std::endl;
                 code->arg2 = "_";
                 code->result = add_node->symbol->name;
                 CodeVec.push_back(code);
@@ -222,10 +238,15 @@ void semantic(int ProdNo) {
             NodeStack.push(tempnode);
             break;
         case 13 : // T -> X C // TODO for array and matrix
-            tempnode = new_node("T[13]", NONE, nullptr);
+            tempnode = new_node("T[13]", ARRAY, nullptr);
             tempnode->kind = P13;
+            tempnode->value.ival = NodeStack.top()->value.ival;
+            found = false;
+            if (tempnode->value.ival != 0)
+                found = true;
             add_child(tempnode, NodeStack.top()); NodeStack.pop();
-            tempnode->type = NodeStack.top()->type;
+            if (!found)
+                tempnode->type = NodeStack.top()->type;
             add_child(tempnode, NodeStack.top()); NodeStack.pop();
             NodeStack.push(tempnode);
             break; 
@@ -242,14 +263,21 @@ void semantic(int ProdNo) {
         case 16 : // C -> [ CINT ] C // TODO
             tempnode = new_node("C[16]", NONE, nullptr);
             tempnode->kind = P16;
-            add_child(tempnode, NodeStack.top()); NodeStack.pop();
+            add_child(tempnode, NodeStack.top()); 
+            if (NodeStack.top()->value.ival == 0)
+                tempnode->value.ival = 1;
+            else 
+                tempnode->value.ival = NodeStack.top()->value.ival;
+            NodeStack.pop();
             add_node = new_node("CINT", CINT, nullptr); add_node->kind = P48;
             add_node->value.ival = TokenStack.top()->ival; TokenStack.pop();
+            tempnode->value.ival = tempnode->value.ival * add_node->value.ival;
             add_child(tempnode, add_node);
             NodeStack.push(tempnode);
             break;
         case 17 : // C -> $ // TODO
             tempnode = new_node("C[17]", NONE, nullptr);
+            tempnode->value.ival = 0;
             tempnode->kind = P17;
             NodeStack.push(tempnode);
             break;
@@ -532,19 +560,44 @@ void semantic(int ProdNo) {
             CodeVec.push_back(code); ++nextquad;
             NodeStack.push(tempnode);
             break;
+        case 51 :
+            tempnode = new_node(get_val(TokenStack.top()->dval), CINT, nullptr);
+            tempnode->kind = P48;
+            tempnode->value.dval = TokenStack.top()->dval; TokenStack.pop();
+            NodeStack.push(tempnode);
         default : 
             break;
     }
 }
 
+// Check the type and other problems.
+int check_symbol_table() {
+    auto ptr = SymbolTable->next;
+    bool pass = true;
+    while (ptr != nullptr) {
+        if (ptr->type == VOID) {
+            pass = false;
+            std::cerr << "Symbol: \"" << ptr->name << "\" requires a type specifier for declaration." << std::endl;
+        }
+        ptr = ptr->next;
+    }
+    if (pass) 
+        return 0;
+    return 1;
+}
+
 // Redirect the output stream.
 void translate(bool format, std::ostream &os) {
-    if (format) {
-        for (int i = 0; i < CodeVec.size(); ++i)
-            os << std::setw(3) << i << " " << *CodeVec[i] << std::endl;
-    } else { 
-        for (int i = 0; i < CodeVec.size(); ++i)
-            os << CodeVec[i]->action << "\t" << CodeVec[i]->arg1 << "\t" 
-               << CodeVec[i]->arg2 << "\t" << CodeVec[i]->result << std::endl;
+    if (!check_symbol_table()) {
+        if (format) {
+            for (int i = 0; i < CodeVec.size(); ++i)
+                os << std::setw(3) << i << " " << *CodeVec[i] << std::endl;
+        } else { 
+            for (int i = 0; i < CodeVec.size(); ++i)
+                os << CodeVec[i]->action << "\t" << CodeVec[i]->arg1 << "\t" 
+                   << CodeVec[i]->arg2 << "\t" << CodeVec[i]->result << std::endl;
+        }
+    } else {
+        os << "Error! The source file exists problems! Semantic Analysis Finished." << std::endl;
     }
 }

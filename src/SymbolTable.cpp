@@ -61,6 +61,8 @@ void print_symbol(std::shared_ptr<Symbol> symbol, std::ostream &os) {
             _type = type_name[i].second;
             break;
         }
+    if (symbol->type == ARRAY)
+        _type = "ARRAY";
     os << std::left << std::setw(15) << "[Symbol]" << std::setw(15) << symbol 
        << std::endl << std::setw(15) << "[Name]" << std::setw(15) << symbol->name
        << std::endl << std::setw(15) << "[Type]" << std::setw(15) << _type

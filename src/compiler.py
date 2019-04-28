@@ -155,6 +155,9 @@ class Compiler(object):
                     continue
                 line = line[:-1]
                 data.append([s for s in line.split('\t')])
+        if len(data) == 1:
+            tkinter.messagebox.showerror('Error!', 'Please check your source file!')
+            return 
         titles = [('ACTION', 100), ('Arg_1', 100), ('Arg_2', 100), ('Result', 100)]
         table = self.create_table(data, titles, self.show_frame)
         table.grid(padx=5, pady=5, row=0, column=0, rowspan=30, sticky='wens')
@@ -204,7 +207,10 @@ class Compiler(object):
         return table # User should pack the table theirselves
 
 def main():
-    win = Compiler('Modnar C Compiler')
+    try :
+        win = Compiler('Modnar C Compiler')
+    except Exception as e:
+        tkinter.messagebox.showerror('Error!', 'Please check your source file')
 
 if __name__ == '__main__':
     main()

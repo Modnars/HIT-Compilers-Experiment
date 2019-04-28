@@ -15,7 +15,7 @@
 // Define Token type.
 typedef enum {
     /* Data type */
-    VOID, INT, CHAR, FLOAT, DOUBLE, BOOL, STRING, RECORD, // RECORD
+    VOID, INT, CHAR, FLOAT, DOUBLE, BOOL, STRING, RECORD, ARRAY, // RECORD, ARRAY
     /* Reserved word */
     BREAK, FOR, WHILE, CONTINUE, IF, ELSE, RETURN, THEN, PROC, CALL, // PROC and CALL
     /* Opearate symbol */
