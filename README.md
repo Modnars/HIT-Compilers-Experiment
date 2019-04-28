@@ -88,7 +88,8 @@ ASTNode.cpp to establish the AST, and then implement the ASTVisitor and Printer,
 is designed to using Function Pointer to implement generating target code.
 
 I have tried to implement the idea for three days, while my experiment is too hurry to
-let me finish it. Maybe I will implement it one day.
+let me finish it. Maybe I will implement it one day. Here, I finished the basic functions
+with backpatch, which I learned from book. Maybe this method is much easier.
 
 During the experiment, I have read some good repos about compiler. I want to share 
 several repos here:
