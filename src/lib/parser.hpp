@@ -9,9 +9,6 @@ using std::vector;
 
 // Store the Production sequence.
 extern std::vector<std::shared_ptr<Production>> ProdVec; 
-// Store the current analysis symbol position, which is also the TokenVec's index.
-// Which is used in parser(s) for mark sequences!
-extern int idx;
 // Store the 'id' specific token information. Which is used for semantic analysis.
 extern std::stack<std::shared_ptr<Token>> TokenStack;
 

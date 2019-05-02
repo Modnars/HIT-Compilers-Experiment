@@ -15,8 +15,6 @@ using std::string;
 using std::vector;
 
 // For semantic analysis.
-int idx;
-// For semantic analysis.
 std::stack<std::shared_ptr<Token>> TokenStack;
 
 std::vector<std::shared_ptr<Production>> ProdVec; // Store the Production sequence.
@@ -287,7 +285,7 @@ void analysis(const vector<string> &seq, std::ostream &os) {
     getClosureSet();
     fillReduceAction();
     int base = ClosureSet.size(); // TODO int -> size_t
-    idx = 0;
+    int idx = 0;
     bool accepted = false, done = false;
     StateStack.push(0);
     while (!done) {
@@ -341,12 +339,15 @@ void parse(const vector<std::shared_ptr<Token>> &token_seq, std::ostream &os) {
     analysis(sym_seq, os);   
 }
 
+// Used to check whether the grammar is an LR(1) grammar.
 void checkGrammar(std::ostream &os) {
     getClosureSet();
     os << "STATUS NUMBER: " << ClosureSet.size() << std::endl;
     fillReduceAction();
 }
 
+// Print the Reduce action information from the ActionTable, which is used to write
+// log information for UI program.
 void print_ReduceTable(std::ostream &os) {
     auto base = ClosureSet.size();
     for (auto status : ActionTable) {
@@ -359,6 +360,8 @@ void print_ReduceTable(std::ostream &os) {
     }
 }
 
+// Print the Shift action information from the ActionTable, which is used to write
+// log information for UI program.
 void print_ShiftTable(std::ostream &os) {
     for (auto status : ActionTable) {
         for (auto item : *status.second) {
@@ -370,6 +373,8 @@ void print_ShiftTable(std::ostream &os) {
     }
 }
 
+// Print the Goto action information from the ActionTable, which is used to write
+// log information for UI program.
 void print_GotoTable(std::ostream &os) {
     for (auto status : ActionTable) {
         for (auto item : *status.second) {
