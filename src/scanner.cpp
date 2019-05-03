@@ -340,6 +340,7 @@ int scan_file(const std::string &filename, std::ostream &os) {
     std::cerr << "[*_*] Recognised Token's number: " << TokenVec.size()
               << std::endl << std::endl;
     input.close();
+    print_symbol_table(SymbolTable);
     return EXIT_SUCCESS;
 }
 

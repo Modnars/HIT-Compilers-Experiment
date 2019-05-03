@@ -149,7 +149,7 @@ void extend(std::set<Item> &closure) {
                             need_add = false;
                             break;
                         }
-                    }
+                    } /* while (pos != iter->rights.size()-1) */
                     if (need_add && !contains(closure, new_item)) {
                         closure.insert(new_item);
                         extending = true;
