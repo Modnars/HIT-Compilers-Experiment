@@ -163,8 +163,8 @@ R30: G -> F
 GOTO:60
 R28: E -> G 
 GOTO:59
-S68
-R40: relop -> < 
+S71
+R42: relop -> > 
 GOTO:124
 S179
 R33: F -> id 
@@ -185,8 +185,8 @@ R30: G -> F
 GOTO:30
 R28: E -> G 
 GOTO:220
-S68
-R40: relop -> < 
+S69
+R41: relop -> <= 
 GOTO:250
 S83
 R33: F -> id 
