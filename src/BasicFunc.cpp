@@ -10,7 +10,7 @@ std::vector<std::string> split(const std::string &str, const std::string &delim)
     for (int i = 0; i < size; ++i) {
         pos = strs.find(delim, i); // pos为分隔符第一次出现的位置，从i到pos之前的字符串是分隔出来的字符串
         if(pos < size) { //如果查找到，如果没有查找到分隔符，pos为string::npos
-            std::string s = strs.substr(i, pos - i); // *****从i开始长度为pos-i的子字符串
+            std::string s = strs.substr(i, pos - i); // 从i开始长度为pos-i的子字符串
             res.push_back(s); //两个连续空格之间切割出的字符串为空字符串，这里没有判断s是否为空，所以最后的结果中有空字符的输出，
             i = pos + delim.size() - 1;
         }

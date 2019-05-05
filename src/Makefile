@@ -1,26 +1,30 @@
-CC=g++
-CFLAGS=-std=c++11 -Wall
-LIBS=
-PARSER=parsers
-SCANNER=scanner
-TRANSLATOR=translator
-MAIN=main
-OBJ1=$(SCANNER).o SymbolTable.o Token.o Base.o
-OBJ2=$(PARSER).o BasicFunc.o Item.o Production.o 
-OBJ3=$(TRANSLATOR).o ASTNode.o Code.o
-OBJS=$(OBJ1) $(OBJ2)
-HEADFILES=lib/*.hpp
-PROGRAM=res
-DEBUGER=lldb
+CC          =g++
+CFLAGS      =-std=c++11 -Wall
+SCANNER     =scanner
+PARSER      =parsers
+TRANSLATOR  =translator
+MAIN        =main
+OBJ1        =$(SCANNER).o Base.o SymbolTable.o Token.o
+OBJ2        =$(PARSER).o BasicFunc.o Item.o Production.o 
+OBJ3        =$(TRANSLATOR).o ASTNode.o Code.o
+OBJS        =$(OBJ1) $(OBJ2) $(OBJ3)
+SRC1        =$(SCANNER).cpp Base.cpp SymbolTable.cpp Token.cpp
+SRC2        =$(PARSER).cpp BasicFunc.cpp Item.cpp Production.cpp
+SRC3        =$(TRANSLATOR).cpp ASTNode.cpp Code.cpp
+SRCS        =$(SRC1) $(SRC2) $(SRC3) $(MAIN).cpp
+LIB1        =lib/Base.hpp lib/SymbolTable.hpp lib/Token.hpp lib/scanner.hpp 
+LIB2        =lib/BasicFunc.hpp lib/Item.hpp lib/Production.hpp lib/parser.hpp
+LIB3        =lib/ASTNode.hpp lib/Code.hpp lib/translator.hpp
+LIBS        =$(LIB1) $(LIB2) $(LIB3)
+PROGRAM     =result
+DEBUGER     =lldb
 
-m : $(MAIN).out
+m : $(PROGRAM)
 
-$(MAIN).out : $(OBJ1) $(OBJ2) $(OBJ3) $(MAIN).o
-	$(CC) $(CFLAGS) $(OBJ1) $(OBJ2) $(OBJ3) $(MAIN).o -o $(MAIN).out 
+$(PROGRAM) : $(OBJS) $(MAIN).o
+	$(CC) $(CFLAGS) $(OBJS) $(MAIN).o -o $(PROGRAM)
 
-$(MAIN).o : $(MAIN).cpp lib/Token.hpp lib/SymbolTable.hpp lib/Base.hpp \
-        lib/Item.hpp lib/Production.hpp lib/BasicFunc.hpp lib/parser.hpp \
-        lib/scanner.hpp lib/translator.hpp lib/ASTNode.hpp lib/Code.hpp
+$(MAIN).o : $(MAIN).cpp $(LIBS)
 	$(CC) $(CFLAGS) $(MAIN).cpp -c
 
 s : $(SCANNER)
@@ -28,25 +32,22 @@ s : $(SCANNER)
 $(SCANNER) : $(OBJ1)
 	$(CC) $(CFLAGS) $(OBJ1) -o $(SCANNER)
 
-$(OBJ1) : $(SCANNER).cpp lib/Token.hpp lib/SymbolTable.hpp lib/Base.hpp \
-        Token.cpp SymbolTable.cpp Base.cpp
-	$(CC) $(CFLAGS) $(SCANNER).cpp Token.cpp SymbolTable.cpp Base.cpp -c
+$(OBJ1) : $(SRC1) $(LIB1) 
+	$(CC) $(CFLAGS) $(SRC1) -c
 
 p : $(PARSER)
 
 $(PARSER) : $(OBJ2)
 	$(CC) $(CFLAGS) $(OBJ2) -o $(PARSER)
 
-$(OBJ2) : $(PARSER).cpp lib/Item.hpp lib/Production.hpp lib/BasicFunc.hpp \
-        Item.cpp Production.cpp BasicFunc.cpp 
-	$(CC) $(CFLAGS) $(PARSER).cpp Item.cpp Production.cpp BasicFunc.cpp -c
+$(OBJ2) : $(SRC2) $(LIB2)
+	$(CC) $(CFLAGS) $(SRC2) -c
 
-$(OBJ3) : $(TRANSLATOR).cpp lib/translator.hpp ASTNode.cpp lib/ASTNode.hpp \
-        Code.cpp lib/Code.hpp
-	$(CC) $(CFLAGS) $(TRANSLATOR).cpp ASTNode.cpp Code.cpp -c 
+$(OBJ3) : $(SRC3) $(LIB3)
+	$(CC) $(CFLAGS) $(SRC3) -c 
 
 d :
-	$(CC) $(CFLAGS) *.cpp -o $(MAIN).dbg -g
+	$(CC) $(CFLAGS) $(SRCS) -o $(MAIN).dbg -g
 	$(DEBUGER) $(MAIN).dbg
 
 r : 
@@ -56,4 +57,4 @@ ui :
 	python3 compiler.py
 
 clean :
-	rm -rf *.o *.out *.dbg *.dbg.dSYM
+	rm -rf *.o *.out *.dbg *.dbg.dSYM $(PROGRAM)
