@@ -1,8 +1,7 @@
 #!/usr/bin/env python3
 # -*- coding: UTF-8 -*-
 
-import tkinter
-import os
+import tkinter, os
 from tkinter import ttk
 import tkinter.messagebox
 import tkinter.filedialog
@@ -186,7 +185,7 @@ class Compiler(object):
             return -1
         else:
             self.compile_finished = True
-            os.system('./main.out -n ' + filename)
+            os.system('./result -n ' + filename)
 
     def create_table(self, data, colum_info, fill_frame, center=True):
         length = len(colum_info)

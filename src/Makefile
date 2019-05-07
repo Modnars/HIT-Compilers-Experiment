@@ -51,7 +51,7 @@ d :
 	$(DEBUGER) $(MAIN).dbg
 
 r : 
-	./main.out -n ../test/test.cpp
+	./$(PROGRAM) -n ../test/test.cpp
 
 ui : 
 	python3 compiler.py

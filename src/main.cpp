@@ -1,13 +1,5 @@
 #include <fstream>
 
-#include "lib/ASTNode.hpp"
-#include "lib/Base.hpp"
-#include "lib/BasicFunc.hpp"
-#include "lib/Item.hpp"
-#include "lib/Production.hpp"
-#include "lib/SymbolTable.hpp"
-#include "lib/Token.hpp"
-
 #include "lib/parser.hpp"
 #include "lib/scanner.hpp"
 #include "lib/translator.hpp"

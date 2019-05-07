@@ -7,7 +7,9 @@
 #include "lib/BasicFunc.hpp"
 #include "lib/Item.hpp"
 
+#include "lib/scanner.hpp"
 #include "lib/parser.hpp"
+#include "lib/translator.hpp"
 
 using std::string;
 using std::vector;
@@ -16,14 +18,16 @@ std::vector<std::shared_ptr<Production>> ProdVec; // Store the Production sequen
 std::set<std::string> NonTerminalSet;             // Store the non-terminal symbols.
 std::set<std::string> TerminalSet;                // Store the terminal symbols.
 
+// For semantic analysis.
+std::stack<std::shared_ptr<Token>> TokenStack;
+
 std::map<string, std::shared_ptr<vector<string>>> FirstSet;  // Store the First Set.
 std::map<string, std::shared_ptr<vector<string>>> FollowSet; // Store the Follow Set.
 
 std::vector<std::vector<Item>> ClosureSet; // Store the Closures' set.
 
-std::vector<ReduceItem> ReduceTable; // Store the Ruduce Action information.
-std::vector<GotoItem> ShiftTable;    // Store the Shift Action information.
-std::vector<GotoItem> GotoTable;     // Store the Goto Action information.
+// Store the Action information of Reduce, Shift and Goto.
+std::map<int, std::shared_ptr<std::map<std::string, int>>> ActionTable;
 
 std::stack<int> StateStack;  // Store the State Stack information.
 std::stack<std::string> SymbolStack; // Store the Symbol Stack information.
@@ -53,66 +57,6 @@ int read_grammar(const std::string &filename) {
             if (!contains(NonTerminalSet, sym) && sym != "$")
                 TerminalSet.insert(sym);
     return 0;
-}
-
-// Print the debug information.
-void print_info(std::ostream &os = std::cout) {
-//    os << "Production Vector:" << std::endl;
-//    for (auto var : ProdVec)
-//        os << *var << std::endl;
-//    os << "Non-Terminal Symbols:" << std::endl;
-//    for (auto var : NonTerminalSet)
-//        os << var << " ";
-//    os << std::endl;
-//    os << "Terminal Symbols:" << std::endl;
-//    for (auto var : TerminalSet)
-//        os << var << " ";
-//    os << std::endl << std::endl;
-//    os << "FIRST Set:" << std::endl;
-//    for (auto item : FirstSet) {
-//        os << item.first << ": ";
-//        for (auto var : *item.second)
-//            os << var << " ";
-//        os << std::endl;
-//    }
-//    os << std::endl;
-//    os << "FOLLOW Set:" << std::endl;
-//    for (auto item : FollowSet) {
-//        os << item.first << ": ";
-//        for (auto var : *item.second)
-//            os << var << " ";
-//        os << std::endl;
-//    }
-    os << "ReduceAction: " << std::endl;
-    for (auto var : ReduceTable) {
-        os << "START: " << var.state;
-        os << "\tMeet: " << std::left << std::setw(10) << var.symbol;
-        os << "\tR" << var.prod_id << ": " << *ProdVec[var.prod_id] << std::endl;
-    }
-}
-
-void print_ReduceTable(std::ostream &os) {
-    for (auto var : ReduceTable) {
-        os << std::left << std::setw(10) << var.state << "\t";
-        os << std::setw(20) << var.symbol << "\t";
-        os << "R" << var.prod_id << ": " << *ProdVec[var.prod_id] << std::endl;
-    }
-}
-
-void print_ShiftTable(std::ostream &os) {
-    for (auto var : ShiftTable) {
-        os << std::left << std::setw(10) << var.start << "\t";
-        os << std::setw(20) << var.symbol << "\t";
-        os << var.end << std::endl;
-    }
-}
-
-void print_GotoTable(std::ostream &os) {
-    for (auto var : GotoTable) {
-        os << std::left << std::setw(10) << var.start << "\t";
-        os << std::setw(30) << var.symbol << "\t";
-        os << var.end << std::endl;
-    }
 }
 
 // Judge whether the production could be null directly.
@@ -155,6 +99,7 @@ void getFirstSet() {
 
 // Get the FOLLOW Set of the grammar.
 void getFollowSet() {
+    getFirstSet();
     for (auto var : NonTerminalSet) 
         FollowSet[var] = std::make_shared<vector<string>>();
     FollowSet["S"]->push_back("#");
@@ -203,6 +148,7 @@ void getFollowSet() {
 }
 
 void getI0() {
+    getFollowSet();
     vector<string> rights = {"@"};
     for (auto var : ProdVec[0]->rights)
         rights.push_back(var);
@@ -240,11 +186,11 @@ void extend(vector<Item> &closure) {
     }
 }
 
-void getClosureSet() {
+void getClosureSet(std::ostream &os = std::cout) {
     getI0();
     vector<Item> closure;
     vector<string> tmpVec, rights; // Store the temp next_sym.
-    for (size_t i = 0; i < ClosureSet.size(); ++i) {
+    for (int i = 0; i < ClosureSet.size(); ++i) {
         tmpVec.clear();
         for (auto item : ClosureSet[i]) {
             if (!item.could_reduce() && !contains(tmpVec, item.next_sym()))
@@ -258,36 +204,77 @@ void getClosureSet() {
                 }
             }
             extend(closure);
-            bool found = false;
-            for (size_t j = 0; j < ClosureSet.size(); ++j) {
+            bool found = false; // Mark whether find the closure from before closures.
+            for (int j = 0; j < ClosureSet.size(); ++j) {
                 if (ClosureSet[j] == closure) {
-                    if (contains(NonTerminalSet, sym))
-                        GotoTable.push_back(GotoItem(i, j, sym));
-                    else 
-                        ShiftTable.push_back(GotoItem(i, j, sym));
+                    // Use new data structure. Here...
+                    if (!contains(ActionTable, i)) {
+                        ActionTable[i] = std::make_shared<std::map<string, int>>();
+                        (*ActionTable[i])[sym] = j;
+                    } else {
+                        if (!contains(*ActionTable[i], sym)) {
+                            (*ActionTable[i])[sym] = j;
+                        } else {
+                            for (auto item : closure) 
+                                os << item << std::endl;
+                            os << "Error! [1] The Gramma fill the ActionTable repeatly!" << std::endl;
+                        }
+                    } // ... Done
                     found = true;
                     break;
+//                    if (contains(NonTerminalSet, sym))
+//                        GotoTable.push_back(GotoItem(i, j, sym));
+//                    else 
+//                        ShiftTable.push_back(GotoItem(i, j, sym));
+//                    found = true;
+//                    break;
                 }
             }
             if (!found) {
                 ClosureSet.push_back(closure);
-                if (contains(NonTerminalSet, sym))
-                    GotoTable.push_back(GotoItem(i, ClosureSet.size()-1, sym));
-                else 
-                    ShiftTable.push_back(GotoItem(i, ClosureSet.size()-1, sym));
+                // Use new data structure. Here...
+                if (!contains(ActionTable, i)) {
+                    ActionTable[i] = std::make_shared<std::map<string, int>>();
+                    (*ActionTable[i])[sym] = ClosureSet.size()-1;
+                } else {
+                    if (!contains(*ActionTable[i], sym)) {
+                        (*ActionTable[i])[sym] = ClosureSet.size()-1;
+                    } else {
+                        os << "Error! [2] The Gramma fill the ActionTable repeatly!" << std::endl;
+                    }
+                } // ... Done
+//                if (contains(NonTerminalSet, sym))
+//                    GotoTable.push_back(GotoItem(i, ClosureSet.size()-1, sym));
+//                else 
+//                    ShiftTable.push_back(GotoItem(i, ClosureSet.size()-1, sym));
             }
         }
     }
 }
 
-void getReductionTable() {
-    for (size_t i = 0; i < ClosureSet.size(); ++i) {
+void fillReduceAction(std::ostream &os = std::cout) {
+    int base = ClosureSet.size();
+    for (int i = 0; i < ClosureSet.size(); ++i) {
         for (auto item : ClosureSet[i]) {
             if (item.could_reduce()) {
-                for (size_t j = 0; j < ProdVec.size(); ++j) {
+                for (int j = 0; j < ProdVec.size(); ++j) {
                     if (item.reduce_from(*ProdVec[j])) {
                         for (auto sym : *FollowSet[item.left]) {
-                            ReduceTable.push_back(ReduceItem(i, sym, j));
+                            if (!contains(ActionTable, i)) {
+                                ActionTable[i] = std::make_shared<std::map<string, int>>();
+                                (*ActionTable[i])[sym] = base + j;
+                            } else {
+                                if (!contains(*ActionTable[i], sym)) {
+                                    (*ActionTable[i])[sym] = base + j;
+                                } else if ((*ActionTable[i])[sym] != base+j) {
+                                    os << "\nError! [3] The Gramma fill the ActionTable repeatly!" << std::endl;
+                                    os << "Production: " << *ProdVec[j] << std::endl;
+                                    os << "Pos: " << i << ", " << item.search << std::endl;
+                                    os << "Have Existed: " << (*ActionTable[i])[item.search] << std::endl;
+                                }
+                                    
+                            }
+//                            ReduceTable.push_back(ReduceItem(i, sym, j));
                         }
                         break;
                     }
@@ -297,72 +284,52 @@ void getReductionTable() {
     } /* for (size_t i = 0; ...) loop */
 }
 
-int searchGotoTable(int state, const string &sym, std::ostream &os = std::cout) {
-    for (auto var : GotoTable) 
-        if (var.start == state && var.symbol == sym) {
-            os << "GOTO:   ";
-            print_stk(StateStack, os);
-            os << "#";
-            print_stk(SymbolStack, os);
-            os << "\t\t" << sym;
-            os << "\t\tGOTO:" << var.end << std::endl;
-            return var.end;
-        }
-    return -1;
-}
-
-int searchShiftTable(int state, const string &sym, std::ostream &os = std::cout) {
-    for (auto var : ShiftTable) 
-        if (var.start == state && var.symbol == sym) {
-            os << "SHIFT:  ";
-            print_stk(StateStack, os);
-            os << "#";
-            print_stk(SymbolStack, os);
-            os << "\t\t" << sym;
-            os << "\t\tS" << var.end << std::endl;
-            return var.end;
-        }
-    return -1;
-}
-
-int searchReduceTable(int state, const string &sym, std::ostream &os = std::cout) {
-    for (auto var : ReduceTable) 
-        if (var.state == state && var.symbol == sym) {
-            os << "REDUCE: ";
-            print_stk(StateStack, os);
-            os << "#";
-            print_stk(SymbolStack, os);
-            os << "\t\t" << sym;
-            os << "\t\tR" << var.prod_id << ": " << *ProdVec[var.prod_id] << std::endl;
-            return var.prod_id;
-        }
-    return -1;
+// Search the ActionTable to make sure which action will do.
+int searchTable(int state, const string &sym, std::ostream &os = std::cout) {
+    if (!contains(ActionTable, state))
+        return -1;
+    if (!contains(*ActionTable[state], sym))
+        return -1;
+    int res = (*ActionTable[state])[sym];
+    int base = ClosureSet.size();
+    if (res >= base) {
+        os << "R" << res-base << ": " << *ProdVec[res-base] << std::endl;
+        semantic(res-base); // Using semantic actions.
+    } else if (contains(NonTerminalSet, sym)) {
+        os << "GOTO:" << res << std::endl; 
+    } else {
+        os << "S" << res << std::endl; 
+    }
+    return res;
 }
 
 void analysis(const vector<string> &seq, std::ostream &os) {
-    getFirstSet();
-    getFollowSet();
     getClosureSet();
-    getReductionTable();
-    StateStack.push(0);
-    size_t i = 0;
+    fillReduceAction();
+    int base = ClosureSet.size(), idx = 0; 
     bool accepted = false, done = false;
-    while (!done && !accepted) {
-        int res;
-        if (StateStack.top() == 1 && seq[i] == "#") {
-            accepted = true;
-        } else if ((res = searchShiftTable(StateStack.top(), seq[i], os)) > -1) {
+    StateStack.push(0);
+    while (!done) {
+        int res = searchTable(StateStack.top(), seq[idx], os);
+        if (res > -1 && res < base) {
             StateStack.push(res);
-            SymbolStack.push(seq[i]);
-            ++i;
-        } else if ((res = searchReduceTable(StateStack.top(), seq[i], os)) > -1) {
-            if (ProdVec[res]->rights[0] != "$") // TODO
-                for (int k = 0; k < ProdVec[res]->rights.size(); ++k) {
+            SymbolStack.push(seq[idx]);
+            // Store the tokens whose type is ID. The "id" symbol is related to grammar.
+            if (seq[idx] == "id" || seq[idx] == "CINT" || seq[idx] == "CFLOAT" || seq[idx] == "CBOOL") 
+                TokenStack.push(TokenVec[idx]);
+            ++idx;
+        } else if (res >= base) {
+            if (res == base && seq[idx] == "#") {
+                accepted = true;
+                break;
+            }
+            if (ProdVec[res-base]->rights[0] != "$") // TODO
+                for (int k = 0; k < ProdVec[res-base]->rights.size(); ++k) {
                     StateStack.pop();
                     SymbolStack.pop();
                 }
-            SymbolStack.push(ProdVec[res]->left);
-            if ((res = searchGotoTable(StateStack.top(), SymbolStack.top(), os)) > -1) {
+            SymbolStack.push(ProdVec[res-base]->left);
+            if ((res = searchTable(StateStack.top(), SymbolStack.top(), os)) > -1) {
                 StateStack.push(res);
             } else {
                 done = true;
@@ -371,13 +338,13 @@ void analysis(const vector<string> &seq, std::ostream &os) {
             done = true;
         }
     }
-    if (accepted) {
+    if (accepted) { 
         os << "Accepted!" << std::endl;
     } else {
         os << "Error!" << std::endl << "Remain string: ";
-        while (i < seq.size()) {
-            os << seq[i];
-            ++i;
+        while (idx < seq.size()) {
+            os << seq[idx] << " ";
+            ++idx;
         }
         os << std::endl;
     }
@@ -390,6 +357,52 @@ void parse(const vector<std::shared_ptr<Token>> &token_seq, std::ostream &os) {
         sym_seq.push_back(token2string(*token));
     sym_seq.push_back("#");
     analysis(sym_seq, os);   
+}
+
+void checkGrammar(std::ostream &os) {
+    getClosureSet();
+    os << "STATUS NUMBER: " << ClosureSet.size() << std::endl;
+    fillReduceAction();
+}
+
+// Print the Reduce action information from the ActionTable, which is used to write
+// log information for UI program.
+void print_ReduceTable(std::ostream &os) {
+    auto base = ClosureSet.size();
+    for (auto status : ActionTable) {
+        for (auto item : *status.second) {
+            if (item.second >= base) {
+                os << status.first << "\t" << item.first << "\tR" << (item.second-base);
+                os << ": " << *ProdVec[item.second-base] << std::endl;
+            }
+        }
+    }
+}
+
+// Print the Shift action information from the ActionTable, which is used to write
+// log information for UI program.
+void print_ShiftTable(std::ostream &os) {
+    for (auto status : ActionTable) {
+        for (auto item : *status.second) {
+            if (!contains(NonTerminalSet, item.first)) {
+                os << status.first << "\t" << item.first << "\t" << item.second 
+                   << std::endl;
+            }
+        }
+    }
+}
+
+// Print the Goto action information from the ActionTable, which is used to write
+// log information for UI program.
+void print_GotoTable(std::ostream &os) {
+    for (auto status : ActionTable) {
+        for (auto item : *status.second) {
+            if (contains(NonTerminalSet, item.first)) {
+                os << status.first << "\t" << item.first << "\t" << item.second
+                   << std::endl;
+            }
+        }
+    }
 }
 
 // int main(int argc, char *argv[]) {

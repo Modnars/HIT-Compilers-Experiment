@@ -14,15 +14,14 @@
 using std::string;
 using std::vector;
 
-// For semantic analysis.
-std::stack<std::shared_ptr<Token>> TokenStack;
-
 std::vector<std::shared_ptr<Production>> ProdVec; // Store the Production sequence.
 std::set<std::string> NonTerminalSet;             // Store the non-terminal symbols.
 std::set<std::string> TerminalSet;                // Store the terminal symbols.
 
-std::map<string, std::shared_ptr<vector<string>>> FirstSet;  // Store the First Set.
+// For semantic analysis.
+std::stack<std::shared_ptr<Token>> TokenStack;
 
+std::map<string, std::shared_ptr<vector<string>>> FirstSet;  // Store the First Set.
 std::vector<std::set<Item>> ClosureSet; // Store the Closures' set.
 
 // Store the Action information of Reduce, Shift and Goto.
@@ -66,8 +65,8 @@ bool could_be_null(const string &sym) {
     return contains(*FirstSet[sym], string("$"));
 }
 
-// Generate the FirstSet. And the FirstSet generated will contains '$' for each non-terminal if 
-// the symbol could be null.
+// Generate the FirstSet. And the FirstSet generated will contains '$' for each 
+// non-terminal if the symbol could be null.
 // At the end of the function, it will remove '$' from FirstSet and TerminalSet.
 void getFirstSet() {
     std::shared_ptr<vector<string>> first;
@@ -120,7 +119,8 @@ void getFirstSet() {
 }
 
 // Extend the closure when the closure need to extending.
-// For example, we can use the function to get status I0 after we put start item in closure.
+// For example, we can use the function to get status I0 after we put start item 
+// in closure.
 void extend(std::set<Item> &closure) {
     vector<string> rights;
     string left;
@@ -191,7 +191,7 @@ void getClosureSet(std::ostream &os = std::cout) {
                 }
             }
             extend(closure);
-            bool found = false;
+            bool found = false; // Mark whether find the closure from before closures.
             for (int j = 0; j < ClosureSet.size(); ++j) {
                 if (ClosureSet[j] == closure) {
                     // Use new data structure. Here...
@@ -279,13 +279,12 @@ int searchTable(int state, const string &sym, std::ostream &os = std::cout) {
     return res;
 }
 
-// Analysis the input string sequences, and the symbols from the sequences must be the 
-// symbols from grammar file.
+// Analysis the input string sequences, and the symbols from the sequences must 
+// be the symbols from grammar file.
 void analysis(const vector<string> &seq, std::ostream &os) {
     getClosureSet();
     fillReduceAction();
-    int base = ClosureSet.size(); // TODO int -> size_t
-    int idx = 0;
+    int base = ClosureSet.size(), idx = 0; 
     bool accepted = false, done = false;
     StateStack.push(0);
     while (!done) {
