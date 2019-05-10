@@ -222,12 +222,6 @@ void getClosureSet(std::ostream &os = std::cout) {
                     } // ... Done
                     found = true;
                     break;
-//                    if (contains(NonTerminalSet, sym))
-//                        GotoTable.push_back(GotoItem(i, j, sym));
-//                    else 
-//                        ShiftTable.push_back(GotoItem(i, j, sym));
-//                    found = true;
-//                    break;
                 }
             }
             if (!found) {
@@ -243,10 +237,6 @@ void getClosureSet(std::ostream &os = std::cout) {
                         os << "Error! [2] The Gramma fill the ActionTable repeatly!" << std::endl;
                     }
                 } // ... Done
-//                if (contains(NonTerminalSet, sym))
-//                    GotoTable.push_back(GotoItem(i, ClosureSet.size()-1, sym));
-//                else 
-//                    ShiftTable.push_back(GotoItem(i, ClosureSet.size()-1, sym));
             }
         }
     }
@@ -274,7 +264,6 @@ void fillReduceAction(std::ostream &os = std::cout) {
                                 }
                                     
                             }
-//                            ReduceTable.push_back(ReduceItem(i, sym, j));
                         }
                         break;
                     }

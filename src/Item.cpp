@@ -65,22 +65,7 @@ bool operator<(const Item &a, const Item &b) {
     return false;
 }
 
-std::ostream &operator<<(std::ostream &os, const ReduceItem &rdit) {
-    os << std::left << std::setw(15) << rdit.state << std::setw(15) << rdit.symbol
-       << "R" << rdit.prod_id;
-    return os;
-}
-
-std::ostream &operator<<(std::ostream &os, const GotoItem &gtit) {
-    os << std::left << std::setw(15) << gtit.start << std::setw(15) << gtit.symbol
-       << std::setw(15) << gtit.end;
-    return os;
-}
-
 bool operator==(const Item &a, const Item &b) {
     return (a.left == b.left) && (a.rights == b.rights) && (a.search == b.search);
 }
 
-bool operator==(const GotoItem &it1, const GotoItem &it2) {
-    return (it1.start == it2.start) && (it1.end == it2.end) && (it1.symbol == it2.symbol);
-}

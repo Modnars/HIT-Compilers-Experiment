@@ -46,7 +46,7 @@
 | 18 | [src/parsers.cpp](./src/parsers.cpp) | C++11 | LR(1) |
 | 19 | [src/compiler.py](./src/compiler.py) | Python3.7 | Simple UI |
 
-### Lab2 Semantic Analysis
+### Lab3 Semantic Analysis
 ### 实验三 语义分析
 
 #### Needed file:
