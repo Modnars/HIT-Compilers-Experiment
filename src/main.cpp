@@ -48,6 +48,7 @@ int main(int argc, char *argv[]) {
         read_grammar("../file/grammar/grammar.txt");
         parse(TokenVec);
         translate();
+        print_symbol_table(SymbolTable);
     }
     return EXIT_SUCCESS;
 }

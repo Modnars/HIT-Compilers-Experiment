@@ -133,7 +133,8 @@ void extend(std::set<Item> &closure) {
                     rights = {"@"};
                     for (auto var : pptr->rights) 
                         rights.push_back(var);
-                    auto new_item = Item(left, rights, iter->search); // The item's search is from extending.
+                    // The item's search is from extending.
+                    auto new_item = Item(left, rights, iter->search); 
                     int pos = iter->pos() + 1;
                     bool need_add = true;
                     while (pos != iter->rights.size()-1) {
