@@ -9,15 +9,30 @@
 #include "lib/SymbolTable.hpp"
 #include "lib/scanner.hpp"
 
-int line_no = 1;
+// Mark the current line's number.
+int line_no = 1; 
+// Store the recognized token sequence. [Global]
 std::vector<std::shared_ptr<Token>> TokenVec;
-auto SymbolTable = std::make_shared<Symbol>("SymbolTable");
+// Store the global symbol table. [Global]
+auto SymbolTable = std::make_shared<Symbol>("SymbolTable"); 
 
 // Define the DFA's states.
 typedef enum {
     START, ISCOMMENT, ISID, ISNUM, ISSTR, DONE
 } State;
 
+/**
+ * Add the recognized token to TokenVec.
+ * 
+ * @param tt The recognized token's special type.
+ * @param str The recognized string content.
+ *
+ * @call bool is_ctrl_type(const TokenType &);
+ * @call std::shared_ptr<Token> make_token(const TokenType &, const std::string &);
+ * @call std::shared_ptr<Symbol> insert_symbol(std::shared_ptr<Symbol>, 
+ *               std::shared_ptr<Symbol>);
+ * @visit TokenVec
+ */
 void addToken(const TokenType &tt, const std::string &str) {
     if (is_ctrl_type(tt)) return;
     auto token = make_token(tt, str);
@@ -30,9 +45,10 @@ void addToken(const TokenType &tt, const std::string &str) {
 }
 
 /**
- * 在已经确定是转义字符的基础上, 进一步判定是否是已知的转义字符类型。
- *
  * Judge whether the character is the escape character when have met '\'.
+ *
+ * @param ch The character need to judge when have met '\'.
+ * @return true if '\ch' is an escape character, otherwise return false.
  */
 bool is_esc_char(char ch) {
     if (ch == 'a' || ch == 'b' || ch == 'f' || ch == 'n' || ch == 'r' || ch == 't' ||
@@ -41,6 +57,13 @@ bool is_esc_char(char ch) {
     return false;
 }
 
+/**
+ * Write the program's log information as running.
+ *
+ * @param os The output stream.
+ * @param tt The token's special type.
+ * @param str The recognized string.
+ */
 void write_log(std::ostream &os, const TokenType &tt, const std::string &str) {
     if (tt == NONE)
         os << "Comment: [line:" << line_no-1 << "]  " << str << std::endl;
@@ -54,6 +77,15 @@ void write_log(std::ostream &os, const TokenType &tt, const std::string &str) {
         os << *TokenVec.back();
 }
 
+/**
+ * Recognize all the tokens and store them from source file (as a input stream).
+ *
+ * @param is The input stream which could be a file stream.
+ * @param os The program's output stream.
+ *
+ * @call void addToken(const TokenType &, const std::string &);
+ * @call void write_log(std::ostream &, const TokenType &, const std::string &);
+ */
 void getToken(std::istream &is, std::ostream &os = std::cout) {
     TokenType tt;
     State state = START;
@@ -321,6 +353,16 @@ void getToken(std::istream &is, std::ostream &os = std::cout) {
     }
 }
 
+/**
+ * Scan the source file. [Global]
+ * 
+ * @param filename The source file's path.
+ * @param os The program's output stream.
+ * @return EXIT_FAILURE when meet any error, otherwise return EXIT_SUCCESS.
+ *
+ * @call void getToken(std::istream &, std::ostream &os = std::cout);
+ * @call void print_symbol_table(std::shared_ptr<Symbol> &);
+ */
 int scan_file(const std::string &filename, std::ostream &os) {
     TokenVec.clear();
     std::ifstream input(filename);
