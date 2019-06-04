@@ -102,6 +102,6 @@ Thanks the authors here.
 
 For the details relationship between the source files, please see Makefile.
 
-Welcome make it better!
+Welcome to make it better!
 
 2019/04/28 Modnar

@@ -348,6 +348,10 @@ void parse(const vector<std::shared_ptr<Token>> &token_seq, std::ostream &os) {
     analysis(sym_seq, os);   
 }
 
+/**
+ * Check the grammar whether match the rules in grammar.txt
+ * @param os The output stream redriected to.
+ */
 void checkGrammar(std::ostream &os) {
     getClosureSet();
     os << "STATUS NUMBER: " << ClosureSet.size() << std::endl;
@@ -393,32 +397,3 @@ void print_GotoTable(std::ostream &os) {
         }
     }
 }
-
-// int main(int argc, char *argv[]) {
-//     read_grammar("../file/grammar/grammar.txt");
-// //    std::cout << TokenVec.size() << std::endl;
-// //    read_grammar("../file/grammar/std_grammar.txt");
-// //    std::ofstream os("../file/log/debug.log");
-// //    print_info(os);
-// //    os.close();
-// //    for (auto closure : ClosureSet)
-// //        for (auto item : closure)
-// //            if (item.reduce_from(*ProdVec[2]))
-// //                std::cout << item << std::endl;
-// //    analysis({"id", "=", "id", "+", "id", "*", "id", ";", "#"});
-// //    analysis({"item", "=", "item", "+", "item", "*", "item", ";", "#"});
-//     analysis({"int", "id", "(", "int", "id", ")", ";", "#"});
-// //    int i = 0;
-// //    vector<string> input;
-// //    string tmp;
-// //    while (std::cin >> tmp) {
-// //        input.push_back(tmp);
-// //    }
-// //    input.push_back("#");
-// //    std::cout << input.size() << std::endl;
-// //    for (auto var : input) 
-// //        std::cout << var << " ";
-// //    std::cout << std::endl;
-// //    analysis(input);
-//     return EXIT_SUCCESS;
-// }
