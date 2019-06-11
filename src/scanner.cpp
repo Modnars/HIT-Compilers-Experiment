@@ -385,28 +385,3 @@ int scan_file(const std::string &filename, std::ostream &os) {
     print_symbol_table(SymbolTable);
     return EXIT_SUCCESS;
 }
-
-//int main(int argc, char *argv[]) {
-//    if (argc > 1) {
-//        if (!strcmp(argv[1], "-n")) {
-//            std::ofstream output("../file/log/info.log");
-//            if (!output) {
-//                std::cerr << "[T_T] Error when writing log information." << std::endl;
-//                return EXIT_FAILURE;
-//            }
-//            for (int i = 2; i < argc; ++i)
-//                if (scan_file(argv[i], output))
-//                    return EXIT_FAILURE;
-//            output.close();
-//        } else {
-//            for (int i = 1; i < argc; ++i)
-//                if (scan_file(argv[i]))
-//                    return EXIT_FAILURE;
-//        }
-//    } else {
-//        std::cout << "[Usage] ./scanner [-n] filename1 [filename2 ... ]" << std::endl;
-//        return EXIT_FAILURE;
-//    }
-//    print_symbol_table(SymbolTable);
-//    return EXIT_SUCCESS;
-//}

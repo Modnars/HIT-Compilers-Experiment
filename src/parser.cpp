@@ -292,6 +292,12 @@ int searchTable(int state, const string &sym, std::ostream &os = std::cout) {
     return res;
 }
 
+/**
+ * Parse the string sequence.
+ * @param seq The string sequence need to parse. The symbol in string is the grammar
+ *   symbol
+ * @param os The output stream redriected to.
+ */
 void analysis(const vector<string> &seq, std::ostream &os) {
     getClosureSet();
     fillReduceAction();
@@ -339,7 +345,11 @@ void analysis(const vector<string> &seq, std::ostream &os) {
     }
 }
 
-// Parse the Token sequences.
+/**
+ * Parse the Token sequences.
+ * @param token_seq The token sequence need to parse.
+ * @param os The output stream redriected to.
+ */
 void parse(const vector<std::shared_ptr<Token>> &token_seq, std::ostream &os) {
     vector<string> sym_seq;
     for (auto token : token_seq)
@@ -358,8 +368,11 @@ void checkGrammar(std::ostream &os) {
     fillReduceAction();
 }
 
-// Print the Reduce action information from the ActionTable, which is used to write
-// log information for UI program.
+/**
+ * Print the Reduce action information from the ActionTable, which is used to write
+ * log information for UI program.
+ * @param os The output stream redriected to.
+ */
 void print_ReduceTable(std::ostream &os) {
     auto base = ClosureSet.size();
     for (auto status : ActionTable) {
@@ -372,8 +385,11 @@ void print_ReduceTable(std::ostream &os) {
     }
 }
 
-// Print the Shift action information from the ActionTable, which is used to write
-// log information for UI program.
+/**
+ * Print the Shift action information from the ActionTable, which is used to write
+ * log information for UI program.
+ * @param os The output stream redriected to.
+ */
 void print_ShiftTable(std::ostream &os) {
     for (auto status : ActionTable) {
         for (auto item : *status.second) {
@@ -385,8 +401,11 @@ void print_ShiftTable(std::ostream &os) {
     }
 }
 
-// Print the Goto action information from the ActionTable, which is used to write
-// log information for UI program.
+/**
+ * Print the Goto action information from the ActionTable, which is used to write
+ * log information for UI program.
+ * @param os The output stream redriected to.
+ */
 void print_GotoTable(std::ostream &os) {
     for (auto status : ActionTable) {
         for (auto item : *status.second) {
