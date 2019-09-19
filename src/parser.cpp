@@ -186,6 +186,7 @@ void extend(vector<Item> &closure) {
     }
 }
 
+// Get all the closures.
 void getClosureSet(std::ostream &os = std::cout) {
     getI0();
     vector<Item> closure;
@@ -242,6 +243,8 @@ void getClosureSet(std::ostream &os = std::cout) {
     }
 }
 
+// Fill the ReduceTable when has gotten all the closures.
+// This function is also the key to judge whether the grammar is SLR(1) grammar.
 void fillReduceAction(std::ostream &os = std::cout) {
     int base = ClosureSet.size();
     for (int i = 0; i < ClosureSet.size(); ++i) {

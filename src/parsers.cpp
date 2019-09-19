@@ -173,7 +173,6 @@ void getI0() {
 }
 
 // Get all the closures.
-// This function also is the key to judge whether the grammar is LR grammar.
 void getClosureSet(std::ostream &os = std::cout) {
     getI0();
     std::set<Item> closure;
@@ -231,7 +230,7 @@ void getClosureSet(std::ostream &os = std::cout) {
 }
 
 // Fill the ReduceTable when has gotten all the closures.
-// This function also is the key to judge whether the grammar is LR grammar.
+// This function is also the key to judge whether the grammar is LR(1) grammar.
 void fillReduceAction(std::ostream &os = std::cout) {
     int base = ClosureSet.size();
     for (int i = 0; i < ClosureSet.size(); ++i) {
